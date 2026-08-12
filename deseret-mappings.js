@@ -1,6 +1,6 @@
 window.DESERET_PHONEMES = {
-"tion": "𐑇𐐲𐑌",
-"sion": "𐑇𐐲𐑌",
+"tion": "𐑇𐐳𐑌",
+"sion": "𐑇𐐳𐑌",
 "tch": "𐐽",
 "dge": "𐐾",
 "ght": "𐐻",
