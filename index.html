@@ -63,8 +63,8 @@ nav.tabs button:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-
 
 main{max-width:46rem;margin:0 auto;padding:2.75rem 1.25rem 5rem}
 .panel[hidden]{display:none}
-h2{font-size:1.55rem;letter-spacing:-.01em;margin:0 0 .9rem}
-h3{font-size:1.1rem;margin:2.2rem 0 .5rem}
+h2{font-size:clamp(1.35rem,5vw,1.75rem);letter-spacing:-.01em;margin:0 0 .9rem}
+h3{font-size:clamp(1rem,3.5vw,1.2rem);margin:2.2rem 0 .5rem}
 p{margin:0 0 1rem}
 a{color:var(--blue)}
 
@@ -75,9 +75,9 @@ table.letters tr.group th{
   font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;
   color:var(--muted);font-weight:700;padding-top:1.5rem;border-bottom:2px solid var(--ink);
 }
-table.letters th:nth-child(1),td.glyph{width:6rem}
-table.letters th:nth-child(2){width:9rem}
-table.letters th:nth-child(3){width:5.5rem}
+table.letters th:nth-child(1),td.glyph{width:5.5rem}
+table.letters th:nth-child(2){width:8rem}
+table.letters th:nth-child(3){width:5rem}
 td.glyph{white-space:nowrap}
 td.glyph .de{font-size:1.45rem;line-height:1}
 td.glyph .de+.de{margin-left:.45rem;color:var(--muted)}
@@ -145,9 +145,22 @@ footer{
 
 @media(max-width:34rem){
   header{padding-top:2.25rem}
-  nav.tabs button{padding:.6rem .7rem;font-size:.86rem}
-  main{padding-top:2rem}
-  .line{font-size:1.15rem}
+  nav.tabs button{padding:.6rem .7rem;font-size:.8rem}
+  main{padding-top:2rem;padding-left:.8rem;padding-right:.8rem}
+  .line{font-size:1.1rem}
+  table.letters th:nth-child(1),td.glyph{width:4.5rem}
+  table.letters th:nth-child(2){width:6.5rem}
+  table.letters th:nth-child(3){width:4rem}
+  td.glyph .de{font-size:1.2rem}
+  table.letters td,table.letters th{padding:.4rem .4rem;font-size:.9rem}
+}
+@media(min-width:50rem){
+  body{font-size:17px}
+  h2{font-size:clamp(1.4rem,4.5vw,1.9rem)}
+  .line{font-size:1.4rem}
+  table.letters th:nth-child(1),td.glyph{width:6.5rem}
+  table.letters th:nth-child(2){width:9.5rem}
+  td.glyph .de{font-size:1.65rem}
 }
 @media(prefers-reduced-motion:no-preference){
   .panel:not([hidden]){animation:fade .22s ease}
@@ -162,6 +175,7 @@ footer{
   <p>A collection of resources for the learning and usage of the Deseret Alphabet.</p>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button role="tab" id="t-about" aria-controls="about" aria-selected="true">About</button>
+    <button role="tab" id="t-basics" aria-controls="basics" aria-selected="false" tabindex="-1">Basics</button>
     <button role="tab" id="t-history" aria-controls="history" aria-selected="false" tabindex="-1">History</button>
     <button role="tab" id="t-learn" aria-controls="learn" aria-selected="false" tabindex="-1">Learn</button>
     <button role="tab" id="t-translate" aria-controls="translate" aria-selected="false" tabindex="-1">Translate</button>
@@ -173,13 +187,27 @@ footer{
 
   <div class="panel" id="about" role="tabpanel" aria-labelledby="t-about">
     <h2>About</h2>
+    <blockquote style="font-size:1.1rem;font-style:italic;color:var(--muted);border-left:4px solid var(--blue);padding-left:1rem;margin:0 0 2rem;line-height:1.7;">
+      "No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory."
+      <br><span style="font-size:0.95rem;display:block;margin-top:0.5rem;">— George A. Smith</span>
+    </blockquote>
     <p>
       Deseret is a more efficient, learnable and aesthetically pleasing spelling
       system for the English language. It was created in the 1850s under the
       leadership of Brigham Young.
     </p>
 
-    <h3>The forty letters</h3>
+    <h3>Credits</h3>
+    <p>
+      This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a>
+      and is the sister project of the
+      <a href="#" id="ext-link">Deseret Alphabet web extension</a>.
+    </p>
+    <p>
+      The goal of this resource is to facilitate the learning and usage of the
+      Deseret Alphabet, with the ultimate goal that it be normalised.
+    </p>
+  </div>
     <table class="letters">
       <thead>
         <tr><th>Letter</th><th>Name</th><th>Sound</th><th>As in</th></tr>
