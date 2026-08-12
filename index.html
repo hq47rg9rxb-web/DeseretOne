@@ -26,7 +26,7 @@ body{
   color:var(--ink); background:var(--bg);
   font-size:16px; line-height:1.65;
 }
-.de{font-family:'Deseret','Open Sans',sans-serif}
+.de{font-family:'Deseret','Times New Roman',sans-serif}
 
 /* ---- masthead ---- */
 header{
@@ -35,10 +35,12 @@ header{
 }
 header h1{
   margin:0; font-size:clamp(2rem,7vw,3.1rem); font-weight:700; letter-spacing:-.015em;
+  font-family:"Times New Roman", Georgia, serif;
 }
 header .de-title{
   display:block; font-size:clamp(1.3rem,4.5vw,1.9rem); font-weight:400;
   color:rgba(255,255,255,.62); margin-bottom:.35rem;
+  font-family:"Times New Roman", Georgia, serif;
 }
 header p{
   margin:.6rem auto 0; max-width:34rem; color:rgba(255,255,255,.72); font-size:1rem;
@@ -80,6 +82,12 @@ td.glyph{white-space:nowrap}
 td.glyph .de{font-size:1.45rem;line-height:1}
 td.glyph .de+.de{margin-left:.45rem;color:var(--muted)}
 td.ipa{color:var(--muted);font-size:.92rem;width:5rem}
+.sound-match{
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:2px;
+  text-decoration-color:var(--blue);
+}
 
 /* ---- lessons ---- */
 .lesson{margin:0 0 2.5rem}
@@ -180,167 +188,167 @@ footer{
         <tr class="group"><th colspan="4">Long vowels</th></tr>
         <tr>
           <td class="glyph"><span class="de">𐐀</span><span class="de">𐐨</span></td>
-          <td>Long I</td><td class="ipa">/iː/</td><td>eat</td>
+          <td>Long I</td><td class="ipa">/iː/</td><td><span class="sound-match">ea</span>t</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐁</span><span class="de">𐐩</span></td>
-          <td>Long E</td><td class="ipa">/eɪ/</td><td>ate</td>
+          <td>Long E</td><td class="ipa">/eɪ/</td><td><span class="sound-match">a</span>te</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐂</span><span class="de">𐐪</span></td>
-          <td>Long A</td><td class="ipa">/ɑː/</td><td>art</td>
+          <td>Long A</td><td class="ipa">/ɑː/</td><td><span class="sound-match">ar</span>t</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐃</span><span class="de">𐐫</span></td>
-          <td>Long AH</td><td class="ipa">/ɔː/</td><td>aught</td>
+          <td>Long AH</td><td class="ipa">/ɔː/</td><td><span class="sound-match">au</span>ght</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐄</span><span class="de">𐐬</span></td>
-          <td>Long O</td><td class="ipa">/oʊ/</td><td>oat</td>
+          <td>Long O</td><td class="ipa">/oʊ/</td><td><span class="sound-match">oa</span>t</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐅</span><span class="de">𐐭</span></td>
-          <td>Long OO</td><td class="ipa">/uː/</td><td>ooze</td>
+          <td>Long OO</td><td class="ipa">/uː/</td><td><span class="sound-match">oo</span>ze</td>
         </tr>
         <tr class="group"><th colspan="4">Short vowels</th></tr>
         <tr>
           <td class="glyph"><span class="de">𐐆</span><span class="de">𐐮</span></td>
-          <td>Short I</td><td class="ipa">/ɪ/</td><td>it</td>
+          <td>Short I</td><td class="ipa">/ɪ/</td><td><span class="sound-match">i</span>t</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐇</span><span class="de">𐐯</span></td>
-          <td>Short E</td><td class="ipa">/ɛ/</td><td>end</td>
+          <td>Short E</td><td class="ipa">/ɛ/</td><td><span class="sound-match">e</span>nd</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐈</span><span class="de">𐐰</span></td>
-          <td>Short A</td><td class="ipa">/æ/</td><td>at</td>
+          <td>Short A</td><td class="ipa">/æ/</td><td><span class="sound-match">a</span>t</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐉</span><span class="de">𐐱</span></td>
-          <td>Short AH</td><td class="ipa">/ɒ/</td><td>odd</td>
+          <td>Short AH</td><td class="ipa">/ɒ/</td><td><span class="sound-match">o</span>dd</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐊</span><span class="de">𐐲</span></td>
-          <td>Short O</td><td class="ipa">/ʌ/</td><td>up</td>
+          <td>Short O</td><td class="ipa">/ʌ/</td><td><span class="sound-match">u</span>p</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐋</span><span class="de">𐐳</span></td>
-          <td>Short OO</td><td class="ipa">/ʊ/</td><td>book</td>
+          <td>Short OO</td><td class="ipa">/ʊ/</td><td>b<span class="sound-match">oo</span>k</td>
         </tr>
         <tr class="group"><th colspan="4">Semivowels and diphthongs</th></tr>
         <tr>
           <td class="glyph"><span class="de">𐐌</span><span class="de">𐐴</span></td>
-          <td>Ay</td><td class="ipa">/aɪ/</td><td>ice</td>
+          <td>Ay</td><td class="ipa">/aɪ/</td><td><span class="sound-match">i</span>ce</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐍</span><span class="de">𐐵</span></td>
-          <td>Ow</td><td class="ipa">/aʊ/</td><td>out</td>
+          <td>Ow</td><td class="ipa">/aʊ/</td><td><span class="sound-match">ou</span>t</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐎</span><span class="de">𐐶</span></td>
-          <td>Wu</td><td class="ipa">/w/</td><td>woe</td>
+          <td>Wu</td><td class="ipa">/w/</td><td><span class="sound-match">w</span>oe</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐏</span><span class="de">𐐷</span></td>
-          <td>Yee</td><td class="ipa">/j/</td><td>you</td>
+          <td>Yee</td><td class="ipa">/j/</td><td><span class="sound-match">y</span>ou</td>
         </tr>
         <tr class="group"><th colspan="4">Consonants</th></tr>
         <tr>
           <td class="glyph"><span class="de">𐐐</span><span class="de">𐐸</span></td>
-          <td>H</td><td class="ipa">/h/</td><td>high</td>
+          <td>H</td><td class="ipa">/h/</td><td><span class="sound-match">h</span>igh</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐑</span><span class="de">𐐹</span></td>
-          <td>Pee</td><td class="ipa">/p/</td><td>pea</td>
+          <td>Pee</td><td class="ipa">/p/</td><td><span class="sound-match">p</span>ea</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐒</span><span class="de">𐐺</span></td>
-          <td>Bee</td><td class="ipa">/b/</td><td>bee</td>
+          <td>Bee</td><td class="ipa">/b/</td><td><span class="sound-match">b</span>ee</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐓</span><span class="de">𐐻</span></td>
-          <td>Tee</td><td class="ipa">/t/</td><td>tea</td>
+          <td>Tee</td><td class="ipa">/t/</td><td><span class="sound-match">t</span>ea</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐔</span><span class="de">𐐼</span></td>
-          <td>Dee</td><td class="ipa">/d/</td><td>deed</td>
+          <td>Dee</td><td class="ipa">/d/</td><td><span class="sound-match">d</span>eed</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐕</span><span class="de">𐐽</span></td>
-          <td>Chee</td><td class="ipa">/tʃ/</td><td>cheese</td>
+          <td>Chee</td><td class="ipa">/tʃ/</td><td><span class="sound-match">ch</span>eese</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐖</span><span class="de">𐐾</span></td>
-          <td>Jee</td><td class="ipa">/dʒ/</td><td>jeep</td>
+          <td>Jee</td><td class="ipa">/dʒ/</td><td><span class="sound-match">j</span>eep</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐗</span><span class="de">𐐿</span></td>
-          <td>Kay</td><td class="ipa">/k/</td><td>key</td>
+          <td>Kay</td><td class="ipa">/k/</td><td><span class="sound-match">k</span>ey</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐘</span><span class="de">𐑀</span></td>
-          <td>Gay</td><td class="ipa">/ɡ/</td><td>gay</td>
+          <td>Gay</td><td class="ipa">/ɡ/</td><td><span class="sound-match">g</span>ay</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐙</span><span class="de">𐑁</span></td>
-          <td>Ef</td><td class="ipa">/f/</td><td>fee</td>
+          <td>Ef</td><td class="ipa">/f/</td><td><span class="sound-match">f</span>ee</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐚</span><span class="de">𐑂</span></td>
-          <td>Vee</td><td class="ipa">/v/</td><td>veer</td>
+          <td>Vee</td><td class="ipa">/v/</td><td><span class="sound-match">v</span>eer</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐛</span><span class="de">𐑃</span></td>
-          <td>Eth</td><td class="ipa">/θ/</td><td>thigh</td>
+          <td>Eth</td><td class="ipa">/θ/</td><td><span class="sound-match">th</span>igh</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐜</span><span class="de">𐑄</span></td>
-          <td>Thee</td><td class="ipa">/ð/</td><td>thy</td>
+          <td>Thee</td><td class="ipa">/ð/</td><td><span class="sound-match">th</span>y</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐝</span><span class="de">𐑅</span></td>
-          <td>Es</td><td class="ipa">/s/</td><td>see</td>
+          <td>Es</td><td class="ipa">/s/</td><td><span class="sound-match">s</span>ee</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐞</span><span class="de">𐑆</span></td>
-          <td>Zee</td><td class="ipa">/z/</td><td>zeal</td>
+          <td>Zee</td><td class="ipa">/z/</td><td><span class="sound-match">z</span>eal</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐟</span><span class="de">𐑇</span></td>
-          <td>Esh</td><td class="ipa">/ʃ/</td><td>she</td>
+          <td>Esh</td><td class="ipa">/ʃ/</td><td><span class="sound-match">sh</span>e</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐠</span><span class="de">𐑈</span></td>
-          <td>Zhee</td><td class="ipa">/ʒ/</td><td>vision</td>
+          <td>Zhee</td><td class="ipa">/ʒ/</td><td><span class="sound-match">s</span>ion</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐡</span><span class="de">𐑉</span></td>
-          <td>Er</td><td class="ipa">/r/</td><td>err</td>
+          <td>Er</td><td class="ipa">/r/</td><td><span class="sound-match">r</span>err</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐢</span><span class="de">𐑊</span></td>
-          <td>El</td><td class="ipa">/l/</td><td>let</td>
+          <td>El</td><td class="ipa">/l/</td><td><span class="sound-match">l</span>et</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐣</span><span class="de">𐑋</span></td>
-          <td>Em</td><td class="ipa">/m/</td><td>me</td>
+          <td>Em</td><td class="ipa">/m/</td><td><span class="sound-match">m</span>e</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐤</span><span class="de">𐑌</span></td>
-          <td>En</td><td class="ipa">/n/</td><td>knee</td>
+          <td>En</td><td class="ipa">/n/</td><td><span class="sound-match">n</span>ee</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐥</span><span class="de">𐑍</span></td>
-          <td>Eng</td><td class="ipa">/ŋ/</td><td>sing</td>
+          <td>Eng</td><td class="ipa">/ŋ/</td><td><span class="sound-match">ng</span></td>
         </tr>
         <tr class="group"><th colspan="4">Later additions</th></tr>
         <tr>
           <td class="glyph"><span class="de">𐐦</span><span class="de">𐑎</span></td>
-          <td>Oi</td><td class="ipa">/ɔɪ/</td><td>oil</td>
+          <td>Oi</td><td class="ipa">/ɔɪ/</td><td><span class="sound-match">oi</span>l</td>
         </tr>
         <tr>
           <td class="glyph"><span class="de">𐐧</span><span class="de">𐑏</span></td>
-          <td>Ew</td><td class="ipa">/juː/</td><td>ewe</td>
+          <td>Ew</td><td class="ipa">/juː/</td><td><span class="sound-match">ew</span>e</td>
         </tr>
       </tbody>
     </table>
