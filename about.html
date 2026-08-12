@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About · DeseretOne</title>
+    <meta
+      name="description"
+      content="DeseretOne: a resource for learning and using the Deseret Alphabet, an efficient spelling system for English."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="index.html">DeseretOne</a>
+      <nav class="tabs" aria-label="Sections">
+        <a href="index.html" class="tab" aria-current="page">About</a>
+        <a href="learn.html" class="tab">Learn</a>
+        <a href="translate.html" class="tab">Translate</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <p class="eyebrow">Welcome</p>
+        <h1>DeseretOne</h1>
+        <p class="subtitle">
+          A portal for Deseret Alphabet learning resources and tools.
+        </p>
+      </section>
+
+      <section>
+        <h2>About</h2>
+        <p>
+          Deseret is a more efficient, learnable and aesthetically pleasing
+          spelling system for the English language. It was created in the 1850s
+          under the leadership of Brigham Young.
+        </p>
+
+        <h3>The alphabet</h3>
+        <!-- TODO: letter table (sound + example word per letter).
+             Build it once here, then include the same markup on learn.html. -->
+        <table class="letters">
+          <caption>
+            Each letter stands for one sound, so spelling follows speech.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Letter</th>
+              <th scope="col">Sound</th>
+              <th scope="col">As in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="deseret">𐐀</td>
+              <td>/iː/</td>
+              <td>eat</td>
+            </tr>
+            <!-- …remaining letters… -->
+          </tbody>
+        </table>
+
+        <h3>Credits</h3>
+        <p>
+          This site was created by
+          <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is
+          the sister project of the
+          <!-- TODO: paste Chrome Web Store URL -->
+          <a href="#">Deseret Alphabet web extension</a>.
+        </p>
+        <p>
+          The goal of this resource is to facilitate the learning and usage of
+          the Deseret Alphabet, with the ultimate goal that it be normalised.
+        </p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
