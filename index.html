@@ -18,7 +18,7 @@
     /* --brand is the logo's exact cyan, kept for decorative accents only:
        white text on it measures 2.0:1, far under the 4.5:1 minimum. --blue
        is the same hue darkened until it can carry white text (5.1:1). */
-    :root{--brand:#01C5FB;--brand-deep:#01B4E8;--brand-ink:#00303D;--blue:#017898;--blue-deep:#00607A;--ink:#000;--line:#c9d1dd;--bg:#fff;--sans:'Open Sans','Calibri',Arial,sans-serif;--serif:'Liberation Serif','Times New Roman',serif;--hdr:5.6rem;--fs:.82rem}
+    :root{--brand:#01C5FB;--brand-deep:#01B4E8;--brand-ink:#00303D;--blue:#017898;--blue-deep:#00607A;--ink:#000;--line:#c9d1dd;--bg:#fff;--sans:'Open Sans','Calibri',Arial,sans-serif;--serif:'Liberation Serif','Times New Roman',serif;--hdr:6.5rem;--fs:.82rem}
 
     /* ===== RESET & BASE ===== */
     *{box-sizing:border-box}
@@ -30,7 +30,7 @@
     /* ===== HEADER ===== */
     .gh{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:stretch;height:var(--hdr)}
     .gh-mark{flex:none;display:flex;align-items:center;padding:0 1.4rem 0 1.1rem;text-decoration:none;color:var(--ink)}
-    .gh-logo{display:block;height:3.1rem;width:auto;max-width:100%}
+    .gh-logo{display:block;height:4.2rem;width:auto;max-width:100%}
     .gh-burger{display:none;flex:none;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;margin-left:.35rem;background:none;border:none;border-radius:4px;cursor:pointer;color:var(--ink)}
     .gh-burger:hover{background:#f0fbff}
     .gh-burger[aria-expanded="true"]{background:#e6f8ff}
@@ -151,11 +151,11 @@
     /* Below 62rem the inline nav cannot fit, so it becomes a panel under
        the bar, opened by the burger, with the search moved inside it. */
     @media(max-width:62rem){
-      :root{--hdr:4.5rem}
+      :root{--hdr:5.2rem}
       .gh{flex-wrap:wrap}
       .gh-burger{display:flex}
       .gh-mark{padding:0 .6rem}
-      .gh-logo{height:2.4rem}
+      .gh-logo{height:3rem}
       .gh-spacer{display:none}
       .gh-nav{position:absolute;top:var(--hdr);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;margin:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(0,0,0,.10);max-height:calc(100vh - var(--hdr));overflow:auto}
       .gh-nav.open{display:flex}
@@ -173,7 +173,7 @@
     @media(max-width:34rem){
       .gh-cta .cta-label{display:none}
       .gh-cta button{padding:.6rem .75rem}
-      .gh-logo{height:2rem}
+      .gh-logo{height:2.5rem}
       table.lt td.gl{font-size:1rem}
       /* 16px stops iOS zooming the page when a field takes focus */
       textarea,.opts select{font-size:16px}
@@ -203,7 +203,7 @@
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <a class="gh-mark" href="#letters" data-go="letters" aria-label="Deseret One, home">
-      <img class="gh-logo" src="https://i.ibb.co/9HgN436W/Chat-GPT-Image-Aug-14-2026-03-19-47-PM.png" alt="Deseret One">
+      <img class="gh-logo" src="https://i.ibb.co/qMHY1xXx/Chat-GPT-Image-Aug-14-2026-04-02-32-PM.png" alt="Deseret One">
     </a>
     <nav class="gh-nav" id="siteNav" aria-label="Sections">
       <a href="#case" data-go="case">Why Deseret?</a>
