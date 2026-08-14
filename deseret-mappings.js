@@ -1,6 +1,6 @@
 window.DESERET_PHONEMES = {
-"tion": "𐑇𐐳𐑌",
-"sion": "𐑇𐐳𐑌",
+"tion": "𐑇𐐲𐑌",
+"sion": "𐑇𐐲𐑌",
 "tch": "𐐽",
 "dge": "𐐾",
 "ght": "𐐻",
@@ -650,7 +650,7 @@ const DESERET_MAPPINGS = {
 "whistle": "𐐶𐐮𐑅𐐲𐑊",
 "wrestle": "𐑉𐐯𐑅𐐲𐑊",
 "yolk": "𐐷𐐬𐐿",
-"a": "𐐲",
+"a": "\u{10429}",
 "abducted": "𐐰𐐺𐐼𐐲𐐿𐐻𐐲𐐼",
 "abinadi": "𐐰𐐺𐐮𐑌𐐰𐐼𐐴",
 "abish": "𐐰𐐺𐐮𐑇",
@@ -4143,7 +4143,7 @@ const DA_RESTORE_V13 = {
 "whistle": "𐐶𐐮𐑅𐐲𐑊",
 "wrestle": "𐑉𐐯𐑅𐐲𐑊",
 "yolk": "𐐷𐐬𐐿",
-"a": "𐐲",
+"a": "\u{10429}",
 "abducted": "𐐰𐐺𐐼𐐲𐐿𐐻𐐲𐐼",
 "abinadi": "𐐰𐐺𐐮𐑌𐐰𐐼𐐴",
 "abish": "𐐰𐐺𐐮𐑇",
@@ -6452,7 +6452,7 @@ const DA_LEX_V14 = {
 "ms": "𐑋𐐮𐑆",
 "jr": "𐐾𐐭𐑌𐐷𐐲𐑉",
 "sr": "𐑅𐐨𐑌𐐷𐐲𐑉",
-"prof": "𐐹𐑉𐐫𐑁",
+"prof": "𐐹𐑉𐐲𐑁𐐯𐑅𐐲𐑉",
 "dept": "𐐼𐐮𐐹𐐪𐑉𐐻𐑋𐐲𐑌𐐻",
 "govt": "𐑀𐐲𐑂𐐲𐑉𐑋𐐲𐑌𐐻",
 "etc": "𐐯𐐻𐑅𐐯𐐻𐐲𐑉𐐲",
@@ -9663,172 +9663,6 @@ const DA_NAMES = {
 "heather": "𐐸𐐯𐑄𐐲𐑉",
 "nether": "𐑌𐐯𐑄𐐲𐑉",
 "ethereum": "𐐨𐑃𐐮𐑉𐐨𐐲𐑋",
-"am": "𐐰𐑋",
-"boundless": "𐐺𐐵𐑌𐐼𐑊𐐲𐑅",
-"brag": "𐐺𐑉𐐰𐑀",
-"buds": "𐐺𐐲𐐼𐑆",
-"chance": "𐐽𐐰𐑌𐑅",
-"cup": "𐐿𐐲𐐹",
-"daily": "𐐼𐐩𐑊𐐨",
-"darling": "𐐼𐐪𐑉𐑊𐐮𐑍",
-"date": "𐐼𐐩𐐻",
-"dimmed": "𐐼𐐮𐑋𐐼",
-"fade": "𐑁𐐩𐐼",
-"fair": "𐑁𐐯𐑉",
-"far": "𐑁𐐪𐑉",
-"fear": "𐑁𐐮𐑉",
-"fed": "𐑁𐐯𐐼",
-"flesh": "𐑁𐑊𐐯𐑇",
-"frown": "𐑁𐑉𐐵𐑌",
-"having": "𐐸𐐰𐑂𐐮𐑍",
-"highly": "𐐸𐐴𐑊𐐨",
-"lease": "𐑊𐐨𐑅",
-"lip": "𐑊𐐮𐐹",
-"met": "𐑋𐐯𐐻",
-"mine": "𐑋𐐴𐑌",
-"mocked": "𐑋𐐪𐐿𐐻",
-"near": "𐑌𐐮𐑉",
-"passions": "𐐹𐐰𐑇𐐲𐑌𐑆",
-"pastures": "𐐹𐐰𐑅𐐽𐐲𐑉𐑆",
-"round": "𐑉𐐵𐑌𐐼",
-"sake": "𐑅𐐩𐐿",
-"sand": "𐑅𐐰𐑌𐐼",
-"sands": "𐑅𐐰𐑌𐐼𐑆",
-"sculptor": "𐑅𐐿𐐲𐑊𐐹𐐻𐐲𐑉",
-"self": "𐑅𐐯𐑊𐑁",
-"shade": "𐑇𐐩𐐼",
-"shadow": "𐑇𐐰𐐼𐐬",
-"shake": "𐑇𐐩𐐿",
-"shines": "𐑇𐐴𐑌𐑆",
-"short": "𐑇𐐫𐑉𐐻",
-"staff": "𐑅𐐻𐐰𐑁",
-"stamped": "𐑅𐐻𐐰𐑋𐐹𐐻",
-"station": "𐑅𐐻𐐩𐑇𐐲𐑌",
-"stretch": "𐑅𐐻𐑉𐐯𐐽",
-"summer": "𐑅𐐲𐑋𐐲𐑉",
-"sunk": "𐑅𐐲𐑍𐐿",
-"things": "𐑃𐐮𐑍𐑆",
-"untrimmed": "𐐲𐑌𐐻𐑉𐐮𐑋𐐼",
-"vast": "𐑂𐐰𐑅𐐻",
-"whenever": "𐐶𐐯𐑌𐐯𐑂𐐲𐑉",
-"wrinkled": "𐑉𐐮𐑍𐐿𐑊𐐼",
-"jews": "𐐾𐐭𐑆",
-"gettysburg": "𐑀𐐯𐐻𐐮𐑆𐐺𐐲𐑉𐑀",
-"lincoln": "𐑊𐐮𐑍𐐿𐐲𐑌",
-"blake": "𐐺𐑊𐐩𐐿",
-"wordsworth": "𐐶𐐲𐑉𐐼𐑆𐐶𐐲𐑉𐑃",
-"austen": "𐐫𐑅𐐻𐐮𐑌",
-"tyger": "𐐻𐐴𐑀𐐲𐑉",
-"theirs": "𐑄𐐯𐑉𐑆",
-"altogether": "𐐫𐑊𐐻𐐲𐑀𐐯𐑄𐐲𐑉",
-"blessed": "𐐺𐑊𐐯𐑅𐐮𐐼",
-"beatitudes": "𐐺𐐨𐐰𐐻𐐲𐐻𐐭𐐼𐑆",
-"beatitude": "𐐺𐐨𐐰𐐻𐐲𐐻𐐭𐐼",
-"acknowledged": "𐐲𐐿𐑌𐐪𐑊𐐮𐐾𐐼",
-"acknowledge": "𐐲𐐿𐑌𐐪𐑊𐐮𐐾",
-"aspire": "𐐲𐑅𐐹𐐴𐑉",
-"beneath": "𐐺𐐮𐑌𐐨𐑃",
-"conceived": "𐐿𐐲𐑌𐑅𐐨𐑂𐐼",
-"conceive": "𐐿𐐲𐑌𐑅𐐨𐑂",
-"consecrate": "𐐿𐐪𐑌𐑅𐐲𐐿𐑉𐐩𐐻",
-"consecrated": "𐐿𐐪𐑌𐑅𐐲𐐿𐑉𐐩𐐻𐐮𐐼",
-"continent": "𐐿𐐪𐑌𐐻𐐲𐑌𐐲𐑌𐐻",
-"continental": "𐐿𐐪𐑌𐐻𐐲𐑌𐐯𐑌𐐻𐐲𐑊",
-"detract": "𐐼𐐮𐐻𐑉𐐰𐐿𐐻",
-"devotion": "𐐼𐐮𐑂𐐬𐑇𐐲𐑌",
-"endure": "𐐮𐑌𐐼𐐷𐐳𐑉",
-"engaged": "𐐮𐑌𐑀𐐩𐐾𐐼",
-"engage": "𐐮𐑌𐑀𐐩𐐾",
-"exhort": "𐐮𐑀𐑆𐐫𐑉𐐻",
-"exhortation": "𐐯𐑀𐑆𐐫𐑉𐐻𐐩𐑇𐐲𐑌",
-"intent": "𐐮𐑌𐐻𐐯𐑌𐐻",
-"manifest": "𐑋𐐰𐑌𐐲𐑁𐐯𐑅𐐻",
-"peacemakers": "𐐹𐐨𐑅𐑋𐐩𐐿𐐲𐑉𐑆",
-"peacemaker": "𐐹𐐨𐑅𐑋𐐩𐐿𐐲𐑉",
-"proposition": "𐐹𐑉𐐪𐐹𐐲𐑆𐐮𐑇𐐲𐑌",
-"solitude": "𐑅𐐪𐑊𐐲𐐻𐐭𐐼",
-"symmetry": "𐑅𐐮𐑋𐐲𐐻𐑉𐐨",
-"stanzas": "𐑅𐐻𐐰𐑌𐑆𐐲𐑆",
-"stanza": "𐑅𐐻𐐰𐑌𐑆𐐲",
-"daffodils": "𐐼𐐰𐑁𐐲𐐼𐐮𐑊𐑆",
-"daffodil": "𐐼𐐰𐑁𐐲𐐼𐐮𐑊",
-"fluttering": "𐑁𐑊𐐲𐐻𐐲𐑉𐐮𐑍",
-"wandered": "𐐶𐐪𐑌𐐼𐐲𐑉𐐼",
-"wander": "𐐶𐐪𐑌𐐼𐐲𐑉",
-"prejudice": "𐐹𐑉𐐯𐐾𐐲𐐼𐐮𐑅",
-"host": "𐐸𐐬𐑅𐐻",
-"hosts": "𐐸𐐬𐑅𐐻𐑅",
-"mood": "𐑋𐐭𐐼",
-"mourn": "𐑋𐐫𐑉𐑌",
-"mourning": "𐑋𐐫𐑉𐑌𐐮𐑍",
-"nobly": "𐑌𐐬𐐺𐑊𐐨",
-"noble": "𐑌𐐬𐐺𐐲𐑊",
-"vacant": "𐑂𐐩𐐿𐐲𐑌𐐻",
-"universally": "𐐷𐐭𐑌𐐲𐑂𐐲𐑉𐑅𐐲𐑊𐐨",
-"universal": "𐐷𐐭𐑌𐐲𐑂𐐲𐑉𐑅𐐲𐑊",
-"fortune": "𐑁𐐫𐑉𐐽𐐲𐑌",
-"fortunes": "𐑁𐐫𐑉𐐽𐐲𐑌𐑆",
-"bare": "𐐺𐐯𐑉",
-"beat": "𐐺𐐨𐐻",
-"birth": "𐐺𐐲𐑉𐑃",
-"bliss": "𐐺𐑊𐐮𐑅",
-"brave": "𐐺𐑉𐐩𐑂",
-"breeze": "𐐺𐑉𐐨𐑆",
-"bright": "𐐺𐑉𐐴𐐻",
-"civil": "𐑅𐐮𐑂𐐲𐑊",
-"couch": "𐐿𐐵𐐽",
-"crowd": "𐐿𐑉𐐵𐐼",
-"dances": "𐐼𐐰𐑌𐑅𐐮𐑆",
-"dancing": "𐐼𐐰𐑌𐑅𐐮𐑍",
-"dare": "𐐼𐐯𐑉",
-"dedicate": "𐐼𐐯𐐼𐐮𐐿𐐩𐐻",
-"dedicated": "𐐼𐐯𐐼𐐮𐐿𐐩𐐻𐐮𐐼",
-"deep": "𐐼𐐨𐐹",
-"deeps": "𐐼𐐨𐐹𐑅",
-"distant": "𐐼𐐮𐑅𐐻𐐲𐑌𐐻",
-"er": "𐐲𐑉",
-"fearful": "𐑁𐐨𐑉𐑁𐐳𐑊",
-"feelings": "𐑁𐐨𐑊𐐮𐑍𐑆",
-"feet": "𐑁𐐨𐐻",
-"fitting": "𐑁𐐮𐐻𐐮𐑍",
-"fixed": "𐑁𐐮𐐿𐑅𐐻",
-"flash": "𐑁𐑊𐐰𐑇",
-"floats": "𐑁𐑊𐐬𐐻𐑅",
-"frame": "𐑁𐑉𐐩𐑋",
-"gave": "𐑀𐐩𐑂",
-"golden": "𐑀𐐬𐑊𐐼𐐲𐑌",
-"ground": "𐑀𐑉𐐵𐑌𐐼",
-"hallow": "𐐸𐐰𐑊𐐬",
-"hold": "𐐸𐐬𐑊𐐼",
-"hunger": "𐐸𐐲𐑍𐑀𐐲𐑉",
-"immortal": "𐐮𐑋𐐫𐑉𐐻𐐲𐑊",
-"inward": "𐐮𐑌𐐶𐐲𐑉𐐼",
-"larger": "𐑊𐐪𐑉𐐾𐐲𐑉",
-"lone": "𐑊𐐬𐑌",
-"meek": "𐑋𐐨𐐿",
-"o": "𐐬",
-"oft": "𐐫𐑁𐐻",
-"pensive": "𐐹𐐯𐑌𐑅𐐮𐑂",
-"pleasure": "𐐹𐑊𐐯𐑈𐐲𐑉",
-"ponder": "𐐹𐐪𐑌𐐼𐐲𐑉",
-"portion": "𐐹𐐫𐑉𐑇𐐲𐑌",
-"pure": "𐐹𐐷𐐳𐑉",
-"rightful": "𐑉𐐴𐐻𐑁𐐳𐑊",
-"seize": "𐑅𐐨𐑆",
-"sense": "𐑅𐐯𐑌𐑅",
-"sincere": "𐑅𐐮𐑌𐑅𐐮𐑉",
-"sinews": "𐑅𐐮𐑌𐑏𐑆",
-"single": "𐑅𐐮𐑍𐑀𐐲𐑊",
-"struggled": "𐑅𐐻𐑉𐐲𐑀𐑊𐐼",
-"task": "𐐻𐐰𐑅𐐿",
-"testing": "𐐻𐐯𐑅𐐻𐐮𐑍",
-"thirst": "𐑃𐐲𐑉𐑅𐐻",
-"twist": "𐐻𐐶𐐮𐑅𐐻",
-"unfinished": "𐐲𐑌𐑁𐐮𐑌𐐮𐑇𐐻",
-"vain": "𐑂𐐩𐑌",
-"vales": "𐑂𐐩𐑊𐑆",
-"void": "𐑂𐑎𐐼",
-"wings": "𐐶𐐮𐑍𐑆",
 };
 Object.assign(DESERET_MAPPINGS, DA_RESTORE_V13, DESERET_NEWS_LEXICON, DA_LEX_V14, DA_NAMES);
 const normalisedMappings = {};
@@ -9861,6 +9695,326 @@ const noInflect = new Set(['a','an','the','and','or','but','if','in','on','at','
 'may','might','shall','can','this','that','these','those','his','her','its','our','their',
 'my','your','who','which','what','when','where','while','because','from','into','than',
 'then','there']);
+/* Headwords that take no plural or third-person -s: proper names, adverbs,
+   adjectives, mass nouns and archaic verb forms. Everything not listed here
+   does take one. The lists on this page are drawn from corpus attestation of
+   the exact spelling the generator would produce, so a form only survives if
+   somebody actually writes it. */
+const DA_NO_PLURAL = new Set(`aaliyah abigail abinadi abish aboard abominable above abridgment accurate accurately acquittal
+actual actually acute addison adequate adrian ads adulthood afghanistan afraid africa against
+ago ahead aiden aisha alabama alaska albania alex alexander alexandra alexis alfie algeria alice
+alive allegedly almost alms alone alphabetic alphabetical alphabetically already also although
+aluminium amanda amelia amen americas amigo ammonihah among amongst amortize amsterdam amulek
+amulon amy analysis analytical ananya anarchy andorra angela angelic angola angry anguish ankara
+ann annexation annie anointest another anthony antitrust anxious any anybody anymore anytime
+anywhere aoife apart apartheid apostasy apparent appease appellate applause approx apr april
+arabia arabic archaeology archie argentina arizona arjun arkansas arlo armenia armistice armour
+armstrong arraignment arson artificial artillery asher ashley asia assyria asthma atlanta
+atonement audrey aug august austerity australia austria automation autonomous autonomy autumn
+ava available avery avocado aware awful awfully axel azerbaijan babylon bacon bacteria bacterial
+bad bahamas bahrain bananas bandwidth bangkok bangladesh baptize barbara barcelona barefoot
+barometric barry basilica beatrice beautiful beautifully became befell before began begun behalf
+beheld behold beholdeth beige beirut belarus belgium believeth belize benign berlin beset beth
+betty beyond biathlon biggest biodiversity biology bipartisan biscotti blackboard blither blown
+bluetooth boardwalk bogota bolivia bondage boredom borne bosnia boston both bought bountiful
+brandon brazil breadth brethren brett brexit brian brianna bribery brien brigham brimstone
+british brittany broccoli broke broken brought bruce bruschetta brutal bryant budapest buildeth
+built bureaucratic burnt burrito busier busiest busy bysshe cairo caleb calf calibre california
+cambodia came camila camouflage cannot canst capitol cappuccino captivity caracas cardboard
+cardiac carefree careful carefully carlos carnal caroline casino catechism catherine caught
+ceasefire certain certainly chad chaos chapman charisma charlotte chastity checkbox chen cheryl
+chi chic chicago chinese chivalry chloe chlorine cholesterol chorizo chosen chris christine
+christopher chronic chronology ciabatta ciaran cinnamon claire clarity clarke clergy clinical
+closest cloture cocoa cognitive coleman colin collateral cologne colombia colorado colossal
+colourful cometh comfortable communion comparable compliance concerto concurrence confoundeth
+congo congressional considerate contagion continual continually copenhagen coriantumr corsage
+counterreformation courage courageous coursework courteous courtney covid cox crisis croatia
+crochet croquet crucifixion crucify cruel cuba cunningham curious custody cyber cybersecurity
+czech dallas damascus damian damnation dangerous danielle danish data davis days deadliest deaf
+dealt deborah debris dec december decent decisive declan deepfake deflation delaware delhi
+deliberate delicate delicious delighteth delilah dementia democratic denise denmark dennis
+denver deregulation derek deseret desolate desperate desperately destruction destructive detroit
+diagnosis diana diego dietary digital diplomacy diplomatic disapproval disarmament
+disinformation disobedience dissension distinct dither diversity divestment does doest doha
+donald doris dorothy dost doth dough douglas dramas dreadful driftwood driven dropdown dubai
+dumb duncan dutch dutiful dwelleth dwelt dylan each earliest early earnest easiest easily easter
+easy ebay ecuador edith ego egos egregious egypt eileen either elaine eldest eleanor electoral
+elena eleven elijah eliza elizabeth ella ellen ellie elliott ellis embezzlement emergent emily
+emma emotional encryption endow england english engrave engraven enormous enos enough enrichment
+enshroud entourage entrench ephraim epicenter epstein equally eric espresso estonia etc
+eternally eternity ethan ethel ethereum ethiopia eugene europe evelyn everett every everyday
+everywhere evident evidently evolutionary exceedingly exclaimeth exodus experimental extortion
+extradition eyes ezias ezra facebook faithful faithfully false famous farther fastest fatal
+fatally fatherhood fatima favourable feb february fellowmen fentanyl ferocious few fiance
+fiancee fierce fifa filthy finland finnish fiona firewood firmament firmware fiscal fletcher
+florence florida flown flue foolish forbidden foreign foreword forth fortunate fought fourteen
+francis fred freelance freemen french freya fulfilment full fullscreen fully furniture
+furthermore gabriel gabriella gadianton gardner garlic gary gaza gelato generosity genesis
+geneva geoffrey geology georgia gerald germany gerrymander ghana gillian giveth global gnaw gnu
+godmother goeth gone goodly goodwill gourmet gracias gracious graffiti grateful gravity grayson
+greatest greece gregory greyer greyson grieveth groaneth growest grown guacamole guatemala
+guidance guilt guilty hagoth haiti half halloween hamas hamilton hannah happy hardest hardware
+harold harriet harris harrison harvard harvey hassan hast hath havana hawaii hazel headboard
+health healthcare heard hearken heavenly helaman henderson henry hereby hid hideous highest
+hilary him himself hither hockey hollywood homepage homework honduras honest honestly honesty
+honorable honourable hospitalisation hourly houston however hudson hugh humid humidity humility
+hungary hydrogen hypothesis ibrahim iceland iconic idaho idealism ideological ignorance illinois
+immediate immigration immortality immovable impeach impeachment importance important inadequate
+inalienable inappropriate inasmuch inclusive independence indiana indonesia infantry infectious
+inflation inflationary influenza info innovate insolvent inspectorate instead intensive
+intercession intercommunication interventionist introductory iowa iran iraq ireland irene irish
+isabel isabella ishmael isla iso isolationist istanbul italy itself ivan ivy jacqueline jakarta
+jalapeno jamaica jan janet janice january japan japanese jaredite jarom jasmine jason jaxon
+jayden jealous jennifer jeremiah jeremy jerusalem jesse jessica jesus jewellery jews joan joanne
+johannesburg johnston jonathan jorge jose joshua jostle journalism joyce juan judah judicial
+judiciary judith judo julia julian julie july june just justin kabul kai kansas karaoke karate
+katherine kathleen kathryn kayla kazakhstan keith kelly kennedy kenneth kentucky kenya kerb
+kevin kimberly kimono kishkumen knew knowest knoweth knowledge known kuwait kyiv lagos laid
+laman lamanite laos large largest lasagna lasagne latest lather latter latvia laughter laura
+lawrence lawson layla lazy leadeth leah leant leapt lebanese lebanon legal legislative lehi
+lemuel leslie lest lewis liahona liam libya likelihood likely lima limhi linda liquidity lisa
+lisbon literacy literate lithuania litigation liturgical lively liveth loathsome logan logo
+logout london lonely longest lopez lorraine lost louis louise louisiana lowest lucas lucid
+lucifer lucy luge luggage luis luna lunar luxembourg luxurious lydia mabel machinery made
+madeline madison madrid maine maketh malaysia malcolm malnutrition malta malware manhood
+manifesto manila mankind manslaughter many margaret marian marilyn marjorie martha martial
+marvelous maryland mateo maureen maya meant megan melanie melbourne melchizedek melissa memo
+menopausal mental merciful messianically metabolism mexico mia miami micah michelle michigan
+microscopic middoni midnight midst mightily mighty miguel mila milan millennium minnesota
+miraculously misinformation mississippi missouri mistook mods moisten molecular molly momentum
+monarch monetary mongolia montana montreal moratorium morbidity moreover mormonism morocco
+moroni moronihah morris morrow mortality moscow mosiah most motherhood mozambique mozzarella mrs
+ms much muhammad mumbai munich murphy murray must myanmar nairobi naive nancy naomi natalie
+natasha nathan nationalisation nationalization nato nebraska nebula nehor neigh neil neither
+nelson nepal nephi nephite nervous netanyahu nether neurological nevada newest newman news next
+nguyen niamh nicholas nicole nigel nigeria nigh ninth nitrogen noah none noon nor nora northern
+norway nov november nowhere nuclear numerous nutrition obedience obedient obesity oblique obrien
+obstinate obvious obviously oct october offline often oisin oklahoma oldest olga oliver olivia
+oman omar omnipotent onboard once ones oneself online only opaque opium opportune orchestral
+ordain ordination oregon origami originality originally orthodox orthodoxy orthographic
+orthography ought outgrowth outrageous overboard owest ozymandias pacific paella paid pakistan
+palestine palliative pamela panama panini paparazzi paradise paraguay paralyse parental paris
+parliamentary parmesan passionate patel patience patricia paula pauline payne peace pearce
+pearson penelope penitent pennsylvania perry peru petrol phenomena phenomenon philosophical
+phoebe phoenix phonemic phonetically phonological phonology phonotypic phonotypy photo
+photography physically piano pitiful pitifully placebo plazas plebiscite plentiful plenty
+plywood pneumonia poetry poland polar political politically polo poncho pondereth popular
+populism porto portugal possible posterity postgraduate potency potent powell powerful prague
+precious precipitation predestination preparest preservation prestige prestigious previous
+priestcraft priesthood primarily prioritise privacy privately privatisation privatization priya
+probably probation probationary productivity profitable prognosis proliferation proper prophetic
+prosciutto prose protectionist proto proud providence providential provo psychiatric psychology
+pullover pushback pyjamas qatar quantum quarterly quick quorum rachel radioactive raj ransomware
+rather raymond really rebecca receivership recent recruitment redeemer redo refinance
+reformation reformative reformatory regency regental regulatory reid religious remission
+rendezvous repentance reportedly respiratory restorationist restoreth resultant resurrection
+retaliation retroactive retry returneth revelry rice richardson ricochet rid righteous riley
+riotous risen risotto riyadh robertson rohan romania rome ronald rosemary ross rosy rough
+rougher roughest roughly rowan roy rubble rugby runneth russell ruth rwanda sabbath sacramental
+sad sadie sagas said saith salsa salvation samantha same samurai sanctification sandra sangria
+sanitation santiago sarah sariah sashimi satan savannah sayeth says scarlett scenic scientific
+scotland scottish scuba seamus sean seattle sebastian secession seclusion secular seen seership
+seest seismic senate senegal seoul sept september serbia sergei serious sets severance seville
+shakespeare shalt shane shanghai sharon shaw sheila shelley sherem shirley shook shorn shown
+shui sidebar siesta silas silent similar similitude simply sims simultaneous sinaitic since
+sincerity sinead singapore singh sins siobhan skylar slain slalom sleigh slither slovakia
+slovenia smallest smite smithsonian smitten smoulder soccer sodas sofas sofia solar solemn
+solemnly solo solvency somalia sombre some somehow somewhat somewhere sons sophia sophie soprano
+sorroweth sought southern sovereignty spacious spaghetti spain spake spanish speaketh
+spirituality splendour spoken spontaneous spontaneously stagflation stanley statehood steadfast
+steadily steady stella stepfather stephanie stepmother stevenson stimulus stockholm stomach
+stood strangest strong strongest struck stubble stupid stupidity subtle subtly successful such
+sudan sudden suddenly sudoku sullivan sure surely surety surgical surveillance susan sushi
+sustainability suzanne swam sweden swedish switzerland swore sworn sydney syllabic syllabus
+sylvia symbolic syria tabs tai taipei taiwan taketh tanzania taught tehran telestial temperate
+temporal tennessee tennis teresa teriyaki terrestrial terrible terrorism texas thailand thee
+themself thence theo theodore theological thereby therefore therein thereof thereon theresa
+thereto thesis thine thither thomas thomson thorough thoroughly thou though throughout thrown
+thus thy thyself timothy tina tiramisu tobacco toby todd tofu tokyo told tony too took tooltip
+tore torn toronto tough toughen tougher toughest tourism tracy trance transliterate
+transliteration travis treachery tremendous triage trinity triumphant truce true tucker tunisia
+turin turkish two tyler uganda ukraine ultimately umbrellas unable unalienable unanimous
+unbelief unchastity underfoot understood unfollow unicode uniformity unionize unique uniquely
+unity unlikely unquenchable unrest unstable unsteady unsubscribe until unto unusual upon uranium
+uruguay usable used useful usual usually utah utopian utopianism uzbekistan vaccinate vague
+vaguely valencia valentina valerie vancouver vanessa various venezuela vengeance venice verily
+vermont versus very via vienna vietnam violence violent viral virginia visage vitriol volatility
+vs walketh wallace walsh wanderest warfare warsaw wasabi washington wast weak wealth wealthiest
+wealthy weaponry webb weird welfare welsh wendy went weston whence wherefore wherever whether
+whilst whirlwind whither wholesale wholesome wholly whom whose widespread wifi wikipedia
+wildlife wilkinson williamson willis wisconsin wisdom within without woes womanhood wonderful
+woolen woollen wore workmanship wormwood worn worse worst worth wrath writeth written wrote
+wyatt yemen yes yet yoghurt younger youngest yuki yusuf zambia zarahemla zeal zealous zedekiah
+zeezrom zeniff zenos zimbabwe zion zoe zurich`.split(/\s+/));
+
+/* Headwords with an attested -ed (or -ied) past. */
+const DA_TAKES_ED = new Set(`abolish accept accord account ache achieve acquire add adopt adore advance advise affect afford
+age agree aid align allege allow ally alter alternate ambush amortize amount analyse analyze
+anchor anguish announce answer apologise appeal appear appease apply appoint approach
+appropriate approve approximate archive arm armor armour arrange arrest arrive article ask
+assault assign assist assume assure attach attack attain attempt attend attract audit author
+average avoid await baby back ball band bank baptize barefoot battle bed bedroom believe best
+bias bill black blood blow blue board bob book bookmark border bore borrow boss bother bound bow
+branch breach bread breathe brief bristle broadcast brown budget buffet burn bury busy butcher
+button cache call calm camouflage campaign cancel caption carry cart case cast cause cave cease
+cement centre certificate chair chalk challenge champion change chat chauffeur chicken circuit
+claim cleanse click climb close cloth cloud clue coach collapse colour comb combine comfort
+command comment commission commit communicate compare compete complain complete comply compose
+concert conclude condemn condition conduct confirm conflict confuse connect conquer consent
+consider consist construct consult consume contact contain content continue contribute converse
+convert convince cook copy copyright core cost cough counsel couple course court cover cow
+create criticise crochet crucify cry cue culture curry curse cushion cycle dawn debate decay
+decide declare decline decrease default defeat defend define delegate delete deliberate deliver
+demand denote deny depart depend derive describe desert deserve design desire despair destroy
+detail detain detect determine develop devil devote diagnose die direct disease display dispose
+dispute dissent dissolve disturb dive divide doctor dog donate dose double doubt down download
+dr draft dread dumb dust dwell dwindle ear earn ease echo eclipse edit egg elaborate email
+embargo emphasis emphasise enable end endeavour endow engrave enter entitle entrench envy equal
+eras escape evacuate even evidence exaggerate examine excite exhaust exhibit expand experience
+experiment explore export expose eye face fast fasten father favorite favour feather fell field
+figure filter finn fire fish five flavour flood floor flour flow flower focus follow foot
+forecast forest form forward foster found franchise frank free friend front fruit fuel fulfill
+furlough further gain gate gather gauge gender gerrymander ghost gift glow glue gnaw grace
+graduate grandfather grant group guarantee guard guide hand handle happen harbour harry hasten
+head headline hear heart hedge help hole home honey honor honour hope house hue humble humor
+humour hunt hustle hypothesis identify ignite ignore image imagine impart impeach import impose
+incite include increase indict influence inherit innovate institute insure interest interview
+intimate intrigue introduce invade inventory invite invoice iron issue jack join joke jostle
+journey judge juice jump jury kill knife knight knock know labor labour land last lather laugh
+launch lead learn leave lecture lee leg level levi levy licence lie light like limb line link
+list listen live loan locate long look loose love lunch machine mail major man mandate
+manufacture march mark market marshall martial massage matter mature me measure member message
+meter migrate milk mind minister misuse mod moderate moisten money monitor moor moore mortgage
+motor mould mouth move mow murder murmur muscle name narrow nature need negotiate nestle network
+nose note notice nourish numb number nurse obscure obtain occasion off offer oil open oppose
+option orbit ordain order organise organize orphan out overdose overlook overturn own page palm
+paper parachute paralyse parole part party past paste patent pattern pause pay pen people pepper
+perform perish persuade peter phone photograph picket picture pierce pillar pilot pioneer place
+plague plan play please plough point police polish poll pore post pour power practise praise
+pray preach preface prefer premier premiere prepare preserve pretend prevail prevent preview
+price pride prime prioritise probe proclaim produce profile profit program programme promise
+promote pronounce prophesy propose prosper protect protest prove provide publish pull purchase
+purpose pursue push put quarantine question queue quiet race radio raid rain raise rally rate
+ratify re reach ready realise reason rebound receive recite reclaim recognise reconcile record
+recover recycle redeem redirect reduce refer referee refinance reflect reform refresh refuse
+regard regiment register reign reject rejoice relapse relate release reload remain remark
+remember remind remove rent repeal repeat repent replace reply report represent require rescue
+research reserve resist resolve respect respond rest restore result resume retain retire retry
+return reuse reveal review reward rhyme ricochet right riot rival rock roll roof room roster
+rotate rough row ruin rule rumour rustle sabotage sacrifice sail salary salt sanction sandwich
+save saw say scent schedule school score screen scroll sculpture search season seat second
+secret section secure see seed seem separate serve service shape share shatter shell shelter
+shepherd shield ship shop shore shoulder show side sigh sign signal silhouette silver sin sing
+size sky slay slither slow smell smother sneer snow soften soldier sort soul sour source spam
+specialise spell spirit spook stake stalk star start state stay steady stem step still stock
+stockpile stone stop store storm story stream strengthen strip stroll stump subject subordinate
+subpoena subscribe subsidize sue suffer sugar suggest summarise supply support suppose surround
+survive sweat swell tab table tag talk tame tax tear tease telephone tempt tenant testify tether
+thread threaten throw thumb time tip title toll tongue top torment toss total touch toughen tour
+tow tower trade trademark transgender transliterate transplant trash travel tremble triumph
+trouble trust try turn tutor type unfollow uniform unionize unit unite unsubscribe update upload
+us use vacation vaccinate ve venture verse veto view violate voice vote wage walk wall want ward
+warm warn warp warrant wash wast watch water weather webb weigh weight weird well whistle wilt
+wind window wine wither wonder wood word work worm worship worst wrap wreath wreck wrestle
+wretch wrong yearn yellow zero zoom`.split(/\s+/));
+
+/* Headwords with an attested -ing. */
+const DA_TAKES_ING = new Set(`abolish accept accord account ache achieve acquire add adopt adore advance adventure advise
+affect afford age aid aisle alias align allege allow ally alter alternate ambush amount analyse
+analyze anchor ann anne announce answer apologise appeal appear appease apply appoint approach
+appropriate approve approximate archive arm arrange arrest arrive ask assault assign assist
+assume assure attach attack attain attempt attend attract audit author average avoid await awake
+back ball ballot band bank baptize battle bear become bed begin behold believe bell ben best
+bias bill bind bird black blither blow board bob book bookmark border bore borrow boss bother
+bound bow branch breach bread break breathe brief bristle broadcast broke brown budget buffet
+build burn bury bush butcher buy cache call calm campaign cancel caption carol carry cart case
+cast cause cave cease cement centre chair chalk challenge champion change chat choose circuit
+claim cleanse click climb close cloth cloud coach collapse colour comb combine come comfort
+command comment commission commit communicate compare compete complain complete comply compose
+conclude condemn condition conduct conference confirm conflict confuse connect conquer consent
+consider consist construct consult consume contact contain continue contribute converse convert
+convince cook copy core cost cough counsel couple course court cover create cricket criticise
+crochet crucify cry culture curse cushion cut cycle dawn deal debate decay decide declare
+decline decrease default defeat defend define delegate delete deliberate deliver demand denote
+deny depart depend derive describe desert deserve design desire despair destroy detail detain
+detect determine develop devote diagnose die diet direct display dispose dispute dissent
+dissolve disturb dither dive divide divine doctor dog donate dose double doubt down download
+draft draw dread drink drone duel dumb dust dwell dwindle earn earth ease eat echo eclipse edit
+egg elaborate email emphasis emphasise enable end endeavour endow engrave enter entitle entrench
+envy equal eras escape evacuate even event evidence exaggerate examine excite exhaust exhibit
+expand experience experiment explore export expose eye face fall fast fasten father favour
+feather feel fell field fight figure filibuster filter find fire fish five flavour flood floor
+flow flower focus follow foot football forecast forgive form forward foster found franchise
+frank freelance front fruit fuel fulfill further gain garden gate gather gauge gender
+gerrymander get ghost gift gig girl give glow glue gnaw go gold good grace graduate grant gray
+green grey group grow guard guest guide hand handle happen harbour hard hasten hawk head
+headline hear hedge help here hole holiday home honor honour hope horse house humble hunt hustle
+identify ignite ignore image imagine impart impeach import impose incite include increase indict
+influence inherit innovate institute insure interest interview intrigue introduce invade invite
+invoice iron issue jack job join joke jostle journey judge juice jump keep kill knife knock know
+labor labour lamb land last laugh launch lead learn leave lecture leg let level levy licence lie
+light like line link list listen live loan locate long look loose lord lose love low lunch
+machine mail major make man mandate manufacture march mark market marshall massage matter mature
+me mean measure meet message meter middle migrate milk mind minister misuse mod moderate monitor
+moon moor moore mortgage mother motor mould mouth move mow murder murmur name narrow need
+negotiate neighbor neighbour nestle network nose note notice nourish numb number nurse obscure
+obtain occasion off offer oil onboard open oppose orbit order organise organize out overcome
+overdose overlook overturn own page palm parachute paralyse parent part partake party past paste
+patent pattern paul pause pay pedal pen pepper perform perish persuade petal phone photograph
+picket picture pierce pilot pioneer place plague plan plank platform play please plough podcast
+point pole police polish poll pore post pour power practise praise pray preach premier premiere
+prepare preserve pretend prevail prevent preview price prime prioritise probe proclaim produce
+profile profit program programme promise promote pronounce prophesy propose prosper protect
+protest prototype prove provide publish pull purchase pursue push put quake quarantine question
+queue quiet race raid rain raise rally rate ratify re reach read ready realise reason rebound
+receive recite reclaim recognise reconcile record recover recycle red redeem redirect redo
+reduce refer refinance reflect reform refresh refuse regard register reign reject rejoice
+relapse relate release reload remain remark remember remind remove rent repeal repeat repent
+replace reply report represent require rescue research reserve resist resolve respect respond
+rest restore result resume retain retake retire return reuse reveal review reward rhyme ricochet
+rid right riot rise rival road rock roll roof room rotate rough row ruin rule run rustle
+sabotage sacrifice sail salt sanction save saw say schedule school score screen scroll search
+season seat second secret section secure seed seek seem sell send separate serve service set
+shape share shatter shell shelter shepherd shield ship shop shore shoulder show side sigh sign
+signal sin sing sit size skateboard slay sleep slither slow small smell smite smother smoulder
+sneer snow snowboard soften soldier solo sort sour source spam speak specialise spell spend
+spook spread stake stalk stand star start state stay steady stem step stock stockpile stone stop
+store storm stream strengthen strike strip stroll stump subject subscribe subsidize sue suffer
+suggest summarise sun supply support suppose surround survive swear sweat swell table tag take
+talk tame tax teach tear tease telephone telescope tell tempt testify tether think thread
+threaten throw thumb time tip tithe title toggle toll top torment toss total touch toughen tour
+tow tower trade transplant trash travel tread tremble triumph trouble trust try turn tutor type
+umpire understand undo unit unite update upload us use vacation vaccinate ve venture version
+veto view violate voice vote waffle wage walk wall want war ward warehouse warm warn warp
+warrant wash wast watch water wear weather webb weigh weight well whistle white wholesale whore
+wild wilt win wind wine wither wonder word work worm worship worth wrap wreck wrestle write
+yacht ye yearn yellow zero zoom`.split(/\s+/));
+
+/* -------------------------------------------------------------------
+   Inflection generator.
+
+   The old version bolted -s, -es, -ed and -ing onto every headword
+   without asking whether the result was a word, which left more than
+   half the dictionary holding forms like "abouted", "wonderfuled",
+   "cabaretes" and "angelaing". Worse, "planes" was built from "plan"
+   and so came out sounding like it. Two things fix that: the suffix is
+   now chosen by spelling instead of all four being emitted at once, and
+   the headword has to be the sort of word that takes it at all. What
+   the generator declines to make, the letter-to-sound engine still
+   handles at translation time, and handles better.
+   ------------------------------------------------------------------- */
+const DA_ES_PLURAL = /(?:s|x|z|ch|sh|[^aeiou]o)$/;   // buses, boxes, potatoes
+const DA_CONS_Y = /[^aeiou]y$/;                       // agency -> agencies
+
+/* Consonant doubling before a vowel suffix: run -> running, stop -> stopped.
+   Only for a stressed single syllable, which for a headword means one vowel
+   letter and a final single consonant that is not w, x or y. */
+function daDoubles(word) {
+  if (word.length < 3 || /[wxy]$/.test(word)) return false;
+  if (!/[^aeiou][aeiou][^aeiou]$/.test(word)) return false;
+  return (word.match(/[aeiou]/g) || []).length === 1;
+}
+
 const alphabeticalMappings = {};
 Object.entries(normalisedMappings)
 .sort(([leftWord], [rightWord]) => leftWord.localeCompare(rightWord, 'en'))
@@ -9869,30 +10023,42 @@ alphabeticalMappings[word] = deseret;
 if (noInflect.has(word)) return;
 if (/[^a-z]/.test(word)) return;
 if (/(?:ss|[^aeiou]s|es|ed|ing)$/.test(word) && word.length > 4) return;
-const endsSilentE = word.endsWith('e') && !word.endsWith('ee');
-const stem = endsSilentE ? word.slice(0, -1) : word;
-if (!alphabeticalMappings[word + 's'])   alphabeticalMappings[word + 's']   = pluralSuffix(word, deseret);
-if (!alphabeticalMappings[word + 'es'])  alphabeticalMappings[word + 'es']  = deseret + '𐐮𐑆';
-if (!alphabeticalMappings[stem + 'ed'])  alphabeticalMappings[stem + 'ed']  = pastSuffix(word, deseret);
-const ingForm = deseret + '𐐮𐑍';
-if (!alphabeticalMappings[stem + 'ing']) alphabeticalMappings[stem + 'ing'] = ingForm;
-if (word.endsWith('y') && !alphabeticalMappings[word.slice(0, -1) + 'ied']) {
-const g = Array.from(deseret);
-const last = g.length ? g[g.length - 1].codePointAt(0) : 0;
-// stressed -y (0x10434 = AY) keeps its diphthong: tried, applied, satisfied
-// unstressed -y reduces to LONG I: carried, married, studied
-alphabeticalMappings[word.slice(0, -1) + 'ied'] = (last === 0x10434)
-? deseret + '\u{1043C}'
-: g.slice(0, -1).join('') + '\u{10428}\u{1043C}';
-}
-if (word.endsWith('y') && !alphabeticalMappings[word.slice(0, -1) + 'ies']) {
+
+const consY = DA_CONS_Y.test(word);
+const endsE = word.endsWith('e');
+const vowelStem = endsE ? word.slice(0, -1)
+  : daDoubles(word) ? word + word.slice(-1)
+  : word;
+const put = (form, value) => { if (form && !alphabeticalMappings[form]) alphabeticalMappings[form] = value; };
+
+/* The -y forms shift the last vowel: stressed -y (0x10434 = AY) keeps its
+   diphthong in applies and defies, unstressed -y reduces to LONG I in
+   carries and agencies. */
 const glyphs = Array.from(deseret);
 const lastCp = glyphs.length ? glyphs[glyphs.length - 1].codePointAt(0) : 0;
-if (lastCp === 0x10434) {
-alphabeticalMappings[word.slice(0, -1) + 'ies'] = deseret + '\u{10446}';
-} else {
-alphabeticalMappings[word.slice(0, -1) + 'ies'] = glyphs.slice(0, -1).join('') + '\u{10428}\u{10446}';
+const yStem = lastCp === 0x10434 ? deseret : glyphs.slice(0, -1).join('') + '\u{10428}';
+
+/* Plural and third person. Exactly one spelling is right for any given
+   word, so only that one is written: agency gives agencies and never
+   "agencys" or "agencyes"; box gives boxes and never "boxs". */
+if (!DA_NO_PLURAL.has(word)) {
+  if (consY) put(word.slice(0, -1) + 'ies', yStem + '\u{10446}');
+  else if (DA_ES_PLURAL.test(word)) put(word + 'es', pluralSuffix(word, deseret));
+  else put(word + 's', pluralSuffix(word, deseret));
 }
+
+/* Past and progressive, for verbs only, and only where that particular
+   form is one people write. This is what stops "abouted", "wonderfuled",
+   "angelaing" and the irregulars "becomed", "finded" and "beholded". */
+if (DA_TAKES_ED.has(word)) {
+  if (consY) put(word.slice(0, -1) + 'ied', yStem + '\u{1043C}');
+  // A silent -e keeps its place before -d: decide -> decided, agree -> agreed.
+  else put(endsE ? word + 'd' : vowelStem + 'ed', pastSuffix(word, deseret));
+}
+if (DA_TAKES_ING.has(word)) {
+  // die -> dying, tie -> tying: the -ie stem takes -ying, not "diing".
+  put(word.endsWith('ie') ? word.slice(0, -2) + 'ying' : vowelStem + 'ing',
+      deseret + '\u{1042E}\u{1044D}');
 }
 });
 window.DESERET_MAPPINGS = Object.freeze(alphabeticalMappings);
@@ -10467,9 +10633,36 @@ today tobacco tomato together tomorrow tonight tremendous
 vanilla veranda
 gorilla guitar
 lagoon legitimate
-tuition
-ago away deny peru`.trim().split(/\s+/));
-function daSchwaToFoot(word, text) {
+tuition`.trim().split(/\s+/));
+/* Both spellings live in the code; exactly one is activated on the way out.
+
+   The reduced vowel is first marked rather than spelled. Marking says only
+   "the stress rule judged this one reduced", which is the part the pipeline
+   can work out; it commits to no letter. The letter is chosen once, at the
+   end, by daResolveSchwa. That keeps 𐐲 and 𐐳 as equals rather than making
+   one of them the baseline and the other a rewrite laid over the top, and it
+   means the two readings of a word differ by a single final substitution
+   instead of two runs of the whole engine.
+
+   A private-use code point is used for the mark. It never reaches the reader:
+   every path out of translateWordWithDialect resolves before returning. */
+const DA_SCHWA_MARK = '\uE000';
+const DA_SCHWA_MARK_CAP = '\uE001';   // a reduced vowel that opens a capitalised word
+const DA_SCHWA_LETTER = {
+  foot: DA_FOOT,          // 𐐳, this extension's default
+  strut: DA_SHORT_O,      // 𐐲, Walker's modern spelling
+};
+function daResolveSchwa(text, schwaAsFoot) {
+if (!text) return text;
+if (text.indexOf(DA_SCHWA_MARK) === -1 && text.indexOf(DA_SCHWA_MARK_CAP) === -1) return text;
+const cp = schwaAsFoot === true ? DA_SCHWA_LETTER.foot : DA_SCHWA_LETTER.strut;
+return text.split(DA_SCHWA_MARK).join(String.fromCodePoint(cp))
+           .split(DA_SCHWA_MARK_CAP).join(String.fromCodePoint(cp - 0x28));
+}
+/* Callers that want to hold both readings at once ask for the marked form
+   and resolve it themselves, twice. */
+window.daResolveSchwa = daResolveSchwa;
+function daMarkSchwa(word, text) {
 if (!text || text.indexOf(String.fromCodePoint(DA_SHORT_O)) === -1) return text;
 const g = Array.from(text);
 const vowels = [];
@@ -10485,7 +10678,7 @@ else if (w.length >= 5 && DA_UNSTRESSED_PREFIX.test(w)) stressIndex = 1;
 for (let k = 0; k < vowels.length; k++) {
 if (k === stressIndex) continue;
 const i = vowels[k];
-if (g[i].codePointAt(0) === DA_SHORT_O) g[i] = String.fromCodePoint(DA_FOOT);
+if (g[i].codePointAt(0) === DA_SHORT_O) g[i] = DA_SCHWA_MARK;
 }
 return g.join('');
 }
@@ -10558,6 +10751,9 @@ function capitalizeDeseretWord(word, result) {
 const isCapitalised = word.charAt(0) !== word.toLowerCase().charAt(0);
 if (isCapitalised && result) {
 const cp = result.codePointAt(0);
+// "About" opens on a reduced vowel whose letter is not settled yet; the
+// capital rides on the mark until daResolveSchwa picks one.
+if (cp === 0xE000) return DA_SCHWA_MARK_CAP + result.slice(1);
 if (cp >= 0x10428 && cp <= 0x1044F) {
 const upper = String.fromCodePoint(cp - 0x28);
 result = upper + result.slice(String.fromCodePoint(cp).length);
@@ -10693,7 +10889,11 @@ return text
    chee, jee, gay and thee.
    -------------------------------------------------------------------- */
 const SYLLABIC_VALUES = {
-"a":    "𐐪",
+/* The article is the letter LONG A: a single-letter word stands as its own
+   letter-name, as I does. It is stored lowercase, so "a dog" gets 𐐩 and
+   "A dog" gets 𐐁 from the ordinary capitalisation step rather than from a
+   special case here. */
+"a":    "\u{10429}",
 "ah":   "𐐪",
 "awe":  "𐐫",
 "owe":  "𐐬",
@@ -10734,6 +10934,11 @@ g[i] = '\u{1042D}';
 }
 return g.join('');
 }
+/* The single point at which one of the two spellings is activated. Callers
+   holding both readings pass keepSchwaMark and resolve the mark themselves. */
+function daFinishSchwa(result, opts) {
+return (opts && opts.keepSchwaMark) ? result : daResolveSchwa(result, opts && opts.schwaAsFoot);
+}
 function translateWordWithDialect(word, dialect, generalUsSettings, isFragment) {
 generalUsSettings = generalUsSettings || {};
 const SYLLABIC_EXPANDED = { "the": "𐑄𐐲", "thee": "𐑄𐐨" };
@@ -10768,11 +10973,13 @@ let translated = dropYodAfterCoronals(pluralFallback || pastFallback || window.t
    schwa is rewritten as 𐐳 -- otherwise every cluster setting silently does
    nothing, which is what happened once 𐐳 became the default. */
 let settled = applyGeneralUsSettings(translated, generalUsSettings, word);
-if (generalUsSettings.schwaAsFoot === true) settled = daSchwaToFoot(word, settled);
+/* Marking is unconditional: the reduced vowels are found whatever the
+   reader's convention. The letter is chosen on the way out, and not before. */
+settled = daMarkSchwa(word, settled);
 let result = capitalizeDeseretWord(word, settled);
 result = normaliseYod(result);
 if (generalUsSettings.ligatures === false) result = applyPrintedAlphabet(result);
-return result;
+return daFinishSchwa(result, generalUsSettings);
 }
 dialect = normaliseDialect(dialect);
 const lower = word.toLowerCase();
@@ -10792,14 +10999,20 @@ let result = window.translateWord(word);
    through only for the American dialects. */
 const flapsHere = (dialect === 'western-us' || dialect === 'new-england');
 result = applyGeneralUsSettings(result, generalUsSettings, word, flapsHere);
-if (generalUsSettings.schwaAsFoot === true) result = daSchwaToFoot(word, result);
+result = daMarkSchwa(word, result);
 result = applyDialect(result, dialect, lower);
 result = capitalizeDeseretWord(word, result);
 result = normaliseYod(result);
 if (generalUsSettings.ligatures === false) result = applyPrintedAlphabet(result);
-return result;
+return daFinishSchwa(result, generalUsSettings);
 }
 window.translateWordWithDialect = translateWordWithDialect;
+/* The marked form: both readings still live in it, neither chosen. */
+window.daTranslateWordMarked = function (word, dialect, settings, isFragment) {
+const opts = Object.assign({}, settings || {});
+opts.keepSchwaMark = true;
+return translateWordWithDialect(word, dialect, opts, isFragment);
+};
 window.applyDialect = applyDialect;
 
 /* Shared text pipeline so the popup's live translator and the page
@@ -10857,6 +11070,54 @@ return w.split(/['\u2019]/).map((p, i) => p ? (i > 0 && p.toLowerCase() === 's'
 });
 return t.replace(/\u0000(\d+)\u0000/g, (_, i) => shielded[Number(i)]);
 };
+/* --------------------------------------------------------------------
+   Schwa variants: the double translation.
+
+   The alphabet has no schwa letter, so a reduced vowel is written either
+   𐐲, which is Walker's modern spelling, or 𐐳, which is this extension's
+   default. Both are read, and which one a word gets here rests on a
+   stress heuristic that is right most of the time and quietly wrong the
+   rest of it. Rather than hide that behind a single answer, these
+   helpers render the word or the passage both ways and hand back the
+   pair whenever the two differ. One returned string means the schwa rule
+   never came into it and there is nothing to choose between.
+   -------------------------------------------------------------------- */
+function daFlipSchwa(settings) {
+const flipped = Object.assign({}, settings || {});
+flipped.schwaAsFoot = !(flipped.schwaAsFoot === true);
+return flipped;
+}
+function daVariantPair(render, settings) {
+const primary = render(settings);
+let alternate;
+try { alternate = render(daFlipSchwa(settings)); } catch (e) { alternate = primary; }
+return (alternate && alternate !== primary) ? [primary, alternate] : [primary];
+}
+/* One word -> [primary] or [primary, alternate]. The word goes through the
+   engine once and the two readings come off the single marked result, so
+   asking for both costs a string substitution rather than a second pass. */
+window.daSchwaWordVariants = function (word, dialect, settings, isFragment) {
+const marked = window.daTranslateWordMarked
+  ? window.daTranslateWordMarked(word, dialect, settings, isFragment) : null;
+if (marked && marked.indexOf(DA_SCHWA_MARK) !== -1) {
+const opts = settings || {};
+return [daResolveSchwa(marked, opts.schwaAsFoot),
+        daResolveSchwa(marked, !(opts.schwaAsFoot === true))];
+}
+if (marked) return [marked];                      // no reduced vowel: nothing to choose
+return daVariantPair((s) => window.translateWordWithDialect(word, dialect, s, isFragment), settings);
+};
+/* A whole passage -> [primary] or [primary, alternate]. Both renderings
+   go through the same pipeline the page translator uses, so ordinals,
+   initialisms and shielded URLs come out identically in each. */
+window.daSchwaTextVariants = function (text, dialect, settings) {
+return daVariantPair((s) => window.translateText(text, dialect, s), settings);
+};
+/* Which letter the alternate spelling is reaching for, for labelling. */
+window.daSchwaLetter = function (settings, alternate) {
+const foot = (settings || {}).schwaAsFoot === true;
+return (alternate ? !foot : foot) ? '\u{10433}' : '\u{10432}';
+};
 window.DESERET_SPELLED_INITIALISMS = new Set([
 'US','USA','UK','UN','EU','UAE','FBI','CIA','NSA','DEA','ATF','TSA','IRS',
 'CEO','CFO','CTO','COO','CIO','HR','PR','VP','PA','EA',
@@ -10870,4 +11131,3 @@ window.DESERET_SPELLED_INITIALISMS = new Set([
 'FYI','OMG','AKA','ETA','TBD','DOB',
 ]);
 })();
-
