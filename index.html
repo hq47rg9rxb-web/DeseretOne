@@ -33,8 +33,8 @@
     .gh-spacer{order:2}
     .gh-search{order:3}
     .gh-cta{order:4}
-    .gh-nav{order:5;flex:1 1 100%;border-top:1px solid var(--line);padding:0 1.1rem;min-height:2.9rem}
-    .gh-mark{flex:none;display:flex;align-items:center;padding:1.1rem 1.4rem 1.1rem 1.4rem;text-decoration:none;color:var(--ink)}
+    .gh-nav{order:5;flex:1 1 100%;border-top:1px solid var(--line);padding:0 1.4rem;min-height:2.15rem}
+    .gh-mark{flex:none;display:flex;align-items:center;padding:.15rem 1.4rem;text-decoration:none;color:var(--ink)}
     .gh-logo{display:block;height:6.5rem;width:auto;max-width:100%}
     .gh-burger{display:none;flex:none;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;margin-left:.35rem;background:none;border:none;border-radius:4px;cursor:pointer;color:var(--ink)}
     .gh-burger:hover{background:#f0fbff}
@@ -42,7 +42,7 @@
 
     /* ===== NAVIGATION ===== */
     .gh-nav{display:flex;align-items:center;gap:1.9rem;margin-left:0}
-    .gh-nav a{font-family:var(--sans);font-size:var(--fs);color:var(--ink);text-decoration:none;padding:.2rem 0;border-bottom:2px solid transparent}
+    .gh-nav a{font-family:var(--sans);font-size:var(--fs);color:var(--ink);text-decoration:none;padding:.1rem 0;border-bottom:2px solid transparent}
     .gh-nav a:hover{text-decoration:underline}
     .gh-nav a[aria-current="true"]{border-bottom-color:var(--brand)}
     .gh-spacer{flex:1 1 auto;min-width:.75rem}
@@ -63,10 +63,13 @@
     .gh-cta{display:flex;align-items:center;margin-left:1.2rem;margin-right:1.4rem}
     /* The logo cyan cannot carry white text, so this button wears dark ink
        instead: #00303D on --brand measures 7.0:1. */
-    .gh-cta button{font:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:var(--brand);color:var(--brand-ink);text-decoration:none;font-family:var(--sans);font-size:var(--fs);padding:.6rem 1.15rem}
-    .gh-cta button:hover{background:var(--brand-deep)}
-    .gh-cta button[aria-pressed="true"]{background:var(--brand-deep);box-shadow:inset 0 0 0 2px var(--brand-ink)}
-    .gh-cta button[disabled]{background:#8f9bab;cursor:not-allowed}
+    /* Deliberately monochrome: outlined when off, solid black when on, so the
+       state reads without relying on colour at all. */
+    .gh-cta button{font:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:#fff;color:var(--ink);border:1px solid var(--ink);text-decoration:none;font-family:var(--sans);font-size:var(--fs);padding:.6rem 1.15rem}
+    .gh-cta button:hover{background:#f2f2f2}
+    .gh-cta button[aria-pressed="true"]{background:var(--ink);color:#fff}
+    .gh-cta button[aria-pressed="true"]:hover{background:#333}
+    .gh-cta button[disabled]{background:#fff;color:#767676;border-color:#767676;cursor:not-allowed}
     .gh svg{display:block}
 
     /* ===== MAIN CONTENT ===== */
