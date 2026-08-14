@@ -32,15 +32,18 @@ header{
 .epigraph{display:none}
 @media(min-width:72rem){
   .epigraph{
-    display:block; position:absolute; left:2rem; top:50%;
+    display:block; position:absolute; top:50%;
     transform:translateY(-50%); width:15rem; margin:0;
-    text-align:left; font-size:.72rem; font-style:italic; line-height:1.65;
-    color:rgba(255,255,255,.58);
-    border-left:2px solid rgba(255,255,255,.25); padding-left:.9rem;
+    text-align:left; font-family:var(--serif);
+    font-size:.78rem; font-style:italic; line-height:1.7;
+    color:#fff;
   }
+  .epigraph.left{left:2rem}
+  .epigraph.right{right:2rem}
   .epigraph cite{
-    display:block; margin-top:.45rem; font-style:normal;
-    font-size:.68rem; letter-spacing:.02em; color:rgba(255,255,255,.42);
+    display:block; margin-top:.5rem; font-style:normal;
+    font-family:var(--serif); font-size:.72rem;
+    letter-spacing:.02em; color:rgba(255,255,255,.75);
   }
 }
 header h1{
@@ -49,7 +52,8 @@ header h1{
 }
 header .de-title{
   display:block; font-size:clamp(1.15rem,3.2vw,1.4rem); font-weight:700;
-  line-height:1.35; letter-spacing:.005em;
+  line-height:1.35; letter-spacing:.045em;
+  text-transform:uppercase;
   color:#fff;
   font-family:var(--serif);
 }
@@ -200,9 +204,13 @@ footer{
 <body>
 
 <header>
-  <blockquote class="epigraph">
+  <blockquote class="epigraph left">
     "No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory."
     <cite>&mdash; George A. Smith</cite>
+  </blockquote>
+  <blockquote class="epigraph right">
+    "It will be the means of introducing uniformity in our orthography, and the years that are now required to learn to read and spell can be devoted to other studies."
+    <cite>&mdash; Brigham Young</cite>
   </blockquote>
   <h1><span class="de-title de">Deseret One / 𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑌</span></h1>
   <nav class="tabs" role="tablist" aria-label="Sections">
@@ -210,6 +218,7 @@ footer{
     <button role="tab" id="t-learn" aria-controls="learn" aria-selected="false" tabindex="-1">Learn</button>
     <button role="tab" id="t-translate" aria-controls="translate" aria-selected="false" tabindex="-1">Translate</button>
     <button role="tab" id="t-texts" aria-controls="texts" aria-selected="false" tabindex="-1">Texts</button>
+    <button role="tab" id="t-case" aria-controls="case" aria-selected="false" tabindex="-1">Case</button>
     <button role="tab" id="t-history" aria-controls="history" aria-selected="false" tabindex="-1">History</button>
     <button role="tab" id="t-about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
   </nav>
@@ -293,6 +302,12 @@ footer{
       <p>This new alphabet appears not to have met the needs of the people nor did it interest them. Its use and development was hindered by temple building, farming, settling, new doctrine, and possibly little faith in following their prophet, president, and leader. The Deseret Alphabet died with Brigham Young in 1877. Yet, it appears to have been a noble experiment towards a spelling reform. Perhaps it would have worked under different situations and different environment.</p>
       <cite>&mdash; Larry Ray Wintersteen, abstract of <em>A History of the Deseret Alphabet</em></cite>
     </blockquote>
+  </div>
+
+  <div class="panel" id="case" role="tabpanel" aria-labelledby="t-case" hidden>
+    <h2>The case for Deseret</h2>
+    <p>One case for the Deseret Alphabet is that it makes learning the English language quicker, given the standard alphabet is extremely complicated in its usage. This would make the education system more efficient.</p>
+    <p>A second case is that the visual harmony of the symbols &mdash; all taking up equal height and width &mdash; as well as the fact that spelling is more consistent with pronunciation, constitutes a more aesthetically pleasing spelling system.</p>
   </div>
 
   <div class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn" hidden>
