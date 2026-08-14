@@ -6,147 +6,203 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deseret One</title>
   <meta name="description" content="A guide to reading, writing and using the Deseret Alphabet">
-  
+
   <!-- ========== GOOGLE FONTS ========== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  
+
   <!-- ========== STYLES ========== -->
   <style>
     /* ===== ROOT VARIABLES ===== */
-    :root{--blue:#004aad;--blue-deep:#002060;--ink:#000;--line:#c9d1dd;--bg:#fff;--sans:'Open Sans','Calibri',Arial,sans-serif;--serif:'Liberation Serif','Times New Roman',serif;--hdr:5.3rem}
-    
+    :root{--blue:#004aad;--blue-deep:#002060;--ink:#000;--line:#c9d1dd;--bg:#fff;--sans:'Open Sans','Calibri',Arial,sans-serif;--serif:'Liberation Serif','Times New Roman',serif;--hdr:5.3rem;--fs:.82rem}
+
     /* ===== RESET & BASE ===== */
     *{box-sizing:border-box}
     html,body{margin:0}
-    body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-size:var(--fs);line-height:1.7;-webkit-font-smoothing:antialiased}
     .de{font-family:var(--sans)}
     a{color:var(--ink)}
-    
+
     /* ===== HEADER ===== */
     .gh{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:stretch;height:var(--hdr)}
     .gh-mark{flex:none;display:flex;align-items:center;padding:0 1.4rem 0 1.1rem;text-decoration:none;color:var(--ink)}
-    .gh-word{display:block;color:#000;text-align:center}
-    .gh-word .en,.gh-word .de{display:block;font-weight:700;color:#000;white-space:nowrap}
-    .gh-word .en{font-family:var(--sans);text-transform:uppercase;font-size:1rem;letter-spacing:.02em;line-height:1.15}
-    body.de-mode .gh-word .de{display:none}
-    .gh-word .de{font-family:var(--sans);font-size:1.16rem;line-height:1.15;margin-top:.04rem}
-    
+    .gh-logo{display:block;height:2.35rem;width:auto;max-width:100%}
+    .gh-burger{display:none;flex:none;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;margin-left:.35rem;background:none;border:none;border-radius:4px;cursor:pointer;color:var(--ink)}
+    .gh-burger:hover{background:#f4f7fc}
+    .gh-burger[aria-expanded="true"]{background:#eef3fb}
+
     /* ===== NAVIGATION ===== */
     .gh-nav{display:flex;align-items:center;gap:1.6rem;margin-left:.5rem}
-    .gh-nav a{font-family:var(--sans);font-size:.82rem;color:var(--ink);text-decoration:none;padding:.2rem 0;border-bottom:2px solid transparent}
+    .gh-nav a{font-family:var(--sans);font-size:var(--fs);color:var(--ink);text-decoration:none;padding:.2rem 0;border-bottom:2px solid transparent}
     .gh-nav a:hover{text-decoration:underline}
     .gh-nav a[aria-current="true"]{border-bottom-color:var(--blue)}
     .gh-spacer{flex:1 1 auto;min-width:.75rem}
-    
+
     /* ===== SEARCH ===== */
     .gh-search{position:relative;flex:0 1 17rem;display:flex;align-items:center}
-    .gh-search input{font:inherit;font-family:var(--sans);font-size:.8rem;width:100%;padding:.42rem 2.1rem .42rem .7rem;border:1px solid #b9c2cf;border-radius:3px;background:#fff;color:var(--ink)}
+    .gh-search input{font:inherit;font-family:var(--sans);font-size:var(--fs);width:100%;padding:.42rem 2.1rem .42rem .7rem;border:1px solid #b9c2cf;border-radius:3px;background:#fff;color:var(--ink)}
     .gh-search input:focus{outline:2px solid var(--blue);outline-offset:-1px}
     .gh-search button{position:absolute;right:.15rem;display:grid;place-items:center;width:1.8rem;height:1.8rem;background:none;border:none;cursor:pointer;color:var(--ink)}
     .gh-results{position:absolute;top:calc(100% + .3rem);left:0;right:0;z-index:50;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.12);list-style:none;margin:0;padding:.2rem;max-height:16rem;overflow:auto}
     .gh-results[hidden]{display:none}
-    .gh-results a{display:block;padding:.4rem .55rem;text-decoration:none;color:var(--ink);font-size:.76rem}
+    .gh-results a{display:block;padding:.4rem .55rem;text-decoration:none;color:var(--ink);font-size:var(--fs)}
     .gh-results a:hover,.gh-results a:focus{background:#f4f7fc;outline:none}
     .gh-results .r-num{font-weight:700;margin-right:.45rem}
-    .gh-results .r-none{padding:.5rem .55rem;font-size:.76rem;font-style:italic}
-    
+    .gh-results .r-none{padding:.5rem .55rem;font-size:var(--fs);font-style:italic}
+
     /* ===== CTA BUTTON ===== */
     .gh-cta{display:flex;align-items:center;align-self:stretch;margin-left:1.2rem}
-    .gh-cta button{font:inherit;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--sans);font-size:.84rem;padding:.6rem 1.15rem}
+    .gh-cta button{font:inherit;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--sans);font-size:var(--fs);padding:.6rem 1.15rem}
     .gh-cta button:hover{background:var(--blue-deep)}
     .gh-cta button[aria-pressed="true"]{background:var(--blue-deep)}
+    .gh-cta button[disabled]{background:#8f9bab;cursor:not-allowed}
     .gh svg{display:block}
-    
+
     /* ===== MAIN CONTENT ===== */
     main{max-width:46rem;margin:0 auto;padding:2.2rem 2rem 5rem}
     .page[hidden]{display:none}
-    
+
     /* ===== HEADINGS ===== */
-    h1{font-family:var(--sans);font-weight:700;font-size:1.32rem;line-height:1.3;margin:0 0 1.3rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline}
-    h1 .de{font-family:var(--sans);font-size:1.1rem;font-weight:400}
-    h2{font-size:.66rem;line-height:1.4;letter-spacing:.09em;text-transform:uppercase;margin:2rem 0 .9rem;font-family:var(--sans);font-weight:700}
-    h3{font-size:.72rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
-    p{margin:0 0 1.05rem}
-    .lede{font-size:.86rem;line-height:1.65;margin-bottom:1.6rem}
-    
+    h1{font-family:var(--sans);font-weight:700;font-size:1.15rem;line-height:1.3;margin:0 0 1.3rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline}
+    h1 .de{font-family:var(--sans);font-size:1.05rem;font-weight:400}
+    h2{font-size:var(--fs);line-height:1.4;letter-spacing:.09em;text-transform:uppercase;margin:2rem 0 .9rem;font-family:var(--sans);font-weight:700}
+    h3{font-size:var(--fs);line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
+    p{margin:0 0 1.05rem;font-size:var(--fs)}
+    .lede{font-size:var(--fs);line-height:1.65;margin-bottom:1.6rem}
+
     /* ===== TABLES ===== */
     .tw{overflow-x:auto;margin:1.1rem 0 2rem}
     table.lt{border-collapse:collapse;width:100%;border:1px solid var(--ink)}
     table.lt th,table.lt td{border:1px solid var(--ink);padding:.28rem .45rem;text-align:left}
-    table.lt th{font-size:.58rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
-    table.lt td.gl{font-size:1.05rem;line-height:1.25;text-align:center;width:1%;white-space:nowrap}
-    table.lt td.ipa{font-size:.68rem;white-space:nowrap}
-    table.lt td.ex{font-size:.7rem;white-space:nowrap}
+    table.lt th{font-size:var(--fs);font-weight:700;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+    table.lt td.gl{font-size:1.15rem;line-height:1.25;text-align:center;width:1%;white-space:nowrap}
+    table.lt td.ipa{font-size:var(--fs);white-space:nowrap}
+    table.lt td.ex{font-size:var(--fs);white-space:nowrap}
     .sound-match{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px}
-    
+
     /* ===== LESSONS ===== */
     .lesson{margin:0 0 2.5rem}
     .lesson h3{display:flex;align-items:center;gap:.6rem;margin-top:0}
-    .lesson h3 .n{flex:none;font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums}
+    .lesson h3 .n{flex:none;font-size:var(--fs);font-weight:700;font-variant-numeric:tabular-nums}
     .lesson h3 .n::after{content:'.'}
-    p.new{font-size:.7rem;font-style:italic;color:var(--ink);margin:0 0 .9rem;letter-spacing:.01em}
-    p.new .de{font-size:.96rem;font-style:normal;color:var(--ink);margin-left:.35rem}
+    p.new{font-size:var(--fs);font-style:italic;color:var(--ink);margin:0 0 .9rem;letter-spacing:.01em}
+    p.new .de{font-size:1.05rem;font-style:normal;color:var(--ink);margin-left:.35rem}
     ol.lines{list-style:none;margin:0;padding:0}
     ol.lines li{padding:.7rem 0;border-bottom:1px solid var(--line)}
-    .line{font-size:1.04rem;margin:0;line-height:1.55}
-    .gloss{color:var(--ink);font-size:.71rem;font-style:italic;line-height:1.6;margin:.15rem 0 0}
+    .line{font-size:1.1rem;margin:0;line-height:1.55}
+    .gloss{color:var(--ink);font-size:var(--fs);font-style:italic;line-height:1.6;margin:.15rem 0 0}
     body.hide-gloss .gloss{visibility:hidden}
     body.hide-gloss ol.lines li:hover .gloss,body.hide-gloss .passage:hover .gloss{visibility:visible}
-    .toggle{font:inherit;font-size:.68rem;font-weight:600;letter-spacing:.02em;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink)}
-    
+    .toggle{font:inherit;font-size:var(--fs);font-weight:600;letter-spacing:.02em;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink)}
+
     /* ===== BLOCKQUOTES ===== */
     blockquote.source{margin:0;padding-left:1.1rem;border-left:3px solid var(--line)}
     blockquote.source p:last-of-type{margin-bottom:.9rem}
-    blockquote.source cite{display:block;font-style:italic;font-size:.7rem;color:var(--ink)}
-    
+    blockquote.source cite{display:block;font-style:italic;font-size:var(--fs);color:var(--ink)}
+
     /* ===== PASSAGES ===== */
     .passage{margin:0 0 .55rem;border:1px solid var(--line)}
     .passage summary{cursor:pointer;list-style:none;padding:.7rem .9rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .7rem}
     .passage summary::-webkit-details-marker{display:none}
     .passage summary:hover{background:#f4f7fc}
-    .passage .ptitle{font-family:var(--sans);font-size:.86rem;font-weight:700}
-    .passage .meta{font-size:.68rem;font-style:italic;color:var(--ink)}
+    .passage .ptitle{font-family:var(--sans);font-size:var(--fs);font-weight:700}
+    .passage .meta{font-size:var(--fs);font-style:italic;color:var(--ink)}
     .passage[open] summary{border-bottom:1px solid var(--line)}
     .passage .line{margin:0 0 1.1rem}
     .passage>p{padding:0 .9rem}
     .passage>p:first-of-type{padding-top:.9rem}
     .passage>p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
     .passage .gloss{display:block}
-    
+
     /* ===== TRANSLATOR ===== */
     .tr{display:grid;gap:.4rem;margin-bottom:1rem}
-    .tr label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
-    textarea{font:inherit;font-size:.85rem;line-height:1.6;width:100%;padding:.8rem .9rem;border:1px solid var(--line);border-radius:0;background:#fff;color:inherit;resize:vertical}
+    .tr label{font-size:var(--fs);font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
+    textarea{font:inherit;font-size:var(--fs);line-height:1.6;width:100%;padding:.8rem .9rem;border:1px solid var(--line);border-radius:0;background:#fff;color:inherit;resize:vertical}
     textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
-    #out{font-family:var(--sans);font-size:1rem;line-height:1.6}
+    textarea.de{font-size:1.05rem}
+    #out{font-family:var(--sans);font-size:1.05rem;line-height:1.6}
+    #out.en{font-size:var(--fs)}
     .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-    button.act{font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;background:var(--blue);border:none;border-radius:0;padding:.55rem 1.1rem}
+    button.act{font:inherit;font-size:var(--fs);font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;background:var(--blue);border:none;border-radius:0;padding:.55rem 1.1rem}
+    button.act:hover{background:var(--blue-deep)}
     button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
-    .note{font-size:.72rem;line-height:1.6;color:var(--ink)}
+    button.act.ghost:hover{background:#f4f7fc}
+    .note{font-size:var(--fs);line-height:1.6;color:var(--ink)}
     .note.ok{font-weight:700}
-    
+    .opts{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;margin:0 0 1rem;font-size:var(--fs)}
+    .opts label{display:flex;align-items:center;gap:.35rem}
+    .opts select{font:inherit;font-size:var(--fs);padding:.25rem .4rem;border:1px solid var(--line);background:#fff}
+
+    /* ===== ACCESSIBILITY ===== */
+    :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+    .skip{position:absolute;left:-9999px;top:0;z-index:60;background:#fff;color:var(--ink);padding:.6rem .9rem;border:1px solid var(--ink)}
+    .skip:focus{left:.5rem;top:.5rem}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
     /* ===== RESPONSIVE ===== */
     @media(max-width:60rem){main{padding:1.5rem 1.1rem 4rem}}
-    @media(max-width:46rem){.gh-search{display:none}.gh-mark{padding:0 .9rem}.gh-word .en{font-size:.82rem}.gh-word .de{font-size:.95rem}.gh-cta button{padding:.5rem .8rem;font-size:.76rem}}
-    @media(max-width:34rem){body{font-size:13px}.gh-word .en{font-size:.72rem}.gh-word .de{font-size:.84rem}.gh-cta .cta-label{display:none}.gh-cta button{padding:.5rem .65rem}table.lt td.gl{font-size:.95rem}}
-    @media(min-width:76rem){body{font-size:15px}table.lt td.gl{font-size:1.15rem}main{padding:2.6rem 2rem 6rem}}
-    
+
+    /* Below 62rem the inline nav cannot fit, so it becomes a panel under
+       the bar, opened by the burger, with the search moved inside it. */
+    @media(max-width:62rem){
+      :root{--hdr:4.1rem}
+      .gh{flex-wrap:wrap}
+      .gh-burger{display:flex}
+      .gh-mark{padding:0 .6rem}
+      .gh-logo{height:1.85rem}
+      .gh-spacer{display:none}
+      .gh-nav{position:absolute;top:var(--hdr);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;margin:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(0,0,0,.10);max-height:calc(100vh - var(--hdr));overflow:auto}
+      .gh-nav.open{display:flex}
+      .gh-nav a{padding:.95rem 1.1rem;border-bottom:1px solid var(--line);border-left:3px solid transparent;min-height:2.9rem;display:flex;align-items:center}
+      .gh-nav a[aria-current="true"]{border-bottom-color:var(--line);border-left-color:var(--blue);background:#f4f7fc;font-weight:700}
+      /* the search box is moved into the panel by script at this width */
+      .gh-nav .gh-search{order:-1;flex:1 1 auto;padding:.7rem 1.1rem;border-bottom:1px solid var(--line)}
+      .gh-nav .gh-search input{padding:.7rem 2.3rem .7rem .8rem;font-size:16px}
+      .gh-nav .gh-results{left:1.1rem;right:1.1rem}
+      .gh-nav .gh-search button{right:1.25rem;width:2.2rem;height:2.2rem}
+      .gh-cta{margin-left:auto;margin-right:.6rem}
+      .gh-cta button{padding:.6rem .8rem;min-height:2.6rem}
+    }
+
+    @media(max-width:34rem){
+      .gh-cta .cta-label{display:none}
+      .gh-cta button{padding:.6rem .75rem}
+      .gh-logo{height:1.6rem}
+      table.lt td.gl{font-size:1rem}
+      /* 16px stops iOS zooming the page when a field takes focus */
+      textarea,.opts select{font-size:16px}
+      .toggle,button.act{min-height:2.75rem;padding-left:1rem;padding-right:1rem}
+      .opts{gap:.6rem}
+      .opts label{flex:1 1 100%}
+      .opts select{flex:1 1 auto;min-height:2.5rem}
+      .passage summary{padding:.9rem}
+      ol.lines li{padding:.85rem 0}
+      .tw{-webkit-overflow-scrolling:touch}
+      .line{font-size:1.15rem}
+    }
+
+    @media(min-width:76rem){main{padding:2.6rem 2rem 6rem}}
+
     /* ===== ANIMATIONS ===== */
     @media(prefers-reduced-motion:no-preference){.page:not([hidden]){animation:fade .22s ease}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
   </style>
 </head>
 <body>
 
+  <a class="skip" href="#main">Skip to content</a>
+
   <!-- ========== HEADER ========== -->
   <header class="gh">
-    <a class="gh-mark" href="#home" data-go="home" aria-label="Deseret One, home">
-      <span class="gh-word"><span class="en">Deseret One</span><span class="de">𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑌</span></span>
+    <button id="navBtn" class="gh-burger" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="gh-mark" href="#letters" data-go="letters" aria-label="Deseret One, home">
+      <img class="gh-logo" src="logo.png" alt="Deseret One" width="1230" height="260">
     </a>
-    <nav class="gh-nav" aria-label="Sections">
+    <nav class="gh-nav" id="siteNav" aria-label="Sections">
       <a href="#case" data-go="case">Why Deseret?</a>
-      <a href="#letters" data-go="alphabet">Alphabet</a>
+      <a href="#letters" data-go="letters">Alphabet</a>
       <a href="#translator" data-go="translator">Translator</a>
       <a href="#practice" data-go="practice">Practice</a>
       <a href="#texts" data-go="texts">Texts</a>
@@ -154,7 +210,7 @@
       <a href="#about" data-go="about">About the Site</a>
     </nav>
     <span class="gh-spacer"></span>
-    
+
     <!-- ===== SEARCH ===== -->
     <div class="gh-search" role="search">
       <input id="q" type="search" placeholder="Search" autocomplete="off" aria-label="Search this guide" aria-expanded="false" aria-controls="qres">
@@ -163,7 +219,7 @@
       </button>
       <ul class="gh-results" id="qres" role="listbox" hidden></ul>
     </div>
-    
+
     <!-- ===== CTA ===== -->
     <div class="gh-cta">
       <button id="deseretMode" type="button" aria-pressed="false">
@@ -176,14 +232,14 @@
   <!-- ========== MAIN CONTENT ========== -->
   <div class="shell">
     <main id="main">
-      
+
      <!-- ===== PAGE: The Alphabet ===== -->
       <article class="page" id="letters" hidden>
         <h1>The Letters</h1>
         <div class="tw"><table class="lt"><tbody><tr><td class="gl de">𐐨</td><td class="ipa">/iː/</td><td class="ex"><span class='sound-match'>ea</span>t</td><td class="gl de">𐐲</td><td class="ipa">/ʌ/</td><td class="ex"><span class='sound-match'>u</span>p</td><td class="gl de">𐐼</td><td class="ipa">/d/</td><td class="ex"><span class='sound-match'>d</span>eed</td><td class="gl de">𐑆</td><td class="ipa">/z/</td><td class="ex"><span class='sound-match'>z</span>eal</td></tr><tr><td class="gl de">𐐩</td><td class="ipa">/eɪ/</td><td class="ex"><span class='sound-match'>a</span>te</td><td class="gl de">𐐳</td><td class="ipa">/ʊ/</td><td class="ex"><span class='sound-match'>oo</span>k</td><td class="gl de">𐐽</td><td class="ipa">/tʃ/</td><td class="ex"><span class='sound-match'>ch</span>eese</td><td class="gl de">𐑇</td><td class="ipa">/ʃ/</td><td class="ex"><span class='sound-match'>sh</span>e</td></tr><tr><td class="gl de">𐐪</td><td class="ipa">/ɑː/</td><td class="ex"><span class='sound-match'>ar</span>t</td><td class="gl de">𐐴</td><td class="ipa">/aɪ/</td><td class="ex"><span class='sound-match'>i</span>ce</td><td class="gl de">𐐾</td><td class="ipa">/dʒ/</td><td class="ex"><span class='sound-match'>j</span>eep</td><td class="gl de">𐑈</td><td class="ipa">/ʒ/</td><td class="ex"><span class='sound-match'>s</span>ion</td></tr><tr><td class="gl de">𐐫</td><td class="ipa">/ɔː/</td><td class="ex"><span class='sound-match'>au</span>ght</td><td class="gl de">𐐵</td><td class="ipa">/aʊ/</td><td class="ex"><span class='sound-match'>ou</span>t</td><td class="gl de">𐐿</td><td class="ipa">/k/</td><td class="ex"><span class='sound-match'>k</span>ey</td><td class="gl de">𐑉</td><td class="ipa">/r/</td><td class="ex"><span class='sound-match'>r</span>err</td></tr><tr><td class="gl de">𐐬</td><td class="ipa">/oʊ/</td><td class="ex"><span class='sound-match'>oa</span>t</td><td class="gl de">𐐶</td><td class="ipa">/w/</td><td class="ex"><span class='sound-match'>w</span>oe</td><td class="gl de">𐑀</td><td class="ipa">/ɡ/</td><td class="ex"><span class='sound-match'>g</span>ay</td><td class="gl de">𐑊</td><td class="ipa">/l/</td><td class="ex"><span class='sound-match'>l</span>et</td></tr><tr><td class="gl de">𐐭</td><td class="ipa">/uː/</td><td class="ex"><span class='sound-match'>oo</span>ze</td><td class="gl de">𐐷</td><td class="ipa">/j/</td><td class="ex"><span class='sound-match'>y</span>ou</td><td class="gl de">𐑁</td><td class="ipa">/f/</td><td class="ex"><span class='sound-match'>f</span>ee</td><td class="gl de">𐑋</td><td class="ipa">/m/</td><td class="ex"><span class='sound-match'>m</span>e</td></tr><tr><td class="gl de">𐐮</td><td class="ipa">/ɪ/</td><td class="ex"><span class='sound-match'>i</span>t</td><td class="gl de">𐐸</td><td class="ipa">/h/</td><td class="ex"><span class='sound-match'>h</span>igh</td><td class="gl de">𐑂</td><td class="ipa">/v/</td><td class="ex"><span class='sound-match'>v</span>eer</td><td class="gl de">𐑌</td><td class="ipa">/n/</td><td class="ex"><span class='sound-match'>n</span>ee</td></tr><tr><td class="gl de">𐐯</td><td class="ipa">/ɛ/</td><td class="ex"><span class='sound-match'>e</span>nd</td><td class="gl de">𐐹</td><td class="ipa">/p/</td><td class="ex"><span class='sound-match'>p</span>ea</td><td class="gl de">𐑃</td><td class="ipa">/θ/</td><td class="ex"><span class='sound-match'>th</span>igh</td><td class="gl de">𐑍</td><td class="ipa">/ŋ/</td><td class="ex"><span class='sound-match'>ng</span></td></tr><tr><td class="gl de">𐐰</td><td class="ipa">/æ/</td><td class="ex"><span class='sound-match'>a</span>t</td><td class="gl de">𐐺</td><td class="ipa">/b/</td><td class="ex"><span class='sound-match'>b</span>ee</td><td class="gl de">𐑄</td><td class="ipa">/ð/</td><td class="ex"><span class='sound-match'>th</span>y</td><td class="gl de">𐑎</td><td class="ipa">/ɔɪ/</td><td class="ex"><span class='sound-match'>oi</span>l</td></tr><tr><td class="gl de">𐐱</td><td class="ipa">/ɒ/</td><td class="ex"><span class='sound-match'>o</span>dd</td><td class="gl de">𐐻</td><td class="ipa">/t/</td><td class="ex"><span class='sound-match'>t</span>ea</td><td class="gl de">𐑅</td><td class="ipa">/s/</td><td class="ex"><span class='sound-match'>s</span>ee</td><td class="gl de">𐑏</td><td class="ipa">/juː/</td><td class="ex"><span class='sound-match'>ew</span>e</td></tr></tbody></table></div>
-        <p>Many letters in the Deseret Alphabet have syllabic values (i.e. sounds represented when the letter is used by itself. The only truly useful syllabic value is 'thee' (as in the article 'the') for '𐑄'.</p>
+        <p>Many letters in the Deseret Alphabet have syllabic values (i.e. sounds represented when the letter is used by itself). The only truly useful syllabic value is 'thee' (as in the article 'the') for '𐑄'.</p>
         <p>There are two commonly used sounds in General American that were not accounted for in the original Deseret alphabet. These are the 'flapped t' (as in 'little' for many Americans) and the schwa (as in the O in abbot). The former should be represented by the 𐐻, and the latter by the 𐐳, as it is very close to the ʊ sound (as in book).</p>
-        <p>If the user has any qualms about the Deseret spelling system, refer to this document: <link>https://exhibits.lib.utah.edu/s/designing-deseret/item/149460</link></p>
+        <p>If you have any qualms about the Deseret spelling system, refer to this document: <a href="https://exhibits.lib.utah.edu/s/designing-deseret/item/149460">Designing Deseret, University of Utah</a></p>
       </article>
 
       <!-- ===== PAGE: PRACTICE ===== -->
@@ -217,6 +273,22 @@
       <article class="page" id="translator" hidden>
         <h1>Translator</h1>
         <p class="note" id="engineNote">Loading the dictionary&hellip;</p>
+        <div class="opts" id="opts">
+          <label>Accent
+            <select id="dialect">
+              <option value="general-us" selected>General American</option>
+              <option value="british-rp">British RP</option>
+              <option value="western-us">Western US</option>
+              <option value="new-england">New England</option>
+            </select>
+          </label>
+          <label>Schwa
+            <select id="schwa">
+              <option value="foot" selected>𐐳 (foot)</option>
+              <option value="strut">𐐲 (strut)</option>
+            </select>
+          </label>
+        </div>
         <div class="tr">
           <label for="src" id="srcLabel">English</label>
           <textarea id="src" rows="5" placeholder="Type or paste text"></textarea>
@@ -230,13 +302,14 @@
           <button class="act ghost" id="swap">Deseret to English</button>
           <span class="note" id="status" role="status"></span>
         </div>
+        <p class="note" id="alt" hidden></p>
       </article>
 
       <!-- ===== PAGE: CASE ===== -->
       <article class="page" id="case" hidden>
         <h1>Why Deseret?</h1>
         <p>One argument for the Deseret Alphabet is that it makes learning the English language quicker, given the standard alphabet is extremely complicated in its usage. This would make the education system more efficient.</p>
-        <p>A second argument is that Deseret is a more aesthetically pleasing spelling system. For one, the symbols themselves are more aesthetic pleasing as they all take up equal height and width, have the same symbol for both upper/lower case, and have a consistent style to them that the Latin English alphabet lacks. As a second note, the simple fact that there is consistency between the spelling and the pronounciation is aesthetically please. And finally, for many the Deseret system evokes the history of the Western pioneers.</p>
+        <p>A second argument is that Deseret is a more aesthetically pleasing spelling system. For one, the symbols themselves are more aesthetically pleasing as they all take up equal height and width, have the same symbol for both upper and lower case, and have a consistent style to them that the Latin English alphabet lacks. As a second note, the simple fact that there is consistency between the spelling and the pronunciation is aesthetically pleasing. And finally, for many the Deseret system evokes the history of the Western pioneers.</p>
       </article>
 
       <!-- ===== PAGE: HISTORY ===== -->
@@ -255,11 +328,15 @@
         <h1>About</h1>
         <p>This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is the sister project of the <a href="#">Deseret Alphabet web extension</a>.</p>
         <p>The goal of this resource is to facilitate the learning and usage of the Deseret Alphabet, with the ultimate goal that it be normalised.</p>
-        <p>The site uses Deseret spellings that align with the General American pronunciation, however, it is permissible to use different word spellings if one wishes to represent a different accent - as long as the Deseret letters are correctly matched to the sounds</p>
+        <p>The site uses Deseret spellings that align with the General American pronunciation, however, it is permissible to use different word spellings if one wishes to represent a different accent — as long as the Deseret letters are correctly matched to the sounds.</p>
       </article>
-      
+
     </main>
   </div>
+
+  <!-- ========== ENGINE ========== -->
+  <script src="deseret-mappings.js"></script>
+  <script src="reverse.js"></script>
 
   <!-- ========== JAVASCRIPT ========== -->
   <script>
@@ -273,6 +350,9 @@
         insertDlSeparator: false, ligatures: true, syllabicValues: true
       };
       var DIALECT = 'general-us';
+
+      var hasEngine = typeof window.translateText === 'function';
+      var hasReverse = typeof window.deseretReverseText === 'function';
 
       // ===== DOM REFS =====
       var pages = [].slice.call(document.querySelectorAll('.page'));
@@ -296,9 +376,51 @@
         if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
       }
 
+      // ===== MOBILE MENU =====
+      // Below the breakpoint the nav collapses into a panel and the search
+      // field is moved inside it, so the bar keeps only logo, burger and CTA.
+      var navBtn = document.getElementById('navBtn'),
+          navEl = document.getElementById('siteNav'),
+          headerEl = document.querySelector('.gh'),
+          searchEl = document.querySelector('.gh-search'),
+          ctaEl = document.querySelector('.gh-cta'),
+          mq = window.matchMedia ? window.matchMedia('(max-width:62rem)')
+                                 : { matches: false, addEventListener: null, addListener: null };
+
+      function placeSearch() {
+        if (mq.matches) {
+          if (searchEl.parentElement !== navEl) navEl.insertBefore(searchEl, navEl.firstChild);
+        } else if (searchEl.parentElement !== headerEl) {
+          headerEl.insertBefore(searchEl, ctaEl);
+        }
+      }
+      function setNav(open) {
+        navEl.classList.toggle('open', open);
+        navBtn.setAttribute('aria-expanded', String(open));
+      }
+      function closeNav() { setNav(false); }
+
+      placeSearch();
+      if (mq.addEventListener) mq.addEventListener('change', function () { placeSearch(); closeNav(); });
+      else if (mq.addListener) mq.addListener(function () { placeSearch(); closeNav(); });
+
+      navBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setNav(navEl.classList.contains('open') === false);
+      });
+      document.addEventListener('click', function (e) {
+        if (!mq.matches) return;
+        if (e.target.closest('#siteNav') || e.target.closest('#navBtn')) return;
+        closeNav();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && navEl.classList.contains('open')) { closeNav(); navBtn.focus(); }
+      });
+
       links.forEach(function (a) {
         a.addEventListener('click', function (e) {
           e.preventDefault();
+          closeNav();
           show(a.getAttribute('data-go'));
         });
       });
@@ -309,8 +431,10 @@
       var start = decodeURIComponent(location.hash.slice(1));
       show(ids.indexOf(start) >= 0 ? start : 'letters', false);
 
-      // ===== DESERET MODE (placeholder) =====
-      var SKIP = 'script,style,textarea,input,svg,.de,.tw,.gloss,.ipa';
+      // ===== DESERET MODE =====
+      // Controls and already-Deseret material are left alone; everything else
+      // is walked once, cached, and swapped back and forth on click.
+      var SKIP = 'script,style,textarea,input,select,option,svg,.de,.tw,.gloss,.ipa,.gh-cta,.toggle,.opts';
       var deseretNodes = null, deseretOn = false;
 
       function collectText(root) {
@@ -326,7 +450,7 @@
       }
 
       var modeBtn = document.getElementById('deseretMode');
-      if (modeBtn && typeof window.translateText === 'function') {
+      if (modeBtn && hasEngine) {
         modeBtn.addEventListener('click', function () {
           deseretOn = !deseretOn;
           if (deseretOn) {
@@ -352,6 +476,7 @@
         });
       } else if (modeBtn) {
         modeBtn.disabled = true;
+        modeBtn.title = 'deseret-mappings.js did not load, so the page cannot be transliterated.';
       }
 
       // ===== SEARCH =====
@@ -395,7 +520,7 @@
             }
             a.appendChild(document.createTextNode(e.title));
             a.addEventListener('click', function (ev) {
-              ev.preventDefault(); show(e.id); q.value = ''; closeResults();
+              ev.preventDefault(); closeNav(); show(e.id); q.value = ''; closeResults();
             });
             li.appendChild(a); qres.appendChild(li);
           });
@@ -438,27 +563,61 @@
           note = document.getElementById('engineNote'),
           status = document.getElementById('status'),
           swap = document.getElementById('swap'),
+          alt = document.getElementById('alt'),
           srcLabel = document.getElementById('srcLabel'),
           outLabel = document.getElementById('outLabel'),
+          dialectSel = document.getElementById('dialect'),
+          schwaSel = document.getElementById('schwa'),
           toDeseret = true;
 
       if (!src || !out) return;
 
-      if (typeof window.translateText !== 'function') {
+      if (!hasEngine) {
         note.textContent = 'The dictionary did not load. Check that deseret-mappings.js sits beside this page.';
         src.disabled = true;
+        swap.disabled = true;
         return;
       }
-      note.textContent = Object.keys(window.DESERET_MAPPINGS || {}).length.toLocaleString()
+
+      function wordCount() {
+        try { return Object.keys(window.DESERET_MAPPINGS || {}).length; } catch (e) { return 0; }
+      }
+      note.textContent = wordCount().toLocaleString()
         + ' words in the dictionary. Anything missing is sounded out letter by letter.';
 
       function render() {
         var text = src.value;
+        alt.hidden = true;
+        status.textContent = '';
+        status.className = 'note';
         if (!text) { out.value = ''; return; }
         try {
-          out.value = toDeseret
-            ? window.translateText(text, DIALECT, OPTS)
-            : window.deseretReverseText(text, DIALECT, OPTS).text;
+          if (toDeseret) {
+            // Where the schwa rule fires, both spellings are real; show the
+            // other one underneath rather than pretending there is one answer.
+            if (typeof window.daSchwaTextVariants === 'function') {
+              var v = window.daSchwaTextVariants(text, DIALECT, OPTS);
+              out.value = v[0];
+              if (v.length > 1) {
+                alt.hidden = false;
+                alt.textContent = 'Other schwa convention: ' + v[1];
+              }
+            } else {
+              out.value = window.translateText(text, DIALECT, OPTS);
+            }
+          } else if (hasReverse) {
+            var r = window.deseretReverseText(text, DIALECT, OPTS);
+            out.value = r.text;
+            if (r.ambiguous && r.ambiguous.length) {
+              alt.hidden = false;
+              alt.textContent = 'Homophones: ' + r.ambiguous.slice(0, 6).map(function (a) {
+                return a.chosen + ' (' + a.others.join(', ') + ')';
+              }).join('; ');
+            }
+          } else {
+            out.value = '';
+            status.textContent = 'reverse.js did not load, so Deseret to English is unavailable.';
+          }
         } catch (e) {
           out.value = '';
           status.textContent = 'That could not be translated.';
@@ -467,12 +626,21 @@
 
       src.addEventListener('input', render);
 
+      if (dialectSel) dialectSel.addEventListener('change', function () {
+        DIALECT = dialectSel.value; render();
+      });
+      if (schwaSel) schwaSel.addEventListener('change', function () {
+        OPTS = Object.assign({}, OPTS, { schwaAsFoot: schwaSel.value === 'foot' });
+        render();
+      });
+
       swap.addEventListener('click', function () {
         toDeseret = !toDeseret;
         srcLabel.textContent = toDeseret ? 'English' : 'Deseret';
         outLabel.textContent = toDeseret ? 'Deseret' : 'English';
         swap.textContent = toDeseret ? 'Deseret to English' : 'English to Deseret';
         src.classList.toggle('de', !toDeseret);
+        out.classList.toggle('en', !toDeseret);
         src.value = out.value;
         render();
         src.focus();
