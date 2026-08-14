@@ -90,20 +90,29 @@ h3{font-size:1.02rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--s
 p{margin:0 0 1.15rem}
 a{color:var(--blue)}
 
-/* ---- letter table ---- */
-table.letters{width:100%;border-collapse:collapse;margin:1rem 0 2rem;font-size:0.89rem}
-table.letters td,table.letters th{padding:.55rem .6rem;text-align:left;border-bottom:1px solid var(--line);line-height:1.5}
-table.letters tr.group th{
-  font-size:0.64rem;text-transform:uppercase;letter-spacing:.12em;
-  color:var(--muted);font-weight:700;padding-top:1.6rem;border-bottom:2px solid var(--ink);
+/* ---- letter grid ---- */
+.grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));
+  gap:0 1.4rem; margin:1.25rem 0 2rem;
 }
-table.letters th:nth-child(1),td.glyph{width:5.5rem}
-table.letters th:nth-child(2){width:8rem}
-table.letters th:nth-child(3){width:5rem}
-td.glyph{white-space:nowrap}
-td.glyph .de{font-size:1.27rem;line-height:1}
-td.glyph .de+.de{margin-left:.45rem;color:var(--muted)}
-td.ipa{color:var(--muted);font-size:0.83rem}
+.grid-group{
+  grid-column:1/-1; margin:1.5rem 0 .3rem; padding-bottom:.3rem;
+  font-size:0.64rem; text-transform:uppercase; letter-spacing:.12em;
+  color:var(--muted); font-weight:700; border-bottom:2px solid var(--ink);
+}
+.grid-group:first-child{margin-top:0}
+.cell{
+  display:flex; gap:.55rem; align-items:baseline;
+  padding:.4rem 0; border-bottom:1px solid var(--line);
+}
+.cell .gl{white-space:nowrap; font-size:1.27rem; line-height:1.3}
+.cell .gl .lc{margin-left:.28rem; color:var(--muted)}
+.cell .tx{font-size:0.77rem; line-height:1.5}
+.cell .ipa{color:var(--muted)}
+/* syllabic values: one glyph, one name, so they pack tighter */
+.grid.syl{grid-template-columns:repeat(auto-fill,minmax(6rem,1fr))}
+.grid.syl .tx{font-size:0.83rem}
+
 .sound-match{
   text-decoration:underline;
   text-decoration-thickness:2px;
@@ -179,6 +188,8 @@ footer{
 
 @media(max-width:34rem){
   body{font-size:15px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(8rem,1fr));gap:0 1rem}
+  .cell .gl{font-size:1.13rem}
   header{padding-top:1.25rem}
   header .de-title{font-size:1.05rem}
   nav.tabs{margin-top:1.1rem}
@@ -187,23 +198,15 @@ footer{
   h2{font-size:1.22rem}
   h3{font-size:0.94rem}
   .line{font-size:0.99rem}
-  table.letters{font-size:0.83rem}
-  table.letters th:nth-child(1),td.glyph{width:4.5rem}
-  table.letters th:nth-child(2){width:6.5rem}
-  table.letters th:nth-child(3){width:4rem}
-  td.glyph .de{font-size:1.13rem}
-  table.letters td,table.letters th{padding:.42rem .4rem}
 }
 @media(min-width:50rem){
   body{font-size:17px}
+  .cell .gl{font-size:1.41rem}
   header{padding-top:2rem}
   main{padding:4rem 2rem 7rem}
   h2{font-size:1.55rem}
   h3{font-size:1.08rem}
   .line{font-size:1.27rem}
-  table.letters th:nth-child(1),td.glyph{width:6.5rem}
-  table.letters th:nth-child(2){width:9.5rem}
-  td.glyph .de{font-size:1.41rem}
 }
 @media(prefers-reduced-motion:no-preference){
   .panel:not([hidden]){animation:fade .22s ease}
@@ -234,69 +237,104 @@ footer{
 
 <main>
 
+  <!-- ===================================================================
+       BASICS — what the alphabet IS. The letter grid, then syllabic values.
+       No history here (that is the History tab) and nothing about the site
+       itself (that is About).
+       =================================================================== -->
   <div class="panel" id="basics" role="tabpanel" aria-labelledby="t-basics">
     <h2>Basics</h2>
-    <p>The Deseret Alphabet consists of 40 letters, each representing a single sound in English. This phonetic system eliminates the irregularities of traditional spelling, making English far easier to learn and read.</p>
-    <h3>The 40 Letters</h3>
-    <p>The alphabet is organized by sound categories: long vowels, short vowels, semivowels and diphthongs, and consonants. Each letter has a unique form and name that helps with pronunciation.</p>
-    <table class="letters">
-      <thead><tr><th>Letter</th><th>Name</th><th>Sound</th><th>As in</th></tr></thead>
-      <tbody>
-<tr class="group"><th colspan="4">Long vowels</th></tr>
-<tr><td class="glyph"><span class="de">𐐀</span><span class="de">𐐨</span></td><td>Long I</td><td class="ipa">/iː/</td><td><span class='sound-match'>ea</span>t</td></tr>
-<tr><td class="glyph"><span class="de">𐐁</span><span class="de">𐐩</span></td><td>Long E</td><td class="ipa">/eɪ/</td><td><span class='sound-match'>a</span>te</td></tr>
-<tr><td class="glyph"><span class="de">𐐂</span><span class="de">𐐪</span></td><td>Long A</td><td class="ipa">/ɑː/</td><td><span class='sound-match'>ar</span>t</td></tr>
-<tr><td class="glyph"><span class="de">𐐃</span><span class="de">𐐫</span></td><td>Long AH</td><td class="ipa">/ɔː/</td><td><span class='sound-match'>au</span>ght</td></tr>
-<tr><td class="glyph"><span class="de">𐐄</span><span class="de">𐐬</span></td><td>Long O</td><td class="ipa">/oʊ/</td><td><span class='sound-match'>oa</span>t</td></tr>
-<tr><td class="glyph"><span class="de">𐐅</span><span class="de">𐐭</span></td><td>Long OO</td><td class="ipa">/uː/</td><td><span class='sound-match'>oo</span>ze</td></tr>
-<tr class="group"><th colspan="4">Short vowels</th></tr>
-<tr><td class="glyph"><span class="de">𐐆</span><span class="de">𐐮</span></td><td>Short I</td><td class="ipa">/ɪ/</td><td><span class='sound-match'>i</span>t</td></tr>
-<tr><td class="glyph"><span class="de">𐐇</span><span class="de">𐐯</span></td><td>Short E</td><td class="ipa">/ɛ/</td><td><span class='sound-match'>e</span>nd</td></tr>
-<tr><td class="glyph"><span class="de">𐐈</span><span class="de">𐐰</span></td><td>Short A</td><td class="ipa">/æ/</td><td><span class='sound-match'>a</span>t</td></tr>
-<tr><td class="glyph"><span class="de">𐐉</span><span class="de">𐐱</span></td><td>Short AH</td><td class="ipa">/ɒ/</td><td><span class='sound-match'>o</span>dd</td></tr>
-<tr><td class="glyph"><span class="de">𐐊</span><span class="de">𐐲</span></td><td>Short O</td><td class="ipa">/ʌ/</td><td><span class='sound-match'>u</span>p</td></tr>
-<tr><td class="glyph"><span class="de">𐐋</span><span class="de">𐐳</span></td><td>Short OO</td><td class="ipa">/ʊ/</td><td>b<span class='sound-match'>oo</span>k</td></tr>
-<tr class="group"><th colspan="4">Semivowels and diphthongs</th></tr>
-<tr><td class="glyph"><span class="de">𐐌</span><span class="de">𐐴</span></td><td>Ay</td><td class="ipa">/aɪ/</td><td><span class='sound-match'>i</span>ce</td></tr>
-<tr><td class="glyph"><span class="de">𐐍</span><span class="de">𐐵</span></td><td>Ow</td><td class="ipa">/aʊ/</td><td><span class='sound-match'>ou</span>t</td></tr>
-<tr><td class="glyph"><span class="de">𐐎</span><span class="de">𐐶</span></td><td>Wu</td><td class="ipa">/w/</td><td><span class='sound-match'>w</span>oe</td></tr>
-<tr><td class="glyph"><span class="de">𐐏</span><span class="de">𐐷</span></td><td>Yee</td><td class="ipa">/j/</td><td><span class='sound-match'>y</span>ou</td></tr>
-<tr class="group"><th colspan="4">Consonants</th></tr>
-<tr><td class="glyph"><span class="de">𐐐</span><span class="de">𐐸</span></td><td>H</td><td class="ipa">/h/</td><td><span class='sound-match'>h</span>igh</td></tr>
-<tr><td class="glyph"><span class="de">𐐑</span><span class="de">𐐹</span></td><td>Pee</td><td class="ipa">/p/</td><td><span class='sound-match'>p</span>ea</td></tr>
-<tr><td class="glyph"><span class="de">𐐒</span><span class="de">𐐺</span></td><td>Bee</td><td class="ipa">/b/</td><td><span class='sound-match'>b</span>ee</td></tr>
-<tr><td class="glyph"><span class="de">𐐓</span><span class="de">𐐻</span></td><td>Tee</td><td class="ipa">/t/</td><td><span class='sound-match'>t</span>ea</td></tr>
-<tr><td class="glyph"><span class="de">𐐔</span><span class="de">𐐼</span></td><td>Dee</td><td class="ipa">/d/</td><td><span class='sound-match'>d</span>eed</td></tr>
-<tr><td class="glyph"><span class="de">𐐕</span><span class="de">𐐽</span></td><td>Chee</td><td class="ipa">/tʃ/</td><td><span class='sound-match'>ch</span>eese</td></tr>
-<tr><td class="glyph"><span class="de">𐐖</span><span class="de">𐐾</span></td><td>Jee</td><td class="ipa">/dʒ/</td><td><span class='sound-match'>j</span>eep</td></tr>
-<tr><td class="glyph"><span class="de">𐐗</span><span class="de">𐐿</span></td><td>Kay</td><td class="ipa">/k/</td><td><span class='sound-match'>k</span>ey</td></tr>
-<tr><td class="glyph"><span class="de">𐐘</span><span class="de">𐑀</span></td><td>Gay</td><td class="ipa">/ɡ/</td><td><span class='sound-match'>g</span>ay</td></tr>
-<tr><td class="glyph"><span class="de">𐐙</span><span class="de">𐑁</span></td><td>Ef</td><td class="ipa">/f/</td><td><span class='sound-match'>f</span>ee</td></tr>
-<tr><td class="glyph"><span class="de">𐐚</span><span class="de">𐑂</span></td><td>Vee</td><td class="ipa">/v/</td><td><span class='sound-match'>v</span>eer</td></tr>
-<tr><td class="glyph"><span class="de">𐐛</span><span class="de">𐑃</span></td><td>Eth</td><td class="ipa">/θ/</td><td><span class='sound-match'>th</span>igh</td></tr>
-<tr><td class="glyph"><span class="de">𐐜</span><span class="de">𐑄</span></td><td>Thee</td><td class="ipa">/ð/</td><td><span class='sound-match'>th</span>y</td></tr>
-<tr><td class="glyph"><span class="de">𐐝</span><span class="de">𐑅</span></td><td>Es</td><td class="ipa">/s/</td><td><span class='sound-match'>s</span>ee</td></tr>
-<tr><td class="glyph"><span class="de">𐐞</span><span class="de">𐑆</span></td><td>Zee</td><td class="ipa">/z/</td><td><span class='sound-match'>z</span>eal</td></tr>
-<tr><td class="glyph"><span class="de">𐐟</span><span class="de">𐑇</span></td><td>Esh</td><td class="ipa">/ʃ/</td><td><span class='sound-match'>sh</span>e</td></tr>
-<tr><td class="glyph"><span class="de">𐐠</span><span class="de">𐑈</span></td><td>Zhee</td><td class="ipa">/ʒ/</td><td><span class='sound-match'>s</span>ion</td></tr>
-<tr><td class="glyph"><span class="de">𐐡</span><span class="de">𐑉</span></td><td>Er</td><td class="ipa">/r/</td><td><span class='sound-match'>r</span>err</td></tr>
-<tr><td class="glyph"><span class="de">𐐢</span><span class="de">𐑊</span></td><td>El</td><td class="ipa">/l/</td><td><span class='sound-match'>l</span>et</td></tr>
-<tr><td class="glyph"><span class="de">𐐣</span><span class="de">𐑋</span></td><td>Em</td><td class="ipa">/m/</td><td><span class='sound-match'>m</span>e</td></tr>
-<tr><td class="glyph"><span class="de">𐐤</span><span class="de">𐑌</span></td><td>En</td><td class="ipa">/n/</td><td><span class='sound-match'>n</span>ee</td></tr>
-<tr><td class="glyph"><span class="de">𐐥</span><span class="de">𐑍</span></td><td>Eng</td><td class="ipa">/ŋ/</td><td><span class='sound-match'>ng</span></td></tr>
-<tr class="group"><th colspan="4">Later additions</th></tr>
-<tr><td class="glyph"><span class="de">𐐦</span><span class="de">𐑎</span></td><td>Oi</td><td class="ipa">/ɔɪ/</td><td><span class='sound-match'>oi</span>l</td></tr>
-<tr><td class="glyph"><span class="de">𐐧</span><span class="de">𐑏</span></td><td>Ew</td><td class="ipa">/juː/</td><td><span class='sound-match'>ew</span>e</td></tr>
-      </tbody>
-    </table>
-    <p>Start with the <a href="#learn">practice lessons</a> to learn the letters in manageable groups, or use the <a href="#translate">translator</a> to see how English text appears in Deseret.</p>
-    <h3>Why Deseret?</h3>
-    <p>Deseret (from the Book of Mormon, meaning "honeybee") represents a vision of a more rational, learnable writing system. One symbol per sound means that once you know the alphabet, you can read any word&mdash;no exceptions, no silent letters, no ambiguous spellings.</p>
 
-    <!-- PARKED: moved out of About, which is now site-only. Your words,
-         kept verbatim so nothing is lost. No settled home yet — it
-         overlaps with the Basics opener above and with History. -->
-    <p>Deseret is a more efficient, learnable and aesthetically pleasing spelling system for the English language. It was created in the 1850s under the leadership of Brigham Young.</p>
+    <div class="grid">
+<p class="grid-group">Long vowels</p>
+<div class="cell"><span class="gl de">𐐀<span class="lc">𐐨</span></span><span class="tx">Long I<br><span class="ipa">/iː/</span> · <span class='sound-match'>ea</span>t</span></div>
+<div class="cell"><span class="gl de">𐐁<span class="lc">𐐩</span></span><span class="tx">Long E<br><span class="ipa">/eɪ/</span> · <span class='sound-match'>a</span>te</span></div>
+<div class="cell"><span class="gl de">𐐂<span class="lc">𐐪</span></span><span class="tx">Long A<br><span class="ipa">/ɑː/</span> · <span class='sound-match'>ar</span>t</span></div>
+<div class="cell"><span class="gl de">𐐃<span class="lc">𐐫</span></span><span class="tx">Long AH<br><span class="ipa">/ɔː/</span> · <span class='sound-match'>au</span>ght</span></div>
+<div class="cell"><span class="gl de">𐐄<span class="lc">𐐬</span></span><span class="tx">Long O<br><span class="ipa">/oʊ/</span> · <span class='sound-match'>oa</span>t</span></div>
+<div class="cell"><span class="gl de">𐐅<span class="lc">𐐭</span></span><span class="tx">Long OO<br><span class="ipa">/uː/</span> · <span class='sound-match'>oo</span>ze</span></div>
+<p class="grid-group">Short vowels</p>
+<div class="cell"><span class="gl de">𐐆<span class="lc">𐐮</span></span><span class="tx">Short I<br><span class="ipa">/ɪ/</span> · <span class='sound-match'>i</span>t</span></div>
+<div class="cell"><span class="gl de">𐐇<span class="lc">𐐯</span></span><span class="tx">Short E<br><span class="ipa">/ɛ/</span> · <span class='sound-match'>e</span>nd</span></div>
+<div class="cell"><span class="gl de">𐐈<span class="lc">𐐰</span></span><span class="tx">Short A<br><span class="ipa">/æ/</span> · <span class='sound-match'>a</span>t</span></div>
+<div class="cell"><span class="gl de">𐐉<span class="lc">𐐱</span></span><span class="tx">Short AH<br><span class="ipa">/ɒ/</span> · <span class='sound-match'>o</span>dd</span></div>
+<div class="cell"><span class="gl de">𐐊<span class="lc">𐐲</span></span><span class="tx">Short O<br><span class="ipa">/ʌ/</span> · <span class='sound-match'>u</span>p</span></div>
+<div class="cell"><span class="gl de">𐐋<span class="lc">𐐳</span></span><span class="tx">Short OO<br><span class="ipa">/ʊ/</span> · b<span class='sound-match'>oo</span>k</span></div>
+<p class="grid-group">Semivowels and diphthongs</p>
+<div class="cell"><span class="gl de">𐐌<span class="lc">𐐴</span></span><span class="tx">Ay<br><span class="ipa">/aɪ/</span> · <span class='sound-match'>i</span>ce</span></div>
+<div class="cell"><span class="gl de">𐐍<span class="lc">𐐵</span></span><span class="tx">Ow<br><span class="ipa">/aʊ/</span> · <span class='sound-match'>ou</span>t</span></div>
+<div class="cell"><span class="gl de">𐐎<span class="lc">𐐶</span></span><span class="tx">Wu<br><span class="ipa">/w/</span> · <span class='sound-match'>w</span>oe</span></div>
+<div class="cell"><span class="gl de">𐐏<span class="lc">𐐷</span></span><span class="tx">Yee<br><span class="ipa">/j/</span> · <span class='sound-match'>y</span>ou</span></div>
+<p class="grid-group">Consonants</p>
+<div class="cell"><span class="gl de">𐐐<span class="lc">𐐸</span></span><span class="tx">H<br><span class="ipa">/h/</span> · <span class='sound-match'>h</span>igh</span></div>
+<div class="cell"><span class="gl de">𐐑<span class="lc">𐐹</span></span><span class="tx">Pee<br><span class="ipa">/p/</span> · <span class='sound-match'>p</span>ea</span></div>
+<div class="cell"><span class="gl de">𐐒<span class="lc">𐐺</span></span><span class="tx">Bee<br><span class="ipa">/b/</span> · <span class='sound-match'>b</span>ee</span></div>
+<div class="cell"><span class="gl de">𐐓<span class="lc">𐐻</span></span><span class="tx">Tee<br><span class="ipa">/t/</span> · <span class='sound-match'>t</span>ea</span></div>
+<div class="cell"><span class="gl de">𐐔<span class="lc">𐐼</span></span><span class="tx">Dee<br><span class="ipa">/d/</span> · <span class='sound-match'>d</span>eed</span></div>
+<div class="cell"><span class="gl de">𐐕<span class="lc">𐐽</span></span><span class="tx">Chee<br><span class="ipa">/tʃ/</span> · <span class='sound-match'>ch</span>eese</span></div>
+<div class="cell"><span class="gl de">𐐖<span class="lc">𐐾</span></span><span class="tx">Jee<br><span class="ipa">/dʒ/</span> · <span class='sound-match'>j</span>eep</span></div>
+<div class="cell"><span class="gl de">𐐗<span class="lc">𐐿</span></span><span class="tx">Kay<br><span class="ipa">/k/</span> · <span class='sound-match'>k</span>ey</span></div>
+<div class="cell"><span class="gl de">𐐘<span class="lc">𐑀</span></span><span class="tx">Gay<br><span class="ipa">/ɡ/</span> · <span class='sound-match'>g</span>ay</span></div>
+<div class="cell"><span class="gl de">𐐙<span class="lc">𐑁</span></span><span class="tx">Ef<br><span class="ipa">/f/</span> · <span class='sound-match'>f</span>ee</span></div>
+<div class="cell"><span class="gl de">𐐚<span class="lc">𐑂</span></span><span class="tx">Vee<br><span class="ipa">/v/</span> · <span class='sound-match'>v</span>eer</span></div>
+<div class="cell"><span class="gl de">𐐛<span class="lc">𐑃</span></span><span class="tx">Eth<br><span class="ipa">/θ/</span> · <span class='sound-match'>th</span>igh</span></div>
+<div class="cell"><span class="gl de">𐐜<span class="lc">𐑄</span></span><span class="tx">Thee<br><span class="ipa">/ð/</span> · <span class='sound-match'>th</span>y</span></div>
+<div class="cell"><span class="gl de">𐐝<span class="lc">𐑅</span></span><span class="tx">Es<br><span class="ipa">/s/</span> · <span class='sound-match'>s</span>ee</span></div>
+<div class="cell"><span class="gl de">𐐞<span class="lc">𐑆</span></span><span class="tx">Zee<br><span class="ipa">/z/</span> · <span class='sound-match'>z</span>eal</span></div>
+<div class="cell"><span class="gl de">𐐟<span class="lc">𐑇</span></span><span class="tx">Esh<br><span class="ipa">/ʃ/</span> · <span class='sound-match'>sh</span>e</span></div>
+<div class="cell"><span class="gl de">𐐠<span class="lc">𐑈</span></span><span class="tx">Zhee<br><span class="ipa">/ʒ/</span> · <span class='sound-match'>s</span>ion</span></div>
+<div class="cell"><span class="gl de">𐐡<span class="lc">𐑉</span></span><span class="tx">Er<br><span class="ipa">/r/</span> · <span class='sound-match'>r</span>err</span></div>
+<div class="cell"><span class="gl de">𐐢<span class="lc">𐑊</span></span><span class="tx">El<br><span class="ipa">/l/</span> · <span class='sound-match'>l</span>et</span></div>
+<div class="cell"><span class="gl de">𐐣<span class="lc">𐑋</span></span><span class="tx">Em<br><span class="ipa">/m/</span> · <span class='sound-match'>m</span>e</span></div>
+<div class="cell"><span class="gl de">𐐤<span class="lc">𐑌</span></span><span class="tx">En<br><span class="ipa">/n/</span> · <span class='sound-match'>n</span>ee</span></div>
+<div class="cell"><span class="gl de">𐐥<span class="lc">𐑍</span></span><span class="tx">Eng<br><span class="ipa">/ŋ/</span> · <span class='sound-match'>ng</span></span></div>
+<p class="grid-group">Later additions</p>
+<div class="cell"><span class="gl de">𐐦<span class="lc">𐑎</span></span><span class="tx">Oi<br><span class="ipa">/ɔɪ/</span> · <span class='sound-match'>oi</span>l</span></div>
+<div class="cell"><span class="gl de">𐐧<span class="lc">𐑏</span></span><span class="tx">Ew<br><span class="ipa">/juː/</span> · <span class='sound-match'>ew</span>e</span></div>
+    </div>
+
+    <p>It is also crucial to know that many letters in the Deseret Alphabet have syllabic values. If a word has the same pronunciation as a syllabic value, the syllabic value can be used to represent it. If one is not aware of this, it may cause a bit of confusion.</p>
+
+    <div class="grid syl">
+<div class="cell"><span class="gl de">𐐻</span><span class="tx">tee</span></div>
+<div class="cell"><span class="gl de">𐐺</span><span class="tx">bee</span></div>
+<div class="cell"><span class="gl de">𐑅</span><span class="tx">es</span></div>
+<div class="cell"><span class="gl de">𐑁</span><span class="tx">ef</span></div>
+<div class="cell"><span class="gl de">𐑊</span><span class="tx">el</span></div>
+<div class="cell"><span class="gl de">𐑋</span><span class="tx">em</span></div>
+<div class="cell"><span class="gl de">𐑌</span><span class="tx">en</span></div>
+<div class="cell"><span class="gl de">𐑃</span><span class="tx">eth</span></div>
+<div class="cell"><span class="gl de">𐑄</span><span class="tx">thee</span></div>
+<div class="cell"><span class="gl de">𐑉</span><span class="tx">er</span></div>
+    </div>
+
+    <!-- REMOVED FROM VIEW, NOT DELETED. These were the old Basics paragraphs
+         and the two items parked here from About. Kept in case you want any
+         of it back; delete freely once you have rewritten the copy.
+
+         The Deseret Alphabet consists of 40 letters, each representing a
+         single sound in English. This phonetic system eliminates the
+         irregularities of traditional spelling, making English far easier to
+         learn and read.
+
+         The alphabet is organized by sound categories: long vowels, short
+         vowels, semivowels and diphthongs, and consonants. Each letter has a
+         unique form and name that helps with pronunciation.
+
+         Start with the practice lessons to learn the letters in manageable
+         groups, or use the translator to see how English text appears in
+         Deseret.  [this held the only links to #learn and #translate]
+
+         Why Deseret?
+         Deseret (from the Book of Mormon, meaning "honeybee") represents a
+         vision of a more rational, learnable writing system. One symbol per
+         sound means that once you know the alphabet, you can read any word
+         no exceptions, no silent letters, no ambiguous spellings.
+
+         Deseret is a more efficient, learnable and aesthetically pleasing
+         spelling system for the English language. It was created in the
+         1850s under the leadership of Brigham Young.
+    -->
   </div>
 
   <!-- ===================================================================
@@ -350,20 +388,7 @@ footer{
 <li><p class="de line">𐐐𐐵 𐑌𐐵, 𐐺𐑉𐐵𐑌 𐐿𐐵?</p><p class="gloss">How now, brown cow?</p></li>
 <li><p class="de line">𐐂 𐑁𐑏 𐑌𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li>
 <li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑌 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
-    <h3>Syllabic values</h3>
-    <p>Letters of the Deseret Alphabet may have names that are sounded when the letter is used by itself. <span class="de">𐐻</span> has the name &ldquo;tee&rdquo;, so it can stand alone for the word <em>tea</em>; likewise <span class="de">𐑅</span> for <em>es</em> and <span class="de">𐑊</span> for <em>el</em>.</p>
-    <ul class="names">
-      <li><span class="de">𐐻</span> tee</li>
-      <li><span class="de">𐐺</span> bee</li>
-      <li><span class="de">𐑅</span> es</li>
-      <li><span class="de">𐑁</span> ef</li>
-      <li><span class="de">𐑊</span> el</li>
-      <li><span class="de">𐑋</span> em</li>
-      <li><span class="de">𐑌</span> en</li>
-      <li><span class="de">𐑃</span> eth</li>
-      <li><span class="de">𐑄</span> thee</li>
-      <li><span class="de">𐑉</span> er</li>
-    </ul>
+
   </div>
 
   <div class="panel" id="translate" role="tabpanel" aria-labelledby="t-translate" hidden>
