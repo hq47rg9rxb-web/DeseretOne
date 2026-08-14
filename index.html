@@ -1,240 +1,244 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deseret One</title>
-<meta name="description" content="A guide to reading, writing and using the Deseret Alphabet">
-<style>
-:root{
-  --blue:#004aad; --blue-deep:#002060; --ink:#000; --paper:#fff;
-  --line:#c9d1dd; --bg:#fff;
-  --sans:'Calibri',Arial,Helvetica,sans-serif;
-  --serif:'Liberation Serif','Times New Roman',Times,serif;
-  --hdr:5.3rem;
-}
-}
-*{box-sizing:border-box}
-html,body{margin:0}
-body{
-  font-family:var(--sans); color:var(--ink); background:var(--bg);
-  font-size:14px; line-height:1.7; -webkit-font-smoothing:antialiased;
-}
-.de{font-family:var(--sans)}
-a{color:var(--ink)}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deseret One</title>
+  <meta name="description" content="A guide to reading, writing and using the Deseret Alphabet">
+  <!-- Google Font: Open Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue:#004aad; --blue-deep:#002060; --ink:#000; --paper:#fff;
+      --line:#c9d1dd; --bg:#fff;
+      --sans:'Open Sans','Calibri',Arial,Helvetica,sans-serif;
+      --serif:'Liberation Serif','Times New Roman',Times,serif;
+      --hdr:5.3rem;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:var(--sans); color:var(--ink); background:var(--bg);
+      font-size:14px; line-height:1.7; -webkit-font-smoothing:antialiased;
+    }
+    .de{font-family:var(--sans)}
+    a{color:var(--ink)}
 
-/* ---- global header, after the Church's own ---- */
-.gh{
-  position:sticky; top:0; z-index:40; background:#fff;
-  border-bottom:1px solid var(--line);
-  display:flex; align-items:stretch; height:var(--hdr);
-}
-.gh-mark{
-  flex:none; display:flex; align-items:center;
-  padding:0 1.4rem 0 1.1rem; text-decoration:none; color:var(--ink);
-}
-.gh-word{display:block; color:#000; text-align:center}
-/* The Deseret is set larger rather than stretched: its glyphs are narrower
-   per character, so at this size the two lines come out the same length
-   without any gap being opened up between the words. */
-.gh-word .en,.gh-word .de{
-  display:block; font-weight:700; color:#000; white-space:nowrap;
-}
-.gh-word .en{
-  font-family:var(--serif); text-transform:uppercase;
-  font-size:1rem; letter-spacing:.02em; line-height:1.15;
-}
-body.de-mode .gh-word .de{display:none}
-.gh-word .de{
-  font-family:var(--sans);
-  font-size:1.16rem; line-height:1.15; margin-top:.04rem;
-}
+    /* ---- global header, after the Church's own ---- */
+    .gh{
+      position:sticky; top:0; z-index:40; background:#fff;
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:stretch; height:var(--hdr);
+    }
+    .gh-mark{
+      flex:none; display:flex; align-items:center;
+      padding:0 1.4rem 0 1.1rem; text-decoration:none; color:var(--ink);
+    }
+    .gh-word{display:block; color:#000; text-align:center}
+    /* The Deseret is set larger rather than stretched: its glyphs are narrower
+       per character, so at this size the two lines come out the same length
+       without any gap being opened up between the words. */
+    .gh-word .en,.gh-word .de{
+      display:block; font-weight:700; color:#000; white-space:nowrap;
+    }
+    .gh-word .en{
+      font-family:var(--serif); text-transform:uppercase;
+      font-size:1rem; letter-spacing:.02em; line-height:1.15;
+    }
+    body.de-mode .gh-word .de{display:none}
+    .gh-word .de{
+      font-family:var(--sans);
+      font-size:1.16rem; line-height:1.15; margin-top:.04rem;
+    }
 
-.gh-nav{display:flex; align-items:center; gap:1.6rem; margin-left:.5rem}
-.gh-nav a{
-  font-family:var(--sans); font-size:.82rem; color:var(--ink);
-  text-decoration:none; padding:.2rem 0; border-bottom:2px solid transparent;
-}
-.gh-nav a:hover{text-decoration:underline}
-.gh-nav a[aria-current="true"]{border-bottom-color:var(--blue)}
+    .gh-nav{display:flex; align-items:center; gap:1.6rem; margin-left:.5rem}
+    .gh-nav a{
+      font-family:var(--sans); font-size:.82rem; color:var(--ink);
+      text-decoration:none; padding:.2rem 0; border-bottom:2px solid transparent;
+    }
+    .gh-nav a:hover{text-decoration:underline}
+    .gh-nav a[aria-current="true"]{border-bottom-color:var(--blue)}
 
-.gh-spacer{flex:1 1 auto; min-width:.75rem}
+    .gh-spacer{flex:1 1 auto; min-width:.75rem}
 
-.gh-search{position:relative; flex:0 1 17rem; display:flex; align-items:center}
-.gh-search input{
-  font:inherit; font-family:var(--sans); font-size:.8rem; width:100%;
-  padding:.42rem 2.1rem .42rem .7rem;
-  border:1px solid #b9c2cf; border-radius:3px; background:#fff; color:var(--ink);
-}
-.gh-search input:focus{outline:2px solid var(--blue); outline-offset:-1px}
-.gh-search button{
-  position:absolute; right:.15rem; display:grid; place-items:center;
-  width:1.8rem; height:1.8rem; background:none; border:none; cursor:pointer; color:var(--ink);
-}
-.gh-results{
-  position:absolute; top:calc(100% + .3rem); left:0; right:0; z-index:50;
-  background:#fff; border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,.12);
-  list-style:none; margin:0; padding:.2rem; max-height:16rem; overflow:auto;
-}
-.gh-results[hidden]{display:none}
-.gh-results a{display:block; padding:.4rem .55rem; text-decoration:none; color:var(--ink); font-size:.76rem}
-.gh-results a:hover,.gh-results a:focus{background:#f4f7fc; outline:none}
-.gh-results .r-num{font-weight:700; margin-right:.45rem}
-.gh-results .r-none{padding:.5rem .55rem; font-size:.76rem; font-style:italic}
+    .gh-search{position:relative; flex:0 1 17rem; display:flex; align-items:center}
+    .gh-search input{
+      font:inherit; font-family:var(--sans); font-size:.8rem; width:100%;
+      padding:.42rem 2.1rem .42rem .7rem;
+      border:1px solid #b9c2cf; border-radius:3px; background:#fff; color:var(--ink);
+    }
+    .gh-search input:focus{outline:2px solid var(--blue); outline-offset:-1px}
+    .gh-search button{
+      position:absolute; right:.15rem; display:grid; place-items:center;
+      width:1.8rem; height:1.8rem; background:none; border:none; cursor:pointer; color:var(--ink);
+    }
+    .gh-results{
+      position:absolute; top:calc(100% + .3rem); left:0; right:0; z-index:50;
+      background:#fff; border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,.12);
+      list-style:none; margin:0; padding:.2rem; max-height:16rem; overflow:auto;
+    }
+    .gh-results[hidden]{display:none}
+    .gh-results a{display:block; padding:.4rem .55rem; text-decoration:none; color:var(--ink); font-size:.76rem}
+    .gh-results a:hover,.gh-results a:focus{background:#f4f7fc; outline:none}
+    .gh-results .r-num{font-weight:700; margin-right:.45rem}
+    .gh-results .r-none{padding:.5rem .55rem; font-size:.76rem; font-style:italic}
 
-.gh-cta{
-  display:flex; align-items:center; align-self:stretch; margin-left:1.2rem;
-}
-.gh-cta button{
-  font:inherit; cursor:pointer;
-  display:flex; align-items:center; gap:.45rem; white-space:nowrap;
-  background:var(--blue); color:#fff; text-decoration:none;
-  font-family:var(--sans); font-size:.84rem; padding:.6rem 1.15rem;
-}
-.gh-cta button:hover{background:var(--blue-deep)}
-.gh-cta button[aria-pressed="true"]{background:var(--blue-deep)}
-.gh svg{display:block}
+    .gh-cta{
+      display:flex; align-items:center; align-self:stretch; margin-left:1.2rem;
+    }
+    .gh-cta button{
+      font:inherit; cursor:pointer;
+      display:flex; align-items:center; gap:.45rem; white-space:nowrap;
+      background:var(--blue); color:#fff; text-decoration:none;
+      font-family:var(--sans); font-size:.84rem; padding:.6rem 1.15rem;
+    }
+    .gh-cta button:hover{background:var(--blue-deep)}
+    .gh-cta button[aria-pressed="true"]{background:var(--blue-deep)}
+    .gh svg{display:block}
 
-/* ---- content column ---- */
-main{max-width:46rem; margin:0 auto; padding:2.2rem 2rem 5rem}
-.page[hidden]{display:none}
+    /* ---- content column ---- */
+    main{max-width:46rem; margin:0 auto; padding:2.2rem 2rem 5rem}
+    .page[hidden]{display:none}
 
 
-h1{
-  font-family:var(--sans); font-weight:700;
-  font-size:1.32rem; line-height:1.3; letter-spacing:0;
-  margin:0 0 1.3rem; display:flex; flex-wrap:wrap; gap:.6rem; align-items:baseline;
-}
-h1 .de{font-family:var(--sans); font-size:1.1rem; font-weight:400}
-h2{font-size:.66rem;line-height:1.4;letter-spacing:.09em;text-transform:uppercase;margin:2rem 0 .9rem;font-family:var(--sans);font-weight:700}
-h3{font-size:0.72rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
-p{margin:0 0 1.05rem}
-.lede{font-size:.86rem; line-height:1.65; margin-bottom:1.6rem}
-/* ---- letter tables ---- */
-.tw{overflow-x:auto; margin:1.1rem 0 2rem}
-table.lt{border-collapse:collapse; width:100%; border:1px solid var(--ink)}
-table.lt th,table.lt td{border:1px solid var(--ink); padding:.28rem .45rem; text-align:left}
-table.lt th{
-  font-size:.58rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
-  white-space:nowrap;
-}
-table.lt td.gl{font-size:1.05rem; line-height:1.25; text-align:center; width:1%; white-space:nowrap}
-table.lt td.ipa{font-size:.68rem; white-space:nowrap}
-table.lt td.ex{font-size:.7rem; white-space:nowrap}
-.sound-match{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px}
+    h1{
+      font-family:var(--sans); font-weight:700;
+      font-size:1.32rem; line-height:1.3; letter-spacing:0;
+      margin:0 0 1.3rem; display:flex; flex-wrap:wrap; gap:.6rem; align-items:baseline;
+    }
+    h1 .de{font-family:var(--sans); font-size:1.1rem; font-weight:400}
+    h2{font-size:.66rem;line-height:1.4;letter-spacing:.09em;text-transform:uppercase;margin:2rem 0 .9rem;font-family:var(--sans);font-weight:700}
+    h3{font-size:0.72rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
+    p{margin:0 0 1.05rem}
+    .lede{font-size:.86rem; line-height:1.65; margin-bottom:1.6rem}
+    /* ---- letter tables ---- */
+    .tw{overflow-x:auto; margin:1.1rem 0 2rem}
+    table.lt{border-collapse:collapse; width:100%; border:1px solid var(--ink)}
+    table.lt th,table.lt td{border:1px solid var(--ink); padding:.28rem .45rem; text-align:left}
+    table.lt th{
+      font-size:.58rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+      white-space:nowrap;
+    }
+    table.lt td.gl{font-size:1.05rem; line-height:1.25; text-align:center; width:1%; white-space:nowrap}
+    table.lt td.ipa{font-size:.68rem; white-space:nowrap}
+    table.lt td.ex{font-size:.7rem; white-space:nowrap}
+    .sound-match{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px}
 
-/* ---- lessons ---- */
-.lesson{margin:0 0 2.5rem}
-.lesson h3{display:flex;align-items:center;gap:.6rem;margin-top:0}
-.lesson h3 .n{
-  flex:none; font-size:0.72rem; font-weight:700;
-  font-variant-numeric:tabular-nums;
-}
-.lesson h3 .n::after{content:'.'}
-p.new{font-size:0.7rem;font-style:italic;color:var(--ink);margin:0 0 .9rem;letter-spacing:.01em}
-p.new .de{font-size:0.96rem;font-style:normal;color:var(--ink);margin-left:.35rem}
-ol.lines{list-style:none;margin:0;padding:0}
-ol.lines li{padding:.7rem 0;border-bottom:1px solid var(--line)}
-.line{font-size:1.04rem;margin:0;line-height:1.55}
-.gloss{color:var(--ink);font-size:0.71rem;font-style:italic;line-height:1.6;margin:.15rem 0 0}
-body.hide-gloss .gloss{visibility:hidden}
-body.hide-gloss ol.lines li:hover .gloss,
-body.hide-gloss .passage:hover .gloss{visibility:visible}
-.toggle{
-  font:inherit;font-size:0.68rem;font-weight:600;letter-spacing:.02em;cursor:pointer;
-  background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink);
-}
+    /* ---- lessons ---- */
+    .lesson{margin:0 0 2.5rem}
+    .lesson h3{display:flex;align-items:center;gap:.6rem;margin-top:0}
+    .lesson h3 .n{
+      flex:none; font-size:0.72rem; font-weight:700;
+      font-variant-numeric:tabular-nums;
+    }
+    .lesson h3 .n::after{content:'.'}
+    p.new{font-size:0.7rem;font-style:italic;color:var(--ink);margin:0 0 .9rem;letter-spacing:.01em}
+    p.new .de{font-size:0.96rem;font-style:normal;color:var(--ink);margin-left:.35rem}
+    ol.lines{list-style:none;margin:0;padding:0}
+    ol.lines li{padding:.7rem 0;border-bottom:1px solid var(--line)}
+    .line{font-size:1.04rem;margin:0;line-height:1.55}
+    .gloss{color:var(--ink);font-size:0.71rem;font-style:italic;line-height:1.6;margin:.15rem 0 0}
+    body.hide-gloss .gloss{visibility:hidden}
+    body.hide-gloss ol.lines li:hover .gloss,
+    body.hide-gloss .passage:hover .gloss{visibility:visible}
+    .toggle{
+      font:inherit;font-size:0.68rem;font-weight:600;letter-spacing:.02em;cursor:pointer;
+      background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink);
+    }
 
-/* ---- quoted source ---- */
-blockquote.source{margin:0; padding-left:1.1rem; border-left:3px solid var(--line)}
-blockquote.source p:last-of-type{margin-bottom:.9rem}
-blockquote.source cite{display:block; font-style:italic; font-size:0.7rem; color:var(--ink)}
+    /* ---- quoted source ---- */
+    blockquote.source{margin:0; padding-left:1.1rem; border-left:3px solid var(--line)}
+    blockquote.source p:last-of-type{margin-bottom:.9rem}
+    blockquote.source cite{display:block; font-style:italic; font-size:0.7rem; color:var(--ink)}
 
-/* ---- passages ---- */
-.passage{margin:0 0 .55rem; border:1px solid var(--line)}
-.passage summary{
-  cursor:pointer; list-style:none; padding:.7rem .9rem;
-  display:flex; flex-wrap:wrap; align-items:baseline; gap:.15rem .7rem;
-}
-.passage summary::-webkit-details-marker{display:none}
-.passage summary:hover{background:#f4f7fc}
-.passage .ptitle{font-family:var(--sans);font-size:0.86rem;font-weight:700}
-.passage .meta{font-size:0.68rem;font-style:italic;color:var(--ink)}
-.passage[open] summary{border-bottom:1px solid var(--line)}
-.passage .line{margin:0 0 1.1rem}
-.passage > p{padding:0 .9rem}
-.passage > p:first-of-type{padding-top:.9rem}
-.passage > p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
-.passage .gloss{display:block}
+    /* ---- passages ---- */
+    .passage{margin:0 0 .55rem; border:1px solid var(--line)}
+    .passage summary{
+      cursor:pointer; list-style:none; padding:.7rem .9rem;
+      display:flex; flex-wrap:wrap; align-items:baseline; gap:.15rem .7rem;
+    }
+    .passage summary::-webkit-details-marker{display:none}
+    .passage summary:hover{background:#f4f7fc}
+    .passage .ptitle{font-family:var(--sans);font-size:0.86rem;font-weight:700}
+    .passage .meta{font-size:0.68rem;font-style:italic;color:var(--ink)}
+    .passage[open] summary{border-bottom:1px solid var(--line)}
+    .passage .line{margin:0 0 1.1rem}
+    .passage > p{padding:0 .9rem}
+    .passage > p:first-of-type{padding-top:.9rem}
+    .passage > p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
+    .passage .gloss{display:block}
 
-/* ---- translator ---- */
-.tr{display:grid;gap:.4rem;margin-bottom:1rem}
-.tr label{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
-textarea{
-  font:inherit;font-size:0.85rem;line-height:1.6;width:100%;padding:.8rem .9rem;
-  border:1px solid var(--line);border-radius:0;background:#fff;color:inherit;resize:vertical;
-}
-textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
-#out{font-family:var(--sans);font-size:1rem;line-height:1.6}
-.row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-button.act{
-  font:inherit;font-size:0.72rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;
-  background:var(--blue);border:none;border-radius:0;padding:.55rem 1.1rem;
-}
-button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
-.note{font-size:0.72rem;line-height:1.6;color:var(--ink)}
-.note.ok{font-weight:700}
+    /* ---- translator ---- */
+    .tr{display:grid;gap:.4rem;margin-bottom:1rem}
+    .tr label{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
+    textarea{
+      font:inherit;font-size:0.85rem;line-height:1.6;width:100%;padding:.8rem .9rem;
+      border:1px solid var(--line);border-radius:0;background:#fff;color:inherit;resize:vertical;
+    }
+    textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
+    #out{font-family:var(--sans);font-size:1rem;line-height:1.6}
+    .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    button.act{
+      font:inherit;font-size:0.72rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;
+      background:var(--blue);border:none;border-radius:0;padding:.55rem 1.1rem;
+    }
+    button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+    .note{font-size:0.72rem;line-height:1.6;color:var(--ink)}
+    .note.ok{font-weight:700}
 
-/* ================= mobile ================= */
-/* the header sheds pieces as it narrows: the section links go first, then
-   the search, leaving the wordmark and the call to action */
-@media(max-width:70rem){
-  /* With no sidebar, the section links cannot simply be hidden: the header
-     wraps to a second row and the links scroll sideways instead. */
-  .gh{height:auto; flex-wrap:wrap; padding-bottom:.35rem}
-  .gh-mark{padding:.5rem 1rem .4rem}
-  .gh-nav{order:3; width:100%; gap:1.1rem; overflow-x:auto; padding:.2rem 1rem .3rem}
-  .gh-spacer{display:none}
-  .gh-search{flex:1 1 auto; margin:0 .6rem}
-  .gh-cta{margin-left:auto}
-}
-@media(max-width:60rem){
-  main{padding:1.5rem 1.1rem 4rem}
-}
+    /* ================= mobile ================= */
+    /* the header sheds pieces as it narrows: the section links go first, then
+       the search, leaving the wordmark and the call to action */
+    @media(max-width:70rem){
+      /* With no sidebar, the section links cannot simply be hidden: the header
+         wraps to a second row and the links scroll sideways instead. */
+      .gh{height:auto; flex-wrap:wrap; padding-bottom:.35rem}
+      .gh-mark{padding:.5rem 1rem .4rem}
+      .gh-nav{order:3; width:100%; gap:1.1rem; overflow-x:auto; padding:.2rem 1rem .3rem}
+      .gh-spacer{display:none}
+      .gh-search{flex:1 1 auto; margin:0 .6rem}
+      .gh-cta{margin-left:auto}
+    }
+    @media(max-width:60rem){
+      main{padding:1.5rem 1.1rem 4rem}
+    }
 
-@media(max-width:46rem){
-  .gh-search{display:none}
-  .gh-mark{padding:0 .9rem}
-  .gh-word .en{font-size:.82rem}
-  .gh-word .de{font-size:.95rem}
-  .gh-cta button{padding:.5rem .8rem;font-size:.76rem}
-}
-@media(max-width:34rem){
-  body{font-size:13px}
-  .gh-word .en{font-size:.72rem}
-  .gh-word .de{font-size:.84rem}
-  .gh-cta .cta-label{display:none}
-  .gh-cta button{padding:.5rem .65rem}
-  table.lt td.gl{font-size:.95rem}
-  h1{font-size:1.14rem}
-  h2{font-size:.6rem}
-  h3{font-size:0.67rem}
-  .line{font-size:0.88rem}
-}
-@media(min-width:76rem){
-  body{font-size:15px}
-  table.lt td.gl{font-size:1.15rem}
-  h1{font-size:1.44rem}
-  h2{font-size:.71rem}
-  h3{font-size:0.78rem}
-  .line{font-size:1.13rem}
-  main{padding:2.6rem 2rem 6rem}
-}
-@media(prefers-reduced-motion:no-preference){
-  .page:not([hidden]){animation:fade .22s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-}
-</style>
+    @media(max-width:46rem){
+      .gh-search{display:none}
+      .gh-mark{padding:0 .9rem}
+      .gh-word .en{font-size:.82rem}
+      .gh-word .de{font-size:.95rem}
+      .gh-cta button{padding:.5rem .8rem;font-size:.76rem}
+    }
+    @media(max-width:34rem){
+      body{font-size:13px}
+      .gh-word .en{font-size:.72rem}
+      .gh-word .de{font-size:.84rem}
+      .gh-cta .cta-label{display:none}
+      .gh-cta button{padding:.5rem .65rem}
+      table.lt td.gl{font-size:.95rem}
+      h1{font-size:1.14rem}
+      h2{font-size:.6rem}
+      h3{font-size:0.67rem}
+      .line{font-size:0.88rem}
+    }
+    @media(min-width:76rem){
+      body{font-size:15px}
+      table.lt td.gl{font-size:1.15rem}
+      h1{font-size:1.44rem}
+      h2{font-size:.71rem}
+      h3{font-size:0.78rem}
+      .line{font-size:1.13rem}
+      main{padding:2.6rem 2rem 6rem}
+    }
+    @media(prefers-reduced-motion:no-preference){
+      .page:not([hidden]){animation:fade .22s ease}
+      @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    }
+  </style>
 </head>
 <body>
 
@@ -409,8 +413,14 @@ button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
   </main>
 </div>
 
-<script src="deseret-mappings.js"></script>
-<script src="reverse.js"></script>
+<script>
+  // dummy mappings – replace with actual deseret-mappings.js and reverse.js
+  window.DESERET_MAPPINGS = {};
+  window.translateText = function(text) { return text; };
+  window.deseretReverseText = function(text) { return {text: text}; };
+  // placeholder for the scripts – remove or replace with actual includes
+</script>
+<!-- include actual scripts if available: deseret-mappings.js, reverse.js -->
 <script>
 (function () {
   'use strict';
@@ -454,15 +464,9 @@ button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
   });
 
   var start = decodeURIComponent(location.hash.slice(1));
-  /* The guide opens on the letters. */
   show(ids.indexOf(start) >= 0 ? start : 'letters', false);
 
   /* ---- read the whole guide in Deseret ------------------------------- */
-  /* Text nodes are translated in place and the English kept beside them, so
-     the switch is reversible without rebuilding the page. Four things are
-     left alone: anything already in Deseret, the letter tables (whose whole
-     point is the English example words and their sounds), the glosses (which
-     are the English key to the lines above), and the translator's boxes. */
   var SKIP = 'script,style,textarea,input,svg,.de,.tw,.gloss,.ipa';
   var deseretNodes = null, deseretOn = false;
 
@@ -576,14 +580,14 @@ button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
   });
 
   /* ---- hide the English ---------------------------------------------- */
-  var toggle = document.getElementById('glossToggle');
-  if (toggle) {
-    toggle.addEventListener('click', function () {
+  var toggles = document.querySelectorAll('.toggle');
+  toggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
       var hidden = body.classList.toggle('hide-gloss');
-      toggle.setAttribute('aria-pressed', String(hidden));
-      toggle.textContent = hidden ? 'Show the English' : 'Hide the English';
+      btn.setAttribute('aria-pressed', String(!hidden));
+      btn.textContent = hidden ? 'Show the English' : 'Hide the English';
     });
-  }
+  });
 
   /* ---- translator ----------------------------------------------------- */
   var src = document.getElementById('src'),
@@ -645,3 +649,4 @@ button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
 </script>
 </body>
 </html>
+```
