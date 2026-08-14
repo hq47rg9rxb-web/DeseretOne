@@ -1,651 +1,499 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ========== META & TITLE ========== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deseret One</title>
   <meta name="description" content="A guide to reading, writing and using the Deseret Alphabet">
-  <!-- Google Font: Open Sans -->
+  
+  <!-- ========== GOOGLE FONTS ========== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  
+  <!-- ========== STYLES ========== -->
   <style>
-    :root{
-      --blue:#004aad; --blue-deep:#002060; --ink:#000; --paper:#fff;
-      --line:#c9d1dd; --bg:#fff;
-      --sans:'Open Sans','Calibri',Arial,Helvetica,sans-serif;
-      --hdr:5.3rem;
-    }
+    /* ===== ROOT VARIABLES ===== */
+    :root{--blue:#004aad;--blue-deep:#002060;--ink:#000;--line:#c9d1dd;--bg:#fff;--sans:'Open Sans','Calibri',Arial,sans-serif;--serif:'Liberation Serif','Times New Roman',serif;--hdr:5.3rem}
+    
+    /* ===== RESET & BASE ===== */
     *{box-sizing:border-box}
     html,body{margin:0}
-    body{
-      font-family:var(--sans); color:var(--ink); background:var(--bg);
-      font-size:14px; line-height:1.7; -webkit-font-smoothing:antialiased;
-    }
+    body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
     .de{font-family:var(--sans)}
     a{color:var(--ink)}
-
-    /* ---- global header, after the Church's own ---- */
-    .gh{
-      position:sticky; top:0; z-index:40; background:#fff;
-      border-bottom:1px solid var(--line);
-      display:flex; align-items:stretch; height:var(--hdr);
-    }
-    .gh-mark{
-      flex:none; display:flex; align-items:center;
-      padding:0 1.4rem 0 1.1rem; text-decoration:none; color:var(--ink);
-    }
-    .gh-word{display:block; color:#000; text-align:center}
-    /* The Deseret is set larger rather than stretched: its glyphs are narrower
-       per character, so at this size the two lines come out the same length
-       without any gap being opened up between the words. */
-    .gh-word .en,.gh-word .de{
-      display:block; font-weight:700; color:#000; white-space:nowrap;
-    }
-    .gh-word .en{
-      font-family:var(--sans); text-transform:uppercase;
-      font-size:1rem; letter-spacing:.02em; line-height:1.15;
-    }
+    
+    /* ===== HEADER ===== */
+    .gh{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:stretch;height:var(--hdr)}
+    .gh-mark{flex:none;display:flex;align-items:center;padding:0 1.4rem 0 1.1rem;text-decoration:none;color:var(--ink)}
+    .gh-word{display:block;color:#000;text-align:center}
+    .gh-word .en,.gh-word .de{display:block;font-weight:700;color:#000;white-space:nowrap}
+    .gh-word .en{font-family:var(--sans);text-transform:uppercase;font-size:1rem;letter-spacing:.02em;line-height:1.15;font-weight:900;text-shadow:0 0 0 #000,0 0 0 #000}
     body.de-mode .gh-word .de{display:none}
-    .gh-word .de{
-      font-family:var(--sans);
-      font-size:1.16rem; line-height:1.15; margin-top:.04rem;
-    }
-
-    .gh-nav{display:flex; align-items:center; gap:1.6rem; margin-left:.5rem}
-    .gh-nav a{
-      font-family:var(--sans); font-size:.82rem; color:var(--ink);
-      text-decoration:none; padding:.2rem 0; border-bottom:2px solid transparent;
-    }
+    .gh-word .de{font-family:var(--sans);font-size:1.16rem;line-height:1.15;margin-top:.04rem}
+    
+    /* ===== NAVIGATION ===== */
+    .gh-nav{display:flex;align-items:center;gap:1.6rem;margin-left:.5rem}
+    .gh-nav a{font-family:var(--sans);font-size:.82rem;color:var(--ink);text-decoration:none;padding:.2rem 0;border-bottom:2px solid transparent}
     .gh-nav a:hover{text-decoration:underline}
     .gh-nav a[aria-current="true"]{border-bottom-color:var(--blue)}
-
-    .gh-spacer{flex:1 1 auto; min-width:.75rem}
-
-    .gh-search{position:relative; flex:0 1 17rem; display:flex; align-items:center}
-    .gh-search input{
-      font:inherit; font-family:var(--sans); font-size:.8rem; width:100%;
-      padding:.42rem 2.1rem .42rem .7rem;
-      border:1px solid #b9c2cf; border-radius:3px; background:#fff; color:var(--ink);
-    }
-    .gh-search input:focus{outline:2px solid var(--blue); outline-offset:-1px}
-    .gh-search button{
-      position:absolute; right:.15rem; display:grid; place-items:center;
-      width:1.8rem; height:1.8rem; background:none; border:none; cursor:pointer; color:var(--ink);
-    }
-    .gh-results{
-      position:absolute; top:calc(100% + .3rem); left:0; right:0; z-index:50;
-      background:#fff; border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,.12);
-      list-style:none; margin:0; padding:.2rem; max-height:16rem; overflow:auto;
-    }
+    .gh-spacer{flex:1 1 auto;min-width:.75rem}
+    
+    /* ===== SEARCH ===== */
+    .gh-search{position:relative;flex:0 1 17rem;display:flex;align-items:center}
+    .gh-search input{font:inherit;font-family:var(--sans);font-size:.8rem;width:100%;padding:.42rem 2.1rem .42rem .7rem;border:1px solid #b9c2cf;border-radius:3px;background:#fff;color:var(--ink)}
+    .gh-search input:focus{outline:2px solid var(--blue);outline-offset:-1px}
+    .gh-search button{position:absolute;right:.15rem;display:grid;place-items:center;width:1.8rem;height:1.8rem;background:none;border:none;cursor:pointer;color:var(--ink)}
+    .gh-results{position:absolute;top:calc(100% + .3rem);left:0;right:0;z-index:50;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.12);list-style:none;margin:0;padding:.2rem;max-height:16rem;overflow:auto}
     .gh-results[hidden]{display:none}
-    .gh-results a{display:block; padding:.4rem .55rem; text-decoration:none; color:var(--ink); font-size:.76rem}
-    .gh-results a:hover,.gh-results a:focus{background:#f4f7fc; outline:none}
-    .gh-results .r-num{font-weight:700; margin-right:.45rem}
-    .gh-results .r-none{padding:.5rem .55rem; font-size:.76rem; font-style:italic}
-
-    .gh-cta{
-      display:flex; align-items:center; align-self:stretch; margin-left:1.2rem;
-    }
-    .gh-cta button{
-      font:inherit; cursor:pointer;
-      display:flex; align-items:center; gap:.45rem; white-space:nowrap;
-      background:var(--blue); color:#fff; text-decoration:none;
-      font-family:var(--sans); font-size:.84rem; padding:.6rem 1.15rem;
-    }
+    .gh-results a{display:block;padding:.4rem .55rem;text-decoration:none;color:var(--ink);font-size:.76rem}
+    .gh-results a:hover,.gh-results a:focus{background:#f4f7fc;outline:none}
+    .gh-results .r-num{font-weight:700;margin-right:.45rem}
+    .gh-results .r-none{padding:.5rem .55rem;font-size:.76rem;font-style:italic}
+    
+    /* ===== CTA BUTTON ===== */
+    .gh-cta{display:flex;align-items:center;align-self:stretch;margin-left:1.2rem}
+    .gh-cta button{font:inherit;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--sans);font-size:.84rem;padding:.6rem 1.15rem}
     .gh-cta button:hover{background:var(--blue-deep)}
     .gh-cta button[aria-pressed="true"]{background:var(--blue-deep)}
     .gh svg{display:block}
-
-    /* ---- content column ---- */
-    main{max-width:46rem; margin:0 auto; padding:2.2rem 2rem 5rem}
+    
+    /* ===== MAIN CONTENT ===== */
+    main{max-width:46rem;margin:0 auto;padding:2.2rem 2rem 5rem}
     .page[hidden]{display:none}
-
-
-    h1{
-      font-family:var(--sans); font-weight:700;
-      font-size:1.32rem; line-height:1.3; letter-spacing:0;
-      margin:0 0 1.3rem; display:flex; flex-wrap:wrap; gap:.6rem; align-items:baseline;
-    }
-    h1 .de{font-family:var(--sans); font-size:1.1rem; font-weight:400}
+    
+    /* ===== HEADINGS ===== */
+    h1{font-family:var(--sans);font-weight:700;font-size:1.32rem;line-height:1.3;margin:0 0 1.3rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline}
+    h1 .de{font-family:var(--sans);font-size:1.1rem;font-weight:400}
     h2{font-size:.66rem;line-height:1.4;letter-spacing:.09em;text-transform:uppercase;margin:2rem 0 .9rem;font-family:var(--sans);font-weight:700}
-    h3{font-size:0.72rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
+    h3{font-size:.72rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
     p{margin:0 0 1.05rem}
-    .lede{font-size:.86rem; line-height:1.65; margin-bottom:1.6rem}
-    /* ---- letter tables ---- */
-    .tw{overflow-x:auto; margin:1.1rem 0 2rem}
-    table.lt{border-collapse:collapse; width:100%; border:1px solid var(--ink)}
-    table.lt th,table.lt td{border:1px solid var(--ink); padding:.28rem .45rem; text-align:left}
-    table.lt th{
-      font-size:.58rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
-      white-space:nowrap;
-    }
-    table.lt td.gl{font-size:1.05rem; line-height:1.25; text-align:center; width:1%; white-space:nowrap}
-    table.lt td.ipa{font-size:.68rem; white-space:nowrap}
-    table.lt td.ex{font-size:.7rem; white-space:nowrap}
+    .lede{font-size:.86rem;line-height:1.65;margin-bottom:1.6rem}
+    
+    /* ===== TABLES ===== */
+    .tw{overflow-x:auto;margin:1.1rem 0 2rem}
+    table.lt{border-collapse:collapse;width:100%;border:1px solid var(--ink)}
+    table.lt th,table.lt td{border:1px solid var(--ink);padding:.28rem .45rem;text-align:left}
+    table.lt th{font-size:.58rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+    table.lt td.gl{font-size:1.05rem;line-height:1.25;text-align:center;width:1%;white-space:nowrap}
+    table.lt td.ipa{font-size:.68rem;white-space:nowrap}
+    table.lt td.ex{font-size:.7rem;white-space:nowrap}
     .sound-match{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px}
-
-    /* ---- lessons ---- */
+    
+    /* ===== LESSONS ===== */
     .lesson{margin:0 0 2.5rem}
     .lesson h3{display:flex;align-items:center;gap:.6rem;margin-top:0}
-    .lesson h3 .n{
-      flex:none; font-size:0.72rem; font-weight:700;
-      font-variant-numeric:tabular-nums;
-    }
+    .lesson h3 .n{flex:none;font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums}
     .lesson h3 .n::after{content:'.'}
-    p.new{font-size:0.7rem;font-style:italic;color:var(--ink);margin:0 0 .9rem;letter-spacing:.01em}
-    p.new .de{font-size:0.96rem;font-style:normal;color:var(--ink);margin-left:.35rem}
+    p.new{font-size:.7rem;font-style:italic;color:var(--ink);margin:0 0 .9rem;letter-spacing:.01em}
+    p.new .de{font-size:.96rem;font-style:normal;color:var(--ink);margin-left:.35rem}
     ol.lines{list-style:none;margin:0;padding:0}
     ol.lines li{padding:.7rem 0;border-bottom:1px solid var(--line)}
     .line{font-size:1.04rem;margin:0;line-height:1.55}
-    .gloss{color:var(--ink);font-size:0.71rem;font-style:italic;line-height:1.6;margin:.15rem 0 0}
+    .gloss{color:var(--ink);font-size:.71rem;font-style:italic;line-height:1.6;margin:.15rem 0 0}
     body.hide-gloss .gloss{visibility:hidden}
-    body.hide-gloss ol.lines li:hover .gloss,
-    body.hide-gloss .passage:hover .gloss{visibility:visible}
-    .toggle{
-      font:inherit;font-size:0.68rem;font-weight:600;letter-spacing:.02em;cursor:pointer;
-      background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink);
-    }
-
-    /* ---- quoted source ---- */
-    blockquote.source{margin:0; padding-left:1.1rem; border-left:3px solid var(--line)}
+    body.hide-gloss ol.lines li:hover .gloss,body.hide-gloss .passage:hover .gloss{visibility:visible}
+    .toggle{font:inherit;font-size:.68rem;font-weight:600;letter-spacing:.02em;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink)}
+    
+    /* ===== BLOCKQUOTES ===== */
+    blockquote.source{margin:0;padding-left:1.1rem;border-left:3px solid var(--line)}
     blockquote.source p:last-of-type{margin-bottom:.9rem}
-    blockquote.source cite{display:block; font-style:italic; font-size:0.7rem; color:var(--ink)}
-
-    /* ---- passages ---- */
-    .passage{margin:0 0 .55rem; border:1px solid var(--line)}
-    .passage summary{
-      cursor:pointer; list-style:none; padding:.7rem .9rem;
-      display:flex; flex-wrap:wrap; align-items:baseline; gap:.15rem .7rem;
-    }
+    blockquote.source cite{display:block;font-style:italic;font-size:.7rem;color:var(--ink)}
+    
+    /* ===== PASSAGES ===== */
+    .passage{margin:0 0 .55rem;border:1px solid var(--line)}
+    .passage summary{cursor:pointer;list-style:none;padding:.7rem .9rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .7rem}
     .passage summary::-webkit-details-marker{display:none}
     .passage summary:hover{background:#f4f7fc}
-    .passage .ptitle{font-family:var(--sans);font-size:0.86rem;font-weight:700}
-    .passage .meta{font-size:0.68rem;font-style:italic;color:var(--ink)}
+    .passage .ptitle{font-family:var(--sans);font-size:.86rem;font-weight:700}
+    .passage .meta{font-size:.68rem;font-style:italic;color:var(--ink)}
     .passage[open] summary{border-bottom:1px solid var(--line)}
     .passage .line{margin:0 0 1.1rem}
-    .passage > p{padding:0 .9rem}
-    .passage > p:first-of-type{padding-top:.9rem}
-    .passage > p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
+    .passage>p{padding:0 .9rem}
+    .passage>p:first-of-type{padding-top:.9rem}
+    .passage>p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
     .passage .gloss{display:block}
-
-    /* ---- translator ---- */
+    
+    /* ===== TRANSLATOR ===== */
     .tr{display:grid;gap:.4rem;margin-bottom:1rem}
-    .tr label{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
-    textarea{
-      font:inherit;font-size:0.85rem;line-height:1.6;width:100%;padding:.8rem .9rem;
-      border:1px solid var(--line);border-radius:0;background:#fff;color:inherit;resize:vertical;
-    }
+    .tr label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
+    textarea{font:inherit;font-size:.85rem;line-height:1.6;width:100%;padding:.8rem .9rem;border:1px solid var(--line);border-radius:0;background:#fff;color:inherit;resize:vertical}
     textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
     #out{font-family:var(--sans);font-size:1rem;line-height:1.6}
     .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-    button.act{
-      font:inherit;font-size:0.72rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;
-      background:var(--blue);border:none;border-radius:0;padding:.55rem 1.1rem;
-    }
+    button.act{font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;background:var(--blue);border:none;border-radius:0;padding:.55rem 1.1rem}
     button.act.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
-    .note{font-size:0.72rem;line-height:1.6;color:var(--ink)}
+    .note{font-size:.72rem;line-height:1.6;color:var(--ink)}
     .note.ok{font-weight:700}
-
-    /* ================= mobile ================= */
-    /* the header sheds pieces as it narrows: the section links go first, then
-       the search, leaving the wordmark and the call to action */
-    @media(max-width:70rem){
-      /* With no sidebar, the section links cannot simply be hidden: the header
-         wraps to a second row and the links scroll sideways instead. */
-      .gh{height:auto; flex-wrap:wrap; padding-bottom:.35rem}
-      .gh-mark{padding:.5rem 1rem .4rem}
-      .gh-nav{order:3; width:100%; gap:1.1rem; overflow-x:auto; padding:.2rem 1rem .3rem}
-      .gh-spacer{display:none}
-      .gh-search{flex:1 1 auto; margin:0 .6rem}
-      .gh-cta{margin-left:auto}
-    }
-    @media(max-width:60rem){
-      main{padding:1.5rem 1.1rem 4rem}
-    }
-
-    @media(max-width:46rem){
-      .gh-search{display:none}
-      .gh-mark{padding:0 .9rem}
-      .gh-word .en{font-size:.82rem}
-      .gh-word .de{font-size:.95rem}
-      .gh-cta button{padding:.5rem .8rem;font-size:.76rem}
-    }
-    @media(max-width:34rem){
-      body{font-size:13px}
-      .gh-word .en{font-size:.72rem}
-      .gh-word .de{font-size:.84rem}
-      .gh-cta .cta-label{display:none}
-      .gh-cta button{padding:.5rem .65rem}
-      table.lt td.gl{font-size:.95rem}
-      h1{font-size:1.14rem}
-      h2{font-size:.6rem}
-      h3{font-size:0.67rem}
-      .line{font-size:0.88rem}
-    }
-    @media(min-width:76rem){
-      body{font-size:15px}
-      table.lt td.gl{font-size:1.15rem}
-      h1{font-size:1.44rem}
-      h2{font-size:.71rem}
-      h3{font-size:0.78rem}
-      .line{font-size:1.13rem}
-      main{padding:2.6rem 2rem 6rem}
-    }
-    @media(prefers-reduced-motion:no-preference){
-      .page:not([hidden]){animation:fade .22s ease}
-      @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:70rem){.gh{height:auto;flex-wrap:wrap;padding-bottom:.35rem}.gh-mark{padding:.5rem 1rem .4rem}.gh-nav{order:3;width:100%;gap:1.1rem;overflow-x:auto;padding:.2rem 1rem .3rem}.gh-spacer{display:none}.gh-search{flex:1 1 auto;margin:0 .6rem}.gh-cta{margin-left:auto}}
+    @media(max-width:60rem){main{padding:1.5rem 1.1rem 4rem}}
+    @media(max-width:46rem){.gh-search{display:none}.gh-mark{padding:0 .9rem}.gh-word .en{font-size:.82rem}.gh-word .de{font-size:.95rem}.gh-cta button{padding:.5rem .8rem;font-size:.76rem}}
+    @media(max-width:34rem){body{font-size:13px}.gh-word .en{font-size:.72rem}.gh-word .de{font-size:.84rem}.gh-cta .cta-label{display:none}.gh-cta button{padding:.5rem .65rem}table.lt td.gl{font-size:.95rem}h1{font-size:1.14rem}h2{font-size:.6rem}h3{font-size:.67rem}.line{font-size:.88rem}}
+    @media(min-width:76rem){body{font-size:15px}table.lt td.gl{font-size:1.15rem}h1{font-size:1.44rem}h2{font-size:.71rem}h3{font-size:.78rem}.line{font-size:1.13rem}main{padding:2.6rem 2rem 6rem}}
+    
+    /* ===== ANIMATIONS ===== */
+    @media(prefers-reduced-motion:no-preference){.page:not([hidden]){animation:fade .22s ease}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
   </style>
 </head>
 <body>
 
-<header class="gh">
-  <a class="gh-mark" href="#home" data-go="home" aria-label="Deseret One, home">
-    <span class="gh-word"><span class="en">Deseret One</span><span class="de">𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑌</span></span>
-  </a>
+  <!-- ========== HEADER ========== -->
+  <header class="gh">
+    <a class="gh-mark" href="#home" data-go="home" aria-label="Deseret One, home">
+      <span class="gh-word"><span class="en">Deseret One</span><span class="de">𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑌</span></span>
+    </a>
+    <nav class="gh-nav" aria-label="Sections">
+      <a href="#letters" data-go="letters">Letters</a>
+      <a href="#syllabic" data-go="syllabic">Syllabic</a>
+      <a href="#practice" data-go="practice">Practice</a>
+      <a href="#texts" data-go="texts">Texts</a>
+      <a href="#translator" data-go="translator">Translator</a>
+      <a href="#case" data-go="case">The Case</a>
+      <a href="#history" data-go="history">History</a>
+      <a href="#about" data-go="about">About</a>
+    </nav>
+    <span class="gh-spacer"></span>
+    
+    <!-- ===== SEARCH ===== -->
+    <div class="gh-search" role="search">
+      <input id="q" type="search" placeholder="Search" autocomplete="off" aria-label="Search this guide" aria-expanded="false" aria-controls="qres">
+      <button id="qbtn" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+      </button>
+      <ul class="gh-results" id="qres" role="listbox" hidden></ul>
+    </div>
+    
+    <!-- ===== CTA ===== -->
+    <div class="gh-cta">
+      <button id="deseretMode" type="button" aria-pressed="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h10M9 4v2c0 4-2.5 7-5 8"/><path d="M7 12c1.5 2.5 4 4.5 7 5"/><path d="M13 20l4-10 4 10M14.5 17h5"/></svg>
+        <span class="cta-label">Read in Deseret</span>
+      </button>
+    </div>
+  </header>
 
-  <nav class="gh-nav" aria-label="Sections">
-    <a href="#letters" data-go="letters">Letters</a>
-    <a href="#syllabic" data-go="syllabic">Syllabic</a>
-    <a href="#practice" data-go="practice">Practice</a>
-    <a href="#texts" data-go="texts">Texts</a>
-    <a href="#translator" data-go="translator">Translator</a>
-    <a href="#case" data-go="case">The Case</a>
-    <a href="#history" data-go="history">History</a>
-    <a href="#about" data-go="about">About</a>
-  </nav>
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="shell">
+    <main id="main">
+      
+      <!-- ===== PAGE: LETTERS ===== -->
+      <article class="page" id="letters" hidden>
+        <h1>The Letters</h1>
+        <div class="tw"><table class="lt"><thead><tr><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th></tr></thead><tbody><tr><td class="gl de">𐐨</td><td class="ipa">/iː/</td><td class="ex"><span class='sound-match'>ea</span>t</td><td class="gl de">𐐲</td><td class="ipa">/ʌ/</td><td class="ex"><span class='sound-match'>u</span>p</td><td class="gl de">𐐼</td><td class="ipa">/d/</td><td class="ex"><span class='sound-match'>d</span>eed</td><td class="gl de">𐑆</td><td class="ipa">/z/</td><td class="ex"><span class='sound-match'>z</span>eal</td></tr><tr><td class="gl de">𐐩</td><td class="ipa">/eɪ/</td><td class="ex"><span class='sound-match'>a</span>te</td><td class="gl de">𐐳</td><td class="ipa">/ʊ/</td><td class="ex"><span class='sound-match'>oo</span>k</td><td class="gl de">𐐽</td><td class="ipa">/tʃ/</td><td class="ex"><span class='sound-match'>ch</span>eese</td><td class="gl de">𐑇</td><td class="ipa">/ʃ/</td><td class="ex"><span class='sound-match'>sh</span>e</td></tr><tr><td class="gl de">𐐪</td><td class="ipa">/ɑː/</td><td class="ex"><span class='sound-match'>ar</span>t</td><td class="gl de">𐐴</td><td class="ipa">/aɪ/</td><td class="ex"><span class='sound-match'>i</span>ce</td><td class="gl de">𐐾</td><td class="ipa">/dʒ/</td><td class="ex"><span class='sound-match'>j</span>eep</td><td class="gl de">𐑈</td><td class="ipa">/ʒ/</td><td class="ex"><span class='sound-match'>s</span>ion</td></tr><tr><td class="gl de">𐐫</td><td class="ipa">/ɔː/</td><td class="ex"><span class='sound-match'>au</span>ght</td><td class="gl de">𐐵</td><td class="ipa">/aʊ/</td><td class="ex"><span class='sound-match'>ou</span>t</td><td class="gl de">𐐿</td><td class="ipa">/k/</td><td class="ex"><span class='sound-match'>k</span>ey</td><td class="gl de">𐑉</td><td class="ipa">/r/</td><td class="ex"><span class='sound-match'>r</span>err</td></tr><tr><td class="gl de">𐐬</td><td class="ipa">/oʊ/</td><td class="ex"><span class='sound-match'>oa</span>t</td><td class="gl de">𐐶</td><td class="ipa">/w/</td><td class="ex"><span class='sound-match'>w</span>oe</td><td class="gl de">𐑀</td><td class="ipa">/ɡ/</td><td class="ex"><span class='sound-match'>g</span>ay</td><td class="gl de">𐑊</td><td class="ipa">/l/</td><td class="ex"><span class='sound-match'>l</span>et</td></tr><tr><td class="gl de">𐐭</td><td class="ipa">/uː/</td><td class="ex"><span class='sound-match'>oo</span>ze</td><td class="gl de">𐐷</td><td class="ipa">/j/</td><td class="ex"><span class='sound-match'>y</span>ou</td><td class="gl de">𐑁</td><td class="ipa">/f/</td><td class="ex"><span class='sound-match'>f</span>ee</td><td class="gl de">𐑋</td><td class="ipa">/m/</td><td class="ex"><span class='sound-match'>m</span>e</td></tr><tr><td class="gl de">𐐮</td><td class="ipa">/ɪ/</td><td class="ex"><span class='sound-match'>i</span>t</td><td class="gl de">𐐸</td><td class="ipa">/h/</td><td class="ex"><span class='sound-match'>h</span>igh</td><td class="gl de">𐑂</td><td class="ipa">/v/</td><td class="ex"><span class='sound-match'>v</span>eer</td><td class="gl de">𐑌</td><td class="ipa">/n/</td><td class="ex"><span class='sound-match'>n</span>ee</td></tr><tr><td class="gl de">𐐯</td><td class="ipa">/ɛ/</td><td class="ex"><span class='sound-match'>e</span>nd</td><td class="gl de">𐐹</td><td class="ipa">/p/</td><td class="ex"><span class='sound-match'>p</span>ea</td><td class="gl de">𐑃</td><td class="ipa">/θ/</td><td class="ex"><span class='sound-match'>th</span>igh</td><td class="gl de">𐑍</td><td class="ipa">/ŋ/</td><td class="ex"><span class='sound-match'>ng</span></td></tr><tr><td class="gl de">𐐰</td><td class="ipa">/æ/</td><td class="ex"><span class='sound-match'>a</span>t</td><td class="gl de">𐐺</td><td class="ipa">/b/</td><td class="ex"><span class='sound-match'>b</span>ee</td><td class="gl de">𐑄</td><td class="ipa">/ð/</td><td class="ex"><span class='sound-match'>th</span>y</td><td class="gl de">𐑎</td><td class="ipa">/ɔɪ/</td><td class="ex"><span class='sound-match'>oi</span>l</td></tr><tr><td class="gl de">𐐱</td><td class="ipa">/ɒ/</td><td class="ex"><span class='sound-match'>o</span>dd</td><td class="gl de">𐐻</td><td class="ipa">/t/</td><td class="ex"><span class='sound-match'>t</span>ea</td><td class="gl de">𐑅</td><td class="ipa">/s/</td><td class="ex"><span class='sound-match'>s</span>ee</td><td class="gl de">𐑏</td><td class="ipa">/juː/</td><td class="ex"><span class='sound-match'>ew</span>e</td></tr></tbody></table></div>
+      </article>
 
-  <span class="gh-spacer"></span>
+      <!-- ===== PAGE: SYLLABIC ===== -->
+      <article class="page" id="syllabic" hidden>
+        <h1>Syllabic Values</h1>
+        <p>It is also helpful to know that many letters in the Deseret Alphabet have syllabic values, i.e. the sound it represents when used by itself. If a word has the same pronunciation as a syllabic value, the syllabic value can be used to represent it.</p>
+        <div class="tw"><table class="lt"><thead><tr><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th></tr></thead><tbody><tr><td class="gl de">𐐻</td><td class="ex">tee</td><td class="gl de">𐑅</td><td class="ex">es</td><td class="gl de">𐑊</td><td class="ex">el</td><td class="gl de">𐑌</td><td class="ex">en</td><td class="gl de">𐑄</td><td class="ex">thee</td></tr><tr><td class="gl de">𐐺</td><td class="ex">bee</td><td class="gl de">𐑁</td><td class="ex">ef</td><td class="gl de">𐑋</td><td class="ex">em</td><td class="gl de">𐑃</td><td class="ex">eth</td><td class="gl de">𐑉</td><td class="ex">er</td></tr></tbody></table></div>
+      </article>
 
-  <div class="gh-search" role="search">
-    <input id="q" type="search" placeholder="Search" autocomplete="off"
-           aria-label="Search this guide" aria-expanded="false" aria-controls="qres">
-    <button id="qbtn" aria-label="Search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
-    </button>
-    <ul class="gh-results" id="qres" role="listbox" hidden></ul>
+      <!-- ===== PAGE: PRACTICE ===== -->
+      <article class="page" id="practice" hidden>
+        <h1>Practice</h1>
+        <p>Each set uses only letters you have already met, so nothing appears before it is taught. Read the Deseret line first and sound it out; press the button for the English. Thirty-nine of the forty letters appear across the six sets — the fortieth, <span class="de">𐐱</span>, is the British short <em>o</em> and does not occur in the American reading used here.</p>
+        <p><button class="toggle" aria-pressed="true">Show the English</button></p>
+        <section class="lesson"><h3><span class="n">1</span>Short vowels, stops and nasals</h3><p class="new">New letters <span class="de">𐐰 𐐮 𐐪 𐐩 𐐹 𐐺 𐐻 𐐼 𐑋 𐑌 𐐸 𐑅 𐑆</span></p><ol class="lines"><li><p class="de line">𐐝𐐰𐑋 𐑅𐐰𐐻.</p><p class="gloss">Sam sat.</p></li><li><p class="de line">𐐓𐐮𐑋 𐐸𐐰𐐼 𐐩 𐐺𐐰𐐻.</p><p class="gloss">Tim had a bat.</p></li><li><p class="de line">𐐑𐐰𐑋 𐐼𐐮𐐼 𐑌𐐪𐐻 𐐸𐐮𐐻 𐐮𐐻.</p><p class="gloss">Pam did not hit it.</p></li><li><p class="de line">𐐁 𐐻𐐮𐑌 𐐹𐐰𐑌 𐐮𐑆 𐐰𐐻 𐐸𐐰𐑌𐐼.</p><p class="gloss">A tin pan is at hand.</p></li></ol></section>
+        <section class="lesson"><h3><span class="n">2</span>More vowels, and l, k, g, th</h3><p class="new">New letters <span class="de">𐐯 𐐫 𐑊 𐐿 𐑀 𐑄 𐐭</span></p><ol class="lines"><li><p class="de line">𐐓𐐯𐑊 𐐤𐐯𐑊 𐐻𐐭 𐑅𐐯𐑊 𐐮𐐻.</p><p class="gloss">Tell Nell to sell it.</p></li><li><p class="de line">𐐜 𐐺𐐮𐑀 𐐼𐐫𐑀 𐐿𐐰𐑌 𐐺𐐯𐑀.</p><p class="gloss">The big dog can beg.</p></li><li><p class="de line">𐐓𐐯𐑌 𐑋𐐯𐑌 𐐮𐑌 𐑄 𐐸𐐫𐑊.</p><p class="gloss">Ten men in the hall.</p></li><li><p class="de line">𐐔𐐰𐐼 𐐮𐑆 𐐰𐐻 𐑄 𐑋𐐫𐑊.</p><p class="gloss">Dad is at the mall.</p></li></ol></section>
+        <section class="lesson"><h3><span class="n">3</span>The long vowels, and r</h3><p class="new">New letters <span class="de">𐐨 𐐬 𐐵 𐐲 𐑉</span></p><ol class="lines"><li><p class="de line">𐐐𐐨 𐑅𐐨𐑆 𐑄 𐑅𐐨.</p><p class="gloss">He sees the sea.</p></li><li><p class="de line">𐐘𐐬 𐐸𐐬𐑋 𐐰𐑌𐐼 𐐨𐐻.</p><p class="gloss">Go home and eat.</p></li><li><p class="de line">𐐜 𐑋𐐭𐑌 𐐮𐑆 𐑌𐐪𐐻 𐑄 𐑅𐐲𐑌.</p><p class="gloss">The moon is not the sun.</p></li><li><p class="de line">𐐐𐐵 𐑌𐐵, 𐐺𐑉𐐵𐑌 𐐿𐐵?</p><p class="gloss">How now, brown cow?</p></li></ol></section>
+        <section class="lesson"><h3><span class="n">4</span>f, v and the middle vowels</h3><p class="new">New letters <span class="de">𐐴 𐐳 𐑁 𐑂</span></p><ol class="lines"><li><p class="de line">𐐌 𐑊𐐴𐐿 𐑋𐐴 𐑊𐐴𐑁.</p><p class="gloss">I like my life.</p></li><li><p class="de line">𐐜 𐑁𐐪𐑉𐑋 𐐮𐑆 𐑁𐐳𐑊 𐐪𐑂 𐐸𐐲𐑌𐑆.</p><p class="gloss">The farm is full of hens.</p></li><li><p class="de line">𐐘𐐮𐑂 𐑋𐐨 𐑁𐐴𐑂 𐐪𐑂 𐑄𐐯𐑋.</p><p class="gloss">Give me five of them.</p></li><li><p class="de line">𐐑𐐳𐐻 𐑄 𐐺𐐳𐐿 𐐪𐑌 𐑄 𐐼𐐯𐑅𐐿.</p><p class="gloss">Put the book on the desk.</p></li></ol></section>
+        <section class="lesson"><h3><span class="n">5</span>The hushing sounds</h3><p class="new">New letters <span class="de">𐐶 𐐽 𐐾 𐑇 𐑈 𐑃 𐑍</span></p><ol class="lines"><li><p class="de line">𐐟𐐨 𐐶𐐪𐑆 𐑂𐐯𐑉𐐨 𐐽𐐮𐑉𐑁𐐳𐑊.</p><p class="gloss">She was very cheerful.</p></li><li><p class="de line">𐐖𐐲𐐾 𐑄 𐑃𐐮𐑍 𐐺𐐴 𐐮𐐻𐑅 𐑅𐐴𐑆.</p><p class="gloss">Judge the thing by its size.</p></li><li><p class="de line">𐐎𐐮𐐽 𐑇𐐭 𐐮𐑆 𐐸𐐮𐑆?</p><p class="gloss">Which shoe is his?</p></li><li><p class="de line">𐐣𐐯𐑈𐐳𐑉 𐑄 𐐻𐑉𐐯𐑈𐐳𐑉 𐐰𐑌𐐼 𐑅𐐮𐑍 𐑄 𐑅𐐫𐑍.</p><p class="gloss">Measure the treasure and sing the song.</p></li></ol></section>
+        <section class="lesson"><h3><span class="n">6</span>Diphthongs and the last letters</h3><p class="new">New letters <span class="de">𐐷 𐑎 𐑏</span></p><ol class="lines"><li><p class="de line">𐐜 𐐺𐑎 𐑁𐐵𐑌𐐼 𐐩 𐐿𐑎𐑌.</p><p class="gloss">The boy found a coin.</p></li><li><p class="de line">𐐁 𐑁𐑏 𐑌𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li><li><p class="de line">𐐏𐐯𐑅, 𐐷𐐭 𐑋𐐩 𐐷𐐭𐑆 𐐮𐐻.</p><p class="gloss">Yes, you may use it.</p></li><li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑌 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
+      </article>
+
+      <!-- ===== PAGE: TEXTS ===== -->
+      <article class="page" id="texts" hidden>
+        <h1>Texts</h1>
+        <p>Passages set in the alphabet. Open one to read it; the English sits under each line once you ask for it. The passages run roughly hardest to easiest — the primer at the foot is the place to start.</p>
+        <p><button class="toggle" aria-pressed="true">Show the English</button></p>
+        <details class="passage" open><summary><span class="ptitle">The Lord's Prayer</span><span class="meta">Matthew 6:9–13, King James Version · public domain</span></summary><p class="de line">𐐍𐑉 𐐙𐐪𐑄𐐳𐑉 𐐶𐐮𐐽 𐐪𐑉𐐻 𐐮𐑌 𐐸𐐯𐑂𐑌, 𐐐𐐰𐑊𐐬𐐼 𐐺 𐑄𐐴 𐑌𐐩𐑋.<span class="gloss">Our Father which art in heaven, Hallowed be thy name.</span></p><p class="de line">𐐜𐐴 𐐿𐐮𐑍𐐼𐑋 𐐿𐐲𐑋. 𐐜𐐴 𐐶𐐮𐑊 𐐺 𐐼𐐲𐑌 𐐮𐑌 𐐲𐑉𐑃, 𐐰𐑆 𐐮𐐻 𐐮𐑆 𐐮𐑌 𐐸𐐯𐑂𐑌.<span class="gloss">Thy kingdom come. Thy will be done in earth, as it is in heaven.</span></p><p class="de line">𐐘𐐮𐑂 𐐲𐑅 𐑄𐐮𐑅 𐐼𐐩 𐐵𐑉 𐐼𐐩𐑊𐐨 𐐺𐑉𐐯𐐼.<span class="gloss">Give us this day our daily bread.</span></p><p class="de line">𐐈𐑌𐐼 𐑁𐐳𐑉𐑀𐐮𐑂 𐐲𐑅 𐐵𐑉 𐐼𐐯𐐻𐑅, 𐐰𐑆 𐐶𐐨 𐑁𐐳𐑉𐑀𐐮𐑂 𐐵𐑉 𐐼𐐯𐐻𐐲𐑉𐑆.<span class="gloss">And forgive us our debts, as we forgive our debtors.</span></p><p class="de line">𐐈𐑌𐐼 𐑊𐐨𐐼 𐐲𐑅 𐑌𐐪𐐻 𐐮𐑌𐐻𐐭 𐐻𐐯𐑋𐐹𐐻𐐩𐑇𐑌, 𐐺𐐲𐐻 𐐼𐐮𐑊𐐮𐑂𐐳𐑉 𐐲𐑅 𐑁𐑉𐐪𐑋 𐐨𐑂𐑊:<span class="gloss">And lead us not into temptation, but deliver us from evil:</span></p><p class="de line">𐐙𐐫𐑉 𐑄𐐴𐑌 𐐮𐑆 𐑄 𐐿𐐮𐑍𐐼𐑋, 𐐰𐑌𐐼 𐑄 𐐹𐐵𐐳𐑉, 𐐰𐑌𐐼 𐑄 𐑀𐑊𐐫𐑉𐐨, 𐑁𐐫𐑉 𐐯𐑂𐐳𐑉. 𐐁𐑋𐐯𐑌.<span class="gloss">For thine is the kingdom, and the power, and the glory, for ever. Amen.</span></p></details>
+        <details class="passage"><summary><span class="ptitle">The Twenty-Third Psalm</span><span class="meta">Psalm 23, King James Version · public domain</span></summary><p class="de line">𐐜 𐐢𐐫𐑉𐐼 𐐮𐑆 𐑋𐐴 𐑇𐐯𐐹𐐳𐑉𐐼; 𐐌 𐑇𐐰𐑊 𐑌𐐪𐐻 𐐶𐐫𐑌𐐻.<span class="gloss">The Lord is my shepherd; I shall not want.</span></p><p class="de line">𐐐𐐨 𐑋𐐩𐐿𐐳𐑃 𐑋𐐨 𐐻𐐭 𐑊𐐴 𐐼𐐵𐑌 𐐮𐑌 𐑀𐑉𐐨𐑌 𐐹𐐰𐑅𐐽𐐳𐑉𐑆: 𐐸𐐨 𐑊𐐨𐐼𐐳𐑃 𐑋𐐨 𐐺𐐮𐑅𐐴𐐼 𐑄 𐑅𐐻𐐮𐑊 𐐶𐐫𐐻𐐳𐑉𐑆.<span class="gloss">He maketh me to lie down in green pastures: he leadeth me beside the still waters.</span></p><p class="de line">𐐐𐐨 𐑉𐐮𐑅𐐻𐐫𐑉𐐳𐑃 𐑋𐐴 𐑅𐐬𐑊: 𐐸𐐨 𐑊𐐨𐐼𐐳𐑃 𐑋𐐨 𐐮𐑌 𐑄 𐐹𐐰𐑃𐑅 𐐪𐑂 𐑉𐐴𐐽𐐳𐑅𐑌𐐳𐑅 𐑁𐐫𐑉 𐐸𐐮𐑆 𐑌𐐩𐑋'𐑆 𐑅𐐩𐐿.<span class="gloss">He restoreth my soul: he leadeth me in the paths of righteousness for his name's sake.</span></p><p class="de line">𐐏𐐩, 𐑄𐐬 𐐌 𐐶𐐫𐐿 𐑃𐑉𐐭 𐑄 𐑂𐐰𐑊𐐨 𐐪𐑂 𐑄 𐑇𐐰𐐼𐐬 𐐪𐑂 𐐼𐐯𐑃, 𐐌 𐐶𐐮𐑊 𐑁𐐮𐑉 𐑌𐐬 𐐨𐑂𐑊: 𐑁𐐫𐑉 𐑄𐐵 𐐪𐑉𐐻 𐐶𐐮𐑄 𐑋𐐨; 𐑄𐐴 𐑉𐐪𐐼 𐐰𐑌𐐼 𐑄𐐴 𐑅𐐻𐐰𐑁 𐑄𐐩 𐐿𐐲𐑋𐑁𐐳𐑉𐐻 𐑋𐐨.<span class="gloss">Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.</span></p><p class="de line">𐐜𐐵 𐐹𐑉𐐮𐐹𐐯𐑉𐐳𐑅𐐻 𐐩 𐐻𐐩𐐺𐑊 𐐺𐐮𐑁𐐫𐑉 𐑋𐐨 𐐮𐑌 𐑄 𐐹𐑉𐐯𐑆𐑌𐑅 𐐪𐑂 𐑋𐐴𐑌 𐐯𐑌𐐮𐑋𐐨𐑆: 𐑄𐐵 𐐳𐑌𐑎𐑌𐐻𐐲𐑅𐐻 𐑋𐐴 𐐸𐐯𐐼 𐐶𐐮𐑄 𐑎𐑊; 𐑋𐐴 𐐿𐐲𐐹 𐑉𐐲𐑌𐐳𐑃 𐐬𐑂𐐳𐑉.<span class="gloss">Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over.</span></p><p class="de line">𐐟𐐳𐑉𐑊𐐨 𐑀𐐳𐐼𐑌𐐳𐑅 𐐰𐑌𐐼 𐑋𐐲𐑉𐑅𐐨 𐑇𐐰𐑊 𐑁𐐪𐑊𐐬 𐑋𐐨 𐐫𐑊 𐑄 𐐼𐐩𐑆 𐐪𐑂 𐑋𐐴 𐑊𐐴𐑁: 𐐰𐑌𐐼 𐐌 𐐶𐐮𐑊 𐐼𐐶𐐯𐑊 𐐮𐑌 𐑄 𐐸𐐵𐑅 𐐪𐑂 𐑄 𐐢𐐫𐑉𐐼 𐑁𐐫𐑉 𐐯𐑂𐐳𐑉.<span class="gloss">Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the Lord for ever.</span></p></details>
+        <details class="passage"><summary><span class="ptitle">In the Beginning</span><span class="meta">Genesis 1:1–5, King James Version · public domain</span></summary><p class="de line">𐐆𐑌 𐑄 𐐺𐐳𐑀𐐮𐑌𐐮𐑍 𐐘𐐪𐐼 𐐿𐑉𐐨𐐩𐐻𐐮𐐼 𐑄 𐐸𐐯𐑂𐑌 𐐰𐑌𐐼 𐑄 𐐲𐑉𐑃.<span class="gloss">In the beginning God created the heaven and the earth.</span></p><p class="de line">𐐈𐑌𐐼 𐑄 𐐲𐑉𐑃 𐐶𐐪𐑆 𐐶𐐮𐑄𐐵𐐻 𐑁𐐫𐑉𐑋, 𐐰𐑌𐐼 𐑂𐑎𐐼; 𐐰𐑌𐐼 𐐼𐐪𐑉𐐿𐑌𐐳𐑅 𐐶𐐪𐑆 𐐲𐐹𐐪𐑌 𐑄 𐑁𐐩𐑅 𐐪𐑂 𐑄 𐐼𐐨𐐹.<span class="gloss">And the earth was without form, and void; and darkness was upon the face of the deep.</span></p><p class="de line">𐐈𐑌𐐼 𐑄 𐐝𐐹𐐮𐑉𐐮𐐻 𐐪𐑂 𐐘𐐪𐐼 𐑋𐐭𐑂𐐼 𐐲𐐹𐐪𐑌 𐑄 𐑁𐐩𐑅 𐐪𐑂 𐑄 𐐶𐐫𐐻𐐳𐑉𐑆.<span class="gloss">And the Spirit of God moved upon the face of the waters.</span></p><p class="de line">𐐈𐑌𐐼 𐐘𐐪𐐼 𐑅𐐯𐐼, 𐐢𐐯𐐻 𐑄𐐯𐑉 𐐺 𐑊𐐴𐐻: 𐐰𐑌𐐼 𐑄𐐯𐑉 𐐶𐐪𐑆 𐑊𐐴𐐻.<span class="gloss">And God said, Let there be light: and there was light.</span></p><p class="de line">𐐈𐑌𐐼 𐐘𐐪𐐼 𐑅𐐫 𐑄 𐑊𐐴𐐻, 𐑄𐐰𐐻 𐐮𐐻 𐐶𐐪𐑆 𐑀𐐳𐐼: 𐐰𐑌𐐼 𐐘𐐪𐐼 𐐼𐐮𐑂𐐴𐐼𐐮𐐼 𐑄 𐑊𐐴𐐻 𐑁𐑉𐐪𐑋 𐑄 𐐼𐐪𐑉𐐿𐑌𐐳𐑅.<span class="gloss">And God saw the light, that it was good: and God divided the light from the darkness.</span></p><p class="de line">𐐈𐑌𐐼 𐐘𐐪𐐼 𐐿𐐫𐑊𐐼 𐑄 𐑊𐐴𐐻 𐐔𐐩, 𐐰𐑌𐐼 𐑄 𐐼𐐪𐑉𐐿𐑌𐐳𐑅 𐐸𐐨 𐐿𐐫𐑊𐐼 𐐤𐐴𐐻. 𐐈𐑌𐐼 𐑄 𐐨𐑂𐑌𐐮𐑍 𐐰𐑌𐐼 𐑄 𐑋𐐫𐑉𐑌𐐮𐑍 𐐶𐐲𐑉 𐑄 𐑁𐐲𐑉𐑅𐐻 𐐼𐐩.<span class="gloss">And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day.</span></p></details>
+        <details class="passage"><summary><span class="ptitle">The Words of Nephi</span><span class="meta">1 Nephi 1:1–2 · public domain</span></summary><p class="de line">𐐌, 𐐤𐐨𐑁𐐴, 𐐸𐐩𐑂𐐮𐑍 𐐺𐐨𐑌 𐐺𐐬𐑉𐑌 𐐪𐑂 𐑀𐐳𐐼𐑊𐐨 𐐹𐐯𐑉𐐳𐑌𐐻𐑅, 𐑄𐐯𐑉𐑁𐐫𐑉 𐐌 𐐶𐐪𐑆 𐐻𐐫𐐻 𐑅𐐲𐑋𐐶𐐳𐐻 𐐮𐑌 𐐫𐑊 𐑄 𐑊𐐲𐑉𐑌𐐮𐑍 𐐪𐑂 𐑋𐐴 𐑁𐐪𐑄𐐳𐑉;<span class="gloss">I, Nephi, having been born of goodly parents, therefore I was taught somewhat in all the learning of my father;</span></p><p class="de line">𐐰𐑌𐐼 𐐸𐐩𐑂𐐮𐑍 𐑅𐐨𐑌 𐑋𐐯𐑌𐐨 𐐰𐑁𐑊𐐮𐐿𐑇𐑌𐑆 𐐮𐑌 𐑄 𐐿𐐬𐑉𐑅 𐐪𐑂 𐑋𐐴 𐐼𐐩𐑆, 𐑌𐐯𐑂𐐳𐑉𐑄𐐳𐑊𐐯𐑅, 𐐸𐐩𐑂𐐮𐑍 𐐺𐐨𐑌 𐐸𐐴𐑊𐐨 𐑁𐐩𐑂𐐳𐑉𐐼 𐐪𐑂 𐑄 𐐢𐐫𐑉𐐼 𐐮𐑌 𐐫𐑊 𐑋𐐴 𐐼𐐩𐑆;<span class="gloss">and having seen many afflictions in the course of my days, nevertheless, having been highly favoured of the Lord in all my days;</span></p><p class="de line">𐐷𐐩, 𐐸𐐩𐑂𐐮𐑍 𐐸𐐰𐐼 𐐩 𐑀𐑉𐐩𐐻 𐑌𐐪𐑊𐐳𐐾 𐐪𐑂 𐑄 𐑀𐐳𐐼𐑌𐐳𐑅 𐐰𐑌𐐼 𐑄 𐑋𐐮𐑅𐐻𐐳𐑉𐐨𐑆 𐐪𐑂 𐐘𐐪𐐼, 𐑄𐐯𐑉𐑁𐐫𐑉 𐐌 𐑋𐐩𐐿 𐐩 𐑉𐐯𐐿𐐲𐑉𐐼 𐐪𐑂 𐑋𐐴 𐐹𐑉𐐳𐑅𐐨𐐼𐐮𐑍𐑆 𐐮𐑌 𐑋𐐴 𐐼𐐩𐑆.<span class="gloss">yea, having had a great knowledge of the goodness and the mysteries of God, therefore I make a record of my proceedings in my days.</span></p><p class="de line">𐐏𐐩, 𐐌 𐑋𐐩𐐿 𐐩 𐑉𐐯𐐿𐐲𐑉𐐼 𐐮𐑌 𐑄 𐑊𐐰𐑍𐑀𐐶𐐳𐐾 𐐪𐑂 𐑋𐐴 𐑁𐐪𐑄𐐳𐑉, 𐐶𐐮𐐽 𐐿𐑌𐑅𐐮𐑅𐐻𐑅 𐐪𐑂 𐑄 𐑊𐐲𐑉𐑌𐐮𐑍 𐐪𐑂 𐑄 𐐖𐑏𐑆 𐐰𐑌𐐼 𐑄 𐑊𐐰𐑍𐑀𐐶𐐳𐐾 𐐪𐑂 𐑄 𐐆𐐾𐐮𐐹𐑇𐑌𐑆.<span class="gloss">Yea, I make a record in the language of my father, which consists of the learning of the Jews and the language of the Egyptians.</span></p></details>
+        <details class="passage"><summary><span class="ptitle">The Gettysburg Address</span><span class="meta">Abraham Lincoln, 1863 · public domain</span></summary><p class="de line">𐐙𐐬𐑉 𐑅𐐿𐐬𐑉 𐐰𐑌𐐼 𐑅𐐯𐑂𐑌 𐐷𐐮𐑉𐑆 𐐲𐑀𐐬 𐐵𐑉 𐑁𐐪𐑄𐐳𐑉𐑆 𐐺𐑉𐐫𐐻 𐑁𐐫𐑉𐑃 𐐪𐑌 𐑄𐐮𐑅 𐐿𐐪𐑌𐐻𐐮𐑌𐐳𐑌𐐻 𐐩 𐑌𐐭 𐑌𐐩𐑇𐑌, 𐐿𐐳𐑌𐑅𐐨𐑂𐐼 𐐮𐑌 𐑊𐐮𐐺𐐳𐑉𐐻𐐨, 𐐰𐑌𐐼 𐐼𐐯𐐼𐐮𐐿𐐩𐐻𐐮𐐼 𐐻𐐭 𐑄 𐐹𐑉𐐪𐐹𐐳𐑆𐐮𐑇𐑌 𐑄𐐰𐐻 𐐫𐑊 𐑋𐐯𐑌 𐐪𐑉 𐐿𐑉𐐨𐐩𐐻𐐮𐐼 𐐨𐐿𐐶𐐳𐑊.<span class="gloss">Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.</span></p><p class="de line">𐐤𐐵 𐐶𐐨 𐐪𐑉 𐐮𐑌𐑀𐐩𐐾𐐼 𐐮𐑌 𐐩 𐑀𐑉𐐩𐐻 𐑅𐐮𐑂𐑊 𐐶𐐫𐑉, 𐐻𐐯𐑅𐐻𐐮𐑍 𐐶𐐯𐑄𐐳𐑉 𐑄𐐰𐐻 𐑌𐐩𐑇𐑌, 𐐫𐑉 𐐯𐑌𐐨 𐑌𐐩𐑇𐑌 𐑅𐐬 𐐿𐐳𐑌𐑅𐐨𐑂𐐼 𐐰𐑌𐐼 𐑅𐐬 𐐼𐐯𐐼𐐮𐐿𐐩𐐻𐐮𐐼, 𐐿𐐰𐑌 𐑊𐐫𐑍 𐐮𐑌𐐼𐐭𐑉.<span class="gloss">Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure.</span></p><p class="de line">𐐎𐐨 𐐪𐑉 𐑋𐐯𐐻 𐐪𐑌 𐐩 𐑀𐑉𐐩𐐻 𐐺𐐰𐐻𐐳𐑊𐑁𐐨𐑊𐐼 𐐪𐑂 𐑄𐐰𐐻 𐐶𐐫𐑉. 𐐎𐐨 𐐸𐐰𐑂 𐐿𐐲𐑋 𐐻𐐭 𐐼𐐯𐐼𐐮𐐿𐐩𐐻 𐐩 𐐹𐐫𐑉𐑇𐑌 𐐪𐑂 𐑄𐐰𐐻 𐑁𐐨𐑊𐐼 𐐰𐑆 𐐩 𐑁𐐴𐑌𐐳𐑊 𐑉𐐯𐑅𐐻𐐮𐑍 𐐹𐑊𐐩𐑅 𐑁𐐫𐑉 𐑄𐐬𐑆 𐐸𐐭 𐐸𐐨𐑉 𐑀𐐩𐑂 𐑄𐐯𐑉 𐑊𐐴𐑂𐑆 𐑄𐐰𐐻 𐑄𐐰𐐻 𐑌𐐩𐑇𐑌 𐑋𐐴𐐻 𐑊𐐴𐑂.<span class="gloss">We are met on a great battlefield of that war. We have come to dedicate a portion of that field as a final resting place for those who here gave their lives that that nation might live.</span></p><p class="de line">𐐒𐐲𐐻, 𐐮𐑌 𐐩 𐑊𐐪𐑉𐐾𐐳𐑉 𐑅𐐯𐑌𐑅, 𐐶𐐨 𐐿𐐰𐑌 𐑌𐐪𐐻 𐐼𐐯𐐼𐐮𐐿𐐩𐐻, 𐐶𐐨 𐐿𐐰𐑌 𐑌𐐪𐐻 𐐿𐐪𐑌𐑅𐐮𐐿𐑉𐐩𐐻, 𐐶𐐨 𐐿𐐰𐑌 𐑌𐐪𐐻 𐐸𐐰𐑊𐐬 𐑄𐐮𐑅 𐑀𐑉𐐵𐑌𐐼.<span class="gloss">But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground.</span></p><p class="de line">𐐜 𐐺𐑉𐐩𐑂 𐑋𐐯𐑌, 𐑊𐐴𐑂𐐮𐑍 𐐰𐑌𐐼 𐐼𐐯𐐼, 𐐸𐐭 𐑅𐐻𐑉𐐲𐑀𐑊𐐼 𐐸𐐨𐑉, 𐐸𐐰𐑂 𐐿𐐪𐑌𐑅𐐮𐐿𐑉𐐩𐐻𐐮𐐼 𐐮𐐻 𐑁𐐪𐑉 𐐳𐐺𐐲𐑂 𐐵𐑉 𐐹𐐳𐑉 𐐹𐐵𐐳𐑉 𐐻𐐭 𐐰𐐼 𐐫𐑉 𐐼𐐮𐐻𐑉𐐰𐐿𐐻.<span class="gloss">The brave men, living and dead, who struggled here, have consecrated it far above our poor power to add or detract.</span></p><p class="de line">𐐆𐐻 𐐮𐑆 𐑁𐐫𐑉 𐐲𐑅 𐑄 𐑊𐐴𐑂𐐮𐑍, 𐑉𐐰𐑄𐐳𐑉, 𐐻𐐭 𐐺 𐐼𐐯𐐼𐐮𐐿𐐩𐐻𐐮𐐼 𐐸𐐨𐑉 𐐻𐐭 𐑄 𐐲𐑌𐑁𐐮𐑌𐐮𐑇𐐻 𐐶𐐲𐑉𐐿 𐐶𐐮𐐽 𐑄𐐩 𐐸𐐭 𐑁𐐫𐐻 𐐸𐐨𐑉 𐐸𐐰𐑂 𐑄𐐲𐑅 𐑁𐐪𐑉 𐑅𐐬 𐑌𐐬𐐺𐑊𐐨 𐐳𐐼𐑂𐐰𐑌𐑅𐐻.<span class="gloss">It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced.</span></p><p class="de line">𐐜𐐰𐐻 𐐶𐐨 𐐸𐐨𐑉 𐐸𐐴𐑊𐐨 𐑉𐐮𐑆𐐪𐑊𐑂 𐑄𐐰𐐻 𐑄𐐨𐑆 𐐼𐐯𐐼 𐑇𐐰𐑊 𐑌𐐪𐐻 𐐸𐐰𐑂 𐐼𐐴𐐼 𐐮𐑌 𐑂𐐩𐑌; 𐑄𐐰𐐻 𐑄𐐮𐑅 𐑌𐐩𐑇𐑌, 𐐲𐑌𐐼𐐳𐑉 𐐘𐐪𐐼, 𐑇𐐰𐑊 𐐸𐐰𐑂 𐐩 𐑌𐐭 𐐺𐐲𐑉𐑃 𐐪𐑂 𐑁𐑉𐐨𐐼𐑋;<span class="gloss">That we here highly resolve that these dead shall not have died in vain; that this nation, under God, shall have a new birth of freedom;</span></p><p class="de line">𐐰𐑌𐐼 𐑄𐐰𐐻 𐑀𐐲𐑂𐐳𐑉𐑌𐐳𐑋𐐳𐑌𐐻 𐐪𐑂 𐑄 𐐹𐐨𐐹𐑊, 𐐺𐐴 𐑄 𐐹𐐨𐐹𐑊, 𐑁𐐫𐑉 𐑄 𐐹𐐨𐐹𐑊, 𐑇𐐰𐑊 𐑌𐐪𐐻 𐐹𐐯𐑉𐐮𐑇 𐑁𐑉𐐪𐑋 𐑄 𐐲𐑉𐑃.<span class="gloss">and that government of the people, by the people, for the people, shall not perish from the earth.</span></p></details>
+        <details class="passage"><summary><span class="ptitle">The North Wind and the Sun</span><span class="meta">Aesop · public domain</span></summary><p class="de line">𐐜 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐰𐑌𐐼 𐑄 𐐝𐐲𐑌 𐐶𐐲𐑉 𐐼𐐮𐑅𐐹𐑏𐐻𐐮𐑍 𐐶𐐮𐐽 𐐶𐐪𐑆 𐑄 𐑅𐐻𐑉𐐫𐑍𐑀𐐳𐑉, 𐐶𐐯𐑌 𐐩 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐐿𐐩𐑋 𐐳𐑊𐐫𐑍 𐑉𐐰𐐹𐐻 𐐮𐑌 𐐩 𐐶𐐫𐑉𐑋 𐐿𐑊𐐬𐐿.<span class="gloss">The North Wind and the Sun were disputing which was the stronger, when a traveller came along wrapped in a warm cloak.</span></p><p class="de line">𐐜𐐩 𐐳𐑀𐑉𐐨𐐼 𐑄𐐰𐐻 𐑄 𐐶𐐲𐑌 𐐸𐐭 𐑁𐐲𐑉𐑅𐐻 𐑅𐐳𐐿𐑅𐐨𐐼𐐮𐐼 𐐮𐑌 𐑋𐐩𐐿𐐮𐑍 𐑄 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐐻𐐩𐐿 𐐸𐐮𐑆 𐐿𐑊𐐬𐐿 𐐫𐑁 𐑇𐐳𐐼 𐐺 𐐿𐑌𐑅𐐮𐐼𐐲𐑉𐐼 𐑅𐐻𐑉𐐫𐑍𐑀𐐳𐑉 𐑄𐐰𐑌 𐑄 𐐲𐑄𐐳𐑉.<span class="gloss">They agreed that the one who first succeeded in making the traveller take his cloak off should be considered stronger than the other.</span></p><p class="de line">𐐜𐐯𐑌 𐑄 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐺𐑊𐐭 𐐰𐑆 𐐸𐐪𐑉𐐼 𐐰𐑆 𐐸𐐨 𐐿𐐳𐐼, 𐐺𐐲𐐻 𐑄 𐑋𐐫𐑉 𐐸𐐨 𐐺𐑊𐐭 𐑄 𐑋𐐫𐑉 𐐿𐑊𐐬𐑅𐑊𐐨 𐐼𐐮𐐼 𐑄 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐑁𐐬𐑊𐐼 𐐸𐐮𐑆 𐐿𐑊𐐬𐐿 𐐳𐐺𐐵𐐻 𐐸𐐮𐑋;<span class="gloss">Then the North Wind blew as hard as he could, but the more he blew the more closely did the traveller fold his cloak about him;</span></p><p class="de line">𐐰𐑌𐐼 𐐰𐐻 𐑊𐐰𐑅𐐻 𐑄 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐑀𐐩𐑂 𐐲𐐹 𐑄 𐐳𐐻𐐯𐑋𐐹𐐻.<span class="gloss">and at last the North Wind gave up the attempt.</span></p><p class="de line">𐐜𐐯𐑌 𐑄 𐐝𐐲𐑌 𐑇𐐬𐑌 𐐵𐐻 𐐶𐐫𐑉𐑋𐑊𐐨, 𐐰𐑌𐐼 𐐮𐑋𐐨𐐼𐐨𐐳𐐻𐑊𐐨 𐑄 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐐻𐐳𐐿 𐐫𐑁 𐐸𐐮𐑆 𐐿𐑊𐐬𐐿.<span class="gloss">Then the Sun shone out warmly, and immediately the traveller took off his cloak.</span></p><p class="de line">𐐈𐑌𐐼 𐑅𐐬 𐑄 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐶𐐪𐑆 𐐳𐐺𐑊𐐴𐐾𐐼 𐐻𐐭 𐐿𐐳𐑌𐑁𐐯𐑅 𐑄𐐰𐐻 𐑄 𐐝𐐲𐑌 𐐶𐐪𐑆 𐑄 𐑅𐐻𐑉𐐫𐑍𐑀𐐳𐑉 𐐪𐑂 𐑄 𐐻𐐭.<span class="gloss">And so the North Wind was obliged to confess that the Sun was the stronger of the two.</span></p></details>
+        <details class="passage"><summary><span class="ptitle">Deseret First Book</span><span class="meta">in the manner of the 1868 primer</span></summary><p class="de line">𐐜𐐮𐑅 𐐮𐑆 𐐩 𐑋𐐰𐑌. 𐐜 𐑋𐐰𐑌 𐐸𐐰𐑆 𐐩 𐐸𐐰𐐻. 𐐜 𐐸𐐰𐐻 𐐮𐑆 𐑉𐐯𐐼.<span class="gloss">This is a man. The man has a hat. The hat is red.</span></p><p class="de line">𐐜 𐐿𐐰𐐻 𐑅𐐰𐐻 𐐪𐑌 𐑄 𐑋𐐰𐐻. 𐐜 𐐿𐐰𐐻 𐐮𐑆 𐑁𐐰𐐻. 𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐐿𐐰𐐻.<span class="gloss">The cat sat on the mat. The cat is fat. I can see the cat.</span></p><p class="de line">𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐑅𐐲𐑌. 𐐜 𐑅𐐲𐑌 𐐮𐑆 𐐸𐐪𐐻. 𐐜 𐑅𐐿𐐴 𐐮𐑆 𐐺𐑊𐐭.<span class="gloss">I can see the sun. The sun is hot. The sky is blue.</span></p><p class="de line">𐐁 𐐼𐐫𐑀 𐑉𐐰𐑌 𐐻𐐭 𐑋𐐨. 𐐜 𐐼𐐫𐑀 𐐮𐑆 𐐺𐐮𐑀. 𐐌 𐑊𐐴𐐿 𐑄 𐐼𐐫𐑀.<span class="gloss">A dog ran to me. The dog is big. I like the dog.</span></p><p class="de line">𐐣𐐴 𐑁𐐪𐑄𐐳𐑉 𐐸𐐰𐑆 𐐩 𐑁𐐪𐑉𐑋. 𐐐𐐨 𐐸𐐰𐑆 𐐩 𐐿𐐵 𐐰𐑌𐐼 𐐩 𐐸𐐫𐑉𐑅.<span class="gloss">My father has a farm. He has a cow and a horse.</span></p><p class="de line">𐐎𐐨 𐑀𐐬 𐐻𐐭 𐑄 𐑁𐐪𐑉𐑋 𐐮𐑌 𐑄 𐑅𐐹𐑉𐐮𐑍. 𐐜 𐑀𐑉𐐰𐑅 𐐮𐑆 𐑀𐑉𐐨𐑌 𐐰𐑌𐐼 𐑄 𐐺𐐲𐑉𐐼𐑆 𐑅𐐮𐑍.<span class="gloss">We go to the farm in the spring. The grass is green and the birds sing.</span></p><p class="de line">𐐜 𐐺𐑎 𐐻𐐳𐐿 𐑄 𐐺𐐳𐐿. 𐐐𐐨 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐺𐐳𐐿 𐐻𐐭 𐐲𐑅.<span class="gloss">The boy took the book. He can read the book to us.</span></p><p class="de line">𐐗𐐲𐑋 𐐰𐑌𐐼 𐑅𐐨 𐐶𐐪𐐻 𐐌 𐐸𐐰𐑂 𐑁𐐵𐑌𐐼 𐐺𐐴 𐑄 𐑉𐐮𐑂𐐳𐑉.<span class="gloss">Come and see what I have found by the river.</span></p></details>
+      </article>
+
+      <!-- ===== PAGE: TRANSLATOR ===== -->
+      <article class="page" id="translator" hidden>
+        <h1>Translator</h1>
+        <p class="note" id="engineNote">Loading the dictionary&hellip;</p>
+        <div class="tr">
+          <label for="src" id="srcLabel">English</label>
+          <textarea id="src" rows="5" placeholder="Type or paste text"></textarea>
+        </div>
+        <div class="tr">
+          <label for="out" id="outLabel">Deseret</label>
+          <textarea id="out" rows="5" readonly></textarea>
+        </div>
+        <div class="row">
+          <button class="act" id="copy">Copy</button>
+          <button class="act ghost" id="swap">Deseret to English</button>
+          <span class="note" id="status" role="status"></span>
+        </div>
+      </article>
+
+      <!-- ===== PAGE: CASE ===== -->
+      <article class="page" id="case" hidden>
+        <h1>The Case for Deseret</h1>
+        <p>One case for the Deseret Alphabet is that it makes learning the English language quicker, given the standard alphabet is extremely complicated in its usage. This would make the education system more efficient.</p>
+        <p>A second case is that the visual harmony of the symbols &mdash; all taking up equal height and width &mdash; as well as the fact that spelling is more consistent with pronunciation, constitutes a more aesthetically pleasing spelling system.</p>
+      </article>
+
+      <!-- ===== PAGE: HISTORY ===== -->
+      <article class="page" id="history" hidden>
+        <h1>History</h1>
+        <blockquote class="source">
+          <p>The Church of Jesus Christ of Latter-day Saints during the years 1852-1877, introduced to its membership a form of rhetoric (writing system) called the deseret alphabet (phonetic alphabet). This experiment was intended to alleviate the problem of non-communication which was created by the great influx of foreign speaking Saints into the great Salt Lake Valley.</p>
+          <p>The alphabet was developed and encouraged by the Prophet Brigham Young and a few followers. Much to their dismay the members of the Church did not have the same vision of its workability as did its promoters.</p>
+          <p>This new alphabet appears not to have met the needs of the people nor did it interest them. Its use and development was hindered by temple building, farming, settling, new doctrine, and possibly little faith in following their prophet, president, and leader. The Deseret Alphabet died with Brigham Young in 1877. Yet, it appears to have been a noble experiment towards a spelling reform. Perhaps it would have worked under different situations and different environment.</p>
+          <cite>&mdash; Larry Ray Wintersteen, abstract of <em>A History of the Deseret Alphabet</em></cite>
+        </blockquote>
+      </article>
+
+      <!-- ===== PAGE: ABOUT ===== -->
+      <article class="page" id="about" hidden>
+        <h1>About</h1>
+        <p>This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is the sister project of the <a href="#">Deseret Alphabet web extension</a>.</p>
+        <p>The goal of this resource is to facilitate the learning and usage of the Deseret Alphabet, with the ultimate goal that it be normalised.</p>
+      </article>
+      
+    </main>
   </div>
 
-  <div class="gh-cta">
-    <button id="deseretMode" type="button" aria-pressed="false">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 6h10M9 4v2c0 4-2.5 7-5 8"/><path d="M7 12c1.5 2.5 4 4.5 7 5"/><path d="M13 20l4-10 4 10M14.5 17h5"/></svg>
-      <span class="cta-label">Read in Deseret</span>
-    </button>
-  </div>
-</header>
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    (function () {
+      'use strict';
 
-<div class="shell">
-  <main id="main">
-<article class="page" id="letters" hidden>
-<h1>The Letters</h1>
-<div class="tw"><table class="lt"><thead><tr><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th><th scope="col">Letter</th><th scope="col">Sound</th><th scope="col">As in</th></tr></thead><tbody><tr><td class="gl de">𐐨</td><td class="ipa">/iː/</td><td class="ex"><span class='sound-match'>ea</span>t</td><td class="gl de">𐐲</td><td class="ipa">/ʌ/</td><td class="ex"><span class='sound-match'>u</span>p</td><td class="gl de">𐐼</td><td class="ipa">/d/</td><td class="ex"><span class='sound-match'>d</span>eed</td><td class="gl de">𐑆</td><td class="ipa">/z/</td><td class="ex"><span class='sound-match'>z</span>eal</td></tr><tr><td class="gl de">𐐩</td><td class="ipa">/eɪ/</td><td class="ex"><span class='sound-match'>a</span>te</td><td class="gl de">𐐳</td><td class="ipa">/ʊ/</td><td class="ex"><span class='sound-match'>oo</span>k</td><td class="gl de">𐐽</td><td class="ipa">/tʃ/</td><td class="ex"><span class='sound-match'>ch</span>eese</td><td class="gl de">𐑇</td><td class="ipa">/ʃ/</td><td class="ex"><span class='sound-match'>sh</span>e</td></tr><tr><td class="gl de">𐐪</td><td class="ipa">/ɑː/</td><td class="ex"><span class='sound-match'>ar</span>t</td><td class="gl de">𐐴</td><td class="ipa">/aɪ/</td><td class="ex"><span class='sound-match'>i</span>ce</td><td class="gl de">𐐾</td><td class="ipa">/dʒ/</td><td class="ex"><span class='sound-match'>j</span>eep</td><td class="gl de">𐑈</td><td class="ipa">/ʒ/</td><td class="ex"><span class='sound-match'>s</span>ion</td></tr><tr><td class="gl de">𐐫</td><td class="ipa">/ɔː/</td><td class="ex"><span class='sound-match'>au</span>ght</td><td class="gl de">𐐵</td><td class="ipa">/aʊ/</td><td class="ex"><span class='sound-match'>ou</span>t</td><td class="gl de">𐐿</td><td class="ipa">/k/</td><td class="ex"><span class='sound-match'>k</span>ey</td><td class="gl de">𐑉</td><td class="ipa">/r/</td><td class="ex"><span class='sound-match'>r</span>err</td></tr><tr><td class="gl de">𐐬</td><td class="ipa">/oʊ/</td><td class="ex"><span class='sound-match'>oa</span>t</td><td class="gl de">𐐶</td><td class="ipa">/w/</td><td class="ex"><span class='sound-match'>w</span>oe</td><td class="gl de">𐑀</td><td class="ipa">/ɡ/</td><td class="ex"><span class='sound-match'>g</span>ay</td><td class="gl de">𐑊</td><td class="ipa">/l/</td><td class="ex"><span class='sound-match'>l</span>et</td></tr><tr><td class="gl de">𐐭</td><td class="ipa">/uː/</td><td class="ex"><span class='sound-match'>oo</span>ze</td><td class="gl de">𐐷</td><td class="ipa">/j/</td><td class="ex"><span class='sound-match'>y</span>ou</td><td class="gl de">𐑁</td><td class="ipa">/f/</td><td class="ex"><span class='sound-match'>f</span>ee</td><td class="gl de">𐑋</td><td class="ipa">/m/</td><td class="ex"><span class='sound-match'>m</span>e</td></tr><tr><td class="gl de">𐐮</td><td class="ipa">/ɪ/</td><td class="ex"><span class='sound-match'>i</span>t</td><td class="gl de">𐐸</td><td class="ipa">/h/</td><td class="ex"><span class='sound-match'>h</span>igh</td><td class="gl de">𐑂</td><td class="ipa">/v/</td><td class="ex"><span class='sound-match'>v</span>eer</td><td class="gl de">𐑌</td><td class="ipa">/n/</td><td class="ex"><span class='sound-match'>n</span>ee</td></tr><tr><td class="gl de">𐐯</td><td class="ipa">/ɛ/</td><td class="ex"><span class='sound-match'>e</span>nd</td><td class="gl de">𐐹</td><td class="ipa">/p/</td><td class="ex"><span class='sound-match'>p</span>ea</td><td class="gl de">𐑃</td><td class="ipa">/θ/</td><td class="ex"><span class='sound-match'>th</span>igh</td><td class="gl de">𐑍</td><td class="ipa">/ŋ/</td><td class="ex"><span class='sound-match'>ng</span></td></tr><tr><td class="gl de">𐐰</td><td class="ipa">/æ/</td><td class="ex"><span class='sound-match'>a</span>t</td><td class="gl de">𐐺</td><td class="ipa">/b/</td><td class="ex"><span class='sound-match'>b</span>ee</td><td class="gl de">𐑄</td><td class="ipa">/ð/</td><td class="ex"><span class='sound-match'>th</span>y</td><td class="gl de">𐑎</td><td class="ipa">/ɔɪ/</td><td class="ex"><span class='sound-match'>oi</span>l</td></tr><tr><td class="gl de">𐐱</td><td class="ipa">/ɒ/</td><td class="ex"><span class='sound-match'>o</span>dd</td><td class="gl de">𐐻</td><td class="ipa">/t/</td><td class="ex"><span class='sound-match'>t</span>ea</td><td class="gl de">𐑅</td><td class="ipa">/s/</td><td class="ex"><span class='sound-match'>s</span>ee</td><td class="gl de">𐑏</td><td class="ipa">/juː/</td><td class="ex"><span class='sound-match'>ew</span>e</td></tr></tbody></table></div>
-</article>
+      // ===== CONFIG =====
+      var OPTS = {
+        flapMode: 't', flappedTAsD: false, schwaAsFoot: true,
+        clusterStrictness: 'strong', reduceTlDlClusters: true,
+        insertDlSeparator: false, ligatures: true, syllabicValues: true
+      };
+      var DIALECT = 'general-us';
 
-<article class="page" id="syllabic" hidden>
-<h1>Syllabic Values</h1>
-<p>It is also helpful to know that many letters in the Deseret Alphabet have syllabic values, i.e. the sound it represents when used by itself. If a word has the same pronunciation as a syllabic value, the syllabic value can be used to represent it.</p><div class="tw"><table class="lt"><thead><tr><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th><th scope="col">Letter</th><th scope="col">Value</th></tr></thead><tbody><tr><td class="gl de">𐐻</td><td class="ex">tee</td><td class="gl de">𐑅</td><td class="ex">es</td><td class="gl de">𐑊</td><td class="ex">el</td><td class="gl de">𐑌</td><td class="ex">en</td><td class="gl de">𐑄</td><td class="ex">thee</td></tr><tr><td class="gl de">𐐺</td><td class="ex">bee</td><td class="gl de">𐑁</td><td class="ex">ef</td><td class="gl de">𐑋</td><td class="ex">em</td><td class="gl de">𐑃</td><td class="ex">eth</td><td class="gl de">𐑉</td><td class="ex">er</td></tr></tbody></table></div>
-</article>
+      // ===== DOM REFS =====
+      var pages = [].slice.call(document.querySelectorAll('.page'));
+      var links = [].slice.call(document.querySelectorAll('[data-go]'));
+      var ids = pages.map(function (p) { return p.id; });
+      var body = document.body;
 
-<article class="page" id="practice" hidden>
-<h1>Practice</h1>
-<p>Each set uses only letters you have already met, so nothing appears before it is taught. Read the Deseret line first and sound it out; press the button for the English. Thirty-nine of the forty letters appear across the six sets — the fortieth, <span class="de">𐐱</span>, is the British short <em>o</em> and does not occur in the American reading used here.</p>
-    <p><button class="toggle" aria-pressed="true">Show the English</button></p>
-<section class="lesson"><h3><span class="n">1</span>Short vowels, stops and nasals</h3><p class="new">New letters <span class="de">𐐰 𐐮 𐐪 𐐩 𐐹 𐐺 𐐻 𐐼 𐑋 𐑌 𐐸 𐑅 𐑆</span></p><ol class="lines"><li><p class="de line">𐐝𐐰𐑋 𐑅𐐰𐐻.</p><p class="gloss">Sam sat.</p></li>
-<li><p class="de line">𐐓𐐮𐑋 𐐸𐐰𐐼 𐐩 𐐺𐐰𐐻.</p><p class="gloss">Tim had a bat.</p></li>
-<li><p class="de line">𐐑𐐰𐑋 𐐼𐐮𐐼 𐑌𐐪𐐻 𐐸𐐮𐐻 𐐮𐐻.</p><p class="gloss">Pam did not hit it.</p></li>
-<li><p class="de line">𐐁 𐐻𐐮𐑌 𐐹𐐰𐑌 𐐮𐑆 𐐰𐐻 𐐸𐐰𐑌𐐼.</p><p class="gloss">A tin pan is at hand.</p></li></ol></section>
-<section class="lesson"><h3><span class="n">2</span>More vowels, and l, k, g, th</h3><p class="new">New letters <span class="de">𐐯 𐐫 𐑊 𐐿 𐑀 𐑄 𐐭</span></p><ol class="lines"><li><p class="de line">𐐓𐐯𐑊 𐐤𐐯𐑊 𐐻𐐭 𐑅𐐯𐑊 𐐮𐐻.</p><p class="gloss">Tell Nell to sell it.</p></li>
-<li><p class="de line">𐐜 𐐺𐐮𐑀 𐐼𐐫𐑀 𐐿𐐰𐑌 𐐺𐐯𐑀.</p><p class="gloss">The big dog can beg.</p></li>
-<li><p class="de line">𐐓𐐯𐑌 𐑋𐐯𐑌 𐐮𐑌 𐑄 𐐸𐐫𐑊.</p><p class="gloss">Ten men in the hall.</p></li>
-<li><p class="de line">𐐔𐐰𐐼 𐐮𐑆 𐐰𐐻 𐑄 𐑋𐐫𐑊.</p><p class="gloss">Dad is at the mall.</p></li></ol></section>
-<section class="lesson"><h3><span class="n">3</span>The long vowels, and r</h3><p class="new">New letters <span class="de">𐐨 𐐬 𐐵 𐐲 𐑉</span></p><ol class="lines"><li><p class="de line">𐐐𐐨 𐑅𐐨𐑆 𐑄 𐑅𐐨.</p><p class="gloss">He sees the sea.</p></li>
-<li><p class="de line">𐐘𐐬 𐐸𐐬𐑋 𐐰𐑌𐐼 𐐨𐐻.</p><p class="gloss">Go home and eat.</p></li>
-<li><p class="de line">𐐜 𐑋𐐭𐑌 𐐮𐑆 𐑌𐐪𐐻 𐑄 𐑅𐐲𐑌.</p><p class="gloss">The moon is not the sun.</p></li>
-<li><p class="de line">𐐐𐐵 𐑌𐐵, 𐐺𐑉𐐵𐑌 𐐿𐐵?</p><p class="gloss">How now, brown cow?</p></li></ol></section>
-<section class="lesson"><h3><span class="n">4</span>f, v and the middle vowels</h3><p class="new">New letters <span class="de">𐐴 𐐳 𐑁 𐑂</span></p><ol class="lines"><li><p class="de line">𐐌 𐑊𐐴𐐿 𐑋𐐴 𐑊𐐴𐑁.</p><p class="gloss">I like my life.</p></li>
-<li><p class="de line">𐐜 𐑁𐐪𐑉𐑋 𐐮𐑆 𐑁𐐳𐑊 𐐪𐑂 𐐸𐐲𐑌𐑆.</p><p class="gloss">The farm is full of hens.</p></li>
-<li><p class="de line">𐐘𐐮𐑂 𐑋𐐨 𐑁𐐴𐑂 𐐪𐑂 𐑄𐐯𐑋.</p><p class="gloss">Give me five of them.</p></li>
-<li><p class="de line">𐐑𐐳𐐻 𐑄 𐐺𐐳𐐿 𐐪𐑌 𐑄 𐐼𐐯𐑅𐐿.</p><p class="gloss">Put the book on the desk.</p></li></ol></section>
-<section class="lesson"><h3><span class="n">5</span>The hushing sounds</h3><p class="new">New letters <span class="de">𐐶 𐐽 𐐾 𐑇 𐑈 𐑃 𐑍</span></p><ol class="lines"><li><p class="de line">𐐟𐐨 𐐶𐐪𐑆 𐑂𐐯𐑉𐐨 𐐽𐐮𐑉𐑁𐐳𐑊.</p><p class="gloss">She was very cheerful.</p></li>
-<li><p class="de line">𐐖𐐲𐐾 𐑄 𐑃𐐮𐑍 𐐺𐐴 𐐮𐐻𐑅 𐑅𐐴𐑆.</p><p class="gloss">Judge the thing by its size.</p></li>
-<li><p class="de line">𐐎𐐮𐐽 𐑇𐐭 𐐮𐑆 𐐸𐐮𐑆?</p><p class="gloss">Which shoe is his?</p></li>
-<li><p class="de line">𐐣𐐯𐑈𐐳𐑉 𐑄 𐐻𐑉𐐯𐑈𐐳𐑉 𐐰𐑌𐐼 𐑅𐐮𐑍 𐑄 𐑅𐐫𐑍.</p><p class="gloss">Measure the treasure and sing the song.</p></li></ol></section>
-<section class="lesson"><h3><span class="n">6</span>Diphthongs and the last letters</h3><p class="new">New letters <span class="de">𐐷 𐑎 𐑏</span></p><ol class="lines"><li><p class="de line">𐐜 𐐺𐑎 𐑁𐐵𐑌𐐼 𐐩 𐐿𐑎𐑌.</p><p class="gloss">The boy found a coin.</p></li>
-<li><p class="de line">𐐁 𐑁𐑏 𐑌𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li>
-<li><p class="de line">𐐏𐐯𐑅, 𐐷𐐭 𐑋𐐩 𐐷𐐭𐑆 𐐮𐐻.</p><p class="gloss">Yes, you may use it.</p></li>
-<li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑌 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
-</article>
-
-<article class="page" id="texts" hidden>
-<h1>Texts</h1>
-<p>Passages set in the alphabet. Open one to read it; the English sits under each line once you ask for it. The passages run roughly hardest to easiest — the primer at the foot is the place to start.</p>
-<p><button class="toggle" aria-pressed="true">Show the English</button></p>
-<details class="passage" open><summary><span class="ptitle">The Lord's Prayer</span><span class="meta">Matthew 6:9–13, King James Version · public domain</span></summary><p class="de line">𐐍𐑉 𐐙𐐪𐑄𐐳𐑉 𐐶𐐮𐐽 𐐪𐑉𐐻 𐐮𐑌 𐐸𐐯𐑂𐑌, 𐐐𐐰𐑊𐐬𐐼 𐐺 𐑄𐐴 𐑌𐐩𐑋.<span class="gloss">Our Father which art in heaven, Hallowed be thy name.</span></p>
-<p class="de line">𐐜𐐴 𐐿𐐮𐑍𐐼𐑋 𐐿𐐲𐑋. 𐐜𐐴 𐐶𐐮𐑊 𐐺 𐐼𐐲𐑌 𐐮𐑌 𐐲𐑉𐑃, 𐐰𐑆 𐐮𐐻 𐐮𐑆 𐐮𐑌 𐐸𐐯𐑂𐑌.<span class="gloss">Thy kingdom come. Thy will be done in earth, as it is in heaven.</span></p>
-<p class="de line">𐐘𐐮𐑂 𐐲𐑅 𐑄𐐮𐑅 𐐼𐐩 𐐵𐑉 𐐼𐐩𐑊𐐨 𐐺𐑉𐐯𐐼.<span class="gloss">Give us this day our daily bread.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐑁𐐳𐑉𐑀𐐮𐑂 𐐲𐑅 𐐵𐑉 𐐼𐐯𐐻𐑅, 𐐰𐑆 𐐶𐐨 𐑁𐐳𐑉𐑀𐐮𐑂 𐐵𐑉 𐐼𐐯𐐻𐐲𐑉𐑆.<span class="gloss">And forgive us our debts, as we forgive our debtors.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐑊𐐨𐐼 𐐲𐑅 𐑌𐐪𐐻 𐐮𐑌𐐻𐐭 𐐻𐐯𐑋𐐹𐐻𐐩𐑇𐑌, 𐐺𐐲𐐻 𐐼𐐮𐑊𐐮𐑂𐐳𐑉 𐐲𐑅 𐑁𐑉𐐪𐑋 𐐨𐑂𐑊:<span class="gloss">And lead us not into temptation, but deliver us from evil:</span></p>
-<p class="de line">𐐙𐐫𐑉 𐑄𐐴𐑌 𐐮𐑆 𐑄 𐐿𐐮𐑍𐐼𐑋, 𐐰𐑌𐐼 𐑄 𐐹𐐵𐐳𐑉, 𐐰𐑌𐐼 𐑄 𐑀𐑊𐐫𐑉𐐨, 𐑁𐐫𐑉 𐐯𐑂𐐳𐑉. 𐐁𐑋𐐯𐑌.<span class="gloss">For thine is the kingdom, and the power, and the glory, for ever. Amen.</span></p></details>
-<details class="passage"><summary><span class="ptitle">The Twenty-Third Psalm</span><span class="meta">Psalm 23, King James Version · public domain</span></summary><p class="de line">𐐜 𐐢𐐫𐑉𐐼 𐐮𐑆 𐑋𐐴 𐑇𐐯𐐹𐐳𐑉𐐼; 𐐌 𐑇𐐰𐑊 𐑌𐐪𐐻 𐐶𐐫𐑌𐐻.<span class="gloss">The Lord is my shepherd; I shall not want.</span></p>
-<p class="de line">𐐐𐐨 𐑋𐐩𐐿𐐳𐑃 𐑋𐐨 𐐻𐐭 𐑊𐐴 𐐼𐐵𐑌 𐐮𐑌 𐑀𐑉𐐨𐑌 𐐹𐐰𐑅𐐽𐐳𐑉𐑆: 𐐸𐐨 𐑊𐐨𐐼𐐳𐑃 𐑋𐐨 𐐺𐐮𐑅𐐴𐐼 𐑄 𐑅𐐻𐐮𐑊 𐐶𐐫𐐻𐐳𐑉𐑆.<span class="gloss">He maketh me to lie down in green pastures: he leadeth me beside the still waters.</span></p>
-<p class="de line">𐐐𐐨 𐑉𐐮𐑅𐐻𐐫𐑉𐐳𐑃 𐑋𐐴 𐑅𐐬𐑊: 𐐸𐐨 𐑊𐐨𐐼𐐳𐑃 𐑋𐐨 𐐮𐑌 𐑄 𐐹𐐰𐑃𐑅 𐐪𐑂 𐑉𐐴𐐽𐐳𐑅𐑌𐐳𐑅 𐑁𐐫𐑉 𐐸𐐮𐑆 𐑌𐐩𐑋'𐑆 𐑅𐐩𐐿.<span class="gloss">He restoreth my soul: he leadeth me in the paths of righteousness for his name's sake.</span></p>
-<p class="de line">𐐏𐐩, 𐑄𐐬 𐐌 𐐶𐐫𐐿 𐑃𐑉𐐭 𐑄 𐑂𐐰𐑊𐐨 𐐪𐑂 𐑄 𐑇𐐰𐐼𐐬 𐐪𐑂 𐐼𐐯𐑃, 𐐌 𐐶𐐮𐑊 𐑁𐐮𐑉 𐑌𐐬 𐐨𐑂𐑊: 𐑁𐐫𐑉 𐑄𐐵 𐐪𐑉𐐻 𐐶𐐮𐑄 𐑋𐐨; 𐑄𐐴 𐑉𐐪𐐼 𐐰𐑌𐐼 𐑄𐐴 𐑅𐐻𐐰𐑁 𐑄𐐩 𐐿𐐲𐑋𐑁𐐳𐑉𐐻 𐑋𐐨.<span class="gloss">Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.</span></p>
-<p class="de line">𐐜𐐵 𐐹𐑉𐐮𐐹𐐯𐑉𐐳𐑅𐐻 𐐩 𐐻𐐩𐐺𐑊 𐐺𐐮𐑁𐐫𐑉 𐑋𐐨 𐐮𐑌 𐑄 𐐹𐑉𐐯𐑆𐑌𐑅 𐐪𐑂 𐑋𐐴𐑌 𐐯𐑌𐐮𐑋𐐨𐑆: 𐑄𐐵 𐐳𐑌𐑎𐑌𐐻𐐲𐑅𐐻 𐑋𐐴 𐐸𐐯𐐼 𐐶𐐮𐑄 𐑎𐑊; 𐑋𐐴 𐐿𐐲𐐹 𐑉𐐲𐑌𐐳𐑃 𐐬𐑂𐐳𐑉.<span class="gloss">Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over.</span></p>
-<p class="de line">𐐟𐐳𐑉𐑊𐐨 𐑀𐐳𐐼𐑌𐐳𐑅 𐐰𐑌𐐼 𐑋𐐲𐑉𐑅𐐨 𐑇𐐰𐑊 𐑁𐐪𐑊𐐬 𐑋𐐨 𐐫𐑊 𐑄 𐐼𐐩𐑆 𐐪𐑂 𐑋𐐴 𐑊𐐴𐑁: 𐐰𐑌𐐼 𐐌 𐐶𐐮𐑊 𐐼𐐶𐐯𐑊 𐐮𐑌 𐑄 𐐸𐐵𐑅 𐐪𐑂 𐑄 𐐢𐐫𐑉𐐼 𐑁𐐫𐑉 𐐯𐑂𐐳𐑉.<span class="gloss">Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the Lord for ever.</span></p></details>
-<details class="passage"><summary><span class="ptitle">In the Beginning</span><span class="meta">Genesis 1:1–5, King James Version · public domain</span></summary><p class="de line">𐐆𐑌 𐑄 𐐺𐐳𐑀𐐮𐑌𐐮𐑍 𐐘𐐪𐐼 𐐿𐑉𐐨𐐩𐐻𐐮𐐼 𐑄 𐐸𐐯𐑂𐑌 𐐰𐑌𐐼 𐑄 𐐲𐑉𐑃.<span class="gloss">In the beginning God created the heaven and the earth.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐑄 𐐲𐑉𐑃 𐐶𐐪𐑆 𐐶𐐮𐑄𐐵𐐻 𐑁𐐫𐑉𐑋, 𐐰𐑌𐐼 𐑂𐑎𐐼; 𐐰𐑌𐐼 𐐼𐐪𐑉𐐿𐑌𐐳𐑅 𐐶𐐪𐑆 𐐲𐐹𐐪𐑌 𐑄 𐑁𐐩𐑅 𐐪𐑂 𐑄 𐐼𐐨𐐹.<span class="gloss">And the earth was without form, and void; and darkness was upon the face of the deep.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐑄 𐐝𐐹𐐮𐑉𐐮𐐻 𐐪𐑂 𐐘𐐪𐐼 𐑋𐐭𐑂𐐼 𐐲𐐹𐐪𐑌 𐑄 𐑁𐐩𐑅 𐐪𐑂 𐑄 𐐶𐐫𐐻𐐳𐑉𐑆.<span class="gloss">And the Spirit of God moved upon the face of the waters.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐐘𐐪𐐼 𐑅𐐯𐐼, 𐐢𐐯𐐻 𐑄𐐯𐑉 𐐺 𐑊𐐴𐐻: 𐐰𐑌𐐼 𐑄𐐯𐑉 𐐶𐐪𐑆 𐑊𐐴𐐻.<span class="gloss">And God said, Let there be light: and there was light.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐐘𐐪𐐼 𐑅𐐫 𐑄 𐑊𐐴𐐻, 𐑄𐐰𐐻 𐐮𐐻 𐐶𐐪𐑆 𐑀𐐳𐐼: 𐐰𐑌𐐼 𐐘𐐪𐐼 𐐼𐐮𐑂𐐴𐐼𐐮𐐼 𐑄 𐑊𐐴𐐻 𐑁𐑉𐐪𐑋 𐑄 𐐼𐐪𐑉𐐿𐑌𐐳𐑅.<span class="gloss">And God saw the light, that it was good: and God divided the light from the darkness.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐐘𐐪𐐼 𐐿𐐫𐑊𐐼 𐑄 𐑊𐐴𐐻 𐐔𐐩, 𐐰𐑌𐐼 𐑄 𐐼𐐪𐑉𐐿𐑌𐐳𐑅 𐐸𐐨 𐐿𐐫𐑊𐐼 𐐤𐐴𐐻. 𐐈𐑌𐐼 𐑄 𐐨𐑂𐑌𐐮𐑍 𐐰𐑌𐐼 𐑄 𐑋𐐫𐑉𐑌𐐮𐑍 𐐶𐐲𐑉 𐑄 𐑁𐐲𐑉𐑅𐐻 𐐼𐐩.<span class="gloss">And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day.</span></p></details>
-<details class="passage"><summary><span class="ptitle">The Words of Nephi</span><span class="meta">1 Nephi 1:1–2 · public domain</span></summary><p class="de line">𐐌, 𐐤𐐨𐑁𐐴, 𐐸𐐩𐑂𐐮𐑍 𐐺𐐨𐑌 𐐺𐐬𐑉𐑌 𐐪𐑂 𐑀𐐳𐐼𐑊𐐨 𐐹𐐯𐑉𐐳𐑌𐐻𐑅, 𐑄𐐯𐑉𐑁𐐫𐑉 𐐌 𐐶𐐪𐑆 𐐻𐐫𐐻 𐑅𐐲𐑋𐐶𐐳𐐻 𐐮𐑌 𐐫𐑊 𐑄 𐑊𐐲𐑉𐑌𐐮𐑍 𐐪𐑂 𐑋𐐴 𐑁𐐪𐑄𐐳𐑉;<span class="gloss">I, Nephi, having been born of goodly parents, therefore I was taught somewhat in all the learning of my father;</span></p>
-<p class="de line">𐐰𐑌𐐼 𐐸𐐩𐑂𐐮𐑍 𐑅𐐨𐑌 𐑋𐐯𐑌𐐨 𐐰𐑁𐑊𐐮𐐿𐑇𐑌𐑆 𐐮𐑌 𐑄 𐐿𐐬𐑉𐑅 𐐪𐑂 𐑋𐐴 𐐼𐐩𐑆, 𐑌𐐯𐑂𐐳𐑉𐑄𐐳𐑊𐐯𐑅, 𐐸𐐩𐑂𐐮𐑍 𐐺𐐨𐑌 𐐸𐐴𐑊𐐨 𐑁𐐩𐑂𐐳𐑉𐐼 𐐪𐑂 𐑄 𐐢𐐫𐑉𐐼 𐐮𐑌 𐐫𐑊 𐑋𐐴 𐐼𐐩𐑆;<span class="gloss">and having seen many afflictions in the course of my days, nevertheless, having been highly favoured of the Lord in all my days;</span></p>
-<p class="de line">𐐷𐐩, 𐐸𐐩𐑂𐐮𐑍 𐐸𐐰𐐼 𐐩 𐑀𐑉𐐩𐐻 𐑌𐐪𐑊𐐳𐐾 𐐪𐑂 𐑄 𐑀𐐳𐐼𐑌𐐳𐑅 𐐰𐑌𐐼 𐑄 𐑋𐐮𐑅𐐻𐐳𐑉𐐨𐑆 𐐪𐑂 𐐘𐐪𐐼, 𐑄𐐯𐑉𐑁𐐫𐑉 𐐌 𐑋𐐩𐐿 𐐩 𐑉𐐯𐐿𐐲𐑉𐐼 𐐪𐑂 𐑋𐐴 𐐹𐑉𐐳𐑅𐐨𐐼𐐮𐑍𐑆 𐐮𐑌 𐑋𐐴 𐐼𐐩𐑆.<span class="gloss">yea, having had a great knowledge of the goodness and the mysteries of God, therefore I make a record of my proceedings in my days.</span></p>
-<p class="de line">𐐏𐐩, 𐐌 𐑋𐐩𐐿 𐐩 𐑉𐐯𐐿𐐲𐑉𐐼 𐐮𐑌 𐑄 𐑊𐐰𐑍𐑀𐐶𐐳𐐾 𐐪𐑂 𐑋𐐴 𐑁𐐪𐑄𐐳𐑉, 𐐶𐐮𐐽 𐐿𐑌𐑅𐐮𐑅𐐻𐑅 𐐪𐑂 𐑄 𐑊𐐲𐑉𐑌𐐮𐑍 𐐪𐑂 𐑄 𐐖𐑏𐑆 𐐰𐑌𐐼 𐑄 𐑊𐐰𐑍𐑀𐐶𐐳𐐾 𐐪𐑂 𐑄 𐐆𐐾𐐮𐐹𐑇𐑌𐑆.<span class="gloss">Yea, I make a record in the language of my father, which consists of the learning of the Jews and the language of the Egyptians.</span></p></details>
-<details class="passage"><summary><span class="ptitle">The Gettysburg Address</span><span class="meta">Abraham Lincoln, 1863 · public domain</span></summary><p class="de line">𐐙𐐬𐑉 𐑅𐐿𐐬𐑉 𐐰𐑌𐐼 𐑅𐐯𐑂𐑌 𐐷𐐮𐑉𐑆 𐐲𐑀𐐬 𐐵𐑉 𐑁𐐪𐑄𐐳𐑉𐑆 𐐺𐑉𐐫𐐻 𐑁𐐫𐑉𐑃 𐐪𐑌 𐑄𐐮𐑅 𐐿𐐪𐑌𐐻𐐮𐑌𐐳𐑌𐐻 𐐩 𐑌𐐭 𐑌𐐩𐑇𐑌, 𐐿𐐳𐑌𐑅𐐨𐑂𐐼 𐐮𐑌 𐑊𐐮𐐺𐐳𐑉𐐻𐐨, 𐐰𐑌𐐼 𐐼𐐯𐐼𐐮𐐿𐐩𐐻𐐮𐐼 𐐻𐐭 𐑄 𐐹𐑉𐐪𐐹𐐳𐑆𐐮𐑇𐑌 𐑄𐐰𐐻 𐐫𐑊 𐑋𐐯𐑌 𐐪𐑉 𐐿𐑉𐐨𐐩𐐻𐐮𐐼 𐐨𐐿𐐶𐐳𐑊.<span class="gloss">Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.</span></p>
-<p class="de line">𐐤𐐵 𐐶𐐨 𐐪𐑉 𐐮𐑌𐑀𐐩𐐾𐐼 𐐮𐑌 𐐩 𐑀𐑉𐐩𐐻 𐑅𐐮𐑂𐑊 𐐶𐐫𐑉, 𐐻𐐯𐑅𐐻𐐮𐑍 𐐶𐐯𐑄𐐳𐑉 𐑄𐐰𐐻 𐑌𐐩𐑇𐑌, 𐐫𐑉 𐐯𐑌𐐨 𐑌𐐩𐑇𐑌 𐑅𐐬 𐐿𐐳𐑌𐑅𐐨𐑂𐐼 𐐰𐑌𐐼 𐑅𐐬 𐐼𐐯𐐼𐐮𐐿𐐩𐐻𐐮𐐼, 𐐿𐐰𐑌 𐑊𐐫𐑍 𐐮𐑌𐐼𐐭𐑉.<span class="gloss">Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure.</span></p>
-<p class="de line">𐐎𐐨 𐐪𐑉 𐑋𐐯𐐻 𐐪𐑌 𐐩 𐑀𐑉𐐩𐐻 𐐺𐐰𐐻𐐳𐑊𐑁𐐨𐑊𐐼 𐐪𐑂 𐑄𐐰𐐻 𐐶𐐫𐑉. 𐐎𐐨 𐐸𐐰𐑂 𐐿𐐲𐑋 𐐻𐐭 𐐼𐐯𐐼𐐮𐐿𐐩𐐻 𐐩 𐐹𐐫𐑉𐑇𐑌 𐐪𐑂 𐑄𐐰𐐻 𐑁𐐨𐑊𐐼 𐐰𐑆 𐐩 𐑁𐐴𐑌𐐳𐑊 𐑉𐐯𐑅𐐻𐐮𐑍 𐐹𐑊𐐩𐑅 𐑁𐐫𐑉 𐑄𐐬𐑆 𐐸𐐭 𐐸𐐨𐑉 𐑀𐐩𐑂 𐑄𐐯𐑉 𐑊𐐴𐑂𐑆 𐑄𐐰𐐻 𐑄𐐰𐐻 𐑌𐐩𐑇𐑌 𐑋𐐴𐐻 𐑊𐐴𐑂.<span class="gloss">We are met on a great battlefield of that war. We have come to dedicate a portion of that field as a final resting place for those who here gave their lives that that nation might live.</span></p>
-<p class="de line">𐐒𐐲𐐻, 𐐮𐑌 𐐩 𐑊𐐪𐑉𐐾𐐳𐑉 𐑅𐐯𐑌𐑅, 𐐶𐐨 𐐿𐐰𐑌 𐑌𐐪𐐻 𐐼𐐯𐐼𐐮𐐿𐐩𐐻, 𐐶𐐨 𐐿𐐰𐑌 𐑌𐐪𐐻 𐐿𐐪𐑌𐑅𐐮𐐿𐑉𐐩𐐻, 𐐶𐐨 𐐿𐐰𐑌 𐑌𐐪𐐻 𐐸𐐰𐑊𐐬 𐑄𐐮𐑅 𐑀𐑉𐐵𐑌𐐼.<span class="gloss">But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground.</span></p>
-<p class="de line">𐐜 𐐺𐑉𐐩𐑂 𐑋𐐯𐑌, 𐑊𐐴𐑂𐐮𐑍 𐐰𐑌𐐼 𐐼𐐯𐐼, 𐐸𐐭 𐑅𐐻𐑉𐐲𐑀𐑊𐐼 𐐸𐐨𐑉, 𐐸𐐰𐑂 𐐿𐐪𐑌𐑅𐐮𐐿𐑉𐐩𐐻𐐮𐐼 𐐮𐐻 𐑁𐐪𐑉 𐐳𐐺𐐲𐑂 𐐵𐑉 𐐹𐐳𐑉 𐐹𐐵𐐳𐑉 𐐻𐐭 𐐰𐐼 𐐫𐑉 𐐼𐐮𐐻𐑉𐐰𐐿𐐻.<span class="gloss">The brave men, living and dead, who struggled here, have consecrated it far above our poor power to add or detract.</span></p>
-<p class="de line">𐐆𐐻 𐐮𐑆 𐑁𐐫𐑉 𐐲𐑅 𐑄 𐑊𐐴𐑂𐐮𐑍, 𐑉𐐰𐑄𐐳𐑉, 𐐻𐐭 𐐺 𐐼𐐯𐐼𐐮𐐿𐐩𐐻𐐮𐐼 𐐸𐐨𐑉 𐐻𐐭 𐑄 𐐲𐑌𐑁𐐮𐑌𐐮𐑇𐐻 𐐶𐐲𐑉𐐿 𐐶𐐮𐐽 𐑄𐐩 𐐸𐐭 𐑁𐐫𐐻 𐐸𐐨𐑉 𐐸𐐰𐑂 𐑄𐐲𐑅 𐑁𐐪𐑉 𐑅𐐬 𐑌𐐬𐐺𐑊𐐨 𐐳𐐼𐑂𐐰𐑌𐑅𐐻.<span class="gloss">It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced.</span></p>
-<p class="de line">𐐜𐐰𐐻 𐐶𐐨 𐐸𐐨𐑉 𐐸𐐴𐑊𐐨 𐑉𐐮𐑆𐐪𐑊𐑂 𐑄𐐰𐐻 𐑄𐐨𐑆 𐐼𐐯𐐼 𐑇𐐰𐑊 𐑌𐐪𐐻 𐐸𐐰𐑂 𐐼𐐴𐐼 𐐮𐑌 𐑂𐐩𐑌; 𐑄𐐰𐐻 𐑄𐐮𐑅 𐑌𐐩𐑇𐑌, 𐐲𐑌𐐼𐐳𐑉 𐐘𐐪𐐼, 𐑇𐐰𐑊 𐐸𐐰𐑂 𐐩 𐑌𐐭 𐐺𐐲𐑉𐑃 𐐪𐑂 𐑁𐑉𐐨𐐼𐑋;<span class="gloss">That we here highly resolve that these dead shall not have died in vain; that this nation, under God, shall have a new birth of freedom;</span></p>
-<p class="de line">𐐰𐑌𐐼 𐑄𐐰𐐻 𐑀𐐲𐑂𐐳𐑉𐑌𐐳𐑋𐐳𐑌𐐻 𐐪𐑂 𐑄 𐐹𐐨𐐹𐑊, 𐐺𐐴 𐑄 𐐹𐐨𐐹𐑊, 𐑁𐐫𐑉 𐑄 𐐹𐐨𐐹𐑊, 𐑇𐐰𐑊 𐑌𐐪𐐻 𐐹𐐯𐑉𐐮𐑇 𐑁𐑉𐐪𐑋 𐑄 𐐲𐑉𐑃.<span class="gloss">and that government of the people, by the people, for the people, shall not perish from the earth.</span></p></details>
-<details class="passage"><summary><span class="ptitle">The North Wind and the Sun</span><span class="meta">Aesop · public domain</span></summary><p class="de line">𐐜 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐰𐑌𐐼 𐑄 𐐝𐐲𐑌 𐐶𐐲𐑉 𐐼𐐮𐑅𐐹𐑏𐐻𐐮𐑍 𐐶𐐮𐐽 𐐶𐐪𐑆 𐑄 𐑅𐐻𐑉𐐫𐑍𐑀𐐳𐑉, 𐐶𐐯𐑌 𐐩 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐐿𐐩𐑋 𐐳𐑊𐐫𐑍 𐑉𐐰𐐹𐐻 𐐮𐑌 𐐩 𐐶𐐫𐑉𐑋 𐐿𐑊𐐬𐐿.<span class="gloss">The North Wind and the Sun were disputing which was the stronger, when a traveller came along wrapped in a warm cloak.</span></p>
-<p class="de line">𐐜𐐩 𐐳𐑀𐑉𐐨𐐼 𐑄𐐰𐐻 𐑄 𐐶𐐲𐑌 𐐸𐐭 𐑁𐐲𐑉𐑅𐐻 𐑅𐐳𐐿𐑅𐐨𐐼𐐮𐐼 𐐮𐑌 𐑋𐐩𐐿𐐮𐑍 𐑄 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐐻𐐩𐐿 𐐸𐐮𐑆 𐐿𐑊𐐬𐐿 𐐫𐑁 𐑇𐐳𐐼 𐐺 𐐿𐑌𐑅𐐮𐐼𐐲𐑉𐐼 𐑅𐐻𐑉𐐫𐑍𐑀𐐳𐑉 𐑄𐐰𐑌 𐑄 𐐲𐑄𐐳𐑉.<span class="gloss">They agreed that the one who first succeeded in making the traveller take his cloak off should be considered stronger than the other.</span></p>
-<p class="de line">𐐜𐐯𐑌 𐑄 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐺𐑊𐐭 𐐰𐑆 𐐸𐐪𐑉𐐼 𐐰𐑆 𐐸𐐨 𐐿𐐳𐐼, 𐐺𐐲𐐻 𐑄 𐑋𐐫𐑉 𐐸𐐨 𐐺𐑊𐐭 𐑄 𐑋𐐫𐑉 𐐿𐑊𐐬𐑅𐑊𐐨 𐐼𐐮𐐼 𐑄 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐑁𐐬𐑊𐐼 𐐸𐐮𐑆 𐐿𐑊𐐬𐐿 𐐳𐐺𐐵𐐻 𐐸𐐮𐑋;<span class="gloss">Then the North Wind blew as hard as he could, but the more he blew the more closely did the traveller fold his cloak about him;</span></p>
-<p class="de line">𐐰𐑌𐐼 𐐰𐐻 𐑊𐐰𐑅𐐻 𐑄 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐑀𐐩𐑂 𐐲𐐹 𐑄 𐐳𐐻𐐯𐑋𐐹𐐻.<span class="gloss">and at last the North Wind gave up the attempt.</span></p>
-<p class="de line">𐐜𐐯𐑌 𐑄 𐐝𐐲𐑌 𐑇𐐬𐑌 𐐵𐐻 𐐶𐐫𐑉𐑋𐑊𐐨, 𐐰𐑌𐐼 𐐮𐑋𐐨𐐼𐐨𐐳𐐻𐑊𐐨 𐑄 𐐻𐑉𐐰𐑂𐐳𐑊𐐳𐑉 𐐻𐐳𐐿 𐐫𐑁 𐐸𐐮𐑆 𐐿𐑊𐐬𐐿.<span class="gloss">Then the Sun shone out warmly, and immediately the traveller took off his cloak.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐑅𐐬 𐑄 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐶𐐪𐑆 𐐳𐐺𐑊𐐴𐐾𐐼 𐐻𐐭 𐐿𐐳𐑌𐑁𐐯𐑅 𐑄𐐰𐐻 𐑄 𐐝𐐲𐑌 𐐶𐐪𐑆 𐑄 𐑅𐐻𐑉𐐫𐑍𐑀𐐳𐑉 𐐪𐑂 𐑄 𐐻𐐭.<span class="gloss">And so the North Wind was obliged to confess that the Sun was the stronger of the two.</span></p></details>
-<details class="passage"><summary><span class="ptitle">Deseret First Book</span><span class="meta">in the manner of the 1868 primer</span></summary><p class="de line">𐐜𐐮𐑅 𐐮𐑆 𐐩 𐑋𐐰𐑌. 𐐜 𐑋𐐰𐑌 𐐸𐐰𐑆 𐐩 𐐸𐐰𐐻. 𐐜 𐐸𐐰𐐻 𐐮𐑆 𐑉𐐯𐐼.<span class="gloss">This is a man. The man has a hat. The hat is red.</span></p>
-<p class="de line">𐐜 𐐿𐐰𐐻 𐑅𐐰𐐻 𐐪𐑌 𐑄 𐑋𐐰𐐻. 𐐜 𐐿𐐰𐐻 𐐮𐑆 𐑁𐐰𐐻. 𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐐿𐐰𐐻.<span class="gloss">The cat sat on the mat. The cat is fat. I can see the cat.</span></p>
-<p class="de line">𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐑅𐐲𐑌. 𐐜 𐑅𐐲𐑌 𐐮𐑆 𐐸𐐪𐐻. 𐐜 𐑅𐐿𐐴 𐐮𐑆 𐐺𐑊𐐭.<span class="gloss">I can see the sun. The sun is hot. The sky is blue.</span></p>
-<p class="de line">𐐁 𐐼𐐫𐑀 𐑉𐐰𐑌 𐐻𐐭 𐑋𐐨. 𐐜 𐐼𐐫𐑀 𐐮𐑆 𐐺𐐮𐑀. 𐐌 𐑊𐐴𐐿 𐑄 𐐼𐐫𐑀.<span class="gloss">A dog ran to me. The dog is big. I like the dog.</span></p>
-<p class="de line">𐐣𐐴 𐑁𐐪𐑄𐐳𐑉 𐐸𐐰𐑆 𐐩 𐑁𐐪𐑉𐑋. 𐐐𐐨 𐐸𐐰𐑆 𐐩 𐐿𐐵 𐐰𐑌𐐼 𐐩 𐐸𐐫𐑉𐑅.<span class="gloss">My father has a farm. He has a cow and a horse.</span></p>
-<p class="de line">𐐎𐐨 𐑀𐐬 𐐻𐐭 𐑄 𐑁𐐪𐑉𐑋 𐐮𐑌 𐑄 𐑅𐐹𐑉𐐮𐑍. 𐐜 𐑀𐑉𐐰𐑅 𐐮𐑆 𐑀𐑉𐐨𐑌 𐐰𐑌𐐼 𐑄 𐐺𐐲𐑉𐐼𐑆 𐑅𐐮𐑍.<span class="gloss">We go to the farm in the spring. The grass is green and the birds sing.</span></p>
-<p class="de line">𐐜 𐐺𐑎 𐐻𐐳𐐿 𐑄 𐐺𐐳𐐿. 𐐐𐐨 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐺𐐳𐐿 𐐻𐐭 𐐲𐑅.<span class="gloss">The boy took the book. He can read the book to us.</span></p>
-<p class="de line">𐐗𐐲𐑋 𐐰𐑌𐐼 𐑅𐐨 𐐶𐐪𐐻 𐐌 𐐸𐐰𐑂 𐑁𐐵𐑌𐐼 𐐺𐐴 𐑄 𐑉𐐮𐑂𐐳𐑉.<span class="gloss">Come and see what I have found by the river.</span></p></details>
-</article>
-
-<article class="page" id="translator" hidden>
-<h1>Translator</h1>
-<p class="note" id="engineNote">Loading the dictionary&hellip;</p>
-    <div class="tr">
-      <label for="src" id="srcLabel">English</label>
-      <textarea id="src" rows="5" placeholder="Type or paste text"></textarea>
-    </div>
-    <div class="tr">
-      <label for="out" id="outLabel">Deseret</label>
-      <textarea id="out" rows="5" readonly></textarea>
-    </div>
-    <div class="row">
-      <button class="act" id="copy">Copy</button>
-      <button class="act ghost" id="swap">Deseret to English</button>
-      <span class="note" id="status" role="status"></span>
-    </div>
-</article>
-
-<article class="page" id="case" hidden>
-<h1>The Case for Deseret</h1>
-<p>One case for the Deseret Alphabet is that it makes learning the English language quicker, given the standard alphabet is extremely complicated in its usage. This would make the education system more efficient.</p>
-    <p>A second case is that the visual harmony of the symbols &mdash; all taking up equal height and width &mdash; as well as the fact that spelling is more consistent with pronunciation, constitutes a more aesthetically pleasing spelling system.</p>
-</article>
-
-<article class="page" id="history" hidden>
-<h1>History</h1>
-<blockquote class="source">
-      <p>The Church of Jesus Christ of Latter-day Saints during the years 1852-1877, introduced to its membership a form of rhetoric (writing system) called the deseret alphabet (phonetic alphabet). This experiment was intended to alleviate the problem of non-communication which was created by the great influx of foreign speaking Saints into the great Salt Lake Valley.</p>
-      <p>The alphabet was developed and encouraged by the Prophet Brigham Young and a few followers. Much to their dismay the members of the Church did not have the same vision of its workability as did its promoters.</p>
-      <p>This new alphabet appears not to have met the needs of the people nor did it interest them. Its use and development was hindered by temple building, farming, settling, new doctrine, and possibly little faith in following their prophet, president, and leader. The Deseret Alphabet died with Brigham Young in 1877. Yet, it appears to have been a noble experiment towards a spelling reform. Perhaps it would have worked under different situations and different environment.</p>
-      <cite>&mdash; Larry Ray Wintersteen, abstract of <em>A History of the Deseret Alphabet</em></cite>
-    </blockquote>
-</article>
-
-<article class="page" id="about" hidden>
-<h1>About</h1>
-<p>This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is the sister project of the <a href="#">Deseret Alphabet web extension</a>.</p>
-    <p>The goal of this resource is to facilitate the learning and usage of the Deseret Alphabet, with the ultimate goal that it be normalised.</p>
-</article>
-  </main>
-</div>
-
-<script>
-  // dummy mappings – replace with actual deseret-mappings.js and reverse.js
-  window.DESERET_MAPPINGS = {};
-  window.translateText = function(text) { return text; };
-  window.deseretReverseText = function(text) { return {text: text}; };
-  // placeholder for the scripts – remove or replace with actual includes
-</script>
-<!-- include actual scripts if available: deseret-mappings.js, reverse.js -->
-<script>
-(function () {
-  'use strict';
-
-  var OPTS = {
-    flapMode: 't', flappedTAsD: false, schwaAsFoot: true,
-    clusterStrictness: 'strong', reduceTlDlClusters: true,
-    insertDlSeparator: false, ligatures: true, syllabicValues: true
-  };
-  var DIALECT = 'general-us';
-
-  var pages = [].slice.call(document.querySelectorAll('.page'));
-  var links = [].slice.call(document.querySelectorAll('[data-go]'));
-  var ids = pages.map(function (p) { return p.id; });
-  var body = document.body;
-
-  /* ---- routing ------------------------------------------------------- */
-  function show(id, write) {
-    if (ids.indexOf(id) < 0) id = 'letters';
-    pages.forEach(function (p) { p.hidden = p.id !== id; });
-    links.forEach(function (a) {
-      if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
-      else a.removeAttribute('aria-current');
-    });
-    if (write !== false) {
-      try { history.replaceState(null, '', '#' + id); } catch (e) {}
-    }
-    window.scrollTo(0, 0);
-    var h = document.querySelector('.page:not([hidden]) h1');
-    if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
-  }
-
-  links.forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      show(a.getAttribute('data-go'));
-    });
-  });
-  window.addEventListener('hashchange', function () {
-    show(decodeURIComponent(location.hash.slice(1)), false);
-  });
-
-  var start = decodeURIComponent(location.hash.slice(1));
-  show(ids.indexOf(start) >= 0 ? start : 'letters', false);
-
-  /* ---- read the whole guide in Deseret ------------------------------- */
-  var SKIP = 'script,style,textarea,input,svg,.de,.tw,.gloss,.ipa';
-  var deseretNodes = null, deseretOn = false;
-
-  function collectText(root) {
-    var out = [], walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode: function (n) {
-        if (!n.nodeValue || !/[A-Za-z]/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
-        if (n.parentElement && n.parentElement.closest(SKIP)) return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
+      // ===== ROUTING =====
+      function show(id, write) {
+        if (ids.indexOf(id) < 0) id = 'letters';
+        pages.forEach(function (p) { p.hidden = p.id !== id; });
+        links.forEach(function (a) {
+          if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+        if (write !== false) {
+          try { history.replaceState(null, '', '#' + id); } catch (e) {}
+        }
+        window.scrollTo(0, 0);
+        var h = document.querySelector('.page:not([hidden]) h1');
+        if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
       }
-    });
-    var n; while ((n = walk.nextNode())) out.push(n);
-    return out;
-  }
 
-  var modeBtn = document.getElementById('deseretMode');
-  if (modeBtn && typeof window.translateText === 'function') {
-    modeBtn.addEventListener('click', function () {
-      deseretOn = !deseretOn;
-      if (deseretOn) {
-        if (!deseretNodes) {
-          deseretNodes = collectText(document.body).map(function (n) {
-            return { node: n, en: n.nodeValue, de: null };
+      links.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          show(a.getAttribute('data-go'));
+        });
+      });
+      window.addEventListener('hashchange', function () {
+        show(decodeURIComponent(location.hash.slice(1)), false);
+      });
+
+      var start = decodeURIComponent(location.hash.slice(1));
+      show(ids.indexOf(start) >= 0 ? start : 'letters', false);
+
+      // ===== DESERET MODE (placeholder) =====
+      var SKIP = 'script,style,textarea,input,svg,.de,.tw,.gloss,.ipa';
+      var deseretNodes = null, deseretOn = false;
+
+      function collectText(root) {
+        var out = [], walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode: function (n) {
+            if (!n.nodeValue || !/[A-Za-z]/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+            if (n.parentElement && n.parentElement.closest(SKIP)) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        var n; while ((n = walk.nextNode())) out.push(n);
+        return out;
+      }
+
+      var modeBtn = document.getElementById('deseretMode');
+      if (modeBtn && typeof window.translateText === 'function') {
+        modeBtn.addEventListener('click', function () {
+          deseretOn = !deseretOn;
+          if (deseretOn) {
+            if (!deseretNodes) {
+              deseretNodes = collectText(document.body).map(function (n) {
+                return { node: n, en: n.nodeValue, de: null };
+              });
+            }
+            deseretNodes.forEach(function (r) {
+              if (r.de === null) {
+                try { r.de = window.translateText(r.en, DIALECT, OPTS); }
+                catch (e) { r.de = r.en; }
+              }
+              r.node.nodeValue = r.de;
+            });
+          } else {
+            deseretNodes.forEach(function (r) { r.node.nodeValue = r.en; });
+          }
+          body.classList.toggle('de-mode', deseretOn);
+          modeBtn.setAttribute('aria-pressed', String(deseretOn));
+          var label = modeBtn.querySelector('.cta-label');
+          if (label) label.textContent = deseretOn ? 'Read in English' : 'Read in Deseret';
+        });
+      } else if (modeBtn) {
+        modeBtn.disabled = true;
+      }
+
+      // ===== SEARCH =====
+      var q = document.getElementById('q'),
+          qres = document.getElementById('qres'),
+          index = pages.map(function (p) {
+            var h = p.querySelector('h1');
+            var numEl = h ? h.querySelector('.h-num') : null;
+            var title = h ? h.cloneNode(true) : null;
+            if (title && title.querySelector('.h-num')) title.querySelector('.h-num').remove();
+            return {
+              id: p.id,
+              num: numEl ? numEl.textContent.trim() : '',
+              title: title ? title.textContent.replace(/\s+/g, ' ').trim() : p.id,
+              text: (p.textContent || '').toLowerCase(),
+              el: p
+            };
+          });
+
+      function closeResults() { qres.hidden = true; q.setAttribute('aria-expanded', 'false'); }
+
+      function runSearch() {
+        var term = q.value.trim().toLowerCase();
+        if (term.length < 2) { closeResults(); return; }
+        var hits = index.filter(function (e) {
+          return e.title.toLowerCase().indexOf(term) >= 0 || e.text.indexOf(term) >= 0;
+        }).slice(0, 8);
+        qres.innerHTML = '';
+        if (!hits.length) {
+          var none = document.createElement('li');
+          none.className = 'r-none';
+          none.textContent = 'Nothing found for \u201c' + q.value.trim() + '\u201d';
+          qres.appendChild(none);
+        } else {
+          hits.forEach(function (e) {
+            var li = document.createElement('li'), a = document.createElement('a');
+            a.href = '#' + e.id;
+            if (e.num) {
+              var n = document.createElement('span');
+              n.className = 'r-num'; n.textContent = e.num; a.appendChild(n);
+            }
+            a.appendChild(document.createTextNode(e.title));
+            a.addEventListener('click', function (ev) {
+              ev.preventDefault(); show(e.id); q.value = ''; closeResults();
+            });
+            li.appendChild(a); qres.appendChild(li);
           });
         }
-        deseretNodes.forEach(function (r) {
-          if (r.de === null) {
-            try { r.de = window.translateText(r.en, DIALECT, OPTS); }
-            catch (e) { r.de = r.en; }
-          }
-          r.node.nodeValue = r.de;
-        });
-      } else {
-        deseretNodes.forEach(function (r) { r.node.nodeValue = r.en; });
+        qres.hidden = false;
+        q.setAttribute('aria-expanded', 'true');
       }
-      body.classList.toggle('de-mode', deseretOn);
-      modeBtn.setAttribute('aria-pressed', String(deseretOn));
-      var label = modeBtn.querySelector('.cta-label');
-      if (label) label.textContent = deseretOn ? 'Read in English' : 'Read in Deseret';
-    });
-  } else if (modeBtn) {
-    modeBtn.disabled = true;
-  }
 
-  /* ---- header search -------------------------------------------------- */
-  var q = document.getElementById('q'),
-      qres = document.getElementById('qres'),
-      index = pages.map(function (p) {
-        var h = p.querySelector('h1');
-        var numEl = h ? h.querySelector('.h-num') : null;
-        var title = h ? h.cloneNode(true) : null;
-        if (title && title.querySelector('.h-num')) title.querySelector('.h-num').remove();
-        return {
-          id: p.id,
-          num: numEl ? numEl.textContent.trim() : '',
-          title: title ? title.textContent.replace(/\s+/g, ' ').trim() : p.id,
-          text: (p.textContent || '').toLowerCase(),
-          el: p
-        };
-      });
-
-  function closeResults() { qres.hidden = true; q.setAttribute('aria-expanded', 'false'); }
-
-  function runSearch() {
-    var term = q.value.trim().toLowerCase();
-    if (term.length < 2) { closeResults(); return; }
-    var hits = index.filter(function (e) {
-      return e.title.toLowerCase().indexOf(term) >= 0 || e.text.indexOf(term) >= 0;
-    }).slice(0, 8);
-    qres.innerHTML = '';
-    if (!hits.length) {
-      var none = document.createElement('li');
-      none.className = 'r-none';
-      none.textContent = 'Nothing found for \u201c' + q.value.trim() + '\u201d';
-      qres.appendChild(none);
-    } else {
-      hits.forEach(function (e) {
-        var li = document.createElement('li'), a = document.createElement('a');
-        a.href = '#' + e.id;
-        if (e.num) {
-          var n = document.createElement('span');
-          n.className = 'r-num'; n.textContent = e.num; a.appendChild(n);
+      q.addEventListener('input', runSearch);
+      q.addEventListener('focus', runSearch);
+      document.getElementById('qbtn').addEventListener('click', function () { q.focus(); runSearch(); });
+      q.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { closeResults(); q.blur(); }
+        if (e.key === 'ArrowDown') {
+          var first = qres.querySelector('a');
+          if (first) { e.preventDefault(); first.focus(); }
         }
-        a.appendChild(document.createTextNode(e.title));
-        a.addEventListener('click', function (ev) {
-          ev.preventDefault(); show(e.id); q.value = ''; closeResults();
-        });
-        li.appendChild(a); qres.appendChild(li);
+        if (e.key === 'Enter') {
+          var hit = qres.querySelector('a');
+          if (hit) { e.preventDefault(); hit.click(); }
+        }
       });
-    }
-    qres.hidden = false;
-    q.setAttribute('aria-expanded', 'true');
-  }
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.gh-search')) closeResults();
+      });
 
-  q.addEventListener('input', runSearch);
-  q.addEventListener('focus', runSearch);
-  document.getElementById('qbtn').addEventListener('click', function () { q.focus(); runSearch(); });
-  q.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeResults(); q.blur(); }
-    if (e.key === 'ArrowDown') {
-      var first = qres.querySelector('a');
-      if (first) { e.preventDefault(); first.focus(); }
-    }
-    if (e.key === 'Enter') {
-      var hit = qres.querySelector('a');
-      if (hit) { e.preventDefault(); hit.click(); }
-    }
-  });
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.gh-search')) closeResults();
-  });
+      // ===== GLOSS TOGGLE =====
+      var toggles = document.querySelectorAll('.toggle');
+      toggles.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var hidden = body.classList.toggle('hide-gloss');
+          btn.setAttribute('aria-pressed', String(!hidden));
+          btn.textContent = hidden ? 'Show the English' : 'Hide the English';
+        });
+      });
 
-  /* ---- hide the English ---------------------------------------------- */
-  var toggles = document.querySelectorAll('.toggle');
-  toggles.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var hidden = body.classList.toggle('hide-gloss');
-      btn.setAttribute('aria-pressed', String(!hidden));
-      btn.textContent = hidden ? 'Show the English' : 'Hide the English';
-    });
-  });
+      // ===== TRANSLATOR =====
+      var src = document.getElementById('src'),
+          out = document.getElementById('out'),
+          note = document.getElementById('engineNote'),
+          status = document.getElementById('status'),
+          swap = document.getElementById('swap'),
+          srcLabel = document.getElementById('srcLabel'),
+          outLabel = document.getElementById('outLabel'),
+          toDeseret = true;
 
-  /* ---- translator ----------------------------------------------------- */
-  var src = document.getElementById('src'),
-      out = document.getElementById('out'),
-      note = document.getElementById('engineNote'),
-      status = document.getElementById('status'),
-      swap = document.getElementById('swap'),
-      srcLabel = document.getElementById('srcLabel'),
-      outLabel = document.getElementById('outLabel'),
-      toDeseret = true;
+      if (!src || !out) return;
 
-  if (!src || !out) return;
+      if (typeof window.translateText !== 'function') {
+        note.textContent = 'The dictionary did not load. Check that deseret-mappings.js sits beside this page.';
+        src.disabled = true;
+        return;
+      }
+      note.textContent = Object.keys(window.DESERET_MAPPINGS || {}).length.toLocaleString()
+        + ' words in the dictionary. Anything missing is sounded out letter by letter.';
 
-  if (typeof window.translateText !== 'function') {
-    note.textContent = 'The dictionary did not load. Check that deseret-mappings.js sits beside this page.';
-    src.disabled = true;
-    return;
-  }
-  note.textContent = Object.keys(window.DESERET_MAPPINGS || {}).length.toLocaleString()
-    + ' words in the dictionary. Anything missing is sounded out letter by letter.';
+      function render() {
+        var text = src.value;
+        if (!text) { out.value = ''; return; }
+        try {
+          out.value = toDeseret
+            ? window.translateText(text, DIALECT, OPTS)
+            : window.deseretReverseText(text, DIALECT, OPTS).text;
+        } catch (e) {
+          out.value = '';
+          status.textContent = 'That could not be translated.';
+        }
+      }
 
-  function render() {
-    var text = src.value;
-    if (!text) { out.value = ''; return; }
-    try {
-      out.value = toDeseret
-        ? window.translateText(text, DIALECT, OPTS)
-        : window.deseretReverseText(text, DIALECT, OPTS).text;
-    } catch (e) {
-      out.value = '';
-      status.textContent = 'That could not be translated.';
-    }
-  }
+      src.addEventListener('input', render);
 
-  src.addEventListener('input', render);
+      swap.addEventListener('click', function () {
+        toDeseret = !toDeseret;
+        srcLabel.textContent = toDeseret ? 'English' : 'Deseret';
+        outLabel.textContent = toDeseret ? 'Deseret' : 'English';
+        swap.textContent = toDeseret ? 'Deseret to English' : 'English to Deseret';
+        src.classList.toggle('de', !toDeseret);
+        src.value = out.value;
+        render();
+        src.focus();
+      });
 
-  swap.addEventListener('click', function () {
-    toDeseret = !toDeseret;
-    srcLabel.textContent = toDeseret ? 'English' : 'Deseret';
-    outLabel.textContent = toDeseret ? 'Deseret' : 'English';
-    swap.textContent = toDeseret ? 'Deseret to English' : 'English to Deseret';
-    src.classList.toggle('de', !toDeseret);
-    src.value = out.value;
-    render();
-    src.focus();
-  });
-
-  document.getElementById('copy').addEventListener('click', function () {
-    if (!out.value) return;
-    navigator.clipboard.writeText(out.value).then(function () {
-      status.className = 'note ok';
-      status.textContent = 'Copied';
-      setTimeout(function () { status.textContent = ''; status.className = 'note'; }, 1600);
-    }, function () {
-      status.textContent = 'Could not copy — select the text instead.';
-    });
-  });
-})();
-</script>
+      document.getElementById('copy').addEventListener('click', function () {
+        if (!out.value) return;
+        navigator.clipboard.writeText(out.value).then(function () {
+          status.className = 'note ok';
+          status.textContent = 'Copied';
+          setTimeout(function () { status.textContent = ''; status.className = 'note'; }, 1600);
+        }, function () {
+          status.textContent = 'Could not copy — select the text instead.';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
-```
