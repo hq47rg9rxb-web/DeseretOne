@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Deseret One</title>
 <meta name="description" content="Learn and use the Deseret Alphabet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 /* Noto Sans Deseret, SIL OFL. Replace the src below with your original
    base64 blob if you want the exact bytes from the previous file. */
@@ -20,37 +17,57 @@
 :root{
   --blue:#004aad; --blue-deep:#002060; --ink:#12203a; --muted:#5d6b85;
   --line:#dfe5ef; --bg:#f7f9fc; --green:#1a9e5c;
+  /* Liberation Sans is metric-compatible with Arial, which is the
+     fallback for anyone who does not have it installed. */
+  --sans:'Liberation Sans',Arial,Helvetica,sans-serif;
+  /* Liberation Serif is metric-compatible with Times New Roman. */
+  --serif:'Liberation Serif','Times New Roman',Times,serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  font-family:'Open Sans',system-ui,sans-serif;
+  font-family:var(--sans);
   color:var(--ink); background:var(--bg);
-  font-size:17px; line-height:1.7;
+  font-size:16px; line-height:1.7;
   -webkit-font-smoothing:antialiased;
 }
-.de{font-family:'Deseret','Open Sans',system-ui,sans-serif}
+.de{font-family:'Deseret',var(--sans)}
 
 /* ---- masthead ---- */
 header{
   background:linear-gradient(160deg,var(--blue) 0%,var(--blue-deep) 100%);
   color:#fff; text-align:center; padding:1.7rem 1.5rem 0;
-}
-header h1{
-  margin:0; font-size:1rem; font-weight:400; letter-spacing:0;
-  font-family:'Open Sans',system-ui,sans-serif;
-}
-header .de-title{
-  display:block; font-size:clamp(1.15rem,3.2vw,1.4rem); font-weight:400;
-  line-height:1.35; letter-spacing:.005em;
-  color:#fff; margin-bottom:0;
-  font-family:'Deseret','Open Sans',system-ui,sans-serif;
-}
-header p{
-  margin:.55rem auto 0; max-width:32rem; color:rgba(255,255,255,.72);
-  font-size:.95rem; line-height:1.6;
+  position:relative;
 }
 
+/* Header epigraph: laptop and desktop only, absolutely positioned so the
+   band keeps its height. Hidden below 72rem (~1152px), which is where it
+   would start crowding the first tab. */
+.epigraph{display:none}
+@media(min-width:72rem){
+  .epigraph{
+    display:block; position:absolute; left:2rem; top:50%;
+    transform:translateY(-50%); width:15rem; margin:0;
+    text-align:left; font-size:.72rem; font-style:italic; line-height:1.65;
+    color:rgba(255,255,255,.58);
+    border-left:2px solid rgba(255,255,255,.25); padding-left:.9rem;
+  }
+  .epigraph cite{
+    display:block; margin-top:.45rem; font-style:normal;
+    font-size:.68rem; letter-spacing:.02em; color:rgba(255,255,255,.42);
+  }
+}
+header h1{
+  margin:0; font-size:1rem; font-weight:700; letter-spacing:0;
+  /* The site title is the only thing not set in Liberation Sans. */
+  font-family:var(--serif);
+}
+header .de-title{
+  display:block; font-size:clamp(1.15rem,3.2vw,1.4rem); font-weight:700;
+  line-height:1.35; letter-spacing:.005em;
+  color:#fff;
+  font-family:'Deseret',var(--serif);
+}
 /* ---- tabs ---- */
 nav.tabs{
   display:flex; justify-content:center; flex-wrap:wrap; gap:.15rem;
@@ -60,7 +77,7 @@ nav.tabs button{
   font:inherit; font-size:.94rem; font-weight:600; letter-spacing:.01em;
   background:none; border:none; cursor:pointer;
   color:rgba(255,255,255,.7); padding:.5rem 1.15rem .65rem;
-  border-bottom:2px solid transparent; margin-bottom:-1px;
+  border-bottom:2px solid transparent;
 }
 nav.tabs button:hover{color:#fff}
 nav.tabs button[aria-selected="true"]{color:#fff;border-bottom-color:#fff}
@@ -68,25 +85,25 @@ nav.tabs button:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-
 
 main{max-width:44rem;margin:0 auto;padding:3rem 1.75rem 6rem}
 .panel[hidden]{display:none}
-h2{font-size:1.5rem;line-height:1.3;letter-spacing:-.005em;margin:0 0 1.25rem;font-family:'Open Sans',system-ui,sans-serif;font-weight:700}
-h3{font-size:1.08rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:'Open Sans',system-ui,sans-serif;font-weight:700}
+h2{font-size:1.41rem;line-height:1.3;letter-spacing:-.005em;margin:0 0 1.25rem;font-family:var(--sans);font-weight:700}
+h3{font-size:1.02rem;line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
 p{margin:0 0 1.15rem}
 a{color:var(--blue)}
 
 /* ---- letter table ---- */
-table.letters{width:100%;border-collapse:collapse;margin:1rem 0 2rem;font-size:.95rem}
+table.letters{width:100%;border-collapse:collapse;margin:1rem 0 2rem;font-size:0.89rem}
 table.letters td,table.letters th{padding:.55rem .6rem;text-align:left;border-bottom:1px solid var(--line);line-height:1.5}
 table.letters tr.group th{
-  font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;
+  font-size:0.64rem;text-transform:uppercase;letter-spacing:.12em;
   color:var(--muted);font-weight:700;padding-top:1.6rem;border-bottom:2px solid var(--ink);
 }
 table.letters th:nth-child(1),td.glyph{width:5.5rem}
 table.letters th:nth-child(2){width:8rem}
 table.letters th:nth-child(3){width:5rem}
 td.glyph{white-space:nowrap}
-td.glyph .de{font-size:1.35rem;line-height:1}
+td.glyph .de{font-size:1.27rem;line-height:1}
 td.glyph .de+.de{margin-left:.45rem;color:var(--muted)}
-td.ipa{color:var(--muted);font-size:.88rem;width:5rem}
+td.ipa{color:var(--muted);font-size:0.83rem}
 .sound-match{
   text-decoration:underline;
   text-decoration-thickness:2px;
@@ -99,83 +116,94 @@ td.ipa{color:var(--muted);font-size:.88rem;width:5rem}
 .lesson h3{display:flex;align-items:center;gap:.6rem;margin-top:0}
 .lesson h3 .n{
   flex:none;width:1.55rem;height:1.55rem;border-radius:50%;
-  background:var(--blue);color:#fff;font-size:.75rem;font-weight:700;
+  background:var(--blue);color:#fff;font-size:0.7rem;font-weight:700;
   display:grid;place-items:center;
 }
-p.new{font-size:.82rem;color:var(--muted);margin:0 0 .9rem;letter-spacing:.01em}
-p.new .de{font-size:1.15rem;color:var(--ink);margin-left:.35rem}
+p.new{font-size:0.77rem;color:var(--muted);margin:0 0 .9rem;letter-spacing:.01em}
+p.new .de{font-size:1.08rem;color:var(--ink);margin-left:.35rem}
 ol.lines{list-style:none;margin:0;padding:0}
 ol.lines li{padding:.7rem 0;border-bottom:1px solid var(--line)}
-.line{font-size:1.25rem;margin:0;line-height:1.55}
-.gloss{color:var(--muted);font-size:.85rem;line-height:1.6;margin:.15rem 0 0}
+.line{font-size:1.17rem;margin:0;line-height:1.55}
+.gloss{color:var(--muted);font-size:0.8rem;line-height:1.6;margin:.15rem 0 0}
 
 /* Glosses hide until asked for, so you try reading first. */
 body.hide-gloss .gloss{visibility:hidden}
 body.hide-gloss ol.lines li:hover .gloss,
 body.hide-gloss .passage:hover .gloss{visibility:visible}
 .toggle{
-  font:inherit;font-size:.8rem;font-weight:600;letter-spacing:.02em;cursor:pointer;
+  font:inherit;font-size:0.75rem;font-weight:600;letter-spacing:.02em;cursor:pointer;
   background:#fff;border:1px solid var(--line);border-radius:999px;
   padding:.42rem 1rem;color:var(--blue);
 }
 
+/* ---- quoted source ---- */
+blockquote.source{
+  margin:0; padding-left:1.1rem;
+  border-left:3px solid var(--line);
+}
+blockquote.source p:last-of-type{margin-bottom:.9rem}
+blockquote.source cite{
+  display:block; font-style:normal;
+  font-size:0.77rem; color:var(--muted);
+}
+
 /* ---- texts ---- */
 .passage{margin:0 0 2.5rem}
-.passage .meta{font-size:.82rem;color:var(--muted);margin:-.2rem 0 1rem}
+.passage .meta{font-size:0.77rem;color:var(--muted);margin:-.2rem 0 1rem}
 .passage .line{margin:0 0 1.1rem}
 .passage .gloss{display:block}
 
 /* ---- translator ---- */
 .tr{display:grid;gap:.4rem;margin-bottom:1rem}
-.tr label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.tr label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
 textarea{
-  font:inherit;font-size:1rem;line-height:1.6;width:100%;padding:.8rem .9rem;
+  font:inherit;font-size:0.94rem;line-height:1.6;width:100%;padding:.8rem .9rem;
   border:1px solid var(--line);
   border-radius:8px;background:#fff;color:inherit;resize:vertical;
 }
 textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
-#out{font-family:'Deseret','Open Sans',sans-serif;font-size:1.2rem;line-height:1.6}
+#out{font-family:'Deseret',var(--sans);font-size:1.13rem;line-height:1.6}
 .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 button.act{
-  font:inherit;font-size:.85rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;
+  font:inherit;font-size:0.8rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;
   background:var(--blue);border:none;border-radius:8px;padding:.55rem 1.1rem;
 }
 button.act.ghost{background:#fff;color:var(--blue);border:1px solid var(--line)}
-.note{font-size:.85rem;line-height:1.6;color:var(--muted)}
+.note{font-size:0.8rem;line-height:1.6;color:var(--muted)}
 .note.ok{color:var(--green)}
 
 footer{
   border-top:1px solid var(--line);text-align:center;
-  padding:2.5rem 1.5rem 3.5rem;font-size:.8rem;line-height:1.8;color:var(--muted);
+  padding:2.5rem 1.5rem 3.5rem;font-size:0.75rem;line-height:1.8;color:var(--muted);
 }
 
 @media(max-width:34rem){
-  body{font-size:16px}
+  body{font-size:15px}
   header{padding-top:1.25rem}
   header .de-title{font-size:1.05rem}
   nav.tabs{margin-top:1.1rem}
   nav.tabs button{padding:.5rem .7rem .6rem;font-size:.8rem}
   main{padding-top:2.25rem;padding-left:1.1rem;padding-right:1.1rem}
-  h2{font-size:1.3rem}
-  h3{font-size:1rem}
-  .line{font-size:1.05rem}
-  table.letters{font-size:.88rem}
+  h2{font-size:1.22rem}
+  h3{font-size:0.94rem}
+  .line{font-size:0.99rem}
+  table.letters{font-size:0.83rem}
   table.letters th:nth-child(1),td.glyph{width:4.5rem}
   table.letters th:nth-child(2){width:6.5rem}
   table.letters th:nth-child(3){width:4rem}
-  td.glyph .de{font-size:1.2rem}
+  td.glyph .de{font-size:1.13rem}
   table.letters td,table.letters th{padding:.42rem .4rem}
 }
 @media(min-width:50rem){
-  body{font-size:18px}
+  body{font-size:17px}
   header{padding-top:2rem}
   main{padding:4rem 2rem 7rem}
-  h2{font-size:1.65rem}
-  h3{font-size:1.15rem}
-  .line{font-size:1.35rem}
+  h2{font-size:1.55rem}
+  h3{font-size:1.08rem}
+  .line{font-size:1.27rem}
   table.letters th:nth-child(1),td.glyph{width:6.5rem}
   table.letters th:nth-child(2){width:9.5rem}
-  td.glyph .de{font-size:1.5rem}
+  td.glyph .de{font-size:1.41rem}
 }
 @media(prefers-reduced-motion:no-preference){
   .panel:not([hidden]){animation:fade .22s ease}
@@ -186,7 +214,14 @@ footer{
 <body>
 
 <header>
-  <h1><span class="de-title de">Deseret One / 𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑄</h1>
+  <!-- Epigraph sits in the left margin of the header band. It is absolutely
+       positioned so it does not add height, and it is hidden below 64rem
+       (~1024px) — laptop and desktop only. -->
+  <blockquote class="epigraph">
+    "No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory."
+    <cite>&mdash; George A. Smith</cite>
+  </blockquote>
+  <h1><span class="de-title de">Deseret One / 𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑌</h1>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button role="tab" id="t-basics" aria-controls="basics" aria-selected="true">Basics</button>
     <button role="tab" id="t-learn" aria-controls="learn" aria-selected="false" tabindex="-1">Learn</button>
@@ -204,19 +239,6 @@ footer{
     <p>The Deseret Alphabet consists of 40 letters, each representing a single sound in English. This phonetic system eliminates the irregularities of traditional spelling, making English far easier to learn and read.</p>
     <h3>The 40 Letters</h3>
     <p>The alphabet is organized by sound categories: long vowels, short vowels, semivowels and diphthongs, and consonants. Each letter has a unique form and name that helps with pronunciation.</p>
-    <p>Start with the <a href="#learn">practice lessons</a> to learn the letters in manageable groups, or use the <a href="#translate">translator</a> to see how English text appears in Deseret.</p>
-    <h3>Why Deseret?</h3>
-    <p>Deseret (from the Book of Mormon, meaning "honeybee") represents a vision of a more rational, learnable writing system. One symbol per sound means that once you know the alphabet, you can read any word&mdash;no exceptions, no silent letters, no ambiguous spellings.</p>
-  </div>
-
-  <div class="panel" id="about" role="tabpanel" aria-labelledby="t-about" hidden>
-    <h2>About</h2>
-    <blockquote style="font-size:1.1rem;font-style:italic;color:var(--muted);border-left:4px solid var(--blue);padding-left:1rem;margin:0 0 1.25rem;line-height:1.7;">
-      "No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory."
-      <br><span style="font-size:0.95rem;display:block;margin-top:0.5rem;">&mdash; George A. Smith</span>
-    </blockquote>
-    <p>Deseret is a more efficient, learnable and aesthetically pleasing spelling system for the English language. It was created in the 1850s under the leadership of Brigham Young.</p>
-    <h3>The 40 Letters</h3>
     <table class="letters">
       <thead><tr><th>Letter</th><th>Name</th><th>Sound</th><th>As in</th></tr></thead>
       <tbody>
@@ -267,49 +289,67 @@ footer{
 <tr><td class="glyph"><span class="de">𐐧</span><span class="de">𐑏</span></td><td>Ew</td><td class="ipa">/juː/</td><td><span class='sound-match'>ew</span>e</td></tr>
       </tbody>
     </table>
-    <h3>Credits</h3>
-    <p>This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is the sister project of the <a href="#" id="ext-link">Deseret Alphabet web extension</a>.</p>
+    <p>Start with the <a href="#learn">practice lessons</a> to learn the letters in manageable groups, or use the <a href="#translate">translator</a> to see how English text appears in Deseret.</p>
+    <h3>Why Deseret?</h3>
+    <p>Deseret (from the Book of Mormon, meaning "honeybee") represents a vision of a more rational, learnable writing system. One symbol per sound means that once you know the alphabet, you can read any word&mdash;no exceptions, no silent letters, no ambiguous spellings.</p>
+
+    <!-- PARKED: moved out of About, which is now site-only. Your words,
+         kept verbatim so nothing is lost. No settled home yet — it
+         overlaps with the Basics opener above and with History. -->
+    <p>Deseret is a more efficient, learnable and aesthetically pleasing spelling system for the English language. It was created in the 1850s under the leadership of Brigham Young.</p>
+  </div>
+
+  <!-- ===================================================================
+       ABOUT — this tab is about the SITE, not about the Deseret Alphabet.
+       Credits, contact, and what the project is for. Nothing that
+       explains or teaches the alphabet itself belongs here; that goes
+       in Basics (what it is), Learn (how to read it) or History (where
+       it came from).
+       =================================================================== -->
+  <div class="panel" id="about" role="tabpanel" aria-labelledby="t-about" hidden>
+    <h2>About</h2>
+    <p>This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is the sister project of the <a href="#">Deseret Alphabet web extension</a>.</p>
     <p>The goal of this resource is to facilitate the learning and usage of the Deseret Alphabet, with the ultimate goal that it be normalised.</p>
   </div>
 
+  <!-- ===================================================================
+       HISTORY — where the alphabet came from. Currently a single quoted
+       source; anything explaining how to read it belongs in Basics or Learn.
+       =================================================================== -->
   <div class="panel" id="history" role="tabpanel" aria-labelledby="t-history" hidden>
     <h2>History</h2>
-    <p>English spelling had troubled reformers long before the 1850s. Its rules record centuries of sound change, borrowing and printers' habit rather than the language as it is spoken, and learning to read means learning each word twice: once as sound, once as spelling.</p>
-    <h3>The Board of Regents</h3>
-    <p>The alphabet was developed at the University of Deseret in Salt Lake City from 1853, by a committee of the Board of Regents working under Brigham Young. The most active hand was George D. Watt, who had trained in Pitman shorthand and brought a phonographer's instincts to the problem: one symbol per sound, and no sound without a symbol.</p>
-    <p>The result was a wholly new set of letterforms rather than an adaptation of the Latin ones. That was deliberate. A reader who cannot fall back on familiar shapes cannot fall back on familiar spellings either.</p>
-    <h3>In print</h3>
-    <p>Type was cast in the 1860s, and the <em>Deseret News</em> printed occasional passages. Four books followed: the First and Second Books in 1868, and in 1869 a Book of Mormon and a third reader. Little else was ever set in it.</p>
-    <h3>Why it stopped</h3>
-    <p>The obstacles were practical rather than linguistic. New type was expensive, and every book in existence was already in the Latin alphabet; a reader fluent in Deseret would have had almost nothing to read. Most adults could already read English perfectly well and had no reason to start again. Brigham Young's death in 1877 removed the project's remaining institutional support.</p>
-    <h3>Since</h3>
-    <p>The alphabet was encoded in Unicode 3.1 in 2001, in the range U+10400&ndash;U+1044F, which is what makes this page possible: the letters below are text, not images. Fonts, keyboards and converters have followed. The barrier that stopped it in 1877 &mdash; the cost of new type &mdash; no longer exists.</p>
+    <blockquote class="source">
+      <p>The Church of Jesus Christ of Latter-day Saints during the years 1852-1877, introduced to its membership a form of rhetoric (writing system) called the deseret alphabet (phonetic alphabet). This experiment was intended to alleviate the problem of non-communication which was created by the great influx of foreign speaking Saints into the great Salt Lake Valley.</p>
+      <p>The alphabet was developed and encouraged by the Prophet Brigham Young and a few followers. Much to their dismay the members of the Church did not have the same vision of its workability as did its promoters.</p>
+      <p>This new alphabet appears not to have met the needs of the people nor did it interest them. Its use and development was hindered by temple building, farming, settling, new doctrine, and possibly little faith in following their prophet, president, and leader. The Deseret Alphabet died with Brigham Young in 1877. Yet, it appears to have been a noble experiment towards a spelling reform. Perhaps it would have worked under different situations and different environment.</p>
+      <cite>&mdash; Larry Ray Wintersteen, abstract of <em>A History of the Deseret Alphabet</em></cite>
+    </blockquote>
   </div>
 
   <div class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn" hidden>
     <h2>Practice</h2>
     <p>Each set adds a few letters to the ones already met. Read the Deseret line first and sound it out; the English is there when you need it.</p>
     <p><button class="toggle" id="glossToggle" aria-pressed="false">Hide the English</button></p>
-<section class="lesson"><h3><span class="n">1</span>Short vowels and stops</h3><p class="new">New letters <span class="de">𐐪 𐐮 𐐰 𐐸 𐐹 𐐺 𐐻 𐐼 𐑀 𐑄</span></p><ol class="lines"><li><p class="de line">𐐈𐐻 𐐒𐐰𐐻.</p><p class="gloss">At bat.</p></li>
-<li><p class="de line">𐐑𐐰𐐻 𐐸𐐰𐐼 𐐪 𐐒𐐰𐐼 𐐻𐐰𐐺.</p><p class="gloss">Pat had a bad tab.</p></li>
-<li><p class="de line">𐐒𐐪𐐺 𐑀𐐪𐐻 𐐪 𐐒𐐮𐑀 𐐹𐐪𐐻.</p><p class="gloss">Bob got a big pot.</p></li>
-<li><p class="de line">𐐆𐐻 𐐼𐐮𐐼 𐑄𐐪𐐻 𐐻𐐮𐐹.</p><p class="gloss">It did not tip.</p></li></ol></section>
-<section class="lesson"><h3><span class="n">2</span>Adding s, m, n and l</h3><p class="new">New letters <span class="de">𐐫 𐐭 𐐯 𐐲 𐑄 𐑅 𐑆 𐑊 𐑋</span></p><ol class="lines"><li><p class="de line">𐐝𐐰𐑋 𐐸𐐰𐑆 𐐻𐐯𐑄 𐐹𐐯𐑄𐑆.</p><p class="gloss">Sam has ten pens.</p></li>
-<li><p class="de line">𐐜 𐑋𐐰𐑄 𐑅𐐰𐐻 𐐮𐑄 𐑄 𐑅𐐲𐑄.</p><p class="gloss">The man sat in the sun.</p></li>
+<section class="lesson"><h3><span class="n">1</span>Short vowels and stops</h3><p class="new">New letters <span class="de">𐐪 𐐮 𐐰 𐐸 𐐹 𐐺 𐐻 𐐼 𐑀 𐑌</span></p><ol class="lines"><li><p class="de line">𐐈𐐻 𐐺𐐰𐐻.</p><p class="gloss">At bat.</p></li>
+<li><p class="de line">𐐑𐐰𐐻 𐐸𐐰𐐼 𐐪 𐐺𐐰𐐼 𐐻𐐰𐐺.</p><p class="gloss">Pat had a bad tab.</p></li>
+<li><p class="de line">𐐒𐐪𐐺 𐑀𐐪𐐻 𐐪 𐐺𐐮𐑀 𐐹𐐪𐐻.</p><p class="gloss">Bob got a big pot.</p></li>
+<li><p class="de line">𐐆𐐻 𐐼𐐮𐐼 𐑌𐐪𐐻 𐐻𐐮𐐹.</p><p class="gloss">It did not tip.</p></li></ol></section>
+<section class="lesson"><h3><span class="n">2</span>Adding s, m, n and l</h3><p class="new">New letters <span class="de">𐐫 𐐭 𐐯 𐐲 𐑄 𐑅 𐑆 𐑊 𐑋</span></p><ol class="lines"><li><p class="de line">𐐝𐐰𐑋 𐐸𐐰𐑆 𐐻𐐯𐑌 𐐹𐐯𐑌𐑆.</p><p class="gloss">Sam has ten pens.</p></li>
+<li><p class="de line">𐐜 𐑋𐐰𐑌 𐑅𐐰𐐻 𐐮𐑌 𐑄 𐑅𐐲𐑌.</p><p class="gloss">The man sat in the sun.</p></li>
 <li><p class="de line">𐐓𐐯𐑊 𐐤𐐯𐑊 𐐻𐐭 𐑅𐐯𐑊 𐐮𐐻.</p><p class="gloss">Tell Nell to sell it.</p></li>
 <li><p class="de line">𐐣𐐲𐑋 𐐮𐑆 𐐰𐐻 𐑄 𐑋𐐫𐑊.</p><p class="gloss">Mom is at the mall.</p></li></ol></section>
 <section class="lesson"><h3><span class="n">3</span>Long vowels</h3><p class="new">New letters <span class="de">𐐨 𐐩 𐐬 𐐵</span></p><ol class="lines"><li><p class="de line">𐐌 𐑅𐐨 𐑄 𐑅𐐨.</p><p class="gloss">I see the sea.</p></li>
 <li><p class="de line">𐐐𐐨 𐐩𐐻 𐑊𐐩𐐻.</p><p class="gloss">He ate late.</p></li>
 <li><p class="de line">𐐘𐐬 𐐸𐐬𐑋 𐑅𐑊𐐵𐑊𐐨.</p><p class="gloss">Go home slowly.</p></li>
-<li><p class="de line">𐐜 𐑋𐐭𐑄 𐐮𐑆 𐑄𐐭.</p><p class="gloss">The moon is new.</p></li></ol></section>
+<li><p class="de line">𐐜 𐑋𐐭𐑌 𐐮𐑆 𐑌𐐭.</p><p class="gloss">The moon is new.</p></li></ol></section>
 <section class="lesson"><h3><span class="n">4</span>The other consonants</h3><p class="new">New letters <span class="de">𐐳 𐐴 𐐶 𐐽 𐐾 𐑁 𐑂 𐑃 𐑇 𐑉 𐑍</span></p><ol class="lines"><li><p class="de line">𐐟𐐨 𐐶𐐪𐑆 𐑂𐐯𐑉𐐨 𐐽𐐮𐑉𐑁𐐳𐑊.</p><p class="gloss">She was very cheerful.</p></li>
-<li><p class="de line">𐐖𐐲𐐾 𐑄 𐑃𐐮𐑍 𐐒𐐴 𐐮𐐻𐑅 𐑅𐐴𐑆.</p><p class="gloss">Judge the thing by its size.</p></li>
+<li><p class="de line">𐐖𐐲𐐾 𐑄 𐑃𐐮𐑍 𐐺𐐴 𐐮𐐻𐑅 𐑅𐐴𐑆.</p><p class="gloss">Judge the thing by its size.</p></li>
 <li><p class="de line">𐐎𐐮𐐽 𐑇𐐭 𐐮𐑆 𐐸𐐮𐑆?</p><p class="gloss">Which shoe is his?</p></li>
-<li><p class="de line">𐐝𐐮𐑍 𐑄 𐑅𐐫𐑍 𐐳𐑀𐐯𐑄.</p><p class="gloss">Sing the song again.</p></li></ol></section>
-<section class="lesson"><h3><span class="n">5</span>Diphthongs and full sentences</h3><p class="new">New letters <span class="de">𐐷 𐐿 𐑎 𐑏</span></p><ol class="lines"><li><p class="de line">𐐜 𐐒𐑎 𐑁𐐵𐑄𐐼 𐐪 𐐿𐑎𐑄.</p><p class="gloss">The boy found a coin.</p></li>
-<li><p class="de line">𐐐𐐵 𐑄𐐵, 𐐒𐑉𐐵𐑄 𐐿𐐵?</p><p class="gloss">How now, brown cow?</p></li>
-<li><p class="de line">𐐂 𐑁𐑏 𐑄𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li>
-<li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑄 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑄 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
+<li><p class="de line">𐐝𐐮𐑍 𐑄 𐑅𐐫𐑍 𐐳𐑀𐐯𐑌.</p><p class="gloss">Sing the song again.</p></li></ol></section>
+<section class="lesson"><h3><span class="n">5</span>Diphthongs and full sentences</h3><p class="new">New letters <span class="de">𐐷 𐐿 𐑎 𐑏</span></p><ol class="lines"><li><p class="de line">𐐜 𐐺𐑎 𐑁𐐵𐑌𐐼 𐐪 𐐿𐑎𐑌.</p><p class="gloss">The boy found a coin.</p></li>
+<li><p class="de line">𐐐𐐵 𐑌𐐵, 𐐺𐑉𐐵𐑌 𐐿𐐵?</p><p class="gloss">How now, brown cow?</p></li>
+<li><p class="de line">𐐂 𐑁𐑏 𐑌𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li>
+<li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑌 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
     <h3>Syllabic values</h3>
     <p>Letters of the Deseret Alphabet may have names that are sounded when the letter is used by itself. <span class="de">𐐻</span> has the name &ldquo;tee&rdquo;, so it can stand alone for the word <em>tea</em>; likewise <span class="de">𐑅</span> for <em>es</em> and <span class="de">𐑊</span> for <em>el</em>.</p>
     <ul class="names">
@@ -319,7 +359,7 @@ footer{
       <li><span class="de">𐑁</span> ef</li>
       <li><span class="de">𐑊</span> el</li>
       <li><span class="de">𐑋</span> em</li>
-      <li><span class="de">𐑄</span> en</li>
+      <li><span class="de">𐑌</span> en</li>
       <li><span class="de">𐑃</span> eth</li>
       <li><span class="de">𐑄</span> thee</li>
       <li><span class="de">𐑉</span> er</li>
@@ -347,14 +387,14 @@ footer{
   <div class="panel" id="texts" role="tabpanel" aria-labelledby="t-texts" hidden>
     <h2>Texts</h2>
     <p>Passages set in the alphabet, with the English beneath each line. The button on the Learn tab hides the English here too.</p>
-<section class="passage"><h3>The Lord's Prayer</h3><p class="meta">Matthew 6:9–13, King James Version · public domain</p><p class="de line">𐐍𐑉 𐐙𐐪𐑄𐐳𐑉 𐐶𐐮𐐽 𐐪𐑉𐐻 𐐮𐑄 𐐸𐐯𐑂𐑊, 𐐐𐐰𐑊𐐬𐐼 𐐒 𐑄𐐴 𐑄𐐩𐑋.<span class="gloss">Our Father which art in heaven, Hallowed be thy name.</span></p>
-<p class="de line">𐐜𐐴 𐐿𐐮𐑍𐐼𐑋 𐐿𐐲𐑋. 𐐜𐐴 𐐶𐐮𐑊 𐐒 𐐼𐐲𐑄 𐐮𐑄 𐐲𐑉𐑃, 𐐰𐑆 𐐮𐐻 𐐮𐑆 𐐮𐑄 𐐸𐐯𐑂𐑊.<span class="gloss">Thy kingdom come. Thy will be done in earth, as it is in heaven.</span></p>
-<p class="de line">𐐘𐐮𐑂 𐐲𐑅 𐑄𐐮𐑅 𐐼𐐩 𐐵𐑉 𐐼𐐩𐑊𐐨 𐐒𐑉𐐯𐐼.<span class="gloss">Give us this day our daily bread.</span></p>
-<p class="de line">𐐈𐑄𐐼 𐑁𐐳𐑉𐑀𐐮𐑂 𐐲𐑅 𐐵𐑉 𐐼𐐯𐐻𐑅, 𐐰𐑆 𐐶𐐨 𐑁𐐳𐑉𐑀𐐮𐑂 𐐵𐑉 𐐼𐐯𐐻𐐲𐑉𐑆.<span class="gloss">And forgive us our debts, as we forgive our debtors.</span></p>
-<p class="de line">𐐈𐑄𐐼 𐑊𐐨𐐼 𐐲𐑅 𐑄𐐪𐐻 𐐮𐑄𐐻𐐭 𐐻𐐯𐑋𐐹𐐻𐐩𐑇𐑄, 𐐒𐐲𐐻 𐐼𐐮𐑊𐐮𐑂𐐳𐑉 𐐲𐑅 𐑁𐑉𐐪𐑋 𐐨𐑂𐑊.<span class="gloss">And lead us not into temptation, but deliver us from evil.</span></p></section><section class="passage"><h3>Deseret First Book</h3><p class="meta">in the manner of the 1868 primer</p><p class="de line">𐐜𐐮𐑅 𐐮𐑆 𐐪 𐑋𐐰𐑄.<span class="gloss">This is a man.</span></p>
-<p class="de line">𐐜 𐑋𐐰𐑄 𐐸𐐰𐑆 𐐪 𐐸𐐰𐐻.<span class="gloss">The man has a hat.</span></p>
-<p class="de line">𐐜 𐐿𐐰𐐻 𐑅𐐰𐐻 𐐪𐑄 𐑄 𐑋𐐰𐐻.<span class="gloss">The cat sat on the mat.</span></p>
-<p class="de line">𐐌 𐐿𐐰𐑄 𐑅𐐨 𐑄 𐑅𐐲𐑄.<span class="gloss">I can see the sun.</span></p></section>
+<section class="passage"><h3>The Lord's Prayer</h3><p class="meta">Matthew 6:9–13, King James Version · public domain</p><p class="de line">𐐍𐑉 𐐙𐐪𐑄𐐳𐑉 𐐶𐐮𐐽 𐐪𐑉𐐻 𐐮𐑌 𐐸𐐯𐑂𐑌, 𐐐𐐰𐑊𐐬𐐼 𐐺 𐑄𐐴 𐑌𐐩𐑋.<span class="gloss">Our Father which art in heaven, Hallowed be thy name.</span></p>
+<p class="de line">𐐜𐐴 𐐿𐐮𐑍𐐼𐑋 𐐿𐐲𐑋. 𐐜𐐴 𐐶𐐮𐑊 𐐺 𐐼𐐲𐑌 𐐮𐑌 𐐲𐑉𐑃, 𐐰𐑆 𐐮𐐻 𐐮𐑆 𐐮𐑌 𐐸𐐯𐑂𐑌.<span class="gloss">Thy kingdom come. Thy will be done in earth, as it is in heaven.</span></p>
+<p class="de line">𐐘𐐮𐑂 𐐲𐑅 𐑄𐐮𐑅 𐐼𐐩 𐐵𐑉 𐐼𐐩𐑊𐐨 𐐺𐑉𐐯𐐼.<span class="gloss">Give us this day our daily bread.</span></p>
+<p class="de line">𐐈𐑌𐐼 𐑁𐐳𐑉𐑀𐐮𐑂 𐐲𐑅 𐐵𐑉 𐐼𐐯𐐻𐑅, 𐐰𐑆 𐐶𐐨 𐑁𐐳𐑉𐑀𐐮𐑂 𐐵𐑉 𐐼𐐯𐐻𐐲𐑉𐑆.<span class="gloss">And forgive us our debts, as we forgive our debtors.</span></p>
+<p class="de line">𐐈𐑌𐐼 𐑊𐐨𐐼 𐐲𐑅 𐑌𐐪𐐻 𐐮𐑌𐐻𐐭 𐐻𐐯𐑋𐐹𐐻𐐩𐑇𐑌, 𐐺𐐲𐐻 𐐼𐐮𐑊𐐮𐑂𐐳𐑉 𐐲𐑅 𐑁𐑉𐐪𐑋 𐐨𐑂𐑊.<span class="gloss">And lead us not into temptation, but deliver us from evil.</span></p></section><section class="passage"><h3>Deseret First Book</h3><p class="meta">in the manner of the 1868 primer</p><p class="de line">𐐜𐐮𐑅 𐐮𐑆 𐐪 𐑋𐐰𐑌.<span class="gloss">This is a man.</span></p>
+<p class="de line">𐐜 𐑋𐐰𐑌 𐐸𐐰𐑆 𐐪 𐐸𐐰𐐻.<span class="gloss">The man has a hat.</span></p>
+<p class="de line">𐐜 𐐿𐐰𐐻 𐑅𐐰𐐻 𐐪𐑌 𐑄 𐑋𐐰𐐻.<span class="gloss">The cat sat on the mat.</span></p>
+<p class="de line">𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐑅𐐲𐑌.<span class="gloss">I can see the sun.</span></p></section>
   </div>
 
 </main>
@@ -462,10 +502,8 @@ footer{
     outLabel.textContent = toDeseret ? 'Deseret' : 'English';
     swap.textContent = toDeseret ? 'Deseret to English' : 'English to Deseret';
     src.classList.toggle('de', !toDeseret);
-    out.classList.toggle('de', toDeseret);
     // Feed the previous result back in, which is what you usually want.
-    var carry = out.value;
-    src.value = carry;
+    src.value = out.value;
     render();
     src.focus();
   });
