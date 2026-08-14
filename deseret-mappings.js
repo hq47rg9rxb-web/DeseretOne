@@ -657,7 +657,7 @@ const DESERET_MAPPINGS = {
 "abominable": "𐐲𐐺𐐪𐑋𐐮𐑌𐐲𐐺𐐲𐑊",
 "abomination": "𐐲𐐺𐐪𐑋𐐮𐑌𐐩𐑇𐐲𐑌",
 "abominations": "𐐲𐐺𐐪𐑋𐐮𐑌𐐩𐑇𐐲𐑌𐑆",
-"about": "𐐲𐐺𐐵𐐻",
+"about": "𐐺𐐵𐐻",
 "above": "𐐲𐐺𐐲𐑂",
 "abraham": "𐐩𐐺𐑉𐐲𐐸𐐰𐑋",
 "abridges": "𐐲𐐺𐑉𐐮𐐾𐐮𐑆",
