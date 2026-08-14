@@ -650,7 +650,7 @@ const DESERET_MAPPINGS = {
 "whistle": "𐐶𐐮𐑅𐐲𐑊",
 "wrestle": "𐑉𐐯𐑅𐐲𐑊",
 "yolk": "𐐷𐐬𐐿",
-"a": "\u{10429}",
+"a": "𐐩",
 "abducted": "𐐰𐐺𐐼𐐲𐐿𐐻𐐲𐐼",
 "abinadi": "𐐰𐐺𐐮𐑌𐐰𐐼𐐴",
 "abish": "𐐰𐐺𐐮𐑇",
