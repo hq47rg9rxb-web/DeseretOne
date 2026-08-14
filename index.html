@@ -6,21 +6,10 @@
 <title>Deseret One</title>
 <meta name="description" content="Learn and use the Deseret Alphabet">
 <style>
-/* Noto Sans Deseret, SIL OFL. Replace the src below with your original
-   base64 blob if you want the exact bytes from the previous file. */
-@font-face{
-  font-family:'Deseret';
-  src:url(data:font/woff2;base64,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) format('woff2');
-  font-weight:400;font-style:normal;font-display:swap;
-  unicode-range:U+10400-1044F;
-}
 :root{
   --blue:#004aad; --blue-deep:#002060; --ink:#12203a; --muted:#5d6b85;
   --line:#dfe5ef; --bg:#f7f9fc; --green:#1a9e5c;
-  /* Liberation Sans is metric-compatible with Arial, which is the
-     fallback for anyone who does not have it installed. */
   --sans:'Liberation Sans',Arial,Helvetica,sans-serif;
-  /* Liberation Serif is metric-compatible with Times New Roman. */
   --serif:'Liberation Serif','Times New Roman',Times,serif;
 }
 *{box-sizing:border-box}
@@ -31,7 +20,7 @@ body{
   font-size:16px; line-height:1.7;
   -webkit-font-smoothing:antialiased;
 }
-.de{font-family:'Deseret',var(--sans)}
+.de{font-family:var(--sans)}
 
 /* ---- masthead ---- */
 header{
@@ -40,9 +29,6 @@ header{
   position:relative;
 }
 
-/* Header epigraph: laptop and desktop only, absolutely positioned so the
-   band keeps its height. Hidden below 72rem (~1152px), which is where it
-   would start crowding the first tab. */
 .epigraph{display:none}
 @media(min-width:72rem){
   .epigraph{
@@ -59,14 +45,13 @@ header{
 }
 header h1{
   margin:0; font-size:1rem; font-weight:700; letter-spacing:0;
-  /* The site title is the only thing not set in Liberation Sans. */
   font-family:var(--serif);
 }
 header .de-title{
   display:block; font-size:clamp(1.15rem,3.2vw,1.4rem); font-weight:700;
   line-height:1.35; letter-spacing:.005em;
   color:#fff;
-  font-family:'Deseret',var(--serif);
+  font-family:var(--serif);
 }
 /* ---- tabs ---- */
 nav.tabs{
@@ -109,7 +94,6 @@ a{color:var(--blue)}
 .cell .gl .lc{margin-left:.28rem; color:var(--muted)}
 .cell .tx{font-size:0.77rem; line-height:1.5}
 .cell .ipa{color:var(--muted)}
-/* syllabic values: one glyph, one name, so they pack tighter */
 .grid.syl{grid-template-columns:repeat(auto-fill,minmax(6rem,1fr))}
 .grid.syl .tx{font-size:0.83rem}
 
@@ -135,7 +119,6 @@ ol.lines li{padding:.7rem 0;border-bottom:1px solid var(--line)}
 .line{font-size:1.17rem;margin:0;line-height:1.55}
 .gloss{color:var(--muted);font-size:0.8rem;line-height:1.6;margin:.15rem 0 0}
 
-/* Glosses hide until asked for, so you try reading first. */
 body.hide-gloss .gloss{visibility:hidden}
 body.hide-gloss ol.lines li:hover .gloss,
 body.hide-gloss .passage:hover .gloss{visibility:visible}
@@ -171,7 +154,7 @@ textarea{
   border-radius:8px;background:#fff;color:inherit;resize:vertical;
 }
 textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
-#out{font-family:'Deseret',var(--sans);font-size:1.13rem;line-height:1.6}
+#out{font-family:var(--sans);font-size:1.13rem;line-height:1.6}
 .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 button.act{
   font:inherit;font-size:0.8rem;font-weight:600;letter-spacing:.02em;cursor:pointer;color:#fff;
@@ -217,14 +200,11 @@ footer{
 <body>
 
 <header>
-  <!-- Epigraph sits in the left margin of the header band. It is absolutely
-       positioned so it does not add height, and it is hidden below 64rem
-       (~1024px) — laptop and desktop only. -->
   <blockquote class="epigraph">
     "No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory."
     <cite>&mdash; George A. Smith</cite>
   </blockquote>
-  <h1><span class="de-title de">Deseret One / 𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑌</h1>
+  <h1><span class="de-title de">Deseret One / 𐐔𐐯𐑆𐐲𐑉𐐯𐐻 𐐎𐐲𐑌</span></h1>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button role="tab" id="t-basics" aria-controls="basics" aria-selected="true">Basics</button>
     <button role="tab" id="t-learn" aria-controls="learn" aria-selected="false" tabindex="-1">Learn</button>
@@ -237,11 +217,6 @@ footer{
 
 <main>
 
-  <!-- ===================================================================
-       BASICS — what the alphabet IS. The letter grid, then syllabic values.
-       No history here (that is the History tab) and nothing about the site
-       itself (that is About).
-       =================================================================== -->
   <div class="panel" id="basics" role="tabpanel" aria-labelledby="t-basics">
     <h2>Basics</h2>
 
@@ -251,7 +226,7 @@ footer{
 <div class="cell"><span class="gl de">𐐂</span><span class="tx"><span class="ipa">/ɑː/</span> · <span class='sound-match'>ar</span>t</span></div>
 <div class="cell"><span class="gl de">𐐃</span><span class="tx"><span class="ipa">/ɔː/</span> · <span class='sound-match'>au</span>ght</span></div>
 <div class="cell"><span class="gl de">𐐄</span><span class="tx"><span class="ipa">/oʊ/</span> · <span class='sound-match'>oa</span>t</span></div>
-<div class="cell"><span class="gl de">𐐅</span><span class="tx"><Leg></Leg><span class="ipa">/uː/</span> · <span class='sound-match'>oo</span>ze</span></div>
+<div class="cell"><span class="gl de">𐐅</span><span class="tx"><span class="ipa">/uː/</span> · <span class='sound-match'>oo</span>ze</span></div>
 <div class="cell"><span class="gl de">𐐆</span><span class="tx"><span class="ipa">/ɪ/</span> · <span class='sound-match'>i</span>t</span></div>
 <div class="cell"><span class="gl de">𐐇</span><span class="tx"><span class="ipa">/ɛ/</span> · <span class='sound-match'>e</span>nd</span></div>
 <div class="cell"><span class="gl de">𐐈</span><span class="tx"><span class="ipa">/æ/</span> · <span class='sound-match'>a</span>t</span></div>
@@ -270,9 +245,9 @@ footer{
 <div class="cell"><span class="gl de">𐐕</span><span class="tx"><span class="ipa">/tʃ/</span> · <span class='sound-match'>ch</span>eese</span></div>
 <div class="cell"><span class="gl de">𐐖</span><span class="tx"><span class="ipa">/dʒ/</span> · <span class='sound-match'>j</span>eep</span></div>
 <div class="cell"><span class="gl de">𐐗</span><span class="tx"><span class="ipa">/k/</span> · <span class='sound-match'>k</span>ey</span></div>
-<div class="cell"><span class="gl de">𐐘</span><span class="tx"><span class="ipa">/ɡ/</span> · <span class='sound-match'>g</ span>ay</ span></ div>
-<div class="cell"><span class="gl de">𐐙</span><span class="tx"><span class="ipa">/f/</span> · <span class='sound-match'>f</ span>ee</ span></ div>
-<div class="cell"><span class="gl de">𐐚</span><span class="tx"><span class="ipa">/v/</span> · <span class='sound-match'>v</ span>eer</ span></ div>
+<div class="cell"><span class="gl de">𐐘</span><span class="tx"><span class="ipa">/ɡ/</span> · <span class='sound-match'>g</span>ay</span></div>
+<div class="cell"><span class="gl de">𐐙</span><span class="tx"><span class="ipa">/f/</span> · <span class='sound-match'>f</span>ee</span></div>
+<div class="cell"><span class="gl de">𐐚</span><span class="tx"><span class="ipa">/v/</span> · <span class='sound-match'>v</span>eer</span></div>
 <div class="cell"><span class="gl de">𐐛</span><span class="tx"><span class="ipa">/θ/</span> · <span class='sound-match'>th</span>igh</span></div>
 <div class="cell"><span class="gl de">𐐜</span><span class="tx"><span class="ipa">/ð/</span> · <span class='sound-match'>th</span>y</span></div>
 <div class="cell"><span class="gl de">𐐝</span><span class="tx"><span class="ipa">/s/</span> · <span class='sound-match'>s</span>ee</span></div>
@@ -302,53 +277,14 @@ footer{
 <div class="cell"><span class="gl de">𐑄</span><span class="tx">thee</span></div>
 <div class="cell"><span class="gl de">𐑉</span><span class="tx">er</span></div>
     </div>
-
-    <!-- REMOVED FROM VIEW, NOT DELETED. These were the old Basics paragraphs
-         and the two items parked here from About. Kept in case you want any
-         of it back; delete freely once you have rewritten the copy.
-
-         The Deseret Alphabet consists of 40 letters, each representing a
-         single sound in English. This phonetic system eliminates the
-         irregularities of traditional spelling, making English far easier to
-         learn and read.
-
-         The alphabet is organized by sound categories: long vowels, short
-         vowels, semivowels and diphthongs, and consonants. Each letter has a
-         unique form and name that helps with pronunciation.
-
-         Start with the practice lessons to learn the letters in manageable
-         groups, or use the translator to see how English text appears in
-         Deseret.  [this held the only links to #learn and #translate]
-
-         Why Deseret?
-         Deseret (from the Book of Mormon, meaning "honeybee") represents a
-         vision of a more rational, learnable writing system. One symbol per
-         sound means that once you know the alphabet, you can read any word
-         no exceptions, no silent letters, no ambiguous spellings.
-
-         Deseret is a more efficient, learnable and aesthetically pleasing
-         spelling system for the English language. It was created in the
-         1850s under the leadership of Brigham Young.
-    -->
   </div>
 
-  <!-- ===================================================================
-       ABOUT — this tab is about the SITE, not about the Deseret Alphabet.
-       Credits, contact, and what the project is for. Nothing that
-       explains or teaches the alphabet itself belongs here; that goes
-       in Basics (what it is), Learn (how to read it) or History (where
-       it came from).
-       =================================================================== -->
   <div class="panel" id="about" role="tabpanel" aria-labelledby="t-about" hidden>
     <h2>About</h2>
     <p>This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is the sister project of the <a href="#">Deseret Alphabet web extension</a>.</p>
     <p>The goal of this resource is to facilitate the learning and usage of the Deseret Alphabet, with the ultimate goal that it be normalised.</p>
   </div>
 
-  <!-- ===================================================================
-       HISTORY — where the alphabet came from. Currently a single quoted
-       source; anything explaining how to read it belongs in Basics or Learn.
-       =================================================================== -->
   <div class="panel" id="history" role="tabpanel" aria-labelledby="t-history" hidden>
     <h2>History</h2>
     <blockquote class="source">
@@ -383,7 +319,6 @@ footer{
 <li><p class="de line">𐐐𐐵 𐑌𐐵, 𐐺𐑉𐐵𐑌 𐐿𐐵?</p><p class="gloss">How now, brown cow?</p></li>
 <li><p class="de line">𐐂 𐑁𐑏 𐑌𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li>
 <li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑌 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
-
   </div>
 
   <div class="panel" id="translate" role="tabpanel" aria-labelledby="t-translate" hidden>
@@ -411,7 +346,8 @@ footer{
 <p class="de line">𐐜𐐴 𐐿𐐮𐑍𐐼𐑋 𐐿𐐲𐑋. 𐐜𐐴 𐐶𐐮𐑊 𐐺 𐐼𐐲𐑌 𐐮𐑌 𐐲𐑉𐑃, 𐐰𐑆 𐐮𐐻 𐐮𐑆 𐐮𐑌 𐐸𐐯𐑂𐑌.<span class="gloss">Thy kingdom come. Thy will be done in earth, as it is in heaven.</span></p>
 <p class="de line">𐐘𐐮𐑂 𐐲𐑅 𐑄𐐮𐑅 𐐼𐐩 𐐵𐑉 𐐼𐐩𐑊𐐨 𐐺𐑉𐐯𐐼.<span class="gloss">Give us this day our daily bread.</span></p>
 <p class="de line">𐐈𐑌𐐼 𐑁𐐳𐑉𐑀𐐮𐑂 𐐲𐑅 𐐵𐑉 𐐼𐐯𐐻𐑅, 𐐰𐑆 𐐶𐐨 𐑁𐐳𐑉𐑀𐐮𐑂 𐐵𐑉 𐐼𐐯𐐻𐐲𐑉𐑆.<span class="gloss">And forgive us our debts, as we forgive our debtors.</span></p>
-<p class="de line">𐐈𐑌𐐼 𐑊𐐨𐐼 𐐲𐑅 𐑌𐐪𐐻 𐐮𐑌𐐻𐐭 𐐻𐐯𐑋𐐹𐐻𐐩𐑇𐑌, 𐐺𐐲𐐻 𐐼𐐮𐑊𐐮𐑂𐐳𐑉 𐐲𐑅 𐑁𐑉𐐪𐑋 𐐨𐑂𐑊.<span class="gloss">And lead us not into temptation, but deliver us from evil.</span></p></section><section class="passage"><h3>Deseret First Book</h3><p class="meta">in the manner of the 1868 primer</p><p class="de line">𐐜𐐮𐑅 𐐮𐑆 𐐪 𐑋𐐰𐑌.<span class="gloss">This is a man.</span></p>
+<p class="de line">𐐈𐑌𐐼 𐑊𐐨𐐼 𐐲𐑅 𐑌𐐪𐐻 𐐮𐑌𐐻𐐭 𐐻𐐯𐑋𐐹𐐻𐐩𐑇𐑌, 𐐺𐐲𐐻 𐐼𐐮𐑊𐐮𐑂𐐳𐑉 𐐲𐑅 𐑁𐑉𐐪𐑋 𐐨𐑂𐑊.<span class="gloss">And lead us not into temptation, but deliver us from evil.</span></p></section>
+<section class="passage"><h3>Deseret First Book</h3><p class="meta">in the manner of the 1868 primer</p><p class="de line">𐐜𐐮𐑅 𐐮𐑆 𐐪 𐑋𐐰𐑌.<span class="gloss">This is a man.</span></p>
 <p class="de line">𐐜 𐑋𐐰𐑌 𐐸𐐰𐑆 𐐪 𐐸𐐰𐐻.<span class="gloss">The man has a hat.</span></p>
 <p class="de line">𐐜 𐐿𐐰𐐻 𐑅𐐰𐐻 𐐪𐑌 𐑄 𐑋𐐰𐐻.<span class="gloss">The cat sat on the mat.</span></p>
 <p class="de line">𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐑅𐐲𐑌.<span class="gloss">I can see the sun.</span></p></section>
@@ -420,8 +356,7 @@ footer{
 </main>
 
 <footer>
-  DeseretOne &middot; <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a><br>
-  Deseret type: Noto Sans Deseret, SIL Open Font License.
+  DeseretOne &middot; <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a>
 </footer>
 
 <script src="deseret-mappings.js"></script>
@@ -441,7 +376,6 @@ footer{
       document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
       if (on && focus) t.focus();
     });
-    // Sandboxed contexts (about:srcdoc, some iframes) forbid history writes.
     if (write !== false) {
       try { history.replaceState(null, '', '#' + id); } catch (e) {}
     }
@@ -465,7 +399,7 @@ footer{
 
   var start = decodeURIComponent(location.hash.slice(1));
   var valid = tabs.some(function (t) { return t.getAttribute('aria-controls') === start; });
-  show(valid ? start : 'about', false, false);
+  show(valid ? start : 'basics', false, false);
   if (!valid) window.scrollTo(0, 0);
 
   /* ---- hide the English ---------------------------------------------- */
@@ -522,7 +456,6 @@ footer{
     outLabel.textContent = toDeseret ? 'Deseret' : 'English';
     swap.textContent = toDeseret ? 'Deseret to English' : 'English to Deseret';
     src.classList.toggle('de', !toDeseret);
-    // Feed the previous result back in, which is what you usually want.
     src.value = out.value;
     render();
     src.focus();
