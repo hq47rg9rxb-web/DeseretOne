@@ -33,25 +33,25 @@
     .gh-spacer{order:2}
     .gh-search{order:3}
     .gh-cta{order:4}
-    .gh-nav{order:5;flex:1 1 100%;border-top:1px solid var(--line);padding:0 1.4rem;min-height:2.15rem}
-    .gh-mark{flex:none;display:flex;align-items:center;padding:.15rem 1.4rem;text-decoration:none;color:var(--ink)}
-    .gh-logo{display:block;height:6.5rem;width:auto;max-width:100%}
+    .gh-nav{order:5;flex:1 1 100%;border-top:1px solid var(--line);padding:0 16px;min-height:48px;gap:0}
+    .gh-mark{flex:none;display:flex;align-items:center;padding:8px 24px;text-decoration:none;color:var(--ink)}
+    .gh-logo{display:block;height:7rem;width:auto;max-width:100%}
     .gh-burger{display:none;flex:none;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;margin-left:.35rem;background:none;border:none;border-radius:4px;cursor:pointer;color:var(--ink)}
     .gh-burger:hover{background:#f0fbff}
     .gh-burger[aria-expanded="true"]{background:#e6f8ff}
 
     /* ===== NAVIGATION ===== */
-    .gh-nav{display:flex;align-items:center;gap:1.9rem;margin-left:0}
-    .gh-nav a{font-family:var(--sans);font-size:var(--fs);color:var(--ink);text-decoration:none;padding:.1rem 0;border-bottom:2px solid transparent}
-    .gh-nav a:hover{text-decoration:underline}
-    .gh-nav a[aria-current="true"]{border-bottom-color:var(--brand)}
-    .gh-spacer{flex:1 1 auto;min-width:.75rem}
+    .gh-nav{display:flex;align-items:center;gap:0;margin-left:0}
+    .gh-nav a{font-family:var(--sans);font-size:var(--fs);font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);text-decoration:none;display:flex;align-items:center;height:48px;padding:0 16px;border-bottom:3px solid transparent}
+    .gh-nav a:hover{background:#f2f2f2;text-decoration:none}
+    .gh-nav a[aria-current="true"]{border-bottom-color:var(--brand);background:#f7fdff}
+    .gh-spacer{flex:1 1 auto;min-width:16px}
 
     /* ===== SEARCH ===== */
-    .gh-search{position:relative;flex:0 1 17rem;display:flex;align-items:center}
-    .gh-search input{font:inherit;font-family:var(--sans);font-size:var(--fs);width:100%;padding:.42rem 2.1rem .42rem .7rem;border:1px solid #b9c2cf;border-radius:3px;background:#fff;color:var(--ink)}
+    .gh-search{position:relative;flex:0 1 272px;display:flex;align-items:center}
+    .gh-search input{font:inherit;font-family:var(--sans);font-size:var(--fs);width:100%;height:40px;padding:0 40px 0 12px;border:1px solid #b9c2cf;border-radius:4px;background:#fff;color:var(--ink)}
     .gh-search input:focus{outline:2px solid var(--blue);outline-offset:-1px}
-    .gh-search button{position:absolute;right:.15rem;display:grid;place-items:center;width:1.8rem;height:1.8rem;background:none;border:none;cursor:pointer;color:var(--ink)}
+    .gh-search button{position:absolute;right:4px;display:grid;place-items:center;width:32px;height:32px;background:none;border:none;cursor:pointer;color:var(--ink)}
     .gh-results{position:absolute;top:calc(100% + .3rem);left:0;right:0;z-index:50;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.12);list-style:none;margin:0;padding:.2rem;max-height:16rem;overflow:auto}
     .gh-results[hidden]{display:none}
     .gh-results a{display:block;padding:.4rem .55rem;text-decoration:none;color:var(--ink);font-size:var(--fs)}
@@ -60,12 +60,12 @@
     .gh-results .r-none{padding:.5rem .55rem;font-size:var(--fs);font-style:italic}
 
     /* ===== CTA BUTTON ===== */
-    .gh-cta{display:flex;align-items:center;margin-left:1.2rem;margin-right:1.4rem}
+    .gh-cta{display:flex;align-items:center;margin-left:16px;margin-right:24px}
     /* The logo cyan cannot carry white text, so this button wears dark ink
        instead: #00303D on --brand measures 7.0:1. */
     /* Deliberately monochrome: outlined when off, solid black when on, so the
        state reads without relying on colour at all. */
-    .gh-cta button{font:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:#fff;color:var(--ink);border:1px solid var(--ink);text-decoration:none;font-family:var(--sans);font-size:var(--fs);padding:.6rem 1.15rem}
+    .gh-cta button{font:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:#fff;color:var(--ink);border:1px solid var(--ink);text-decoration:none;font-family:var(--sans);font-size:var(--fs);height:40px;padding:0 16px}
     .gh-cta button:hover{background:#f2f2f2}
     .gh-cta button[aria-pressed="true"]{background:var(--ink);color:#fff}
     .gh-cta button[aria-pressed="true"]:hover{background:#333}
@@ -149,6 +149,10 @@
 
     /* ===== ACCESSIBILITY ===== */
     :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+    /* Routing moves focus to the new page's h1 so screen readers announce
+       it. That focus is programmatic, not the user tabbing to a control,
+       so the ring is suppressed while the focus itself is kept. */
+    h1[tabindex="-1"]:focus,h1[tabindex="-1"]:focus-visible{outline:none}
     .skip{position:absolute;left:-9999px;top:0;z-index:60;background:#fff;color:var(--ink);padding:.6rem .9rem;border:1px solid var(--ink)}
     .skip:focus{left:.5rem;top:.5rem}
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -159,16 +163,16 @@
     /* Below 62rem the inline nav cannot fit, so it becomes a panel under
        the bar, opened by the burger, with the search moved inside it. */
     @media(max-width:62rem){
-      :root{--hdr:5.2rem}
+      :root{--hdr:6.6rem}
       .gh{position:sticky;top:0;height:var(--hdr);flex-wrap:wrap;align-items:center}
-      .gh-mark{order:0;padding:0 .6rem}
+      .gh-mark{order:0;padding:0 8px}
       .gh-nav{order:0;flex:none;border-top:none;padding:0;min-height:0}
       .gh-burger{display:flex}
-      .gh-logo{height:3rem}
+      .gh-logo{height:4.6rem}
       .gh-spacer{display:none}
       .gh-nav{position:absolute;top:var(--hdr);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;margin:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(0,0,0,.10);max-height:calc(100vh - var(--hdr));overflow:auto}
       .gh-nav.open{display:flex}
-      .gh-nav a{padding:.95rem 1.1rem;border-bottom:1px solid var(--line);border-left:3px solid transparent;min-height:2.9rem;display:flex;align-items:center}
+      .gh-nav a{height:auto;padding:16px;border-bottom:1px solid var(--line);border-left:3px solid transparent;min-height:48px;display:flex;align-items:center}
       .gh-nav a[aria-current="true"]{border-bottom-color:var(--line);border-left-color:var(--brand);background:#f0fbff;font-weight:700}
       /* the search box is moved into the panel by script at this width */
       .gh-nav .gh-search{order:-1;flex:1 1 auto;padding:.7rem 1.1rem;border-bottom:1px solid var(--line)}
@@ -182,7 +186,7 @@
     @media(max-width:34rem){
       .gh-cta .cta-label{display:none}
       .gh-cta button{padding:.6rem .75rem}
-      .gh-logo{height:2.5rem}
+      .gh-logo{height:3.9rem}
       table.lt td.gl{font-size:1rem}
       /* 16px stops iOS zooming the page when a field takes focus */
       textarea,.opts select{font-size:16px}
