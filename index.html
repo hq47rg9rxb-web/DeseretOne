@@ -127,7 +127,7 @@
     .toggle{font:inherit;font-size:var(--fs);font-weight:600;letter-spacing:.02em;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink)}
 
     /* ===== BLOCKQUOTES ===== */
-    blockquote.source{margin:0;padding-left:1.1rem;border-left:3px solid var(--line)}
+    blockquote.source{margin:0;padding-left:1.1rem;border-left:3px solid var(--line);font-family:var(--serif)}
     blockquote.source p:last-of-type{margin-bottom:.9rem}
     blockquote.source cite{display:block;font-style:italic;font-size:var(--fs-body);color:var(--ink)}
 
@@ -192,7 +192,10 @@
       .gh-nav a{height:auto;padding:16px;border-bottom:1px solid var(--line);border-left:3px solid transparent;min-height:48px;display:flex;align-items:center}
       .gh-nav a[aria-current="true"]{border-bottom-color:var(--line);border-left-color:var(--brand);background:none;font-weight:700}
       /* the search box is moved into the panel by script at this width */
-      .gh-nav .gh-search{order:-1;flex:1 1 auto;padding:.7rem 1.1rem;border-bottom:1px solid var(--line)}
+      /* Hide the search while it is still in the header during initial mobile
+         page load. The script moves it into the closed menu immediately. */
+      .gh > .gh-search{display:none}
+      .gh-nav .gh-search{display:flex;order:-1;flex:1 1 auto;padding:.7rem 1.1rem;border-bottom:1px solid var(--line)}
       .gh-nav .gh-search input{padding:.7rem 2.3rem .7rem .8rem;font-size:16px}
       .gh-nav .gh-results{left:1.1rem;right:1.1rem}
       .gh-nav .gh-search button{right:1.25rem;width:2.2rem;height:2.2rem}
@@ -236,8 +239,8 @@
       <img class="gh-logo" src="https://i.ibb.co/mVXDQrPq/image.png" alt="Deseret One">
     </a>
     <nav class="gh-nav" id="siteNav" aria-label="Sections">
-      <a href="#case" data-go="case">Why Deseret?</a>
       <a href="#home" data-go="home">Home</a>
+      <a href="#case" data-go="case">Why Deseret?</a>
       <a href="#learn" data-go="learn">Learn</a>
       <a href="#translator" data-go="translator">Translator</a>
       <a href="#texts" data-go="texts">Texts</a>
@@ -287,7 +290,7 @@
 
           <section class="home-quote-card">
             <blockquote>
-              “I wish our brethren to give this subject their serious and candid consideration, and do their best to introduce into our schools a system that will greatly abridge the time required to gain the various branches of a good education. No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory.”
+              “No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory. I would advise our brethren, aside from the ordinary schools, to get up evening reading classes in all our settlements for the instruction of those who cannot attend at other times.”
             </blockquote>
             <p class="quote-attribution">— George A. Smith</p>
             <a href="https://www.google.com/search?q=George+A.+Smith+LDS+%22No+greater+or+more+blessed+mission%22" target="_blank" rel="noopener noreferrer">
@@ -384,8 +387,7 @@
         <blockquote class="source">
           <p>The Church of Jesus Christ of Latter-day Saints during the years 1852-1877, introduced to its membership a form of rhetoric (writing system) called the deseret alphabet (phonetic alphabet). This experiment was intended to alleviate the problem of non-communication which was created by the great influx of foreign speaking Saints into the great Salt Lake Valley.</p>
           <p>The alphabet was developed and encouraged by the Prophet Brigham Young and a few followers. Much to their dismay the members of the Church did not have the same vision of its workability as did its promoters.</p>
-          <p>This new alphabet appears not to have met the needs of the people nor did it interest them. Its use and development was hindered by temple building, farming, settling, new doctrine, and possibly little faith in following their prophet, president, and leader. The Deseret Alphabet died with Brigham Young in 1877. Yet, it appears to have been a noble experiment towards a spelling reform. Perhaps it would have worked under different situations and different environment.</p>
-          <cite>&mdash; Larry Ray Wintersteen, abstract of <em>A History of the Deseret Alphabet</em></cite>
+          <p>This new alphabet appears not to have met the needs of the people nor did it interest them. Its use and development was hindered by temple building, farming, settling, new doctrine, and possibly little faith in following their prophet, president, and leader. The Deseret Alphabet died with Brigham Young in 1877. Yet, it appears to have been a noble experiment towards a spelling reform. Perhaps it would have worked under different situations and different environment.
         </blockquote>
       </article>
 
