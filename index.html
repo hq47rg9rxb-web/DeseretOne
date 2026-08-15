@@ -36,7 +36,7 @@
     .gh-search{order:3}
     .gh-cta{order:4}
     .gh-nav{order:5;flex:1 1 100%;border-top:1px solid var(--line);padding:0 16px;min-height:48px;gap:0}
-    .gh-mark{flex:none;display:flex;align-items:center;padding:7px 24px;text-decoration:none;color:var(--ink)}
+    .gh-mark{flex:none;display:flex;align-items:center;padding:20px 24px;text-decoration:none;color:var(--ink)}
     .gh-logo{display:block;height:2.6rem;width:auto;max-width:100%}
     .gh-burger{display:none;flex:none;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;margin-left:.35rem;background:none;border:none;border-radius:4px;cursor:pointer;color:var(--ink)}
     .gh-burger:hover{background:#f0fbff}
@@ -73,6 +73,18 @@
     .gh-cta button[aria-pressed="true"]:hover{background:#333}
     .gh-cta button[disabled]{background:#fff;color:#767676;border-color:#767676;cursor:not-allowed}
     .gh svg{display:block}
+
+
+    /* ===== HOME ===== */
+    .home-intro{text-align:center;margin-bottom:2.2rem}
+    .home-intro h1{display:block;font-size:1.8rem;margin-bottom:0}
+    .home-quote{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,34%);gap:2rem;align-items:center;margin:2rem 0}
+    .home-quote blockquote{margin:0;padding-left:1.2rem;border-left:3px solid var(--brand);font-family:var(--sans);font-size:1.05rem;line-height:1.75}
+    .home-quote>a{display:block}.home-quote img{display:block;width:100%;height:auto;max-height:380px;object-fit:contain}
+    @media(max-width:40rem){
+      .home-quote{grid-template-columns:1fr;gap:1.5rem}
+      .home-quote img{max-height:300px}
+    }
 
     /* ===== MAIN CONTENT ===== */
     main{max-width:46rem;margin:0 auto;padding:2.2rem 2rem 5rem}
@@ -167,7 +179,7 @@
     @media(max-width:62rem){
       :root{--hdr:3.4rem}
       .gh{position:sticky;top:0;height:var(--hdr);flex-wrap:wrap;align-items:center}
-      .gh-mark{order:0;padding:0 8px}
+      .gh-mark{order:0;padding:10px 8px}
       .gh-nav{order:0;flex:none;border-top:none;padding:0;min-height:0}
       .gh-burger{display:flex}
       .gh-logo{height:1.7rem}
@@ -217,14 +229,13 @@
     <button id="navBtn" class="gh-burger" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-    <a class="gh-mark" href="#letters" data-go="letters" aria-label="Deseret One, home">
+    <a class="gh-mark" href="#home" data-go="home" aria-label="Deseret One, home">
       <img class="gh-logo" src="https://i.ibb.co/mVXDQrPq/image.png" alt="Deseret One">
     </a>
     <nav class="gh-nav" id="siteNav" aria-label="Sections">
       <a href="#case" data-go="case">Why Deseret?</a>
-      <a href="#letters" data-go="letters">Alphabet</a>
+      <a href="#learn" data-go="learn">Learn</a>
       <a href="#translator" data-go="translator">Translator</a>
-      <a href="#practice" data-go="practice">Practice</a>
       <a href="#texts" data-go="texts">Texts</a>
       <a href="#history" data-go="history">History</a>
       <a href="#about" data-go="about">About the Site</a>
@@ -253,19 +264,33 @@
   <div class="shell">
     <main id="main">
 
-     <!-- ===== PAGE: The Alphabet ===== -->
-      <article class="page" id="letters" hidden>
-        <h1>The Letters</h1>
-        <div class="tw"><table class="lt"><tbody><tr><td class="gl de">𐐨</td><td class="ipa">/iː/</td><td class="ex"><span class='sound-match'>ea</span>t</td><td class="gl de">𐐲</td><td class="ipa">/ʌ/</td><td class="ex"><span class='sound-match'>u</span>p</td><td class="gl de">𐐼</td><td class="ipa">/d/</td><td class="ex"><span class='sound-match'>d</span>eed</td><td class="gl de">𐑆</td><td class="ipa">/z/</td><td class="ex"><span class='sound-match'>z</span>eal</td></tr><tr><td class="gl de">𐐩</td><td class="ipa">/eɪ/</td><td class="ex"><span class='sound-match'>a</span>te</td><td class="gl de">𐐳</td><td class="ipa">/ʊ/</td><td class="ex"><span class='sound-match'>oo</span>k</td><td class="gl de">𐐽</td><td class="ipa">/tʃ/</td><td class="ex"><span class='sound-match'>ch</span>eese</td><td class="gl de">𐑇</td><td class="ipa">/ʃ/</td><td class="ex"><span class='sound-match'>sh</span>e</td></tr><tr><td class="gl de">𐐪</td><td class="ipa">/ɑː/</td><td class="ex"><span class='sound-match'>ar</span>t</td><td class="gl de">𐐴</td><td class="ipa">/aɪ/</td><td class="ex"><span class='sound-match'>i</span>ce</td><td class="gl de">𐐾</td><td class="ipa">/dʒ/</td><td class="ex"><span class='sound-match'>j</span>eep</td><td class="gl de">𐑈</td><td class="ipa">/ʒ/</td><td class="ex"><span class='sound-match'>s</span>ion</td></tr><tr><td class="gl de">𐐫</td><td class="ipa">/ɔː/</td><td class="ex"><span class='sound-match'>au</span>ght</td><td class="gl de">𐐵</td><td class="ipa">/aʊ/</td><td class="ex"><span class='sound-match'>ou</span>t</td><td class="gl de">𐐿</td><td class="ipa">/k/</td><td class="ex"><span class='sound-match'>k</span>ey</td><td class="gl de">𐑉</td><td class="ipa">/r/</td><td class="ex"><span class='sound-match'>r</span>err</td></tr><tr><td class="gl de">𐐬</td><td class="ipa">/oʊ/</td><td class="ex"><span class='sound-match'>oa</span>t</td><td class="gl de">𐐶</td><td class="ipa">/w/</td><td class="ex"><span class='sound-match'>w</span>oe</td><td class="gl de">𐑀</td><td class="ipa">/ɡ/</td><td class="ex"><span class='sound-match'>g</span>ay</td><td class="gl de">𐑊</td><td class="ipa">/l/</td><td class="ex"><span class='sound-match'>l</span>et</td></tr><tr><td class="gl de">𐐭</td><td class="ipa">/uː/</td><td class="ex"><span class='sound-match'>oo</span>ze</td><td class="gl de">𐐷</td><td class="ipa">/j/</td><td class="ex"><span class='sound-match'>y</span>ou</td><td class="gl de">𐑁</td><td class="ipa">/f/</td><td class="ex"><span class='sound-match'>f</span>ee</td><td class="gl de">𐑋</td><td class="ipa">/m/</td><td class="ex"><span class='sound-match'>m</span>e</td></tr><tr><td class="gl de">𐐮</td><td class="ipa">/ɪ/</td><td class="ex"><span class='sound-match'>i</span>t</td><td class="gl de">𐐸</td><td class="ipa">/h/</td><td class="ex"><span class='sound-match'>h</span>igh</td><td class="gl de">𐑂</td><td class="ipa">/v/</td><td class="ex"><span class='sound-match'>v</span>eer</td><td class="gl de">𐑌</td><td class="ipa">/n/</td><td class="ex"><span class='sound-match'>n</span>ee</td></tr><tr><td class="gl de">𐐯</td><td class="ipa">/ɛ/</td><td class="ex"><span class='sound-match'>e</span>nd</td><td class="gl de">𐐹</td><td class="ipa">/p/</td><td class="ex"><span class='sound-match'>p</span>ea</td><td class="gl de">𐑃</td><td class="ipa">/θ/</td><td class="ex"><span class='sound-match'>th</span>igh</td><td class="gl de">𐑍</td><td class="ipa">/ŋ/</td><td class="ex"><span class='sound-match'>ng</span></td></tr><tr><td class="gl de">𐐰</td><td class="ipa">/æ/</td><td class="ex"><span class='sound-match'>a</span>t</td><td class="gl de">𐐺</td><td class="ipa">/b/</td><td class="ex"><span class='sound-match'>b</span>ee</td><td class="gl de">𐑄</td><td class="ipa">/ð/</td><td class="ex"><span class='sound-match'>th</span>y</td><td class="gl de">𐑎</td><td class="ipa">/ɔɪ/</td><td class="ex"><span class='sound-match'>oi</span>l</td></tr><tr><td class="gl de">𐐱</td><td class="ipa">/ɒ/</td><td class="ex"><span class='sound-match'>o</span>dd</td><td class="gl de">𐐻</td><td class="ipa">/t/</td><td class="ex"><span class='sound-match'>t</span>ea</td><td class="gl de">𐑅</td><td class="ipa">/s/</td><td class="ex"><span class='sound-match'>s</span>ee</td><td class="gl de">𐑏</td><td class="ipa">/juː/</td><td class="ex"><span class='sound-match'>ew</span>e</td></tr></tbody></table></div>
+      <!-- ===== PAGE: HOME ===== -->
+      <article class="page" id="home" hidden>
+        <div class="home-intro">
+          <h1>The Deseret Alphabet Portal</h1>
+        </div>
+        <div class="home-quote">
+          <blockquote>
+            “As this is the grand difficulty foreigners experience in learning the English language, they will find a knowledge of this alphabet will greatly facilitate their efforts in acquiring at least a partial English education. It will also be very advantageous to our children. It will be the means of introducing uniformity in our orthography, and the years that are now required to learn to read and spell can be devoted to other studies.”
+          </blockquote>
+          <a href="https://www.heritage-print.com/brigham-young-american-mormon-leader-c1880-14946339.html" target="_blank" rel="noopener noreferrer"><img src="historical-deseret-quote.jpg" alt="Brigham Young, American Mormon leader, c1880"></a>
+        </div>
+      </article>
+
+      <!-- ===== PAGE: LEARN ===== -->
+      <article class="page" id="learn" hidden>
+        <h1>Learn</h1>
+        <p class="lede">Learn the Deseret Alphabet from the letters themselves through guided practice.</p>
+
+        <h2>The Letters</h2>
+<div class="tw"><table class="lt"><tbody><tr><td class="gl de">𐐨</td><td class="ipa">/iː/</td><td class="ex"><span class='sound-match'>ea</span>t</td><td class="gl de">𐐲</td><td class="ipa">/ʌ/</td><td class="ex"><span class='sound-match'>u</span>p</td><td class="gl de">𐐼</td><td class="ipa">/d/</td><td class="ex"><span class='sound-match'>d</span>eed</td><td class="gl de">𐑆</td><td class="ipa">/z/</td><td class="ex"><span class='sound-match'>z</span>eal</td></tr><tr><td class="gl de">𐐩</td><td class="ipa">/eɪ/</td><td class="ex"><span class='sound-match'>a</span>te</td><td class="gl de">𐐳</td><td class="ipa">/ʊ/</td><td class="ex"><span class='sound-match'>oo</span>k</td><td class="gl de">𐐽</td><td class="ipa">/tʃ/</td><td class="ex"><span class='sound-match'>ch</span>eese</td><td class="gl de">𐑇</td><td class="ipa">/ʃ/</td><td class="ex"><span class='sound-match'>sh</span>e</td></tr><tr><td class="gl de">𐐪</td><td class="ipa">/ɑː/</td><td class="ex"><span class='sound-match'>ar</span>t</td><td class="gl de">𐐴</td><td class="ipa">/aɪ/</td><td class="ex"><span class='sound-match'>i</span>ce</td><td class="gl de">𐐾</td><td class="ipa">/dʒ/</td><td class="ex"><span class='sound-match'>j</span>eep</td><td class="gl de">𐑈</td><td class="ipa">/ʒ/</td><td class="ex"><span class='sound-match'>s</span>ion</td></tr><tr><td class="gl de">𐐫</td><td class="ipa">/ɔː/</td><td class="ex"><span class='sound-match'>au</span>ght</td><td class="gl de">𐐵</td><td class="ipa">/aʊ/</td><td class="ex"><span class='sound-match'>ou</span>t</td><td class="gl de">𐐿</td><td class="ipa">/k/</td><td class="ex"><span class='sound-match'>k</span>ey</td><td class="gl de">𐑉</td><td class="ipa">/r/</td><td class="ex"><span class='sound-match'>r</span>err</td></tr><tr><td class="gl de">𐐬</td><td class="ipa">/oʊ/</td><td class="ex"><span class='sound-match'>oa</span>t</td><td class="gl de">𐐶</td><td class="ipa">/w/</td><td class="ex"><span class='sound-match'>w</span>oe</td><td class="gl de">𐑀</td><td class="ipa">/ɡ/</td><td class="ex"><span class='sound-match'>g</span>ay</td><td class="gl de">𐑊</td><td class="ipa">/l/</td><td class="ex"><span class='sound-match'>l</span>et</td></tr><tr><td class="gl de">𐐭</td><td class="ipa">/uː/</td><td class="ex"><span class='sound-match'>oo</span>ze</td><td class="gl de">𐐷</td><td class="ipa">/j/</td><td class="ex"><span class='sound-match'>y</span>ou</td><td class="gl de">𐑁</td><td class="ipa">/f/</td><td class="ex"><span class='sound-match'>f</span>ee</td><td class="gl de">𐑋</td><td class="ipa">/m/</td><td class="ex"><span class='sound-match'>m</span>e</td></tr><tr><td class="gl de">𐐮</td><td class="ipa">/ɪ/</td><td class="ex"><span class='sound-match'>i</span>t</td><td class="gl de">𐐸</td><td class="ipa">/h/</td><td class="ex"><span class='sound-match'>h</span>igh</td><td class="gl de">𐑂</td><td class="ipa">/v/</td><td class="ex"><span class='sound-match'>v</span>eer</td><td class="gl de">𐑌</td><td class="ipa">/n/</td><td class="ex"><span class='sound-match'>n</span>ee</td></tr><tr><td class="gl de">𐐯</td><td class="ipa">/ɛ/</td><td class="ex"><span class='sound-match'>e</span>nd</td><td class="gl de">𐐹</td><td class="ipa">/p/</td><td class="ex"><span class='sound-match'>p</span>ea</td><td class="gl de">𐑃</td><td class="ipa">/θ/</td><td class="ex"><span class='sound-match'>th</span>igh</td><td class="gl de">𐑍</td><td class="ipa">/ŋ/</td><td class="ex"><span class='sound-match'>ng</span></td></tr><tr><td class="gl de">𐐰</td><td class="ipa">/æ/</td><td class="ex"><span class='sound-match'>a</span>t</td><td class="gl de">𐐺</td><td class="ipa">/b/</td><td class="ex"><span class='sound-match'>b</span>ee</td><td class="gl de">𐑄</td><td class="ipa">/ð/</td><td class="ex"><span class='sound-match'>th</span>y</td><td class="gl de">𐑎</td><td class="ipa">/ɔɪ/</td><td class="ex"><span class='sound-match'>oi</span>l</td></tr><tr><td class="gl de">𐐱</td><td class="ipa">/ɒ/</td><td class="ex"><span class='sound-match'>o</span>dd</td><td class="gl de">𐐻</td><td class="ipa">/t/</td><td class="ex"><span class='sound-match'>t</span>ea</td><td class="gl de">𐑅</td><td class="ipa">/s/</td><td class="ex"><span class='sound-match'>s</span>ee</td><td class="gl de">𐑏</td><td class="ipa">/juː/</td><td class="ex"><span class='sound-match'>ew</span>e</td></tr></tbody></table></div>
         <p>Many letters in the Deseret Alphabet have syllabic values (i.e. sounds represented when the letter is used by itself). The only truly useful syllabic value is 'thee' (as in the article 'the') for '𐑄'.</p>
         <p>There are two commonly used sounds in General American that were not accounted for in the original Deseret alphabet. These are the 'flapped t' (as in 'little' for many Americans) and the schwa (as in the O in abbot). The former should be represented by the 𐐻, and the latter by the 𐐳, as it is very close to the ʊ sound (as in book).</p>
         <p>If you have any qualms about the Deseret spelling system, refer to this document: <a href="https://exhibits.lib.utah.edu/s/designing-deseret/item/149460">Designing Deseret, University of Utah</a></p>
-      </article>
+      
 
-      <!-- ===== PAGE: PRACTICE ===== -->
-      <article class="page" id="practice" hidden>
-        <h1>Practice</h1>
-        <p>The practice section provides Deseret texts that get increasingly complex.</p>
+        <h2>Practice</h2>
+<p>The practice section provides Deseret texts that get increasingly complex.</p>
         <p><button class="toggle" aria-pressed="true">Show the English</button></p>
         <section class="lesson"><h3><span class="n">1</span>Short vowels, stops and nasals</h3><p class="new">New letters <span class="de">𐐰 𐐮 𐐪 𐐩 𐐹 𐐺 𐐻 𐐼 𐑋 𐑌 𐐸 𐑅 𐑆</span></p><ol class="lines"><li><p class="de line">𐐝𐐰𐑋 𐑅𐐰𐐻.</p><p class="gloss">Sam sat.</p></li><li><p class="de line">𐐓𐐮𐑋 𐐸𐐰𐐼 𐐩 𐐺𐐰𐐻.</p><p class="gloss">Tim had a bat.</p></li><li><p class="de line">𐐑𐐰𐑋 𐐼𐐮𐐼 𐑌𐐪𐐻 𐐸𐐮𐐻 𐐮𐐻.</p><p class="gloss">Pam did not hit it.</p></li><li><p class="de line">𐐁 𐐻𐐮𐑌 𐐹𐐰𐑌 𐐮𐑆 𐐰𐐻 𐐸𐐰𐑌𐐼.</p><p class="gloss">A tin pan is at hand.</p></li></ol></section>
         <section class="lesson"><h3><span class="n">2</span>More vowels, and l, k, g, th</h3><p class="new">New letters <span class="de">𐐯 𐐫 𐑊 𐐿 𐑀 𐑄 𐐭</span></p><ol class="lines"><li><p class="de line">𐐓𐐯𐑊 𐐤𐐯𐑊 𐐻𐐭 𐑅𐐯𐑊 𐐮𐐻.</p><p class="gloss">Tell Nell to sell it.</p></li><li><p class="de line">𐐜 𐐺𐐮𐑀 𐐼𐐫𐑀 𐐿𐐰𐑌 𐐺𐐯𐑀.</p><p class="gloss">The big dog can beg.</p></li><li><p class="de line">𐐓𐐯𐑌 𐑋𐐯𐑌 𐐮𐑌 𐑄 𐐸𐐫𐑊.</p><p class="gloss">Ten men in the hall.</p></li><li><p class="de line">𐐔𐐰𐐼 𐐮𐑆 𐐰𐐻 𐑄 𐑋𐐫𐑊.</p><p class="gloss">Dad is at the mall.</p></li></ol></section>
@@ -273,6 +298,7 @@
         <section class="lesson"><h3><span class="n">4</span>f, v and the middle vowels</h3><p class="new">New letters <span class="de">𐐴 𐐳 𐑁 𐑂</span></p><ol class="lines"><li><p class="de line">𐐌 𐑊𐐴𐐿 𐑋𐐴 𐑊𐐴𐑁.</p><p class="gloss">I like my life.</p></li><li><p class="de line">𐐜 𐑁𐐪𐑉𐑋 𐐮𐑆 𐑁𐐳𐑊 𐐪𐑂 𐐸𐐲𐑌𐑆.</p><p class="gloss">The farm is full of hens.</p></li><li><p class="de line">𐐘𐐮𐑂 𐑋𐐨 𐑁𐐴𐑂 𐐪𐑂 𐑄𐐯𐑋.</p><p class="gloss">Give me five of them.</p></li><li><p class="de line">𐐑𐐳𐐻 𐑄 𐐺𐐳𐐿 𐐪𐑌 𐑄 𐐼𐐯𐑅𐐿.</p><p class="gloss">Put the book on the desk.</p></li></ol></section>
         <section class="lesson"><h3><span class="n">5</span>The hushing sounds</h3><p class="new">New letters <span class="de">𐐶 𐐽 𐐾 𐑇 𐑈 𐑃 𐑍</span></p><ol class="lines"><li><p class="de line">𐐟𐐨 𐐶𐐪𐑆 𐑂𐐯𐑉𐐨 𐐽𐐮𐑉𐑁𐐳𐑊.</p><p class="gloss">She was very cheerful.</p></li><li><p class="de line">𐐖𐐲𐐾 𐑄 𐑃𐐮𐑍 𐐺𐐴 𐐮𐐻𐑅 𐑅𐐴𐑆.</p><p class="gloss">Judge the thing by its size.</p></li><li><p class="de line">𐐎𐐮𐐽 𐑇𐐭 𐐮𐑆 𐐸𐐮𐑆?</p><p class="gloss">Which shoe is his?</p></li><li><p class="de line">𐐣𐐯𐑈𐐳𐑉 𐑄 𐐻𐑉𐐯𐑈𐐳𐑉 𐐰𐑌𐐼 𐑅𐐮𐑍 𐑄 𐑅𐐫𐑍.</p><p class="gloss">Measure the treasure and sing the song.</p></li></ol></section>
         <section class="lesson"><h3><span class="n">6</span>Diphthongs and the last letters</h3><p class="new">New letters <span class="de">𐐷 𐑎 𐑏</span></p><ol class="lines"><li><p class="de line">𐐜 𐐺𐑎 𐑁𐐵𐑌𐐼 𐐩 𐐿𐑎𐑌.</p><p class="gloss">The boy found a coin.</p></li><li><p class="de line">𐐁 𐑁𐑏 𐑌𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li><li><p class="de line">𐐏𐐯𐑅, 𐐷𐐭 𐑋𐐩 𐐷𐐭𐑆 𐐮𐐻.</p><p class="gloss">Yes, you may use it.</p></li><li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑌 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
+      
       </article>
 
       <!-- ===== PAGE: TEXTS ===== -->
@@ -382,7 +408,7 @@
 
       // ===== ROUTING =====
       function show(id, write) {
-        if (ids.indexOf(id) < 0) id = 'letters';
+        if (ids.indexOf(id) < 0) id = 'home';
         pages.forEach(function (p) { p.hidden = p.id !== id; });
         links.forEach(function (a) {
           if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
@@ -449,7 +475,7 @@
       });
 
       var start = decodeURIComponent(location.hash.slice(1));
-      show(ids.indexOf(start) >= 0 ? start : 'letters', false);
+      show(ids.indexOf(start) >= 0 ? start : 'home', false);
 
       // ===== DESERET MODE =====
       // Controls and already-Deseret material are left alone; everything else
