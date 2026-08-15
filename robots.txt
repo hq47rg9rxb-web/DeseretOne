@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deseret.one/sitemap.xml
