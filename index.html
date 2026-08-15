@@ -37,7 +37,7 @@
     .gh-search{order:3}
     .gh-cta{order:4}
     .gh-nav{order:5;flex:1 1 100%;border-top:1px solid var(--line);padding:0 16px;min-height:48px;gap:0}
-    .gh-mark{flex:none;display:flex;align-items:center;padding:8px 24px;text-decoration:none;color:var(--ink)}
+    .gh-mark{flex:none;display:flex;align-items:center;padding:2px 24px;text-decoration:none;color:var(--ink)}
     .gh-logo{display:block;height:7rem;width:auto;max-width:100%}
     .gh-burger{display:none;flex:none;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;margin-left:.35rem;background:none;border:none;border-radius:4px;cursor:pointer;color:var(--ink)}
     .gh-burger:hover{background:#f0fbff}
@@ -46,8 +46,8 @@
     /* ===== NAVIGATION ===== */
     .gh-nav{display:flex;align-items:center;gap:0;margin-left:0}
     .gh-nav a{font-family:var(--sans);font-size:var(--fs);font-weight:600;letter-spacing:.01em;color:var(--ink);text-decoration:none;display:flex;align-items:center;height:48px;padding:0 16px;border-bottom:3px solid transparent}
-    .gh-nav a:hover{background:#f2f2f2;text-decoration:none}
-    .gh-nav a[aria-current="true"]{border-bottom-color:var(--brand);background:#f7fdff}
+    .gh-nav a:hover{background:none;text-decoration:none;border-bottom-color:var(--line)}
+    .gh-nav a[aria-current="true"]{border-bottom-color:var(--brand);background:none}
     .gh-spacer{flex:1 1 auto;min-width:16px}
 
     /* ===== SEARCH ===== */
@@ -176,7 +176,7 @@
       .gh-nav{position:absolute;top:var(--hdr);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;margin:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(0,0,0,.10);max-height:calc(100vh - var(--hdr));overflow:auto}
       .gh-nav.open{display:flex}
       .gh-nav a{height:auto;padding:16px;border-bottom:1px solid var(--line);border-left:3px solid transparent;min-height:48px;display:flex;align-items:center}
-      .gh-nav a[aria-current="true"]{border-bottom-color:var(--line);border-left-color:var(--brand);background:#f0fbff;font-weight:700}
+      .gh-nav a[aria-current="true"]{border-bottom-color:var(--line);border-left-color:var(--brand);background:none;font-weight:700}
       /* the search box is moved into the panel by script at this width */
       .gh-nav .gh-search{order:-1;flex:1 1 auto;padding:.7rem 1.1rem;border-bottom:1px solid var(--line)}
       .gh-nav .gh-search input{padding:.7rem 2.3rem .7rem .8rem;font-size:16px}
