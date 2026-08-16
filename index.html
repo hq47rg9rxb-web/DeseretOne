@@ -175,48 +175,20 @@
     .skip{position:absolute;left:-9999px;top:0;z-index:60;background:#fff;color:var(--ink);padding:.6rem .9rem;border:1px solid var(--ink)}
     .skip:focus{left:.5rem;top:.5rem}
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-
-
-    /* ===== LIBRARY ===== */
-    .library-tools{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.25rem 0 1.5rem}
-    .library-search{flex:1 1 18rem;min-width:0}
-    .library-search input{font:inherit;font-size:var(--fs-body);width:100%;height:42px;padding:0 .8rem;border:1px solid var(--line);border-radius:0;background:#fff;color:var(--ink)}
+    /* ===== LIBRARY CATALOGUE ===== */
+    .library-tools{margin:1.25rem 0 2rem}
+    .library-search{width:100%}
+    .library-search input{font:inherit;font-size:var(--fs-body);width:100%;height:44px;padding:0 .85rem;border:1px solid var(--line);border-radius:0;background:#fff;color:var(--ink)}
     .library-search input:focus{outline:2px solid var(--blue);outline-offset:-1px}
-    .library-filters{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 2rem}
-    .library-filter{font:inherit;font-size:.86rem;font-weight:600;cursor:pointer;background:#fff;color:var(--ink);border:1px solid var(--line);padding:.42rem .75rem}
-    .library-filter:hover{background:#f0fbff}
-    .library-filter[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .library-feature{border:1px solid var(--ink);padding:1.25rem;margin:0 0 2.2rem;background:#fff}
-    .library-feature h2{margin:.1rem 0 .55rem}
-    .library-feature p{max-width:40rem}
-    .library-feature .feature-meta{font-size:.86rem;font-weight:600;margin-bottom:1rem}
-    .library-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-    .library-card{border:1px solid var(--line);padding:1rem;display:flex;flex-direction:column;min-width:0}
-    .library-card:hover{border-color:var(--ink)}
-    .library-card .card-type{font-size:.75rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.55rem}
-    .library-card h3{font-size:1rem;margin:0 0 .35rem;line-height:1.35}
-    .library-card .card-de{font-size:1.1rem;line-height:1.45;margin:0 0 .55rem}
-    .library-card .card-meta{font-size:.86rem;font-style:italic;margin:0 0 .75rem}
-    .library-card .card-desc{font-size:.9rem;line-height:1.55;margin:0 0 1rem}
-    .library-card .card-actions{margin-top:auto;display:flex;gap:.45rem;flex-wrap:wrap}
-    .library-card[hidden]{display:none}
-    .library-empty{padding:1rem;border:1px dashed var(--line);font-style:italic}
-    .library-reader{margin-top:2.2rem;border-top:2px solid var(--ink);padding-top:1.4rem}
-    .library-reader[hidden]{display:none}
-    .reader-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}
-    .reader-head h2{margin:.1rem 0 .4rem;font-size:1.1rem;letter-spacing:0}
-    .reader-meta{font-size:.86rem;font-style:italic;margin:0 0 1rem}
-    .reader-controls{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem}
-    .reader-controls button{font:inherit;font-size:.86rem;font-weight:700;background:#fff;border:1px solid var(--ink);padding:.45rem .7rem;cursor:pointer}
-    .reader-controls button:hover{background:#f0fbff}
-    .reader-text{border:1px solid var(--line);padding:1rem;max-height:32rem;overflow:auto}
-    .reader-text .line{margin-bottom:1rem}
-    .library-status{font-size:.86rem;font-weight:600;margin:.5rem 0 0}
-    @media(max-width:40rem){
-      .library-grid{grid-template-columns:1fr}
-      .reader-head{display:block}
-      .reader-text{max-height:none}
-    }
+    .library-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+    .library-work{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+    .library-work h2{margin:0 0 .2rem;font-size:1.05rem}
+    .library-work .work-meta{margin:0;font-size:.86rem;font-style:italic}
+    .library-work .work-desc{margin:.25rem 0 0;font-size:.9rem}
+    .library-work a{white-space:nowrap}
+    .library-empty{padding:1rem 0;font-style:italic}
+    @media(max-width:40rem){.library-work{grid-template-columns:1fr}.library-work a{justify-self:start}}
+
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:60rem){main{padding:1.5rem 1.1rem 4rem}}
@@ -371,163 +343,45 @@
       <!-- ===== PAGE: LIBRARY ===== -->
       <article class="page" id="library" hidden>
         <h1>Library</h1>
-        <p class="lede">Explore books, scripture, historical documents, and other texts in and around the Deseret Alphabet.</p>
+        <p class="lede">Explore books, scripture, historical documents, and other works in and around the Deseret Alphabet.</p>
 
         <div class="library-tools">
           <div class="library-search">
-            <input id="librarySearch" type="search" placeholder="Search books, authors, titles…" aria-label="Search the library">
+            <input id="librarySearch" type="search" placeholder="Search the library…" aria-label="Search the library">
           </div>
         </div>
 
-        <div class="library-filters" role="group" aria-label="Filter library">
-          <button class="library-filter" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="library-filter" type="button" data-filter="scripture" aria-pressed="false">Scripture</button>
-          <button class="library-filter" type="button" data-filter="literature" aria-pressed="false">Literature</button>
-          <button class="library-filter" type="button" data-filter="primer" aria-pressed="false">Primers</button>
-          <button class="library-filter" type="button" data-filter="speeches" aria-pressed="false">Speeches</button>
-        </div>
-
-        <section class="library-feature">
-          <p class="card-type">Featured collection</p>
-          <h2>The Deseret Alphabet Reading Collection</h2>
-          <p>Start with the primer, then explore scripture and classic public-domain texts. Each item includes Deseret text and an English version for comparison.</p>
-          <p class="feature-meta">A growing digital collection · Deseret One</p>
-          <button class="act" type="button" data-library-open="primer">Start with the Deseret First Book →</button>
-        </section>
-
-        <h2>Browse the collection</h2>
-        <div class="library-grid" id="libraryGrid">
-
-          <article class="library-card" data-category="primer" data-library-item="primer" data-library-search="deseret first book primer 1868">
-            <div class="card-type">Primer · 1868</div>
-            <h3>Deseret First Book</h3>
-            <p class="card-de de">𐐜𐐮𐑅 𐐮𐑆 𐐩 𐑋𐐰𐑌.</p>
-            <p class="card-meta">In the manner of the 1868 primer</p>
-            <p class="card-desc">Short, progressively harder reading material designed to introduce the alphabet.</p>
-            <div class="card-actions">
-              <button class="act" type="button" data-library-open="primer">Read</button>
-            </div>
+        <div class="library-list" id="libraryList">
+          <article class="library-work" data-library-search="deseret first book primer 1868">
+            <div><h2>Deseret First Book</h2><p class="work-meta">Primer · 1868</p><p class="work-desc">A historic introductory reader for learning to read the Deseret Alphabet.</p></div>
+            <a class="act" href="works/deseret-first-book.html">Read →</a>
           </article>
-
-          <article class="library-card" data-category="scripture" data-library-item="lords-prayer" data-library-search="lord's prayer matthew scripture bible">
-            <div class="card-type">Scripture</div>
-            <h3>The Lord's Prayer</h3>
-            <p class="card-de de">𐐍𐑉 𐐙𐐪𐑄𐐳𐑉 𐐶𐐮𐐽 𐐪𐑉𐐻 𐐮𐑌 𐐸𐐯𐑂𐑌</p>
-            <p class="card-meta">Matthew 6:9–13 · King James Version</p>
-            <p class="card-desc">A familiar passage presented line by line in Deseret with the English available beneath it.</p>
-            <div class="card-actions">
-              <button class="act" type="button" data-library-open="lords-prayer">Read</button>
-            </div>
+          <article class="library-work" data-library-search="lord's prayer matthew scripture bible">
+            <div><h2>The Lord's Prayer</h2><p class="work-meta">Scripture · Matthew 6:9–13</p><p class="work-desc">The Lord's Prayer presented in Deseret with an English transcription.</p></div>
+            <a class="act" href="works/lords-prayer.html">Read →</a>
           </article>
-
-          <article class="library-card" data-category="scripture" data-library-item="psalm23" data-library-search="twenty third psalm psalm 23 scripture">
-            <div class="card-type">Scripture</div>
-            <h3>The Twenty-Third Psalm</h3>
-            <p class="card-de de">𐐜 𐐢𐐫𐑉𐐼 𐐮𐑆 𐑋𐐴 𐑇𐐯𐐹𐐳𐑉𐐼</p>
-            <p class="card-meta">Psalm 23 · King James Version</p>
-            <p class="card-desc">One of the best-known biblical passages, useful for practising continuous Deseret reading.</p>
-            <div class="card-actions">
-              <button class="act" type="button" data-library-open="psalm23">Read</button>
-            </div>
+          <article class="library-work" data-library-search="twenty third psalm psalm 23 scripture">
+            <div><h2>The Twenty-Third Psalm</h2><p class="work-meta">Scripture · Psalm 23</p><p class="work-desc">A familiar biblical passage for continuous Deseret reading practice.</p></div>
+            <a class="act" href="works/psalm-23.html">Read →</a>
           </article>
-
-          <article class="library-card" data-category="scripture" data-library-item="genesis" data-library-search="genesis beginning creation bible scripture">
-            <div class="card-type">Scripture</div>
-            <h3>In the Beginning</h3>
-            <p class="card-de de">𐐆𐑌 𐑄 𐐺𐐳𐑀𐐮𐑌𐐮𐑍 𐐘𐐪𐐼 𐐿𐑉𐐨𐐩𐐻𐐮𐐼</p>
-            <p class="card-meta">Genesis 1:1–5 · King James Version</p>
-            <p class="card-desc">The opening of Genesis, presented as a Deseret reading text.</p>
-            <div class="card-actions">
-              <button class="act" type="button" data-library-open="genesis">Read</button>
-            </div>
+          <article class="library-work" data-library-search="genesis beginning creation bible scripture">
+            <div><h2>In the Beginning</h2><p class="work-meta">Scripture · Genesis 1:1–5</p><p class="work-desc">The opening passage of Genesis presented as a Deseret reading text.</p></div>
+            <a class="act" href="works/genesis-1.html">Read →</a>
           </article>
-
-          <article class="library-card" data-category="scripture" data-library-item="nephi" data-library-search="nephi first nephi book of mormon scripture">
-            <div class="card-type">Scripture</div>
-            <h3>The Words of Nephi</h3>
-            <p class="card-de de">𐐌, 𐐤𐐨𐑁𐐴, 𐐸𐐩𐑂𐐮𐑍 𐐺𐐨𐑌 𐐺𐐬𐑉𐑌</p>
-            <p class="card-meta">1 Nephi 1:1–2</p>
-            <p class="card-desc">A longer Deseret reading passage from the opening of First Nephi.</p>
-            <div class="card-actions">
-              <button class="act" type="button" data-library-open="nephi">Read</button>
-            </div>
+          <article class="library-work" data-library-search="nephi first nephi book of mormon scripture">
+            <div><h2>The Words of Nephi</h2><p class="work-meta">Scripture · 1 Nephi 1:1–2</p><p class="work-desc">The opening words of First Nephi in Deseret.</p></div>
+            <a class="act" href="works/first-nephi-1.html">Read →</a>
           </article>
-
-          <article class="library-card" data-category="speeches" data-library-item="gettysburg" data-library-search="gettysburg address abraham lincoln speech">
-            <div class="card-type">Speech · 1863</div>
-            <h3>The Gettysburg Address</h3>
-            <p class="card-de de">𐐙𐐬𐑉 𐑅𐐿𐐬𐑉 𐐰𐑌𐐼 𐑅𐐯𐑂𐐳𐑌 𐐷𐐮𐑉𐑆 𐐲𐑀𐐬</p>
-            <p class="card-meta">Abraham Lincoln · 1863 · public domain</p>
-            <p class="card-desc">A classic English text converted into Deseret for extended reading practice.</p>
-            <div class="card-actions">
-              <button class="act" type="button" data-library-open="gettysburg">Read</button>
-            </div>
+          <article class="library-work" data-library-search="gettysburg address abraham lincoln speech 1863">
+            <div><h2>The Gettysburg Address</h2><p class="work-meta">Speech · Abraham Lincoln · 1863</p><p class="work-desc">A classic public-domain English text presented in Deseret.</p></div>
+            <a class="act" href="works/gettysburg-address.html">Read →</a>
           </article>
-
-          <article class="library-card" data-category="literature" data-library-item="north-wind" data-library-search="north wind sun aesop fable literature">
-            <div class="card-type">Literature</div>
-            <h3>The North Wind and the Sun</h3>
-            <p class="card-de de">𐐜 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐰𐑌𐐼 𐑄 𐐝𐐲𐑌</p>
-            <p class="card-meta">Aesop · public domain</p>
-            <p class="card-desc">A short fable that provides a manageable piece of continuous Deseret prose.</p>
-            <div class="card-actions">
-              <button class="act" type="button" data-library-open="north-wind">Read</button>
-            </div>
+          <article class="library-work" data-library-search="north wind sun aesop fable literature">
+            <div><h2>The North Wind and the Sun</h2><p class="work-meta">Literature · Aesop</p><p class="work-desc">A short public-domain fable for practising continuous Deseret prose.</p></div>
+            <a class="act" href="works/north-wind-and-sun.html">Read →</a>
           </article>
         </div>
-
-        <p class="library-empty" id="libraryEmpty" hidden>No library items match that search or filter.</p>
-
-        <section class="library-reader" id="libraryReader" hidden aria-live="polite">
-          <div class="reader-head">
-            <div>
-              <p class="card-type" id="readerType">Reading</p>
-              <h2 id="readerTitle">Title</h2>
-              <p class="reader-meta" id="readerMeta"></p>
-            </div>
-            <button class="toggle" type="button" id="readerClose">Back to Library</button>
-          </div>
-          <div class="reader-controls">
-            <button type="button" id="readerEnglish">Show the English</button>
-            <button type="button" id="readerDeseret">Show Deseret</button>
-          </div>
-          <div class="reader-text" id="readerText"></div>
-          <p class="library-status" id="readerStatus"></p>
-        </section>
-
-        <!-- Hidden source passages for the reader. The catalogue above stays clean while
-             the complete texts remain in the HTML for accessibility and search. -->
-        <div id="librarySources" hidden>
-          <details data-source="lords-prayer"><summary>The Lord's Prayer</summary>
-            <p class="de line">𐐍𐑉 𐐙𐐪𐑄𐐳𐑉 𐐶𐐮𐐽 𐐪𐑉𐐻 𐐮𐑌 𐐸𐐯𐑂𐑌, 𐐐𐐰𐑊𐐬𐐼 𐐺 𐑄𐐴 𐑌𐐩𐑋.<span class="gloss">Our Father which art in heaven, Hallowed be thy name.</span></p>
-            <p class="de line">𐐜𐐴 𐐿𐐮𐑍𐐼𐐲𐑋 𐐿𐐲𐑋. 𐐜𐐴 𐐶𐐮𐑊 𐐺𐐼𐐲𐑌 𐐮𐑌 𐐲𐑉𐑃, 𐐰𐑆 𐐮𐐻 𐐮𐑆 𐐮𐑌 𐐸𐐯𐑂𐑌.<span class="gloss">Thy kingdom come. Thy will be done in earth, as it is in heaven.</span></p>
-            <p class="de line">𐐘𐐮𐑂 𐐲𐑅 𐑄𐐮𐑅 𐐼𐐩 𐐵𐑉 𐐼𐐩𐑊𐐨 𐐺𐑉𐐯𐐼.<span class="gloss">Give us this day our daily bread.</span></p>
-          </details>
-          <details data-source="psalm23"><summary>The Twenty-Third Psalm</summary>
-            <p class="de line">𐐜 𐐢𐐫𐑉𐐼 𐐮𐑆 𐑋𐐴 𐑇𐐯𐐹𐐳𐑉𐐼; 𐐌 𐑇𐐰𐑊 𐑌𐐪𐐻 𐐶𐐫𐑌𐐻.<span class="gloss">The Lord is my shepherd; I shall not want.</span></p>
-            <p class="de line">𐐐𐐨 𐑋𐐩𐐿𐐳 𐑋𐐨 𐐻𐐭 𐑊𐐴 𐐼𐐵𐑌 𐐮𐑌 𐑀𐑉𐐨𐑌 𐐹𐐰𐑅𐐽𐐳𐑉𐑆.<span class="gloss">He maketh me to lie down in green pastures.</span></p>
-          </details>
-          <details data-source="genesis"><summary>In the Beginning</summary>
-            <p class="de line">𐐆𐑌 𐑄 𐐺𐐳𐑀𐐮𐑌𐐮𐑍 𐐘𐐪𐐼 𐐿𐑉𐐨𐐩𐐻𐐮𐐼 𐑄 𐐸𐐯𐑂𐑌 𐐰𐑌𐐼 𐑄 𐐲𐑉𐑃.<span class="gloss">In the beginning God created the heaven and the earth.</span></p>
-            <p class="de line">𐐈𐑌𐐼 𐑄 𐐲𐑉𐑃 𐐶𐐪𐑆 𐐶𐐮𐑄𐐵𐐻 𐑁𐐫𐑉𐑋, 𐐰𐑌𐐼 𐑂𐐵𐐼; 𐐰𐑌𐐼 𐐼𐐪𐑉𐐿𐑌𐐳𐑅 𐐶𐐪𐑆 𐐲𐐹𐐪𐑌 𐑄 𐑁𐐩𐑅 𐐪𐑂 𐑄 𐐼𐐨𐐹.<span class="gloss">And the earth was without form, and void; and darkness was upon the face of the deep.</span></p>
-          </details>
-          <details data-source="nephi"><summary>The Words of Nephi</summary>
-            <p class="de line">𐐌, 𐐤𐐨𐑁𐐴, 𐐸𐐩𐑂𐐮𐑍 𐐺𐐨𐑌 𐐺𐐬𐑉𐑌 𐐪𐑂 𐑀𐐳𐐼𐑊𐐨 𐐹𐐯𐑉𐐳𐑌𐐻𐑅.<span class="gloss">I, Nephi, having been born of goodly parents.</span></p>
-            <p class="de line">𐐰𐑌𐐼 𐐸𐐩𐑂𐐮𐑍 𐑅𐐨𐑌 𐑋𐐯𐑌𐐨 𐐰𐑁𐑊𐐮𐐿𐑇𐑌𐑆 𐐮𐑌 𐑿𐐬𐑉𐑅 𐐪𐑂 𐑋𐐴 𐐼𐐩𐑆.<span class="gloss">and having seen many afflictions in the course of my days.</span></p>
-          </details>
-          <details data-source="gettysburg"><summary>The Gettysburg Address</summary>
-            <p class="de line">𐐙𐐬𐑉 𐑅𐐿𐐬𐑉 𐐰𐑌𐐼 𐑅𐐯𐑂𐑌 𐐷𐐮𐑉𐑆 𐐲𐑀𐐬 𐐵𐑉 𐑁𐐪𐑄𐐳𐑉 𐐺𐑉𐐫𐐻 𐑁𐐫𐑉𐑃 𐐪 𐑄𐐮𐑅 𐐿𐐪𐑌𐐻𐐮𐑌𐐳𐑌𐐻.<span class="gloss">Four score and seven years ago our fathers brought forth on this continent a new nation.</span></p>
-          </details>
-          <details data-source="north-wind"><summary>The North Wind and the Sun</summary>
-            <p class="de line">𐐜 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐰𐑌𐐼 𐑄 𐐝𐐲𐑌 𐐶𐐲𐑉 𐐼𐐮𐑅𐐹𐑏𐐻𐐮𐑍 𐐶𐐮𐐽 𐐶𐐪𐑆 𐑄 𐑅𐐻𐑉𐐫𐑍𐑀𐐳𐑉.<span class="gloss">The North Wind and the Sun were disputing which was the stronger.</span></p>
-            <p class="de line">𐐜𐐯𐑌 𐑄 𐐤𐐫𐑉𐑃 𐐎𐐮𐑌𐐼 𐐺𐑊𐐭 𐐰𐑆 𐐸𐐪𐑉𐐼 𐐰𐑆 𐐸𐐨 𐐿𐐳𐐼.<span class="gloss">Then the North Wind blew as hard as he could.</span></p>
-          </details>
-          <details data-source="primer"><summary>Deseret First Book</summary>
-            <p class="de line">𐐜𐐮𐑅 𐐮𐑆 𐐩 𐑋𐐰𐑌. 𐐜 𐑋𐐰𐑌 𐐸𐐰𐑆 𐐩 𐐸𐐰𐐻. 𐐜 𐐸𐐰𐐻 𐐮𐑆 𐑉𐐯𐐼.<span class="gloss">This is a man. The man has a hat. The hat is red.</span></p>
-            <p class="de line">𐐜 𐐿𐐰𐐻 𐑅𐐰𐐻 𐐪𐑌 𐑄 𐑋𐐰𐐻. 𐐜 𐐿𐐰𐐻 𐐮𐑆 𐑁𐐰𐐻. 𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐐿𐐰𐐻.<span class="gloss">The cat sat on the mat. The cat is fat. I can see the cat.</span></p>
-            <p class="de line">𐐌 𐐿𐐰𐑌 𐑅𐐨 𐑄 𐑅𐐲𐑌. 𐐜 𐑅𐐲𐑌 𐐮𐑆 𐐸𐐪𐐻. 𐐜 𐑅𐐿𐐴 𐐮𐑆 𐐺𐑊𐐭.<span class="gloss">I can see the sun. The sun is hot. The sky is blue.</span></p>
-          </details>
-        </div>
+        <p class="library-empty" id="libraryEmpty" hidden>No works match your search.</p>
       </article>
 
       <!-- ===== PAGE: TRANSLATOR ===== -->
@@ -818,101 +672,22 @@
       });
 
 
-      // ===== LIBRARY =====
+      // ===== LIBRARY SEARCH =====
       var librarySearch = document.getElementById('librarySearch');
-      var libraryFilters = [].slice.call(document.querySelectorAll('.library-filter'));
-      var libraryCards = [].slice.call(document.querySelectorAll('.library-card'));
+      var libraryWorks = [].slice.call(document.querySelectorAll('.library-work'));
       var libraryEmpty = document.getElementById('libraryEmpty');
-      var libraryReader = document.getElementById('libraryReader');
-      var readerText = document.getElementById('readerText');
-      var readerTitle = document.getElementById('readerTitle');
-      var readerMeta = document.getElementById('readerMeta');
-      var readerType = document.getElementById('readerType');
-      var readerStatus = document.getElementById('readerStatus');
-      var activeLibraryFilter = 'all';
-
       function filterLibrary() {
         var term = (librarySearch ? librarySearch.value : '').trim().toLowerCase();
         var shown = 0;
-        libraryCards.forEach(function (card) {
-          var matchesFilter = activeLibraryFilter === 'all' || card.getAttribute('data-category') === activeLibraryFilter;
-          var haystack = (card.getAttribute('data-library-search') || '').toLowerCase();
-          var matchesSearch = !term || haystack.indexOf(term) >= 0;
-          var visible = matchesFilter && matchesSearch;
-          card.hidden = !visible;
+        libraryWorks.forEach(function (work) {
+          var text = (work.getAttribute('data-library-search') || '').toLowerCase();
+          var visible = !term || text.indexOf(term) !== -1;
+          work.hidden = !visible;
           if (visible) shown++;
         });
         if (libraryEmpty) libraryEmpty.hidden = shown !== 0;
       }
-
-      libraryFilters.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          activeLibraryFilter = btn.getAttribute('data-filter') || 'all';
-          libraryFilters.forEach(function (b) {
-            b.setAttribute('aria-pressed', String(b === btn));
-          });
-          filterLibrary();
-        });
-      });
       if (librarySearch) librarySearch.addEventListener('input', filterLibrary);
-
-      function openLibraryItem(id) {
-        var source = document.querySelector('#librarySources [data-source="' + id + '"]');
-        var card = document.querySelector('[data-library-item="' + id + '"]');
-        if (!source || !libraryReader) return;
-
-        var titleEl = card ? card.querySelector('h3') : null;
-        var metaEl = card ? card.querySelector('.card-meta') : null;
-        var typeEl = card ? card.querySelector('.card-type') : null;
-
-        readerTitle.textContent = titleEl ? titleEl.textContent : source.querySelector('summary').textContent;
-        readerMeta.textContent = metaEl ? metaEl.textContent : '';
-        readerType.textContent = typeEl ? typeEl.textContent : 'Reading';
-        readerText.innerHTML = '';
-
-        [].slice.call(source.querySelectorAll('.line')).forEach(function (line) {
-          var clone = line.cloneNode(true);
-          readerText.appendChild(clone);
-        });
-
-        libraryReader.hidden = false;
-        readerStatus.textContent = 'English is shown beneath each Deseret line.';
-        libraryReader.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      [].slice.call(document.querySelectorAll('[data-library-open]')).forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          openLibraryItem(btn.getAttribute('data-library-open'));
-        });
-      });
-
-      var readerClose = document.getElementById('readerClose');
-      if (readerClose) {
-        readerClose.addEventListener('click', function () {
-          libraryReader.hidden = true;
-          var lib = document.getElementById('library');
-          if (lib) lib.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-
-      var readerEnglish = document.getElementById('readerEnglish');
-      var readerDeseret = document.getElementById('readerDeseret');
-      if (readerEnglish) {
-        readerEnglish.addEventListener('click', function () {
-          [].slice.call(readerText.querySelectorAll('.gloss')).forEach(function (el) {
-            el.style.display = 'block';
-          });
-          readerStatus.textContent = 'English is visible.';
-        });
-      }
-      if (readerDeseret) {
-        readerDeseret.addEventListener('click', function () {
-          [].slice.call(readerText.querySelectorAll('.gloss')).forEach(function (el) {
-            el.style.display = 'none';
-          });
-          readerStatus.textContent = 'Deseret only.';
-        });
-      }
 
       // ===== TRANSLATOR =====
       var src = document.getElementById('src'),
