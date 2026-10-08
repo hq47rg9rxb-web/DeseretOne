@@ -3,17 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Deseret One — Learn, Read, Write & Translate the Deseret Alphabet</title>
-  <link rel="icon" href="https://i.ibb.co/cpzyw3c/image.png">
-  <link rel="apple-touch-icon" href="https://i.ibb.co/cpzyw3c/image.png">
-  <meta name="description" content="Deseret One is a guide to learning, reading, writing, and translating the Deseret Alphabet, with lessons, historical texts, and a growing digital library.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://deseret.one/">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-
+  <title>Deseret One</title>
+  <meta name="description" content="Deseret Unicode converter and study page.">
   <style>
     @font-face {
       font-family: "Noto Sans Deseret";
@@ -23,414 +14,162 @@
     }
 
     :root {
-      --brand: #01C5FB;
-      --brand-deep: #01B4E8;
-      --brand-ink: #00303D;
-      --blue: #017898;
-      --blue-deep: #00607A;
-      --ink: #000;
-      --line: #c9d1dd;
-      --bg: #fff;
-      --sans: 'Open Sans','Calibri',Arial,sans-serif;
-      --serif: 'Libre Baskerville','Georgia',serif;
-      --fs-body: 1rem;
-      --fs-h1: clamp(2.4rem, 6vw, 4.2rem);
-      --fs-h2: clamp(1.8rem, 3vw, 2.6rem);
-      --radius: 18px;
-      --shadow: 0 18px 45px rgba(1, 117, 146, 0.12);
+      --bg: #f5fbff;
+      --panel: #ffffff;
+      --ink: #0d1b22;
+      --muted: #425a68;
+      --line: #dfeaf1;
+      --brand: #01c5fb;
+      --brand-deep: #017898;
     }
 
     * { box-sizing: border-box; }
     html, body { margin: 0; }
     body {
-      font-family: var(--sans);
-      color: var(--ink);
+      font-family: Arial, sans-serif;
       background: var(--bg);
-      font-size: var(--fs-body);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      scroll-behavior: smooth;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { color: var(--ink); text-decoration: none; }
-    .de {
-      font-family: "Noto Sans Deseret","Segoe UI Symbol","Apple Symbols","DejaVu Sans",serif;
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .topbar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 78px;
-      gap: 18px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      color: var(--brand-ink);
-    }
-
-    .brand-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--brand), var(--brand-deep));
-      display: grid;
-      place-items: center;
-      color: white;
-      box-shadow: var(--shadow);
-      font-size: 1.05rem;
-    }
-
-    nav {
-      display: flex;
-      gap: 26px;
-      align-items: center;
-      font-size: 0.96rem;
-      font-weight: 700;
-      color: #23414f;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.9rem 1.5rem;
-      border-radius: 999px;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--brand), var(--blue));
-      color: #fff;
-      border: 0;
-      box-shadow: 0 14px 30px rgba(1, 117, 146, 0.18);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-
-    .button.secondary {
-      background: #fff;
       color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(900px, calc(100% - 28px));
+      margin: 40px auto;
+    }
+
+    .panel {
+      background: var(--panel);
       border: 1px solid var(--line);
-      box-shadow: none;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 34px rgba(1, 117, 146, 0.2);
-    }
-
-    .hero {
-      padding: 68px 0 24px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 0.48rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.76rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 800;
-      color: var(--blue-deep);
-      background: rgba(1, 197, 251, 0.1);
-      margin-bottom: 18px;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(1, 117, 146, 0.08);
     }
 
     h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #00303d;
+    }
+
+    p {
       margin: 0 0 18px;
-      font-size: var(--fs-h1);
-      letter-spacing: -0.06em;
-      line-height: 1.06;
-      color: var(--brand-ink);
+      color: var(--muted);
     }
 
-    .lead {
-      margin: 0 0 28px;
-      color: #435b69;
-      font-size: 1.08rem;
-      max-width: 650px;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .hero-panel {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 26px;
-    }
-
-    .sample {
-      background: linear-gradient(180deg, #f4fbff 0%, #eff8ff 100%);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px 18px;
-      margin-bottom: 18px;
-      text-align: center;
-      font-size: clamp(1.9rem, 3vw, 3.1rem);
-      letter-spacing: 0.05em;
-      color: var(--brand-ink);
-      font-family: "Noto Sans Deseret","Segoe UI Symbol","Apple Symbols","DejaVu Sans",serif;
-    }
-
-    .mini-stat {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      color: #4c6674;
-      padding: 12px 0;
-      border-top: 1px solid var(--line);
-      font-weight: 600;
-    }
-
-    .section {
-      padding: 16px 0 30px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px 18px;
-      box-shadow: 0 10px 24px rgba(13, 43, 58, 0.04);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      color: var(--brand-ink);
-      font-size: 1.21rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: #4e6474;
-      line-height: 1.6;
-    }
-
-    .translator-wrap {
-      margin-top: 16px;
-      background: #fff;
-      border-radius: 28px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      padding: 26px;
-    }
-
-    .translator-wrap h2 {
-      margin: 0 0 18px;
-      font-size: var(--fs-h2);
-      color: var(--brand-ink);
-    }
-
-    .translator-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+    .de {
+      font-family: "Noto Sans Deseret", "Segoe UI Symbol", "Apple Symbols", "DejaVu Sans", serif;
     }
 
     label {
       display: block;
-      margin-bottom: 10px;
-      font-weight: 800;
-      color: var(--brand-ink);
+      margin: 14px 0 8px;
+      font-weight: 700;
+      color: #123646;
     }
 
     textarea {
       width: 100%;
-      min-height: 190px;
-      resize: vertical;
-      border-radius: 18px;
+      min-height: 150px;
       border: 1px solid var(--line);
-      background: #f9fdff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 1rem;
+      resize: vertical;
       color: var(--ink);
-      padding: 16px 18px;
-      font: inherit;
+      background: #f9fdff;
     }
 
-    .actions {
+    .row {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 18px;
+      flex-wrap: wrap;
+      margin-top: 16px;
     }
 
-    footer {
-      padding: 30px 0 42px;
-      text-align: center;
-      color: #526a76;
-      font-size: 0.92rem;
+    button {
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+      color: white;
+      font-weight: 700;
+      padding: 0.8rem 1.3rem;
+      cursor: pointer;
     }
 
-    @media (max-width: 840px) {
-      nav { display: none; }
-      .hero-grid, .cards, .translator-grid { grid-template-columns: 1fr; }
-      .topbar-inner { min-height: 68px; }
-      .hero { padding-top: 52px; }
+    .secondary {
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .output {
+      min-height: 150px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f9fdff;
+      font-size: 1.4rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand" aria-label="Deseret One home">
-        <div class="brand-mark">D</div>
-        <span>Deseret One</span>
+  <div class="wrap">
+    <div class="panel">
+      <h1>Deseret One</h1>
+      <p>Type English and convert it to Deseret Unicode.</p>
+
+      <label for="english">English</label>
+      <textarea id="english" placeholder="Type text here...">hello world</textarea>
+
+      <div class="row">
+        <button id="convert">Convert to Deseret</button>
+        <button id="clear" class="secondary" type="button">Clear</button>
       </div>
-      <nav aria-label="Main navigation">
-        <a href="#learn">Learn</a>
-        <a href="#read">Read</a>
-        <a href="#write">Write</a>
-        <a href="#translate">Translate</a>
-      </nav>
-      <a class="button" href="#translate">Try the translator</a>
+
+      <label for="deseretOutput">Deseret</label>
+      <div id="deseretOutput" class="output de" aria-live="polite"></div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero container">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">Learn the script</div>
-          <h1>Learn, Read, Write &amp; Translate the Deseret Alphabet</h1>
-          <p class="lead">
-            Explore the historic Deseret Alphabet with guided lessons, reading practice,
-            writing exercises, and a quick translation tool built for study.
-          </p>
-          <div class="cta-row">
-            <a class="button" href="#translate">Open translator</a>
-            <a class="button secondary" href="#learn">Explore lessons</a>
-          </div>
-        </div>
-
-        <div class="hero-panel" aria-label="Sample Deseret text preview">
-          <div class="sample">𐐲𐐨𐐶 𐐼𐐯𐐻𐐮𐐬𐐼 𐐩𐐭𐐯𐐪</div>
-          <div class="mini-stat"><span>Alphabet</span><strong>40+ characters</strong></div>
-          <div class="mini-stat"><span>Practice</span><strong>Reading &amp; writing</strong></div>
-          <div class="mini-stat"><span>Use</span><strong>Translation tools</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="learn" class="section container">
-      <div class="cards">
-        <article class="card">
-          <h3>Learn</h3>
-          <p>Start with the basic sounds, letter forms, and simple pronunciation patterns.</p>
-        </article>
-        <article id="read" class="card">
-          <h3>Read</h3>
-          <p>Practice with passages that gradually build fluency and confidence in reading.</p>
-        </article>
-        <article id="write" class="card">
-          <h3>Write</h3>
-          <p>Use guided exercises to form letters and develop clear, consistent writing habits.</p>
-        </article>
-        <article id="translate" class="card">
-          <h3>Translate</h3>
-          <p>Convert between English and Deseret text to test recognition and understanding.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="container">
-      <div class="translator-wrap">
-        <h2>Quick Translator</h2>
-        <div class="translator-grid">
-          <div>
-            <label for="englishInput">English</label>
-            <textarea id="englishInput" placeholder="Type English text here..."></textarea>
-          </div>
-          <div>
-            <label for="deseretOutput">Deseret</label>
-            <textarea id="deseretOutput" readonly placeholder="Your Deseret output will appear here..."></textarea>
-          </div>
-        </div>
-        <div class="actions">
-          <button class="button" type="button" id="translateToDeseret">Translate to Deseret</button>
-          <button class="button secondary" type="button" id="clearText">Clear</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2026 Deseret One — Learn, Read, Write &amp; Translate the Deseret Alphabet
-  </footer>
+  </div>
 
   <script>
-    (function () {
-      const englishInput = document.getElementById('englishInput');
-      const deseretOutput = document.getElementById('deseretOutput');
-      const translateButton = document.getElementById('translateToDeseret');
-      const clearButton = document.getElementById('clearText');
+    const map = {
+      a: '𐐀', b: '𐐫', c: '𐐝', d: '𐐔', e: '𐐁', f: '𐐢', g: '𐐘', h: '𐐐',
+      i: '𐐂', j: '𐐖', k: '𐐗', l: '𐐍', m: '𐐣', n: '𐐤', o: '𐐃', p: '𐐡',
+      q: '𐐥', r: '𐐬', s: '𐐠', t: '𐐻', u: '𐐄', v: '𐐳', w: '𐐶', x: '𐐨',
+      y: '𐐲', z: '𐐮'
+    };
 
-      const DESERET_MAP = {
-        a: '𐐀', b: '𐐫', c: '𐐝', d: '𐐔', e: '𐐁', f: '𐐢', g: '𐐘', h: '𐐐',
-        i: '𐐂', j: '𐐖', k: '𐐗', l: '𐐍', m: '𐐣', n: '𐐤', o: '𐐃', p: '𐐡',
-        q: '𐐥', r: '𐐬', s: '𐐠', t: '𐐻', u: '𐐄', v: '𐐳', w: '𐐶', x: '𐐨',
-        y: '𐐲', z: '𐐮'
-      };
+    const english = document.getElementById('english');
+    const output = document.getElementById('deseretOutput');
+    const convertBtn = document.getElementById('convert');
+    const clearBtn = document.getElementById('clear');
 
-      function toDeseretText(text) {
-        if (!text) return '';
-        return Array.from(text).map(function (char) {
-          if (/[a-z]/i.test(char)) {
-            const key = char.toLowerCase();
-            const mapped = DESERET_MAP[key] || char;
-            return /[A-Z]/.test(char) ? mapped.toUpperCase() : mapped;
-          }
-          return char;
-        }).join('');
-      }
+    function toDeseret(text) {
+      return Array.from(text).map(ch => {
+        const lower = ch.toLowerCase();
+        if (map[lower]) {
+          return /[A-Z]/.test(ch) ? map[lower].toUpperCase() : map[lower];
+        }
+        return ch;
+      }).join('');
+    }
 
-      function runTranslation() {
-        deseretOutput.value = toDeseretText(englishInput.value || '');
-      }
+    function render() {
+      output.textContent = toDeseret(english.value || '');
+    }
 
-      translateButton.addEventListener('click', runTranslation);
-      englishInput.addEventListener('input', runTranslation);
-      clearButton.addEventListener('click', function () {
-        englishInput.value = '';
-        deseretOutput.value = '';
-        englishInput.focus();
-      });
-    })();
+    convertBtn.addEventListener('click', render);
+    english.addEventListener('input', render);
+    clearBtn.addEventListener('click', () => {
+      english.value = '';
+      output.textContent = '';
+      english.focus();
+    });
+
+    render();
   </script>
 </body>
 </html>
