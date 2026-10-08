@@ -4,7 +4,7 @@
   <!-- ========== META & TITLE ========== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Deseret One — Learn, Read, Write & Translate the Deseret Alphabet</title>
+  <title>Deseret One - Learn, Read, Write & Translate the Deseret Alphabet</title>
   <link rel="icon" href="https://i.ibb.co/cpzyw3c/image.png">
   <link rel="apple-touch-icon" href="https://i.ibb.co/cpzyw3c/image.png">
   <meta name="description" content="Deseret One is a guide to learning, reading, writing, and translating the Deseret Alphabet, with lessons, historical texts, and a growing digital library.">
@@ -96,8 +96,8 @@
     /* ===== HEADINGS ===== */
     h1{font-family:var(--sans);font-weight:700;font-size:1.15rem;line-height:1.3;margin:0 0 1.3rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline}
     h1 .de{font-family:var(--sans);font-size:1.05rem;font-weight:400}
-    h2{font-size:var(--fs-body);line-height:1.4;text-transform:uppercase;margin:2rem 0 .9rem;font-family:var(--sans);font-weight:700}
-    .library-work h2{text-transform:none;}
+    h2{font-size:var(--fs-body);line-height:1.4;margin:2rem 0 .9rem;font-family:var(--sans);font-weight:700}
+    .library-work h2{margin-top:0}
     h3{font-size:var(--fs-body);line-height:1.45;margin:2.25rem 0 .7rem;font-family:var(--sans);font-weight:700}
     p{margin:0 0 1.05rem;font-size:var(--fs-body)}
     .lede{font-size:var(--fs-body);line-height:1.65;margin-bottom:1.6rem}
@@ -108,7 +108,7 @@
     table.lt th,table.lt td{border:0;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:.28rem .45rem;text-align:left}
     table.lt tr:last-child td{border-bottom:0}
     table.lt td:last-child,table.lt th:last-child{border-right:0}
-    table.lt th{font-size:var(--fs-body);font-weight:700;text-transform:uppercase;white-space:nowrap}
+    table.lt th{font-size:var(--fs-body);font-weight:700;white-space:nowrap}
     table.lt td.gl{font-size:1.15rem;line-height:1.25;text-align:center;width:1%;white-space:nowrap}
     table.lt td.ipa{font-size:var(--fs-body);white-space:nowrap}
     table.lt td.ex{font-size:var(--fs-body);white-space:nowrap}
@@ -150,7 +150,7 @@
 
     /* ===== TRANSLATOR ===== */
     .tr{display:grid;gap:.4rem;margin-bottom:1rem}
-    .tr label{font-size:var(--fs-body);font-weight:700;text-transform:uppercase;color:var(--ink)}
+    .tr label{font-size:var(--fs-body);font-weight:700;color:var(--ink)}
     textarea{font:inherit;font-size:var(--fs-body);line-height:1.6;width:100%;padding:.8rem .9rem;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;resize:vertical}
     textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
     textarea.de{font-size:1.05rem}
@@ -189,18 +189,43 @@
     .library-work h2{margin:0 0 .2rem;font-size:1.05rem}
     .library-work .work-meta{margin:0;font-size:.86rem;font-style:italic}
     .library-work .work-desc{margin:.25rem 0 0;font-size:.9rem}
-    .library-work .act{white-space:nowrap}
+    .library-work .act{white-space:nowrap;font:inherit;font-size:var(--fs);font-weight:400;height:40px;padding:0 16px;color:var(--ink);background:#fff;border:1px solid #b9c2cf;border-radius:8px;cursor:pointer}
+    .library-work .act:hover{background:#f0fbff}
     .library-empty{padding:1rem 0;font-style:italic}
     @media(max-width:40rem){.library-work{grid-template-columns:1fr}.library-work .act{justify-self:start}}
 
     /* ===== LIBRARY READER ===== */
-    .reader h2{text-transform:none;margin-top:.5rem;font-size:1.15rem}
+    .reader h2{margin-top:.5rem;font-size:1.15rem}
     .reader .work-meta{margin:0 0 1.1rem;font-style:italic}
     .reader-modes{margin-bottom:1.2rem}
     button.act.ghost[aria-pressed="true"]{background:var(--ink);color:#fff}
+    .reader-body .diff{background:#fff3c4;text-decoration:underline dotted;text-underline-offset:3px;border-radius:2px}
     .reader-body p{margin:0 0 1.1rem;line-height:1.7}
     .reader-body p.de{font-size:1.15rem;line-height:1.75}
     .reader-body p.en{font-size:var(--fs-body);font-family:var(--serif);font-size:1.05rem}
+
+    /* ===== LIBRARY BROWSING (after Project Gutenberg's categories, record and links) ===== */
+    .library-filters{display:flex;flex-wrap:wrap;gap:.7rem 1rem;align-items:center;margin:0 0 .6rem}
+    .library-cats{display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{font:inherit;font-size:var(--fs);font-weight:600;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink)}
+    .chip:hover{background:#f0fbff}
+    .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .library-sort{display:flex;align-items:center;gap:.4rem;margin-left:auto;font-size:var(--fs-body)}
+    .library-sort select{font:inherit;font-size:var(--fs-body);padding:.35rem .5rem;border:1px solid var(--line);border-radius:8px;background:#fff}
+    .library-count{margin:.2rem 0 1rem;font-size:.86rem;font-style:italic}
+    .library-work .work-facts{margin:.25rem 0 0;font-size:.86rem}
+    .record{display:grid;grid-template-columns:max-content 1fr;gap:.25rem 1.2rem;margin:0 0 1.3rem;padding:.8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:var(--fs-body)}
+    .record dt{font-weight:700}
+    .record dd{margin:0}
+    .reader-actions{margin-top:1.4rem}
+    .reader-related{margin:1.6rem 0 0}
+    .reader-related a{margin-right:.2rem}
+    @media(max-width:34rem){.chip{min-height:2.5rem}.library-sort{margin-left:0}}
+
+    /* ===== WHY DESERET ===== */
+    .case-list,.case-list ul{margin:0 0 1.05rem;padding-left:1.4rem}
+    .case-list li{margin-bottom:.6rem}
+    .case-list ul{margin-top:.6rem}
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:60rem){main{padding:1.5rem 1.1rem 4rem}}
@@ -308,7 +333,7 @@
             <blockquote>
               “It will be the means of introducing uniformity in our orthography, and the years that are now required to learn to read and spell can be devoted to other studies.”
             </blockquote>
-            <p class="quote-attribution">— Brigham Young</p>
+            <p class="quote-attribution">- Brigham Young</p>
             <a href="https://www.heritage-print.com/brigham-young-american-mormon-leader-c1880-14946339.html" target="_blank" rel="noopener noreferrer">
               <img src="https://i.ibb.co/QFQDskqj/images-1.jpg" alt="Brigham Young, American Mormon leader, c1880">
             </a>
@@ -318,7 +343,7 @@
             <blockquote>
               “No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory. I would advise our brethren, aside from the ordinary schools, to get up evening reading classes in all our settlements for the instruction of those who cannot attend at other times.”
             </blockquote>
-            <p class="quote-attribution">— George A. Smith</p>
+            <p class="quote-attribution">- George A. Smith</p>
             <a href="https://www.google.com/search?q=George+A.+Smith+LDS+%22No+greater+or+more+blessed+mission%22" target="_blank" rel="noopener noreferrer">
               <img src="https://i.ibb.co/xq620h1w/images-2.jpg" alt="George A. Smith">
             </a>
@@ -356,7 +381,7 @@
 
         <!-- ----- Library index ----- -->
         <div id="libraryIndex">
-          <p class="lede">Explore scripture, speeches, and literature in the Deseret Alphabet. Each work opens right here on the page.</p>
+          <p class="lede">Note: these works are in GA (General American) Deseret.</p>
 
           <div class="library-tools">
             <div class="library-search" role="search">
@@ -364,31 +389,19 @@
             </div>
           </div>
 
+          <div class="library-filters">
+            <div id="libraryCats" class="library-cats" role="group" aria-label="Categories"></div>
+            <label class="library-sort">Sort
+              <select id="librarySort">
+                <option value="default" selected>Our order</option>
+                <option value="az">Title A-Z</option>
+                <option value="short">Shortest first</option>
+              </select>
+            </label>
+          </div>
+          <p class="library-count" id="libraryCount" aria-live="polite"></p>
+
           <div class="library-list" id="libraryList" aria-live="polite">
-          <article class="library-work" data-library-search="lord's prayer matthew scripture bible">
-            <div><h2>The Lord's Prayer</h2><p class="work-meta">Scripture · Matthew 6:9–13</p><p class="work-desc">The Lord's Prayer presented in Deseret.</p></div>
-            <button class="act" type="button" data-work="lords-prayer">Read →</button>
-          </article>
-          <article class="library-work" data-library-search="twenty third psalm psalm 23 scripture">
-            <div><h2>The Twenty-Third Psalm</h2><p class="work-meta">Scripture · Psalm 23</p><p class="work-desc">A familiar biblical passage for continuous Deseret reading practice.</p></div>
-            <button class="act" type="button" data-work="psalm-23">Read →</button>
-          </article>
-          <article class="library-work" data-library-search="genesis beginning creation bible scripture">
-            <div><h2>In the Beginning</h2><p class="work-meta">Scripture · Genesis 1:1–5</p><p class="work-desc">The opening passage of Genesis presented as a Deseret reading text.</p></div>
-            <button class="act" type="button" data-work="genesis-1">Read →</button>
-          </article>
-          <article class="library-work" data-library-search="nephi first nephi book of mormon scripture">
-            <div><h2>The Words of Nephi</h2><p class="work-meta">Scripture · 1 Nephi 1:1–2</p><p class="work-desc">The opening words of First Nephi in Deseret.</p></div>
-            <button class="act" type="button" data-work="first-nephi-1">Read →</button>
-          </article>
-          <article class="library-work" data-library-search="gettysburg address abraham lincoln speech 1863">
-            <div><h2>The Gettysburg Address</h2><p class="work-meta">Speech · Abraham Lincoln · 1863</p><p class="work-desc">A classic public-domain English text presented in Deseret.</p></div>
-            <button class="act" type="button" data-work="gettysburg">Read →</button>
-          </article>
-          <article class="library-work" data-library-search="north wind sun aesop fable literature">
-            <div><h2>The North Wind and the Sun</h2><p class="work-meta">Literature · Aesop</p><p class="work-desc">A short fable for practising continuous Deseret prose.</p></div>
-            <button class="act" type="button" data-work="north-wind-sun">Read →</button>
-          </article>
           </div>
           <p class="library-empty" id="libraryEmpty" hidden>No works match your search.</p>
         </div>
@@ -398,6 +411,7 @@
           <p><button class="act ghost" id="readerBack" type="button">← Back to Library</button></p>
           <h2 id="readerTitle"></h2>
           <p class="work-meta" id="readerMeta"></p>
+          <dl class="record" id="readerRecord"></dl>
           <div class="row reader-modes" role="group" aria-label="Reading view">
             <button class="act ghost" type="button" data-mode="de" aria-pressed="true">Deseret</button>
             <button class="act ghost" type="button" data-mode="en" aria-pressed="false">English</button>
@@ -405,6 +419,81 @@
           </div>
           <p class="note" id="readerNote" hidden></p>
           <div class="reader-body" id="readerBody"></div>
+          <div class="row reader-actions">
+            <button class="act ghost" id="readerCopy" type="button">Copy text</button>
+            <button class="act ghost" id="readerDownload" type="button">Download .txt</button>
+            <span class="note" id="readerStatus" role="status"></span>
+          </div>
+          <p class="reader-related" id="readerRelated" hidden></p>
+        </div>
+
+        <!-- ----- Library data -----
+             A work is only English text. To add one, copy a block below, give it
+             a new data-id, title, meta, desc, tags, category and source, and paste the text inside
+             (a blank line starts a new paragraph). Do not use long em-dashes in the
+             text; use only short dashes, like - . The page builds the card,
+             converts the text to Deseret, and checks it with reverse.js. -->
+        <div id="libraryData" hidden>
+<script type="text/plain" class="work" data-id="lords-prayer" data-category="Scripture" data-source="King James Bible" data-title="The Lord's Prayer" data-meta="Scripture · Matthew 6:9-13" data-desc="The Lord's Prayer presented in Deseret." data-tags="lord's prayer matthew scripture bible">
+After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name.
+
+Thy kingdom come. Thy will be done in earth, as it is in heaven.
+
+Give us this day our daily bread.
+
+And forgive us our debts, as we forgive our debtors.
+
+And lead us not into temptation, but deliver us from evil: For thine is the kingdom, and the power, and the glory, for ever. Amen.
+</script>
+<script type="text/plain" class="work" data-id="psalm-23" data-category="Scripture" data-source="King James Bible" data-title="The Twenty-Third Psalm" data-meta="Scripture · Psalm 23" data-desc="A familiar biblical passage for continuous Deseret reading practice." data-tags="twenty third psalm psalm 23 scripture">
+The Lord is my shepherd; I shall not want.
+
+He maketh me to lie down in green pastures: he leadeth me beside the still waters.
+
+He restoreth my soul: he leadeth me in the paths of righteousness for his name's sake.
+
+Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.
+
+Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over.
+
+Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the Lord for ever.
+</script>
+<script type="text/plain" class="work" data-id="genesis-1" data-category="Scripture" data-source="King James Bible" data-title="In the Beginning" data-meta="Scripture · Genesis 1:1-5" data-desc="The opening passage of Genesis presented as a Deseret reading text." data-tags="genesis beginning creation bible scripture">
+In the beginning God created the heaven and the earth.
+
+And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.
+
+And God said, Let there be light: and there was light.
+
+And God saw the light, that it was good: and God divided the light from the darkness.
+
+And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day.
+</script>
+<script type="text/plain" class="work" data-id="first-nephi-1" data-category="Scripture" data-source="Book of Mormon" data-title="The Words of Nephi" data-meta="Scripture · 1 Nephi 1:1-2" data-desc="The opening words of First Nephi in Deseret." data-tags="nephi first nephi book of mormon scripture">
+I, Nephi, having been born of goodly parents, therefore I was taught somewhat in all the learning of my father; and having seen many afflictions in the course of my days, nevertheless, having been highly favored of the Lord in all my days; yea, having had a great knowledge of the goodness and the mysteries of God, therefore I make a record of my proceedings in my days.
+
+Yea, I make a record in the language of my father, which consists of the learning of the Jews and the language of the Egyptians.
+</script>
+<script type="text/plain" class="work" data-id="gettysburg" data-category="Speeches" data-source="Bliss copy, 1863" data-title="The Gettysburg Address" data-meta="Speech · Abraham Lincoln · 1863" data-desc="A classic public-domain English text presented in Deseret." data-tags="gettysburg address abraham lincoln speech 1863">
+Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.
+
+Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.
+
+But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here.
+
+It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us, that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion, that we here highly resolve that these dead shall not have died in vain, that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth.
+</script>
+<script type="text/plain" class="work" data-id="north-wind-sun" data-category="Literature" data-source="Aesop, retold in plain English" data-title="The North Wind and the Sun" data-meta="Literature · Aesop" data-desc="A short fable for practising continuous Deseret prose." data-tags="north wind sun aesop fable literature">
+The North Wind and the Sun once argued about which of them was the stronger. Just then a traveller came along, wrapped in a warm cloak.
+
+They agreed that whoever could make the traveller take off his cloak should be called the stronger.
+
+The North Wind blew as hard as he could, but the harder he blew, the more tightly the traveller wrapped his cloak around him.
+
+At last the North Wind gave up. Then the Sun shone out warmly, and soon the traveller grew hot and took off his cloak.
+
+So the North Wind had to admit that the Sun was the stronger of the two.
+</script>
         </div>
       </article>
 
@@ -447,8 +536,17 @@
       <!-- ===== PAGE: CASE ===== -->
       <article class="page" id="case" hidden>
         <h1>Why Deseret?</h1>
-        <p>One argument for the Deseret Alphabet is that it makes learning the English language quicker, given the standard alphabet is extremely complicated in its usage. This would make the education system more efficient.</p>
-        <p>A second argument is that Deseret is a more aesthetically pleasing spelling system. For one, the symbols themselves are more aesthetically pleasing as they all take up equal height and width, have the same symbol for both upper and lower case, and have a consistent style to them that the Latin English alphabet lacks. As a second note, the simple fact that there is consistency between the spelling and the pronunciation is aesthetically pleasing. And finally, for many the Deseret system evokes the history of the Western pioneers.</p>
+        <ol class="case-list">
+          <li>It makes the education system more efficient given it is a simpler system.</li>
+          <li>It makes handwriting quicker, saving time.</li>
+          <li>It is more aesthetically pleasing. This can be broken down into three arguments.
+            <ul>
+              <li>Firstly, the symbols themselves are more aesthetically pleasing as they all take up equal height and width, have the same symbol for both upper and lower case, and have a consistent style to them that the Latin English alphabet lacks.</li>
+              <li>Secondly, the simple fact that there is consistency between the spelling and the pronunciation is aesthetically pleasing.</li>
+              <li>Finally, for many the Deseret system evokes the history of the Western pioneers.</li>
+            </ul>
+          </li>
+        </ol>
       </article>
 
       <!-- ===== PAGE: HISTORY ===== -->
@@ -466,7 +564,7 @@
         <h1>About</h1>
         <p>This site was created by <a href="mailto:alexdimop@outlook.com">alexdimop@outlook.com</a> and is the sister project of the <a href="#">Deseret Alphabet web extension</a>.</p>
         <p>The goal of this resource is to facilitate the learning and usage of the Deseret Alphabet, with the ultimate goal that it be normalised.</p>
-        <p>The site uses Deseret spellings that align with the General American pronunciation, however, it is permissible to use different word spellings if one wishes to represent a different accent — as long as the Deseret letters are correctly matched to the sounds.</p>
+        <p>The site uses Deseret spellings that align with the General American pronunciation, however, it is permissible to use different word spellings if one wishes to represent a different accent - as long as the Deseret letters are correctly matched to the sounds.</p>
       </article>
 
     </main>
@@ -489,6 +587,20 @@
       };
       var DIALECT = 'general-us';
 
+      // One path from English to Deseret for the whole page. The Translator
+      // always went through the schwa rule (unstressed vowel -> 𐐳, flapped t
+      // -> 𐐻); the Library and "Read in Deseret" must do the same, or the
+      // site spells the same word two different ways.
+      function toDeseret(text) {
+        if (typeof window.daSchwaTextVariants === 'function') {
+          try {
+            var v = window.daSchwaTextVariants(text, DIALECT, OPTS);
+            if (v && v.length && typeof v[0] === 'string') return v[0];
+          } catch (e) {}
+        }
+        return window.translateText(text, DIALECT, OPTS);
+      }
+
       var hasEngine = typeof window.translateText === 'function';
       var hasReverse = typeof window.deseretReverseText === 'function';
 
@@ -500,6 +612,8 @@
 
       // ===== ROUTING =====
       function show(id, write) {
+        var sub = '', slash = id.indexOf('/');
+        if (slash >= 0) { sub = id.slice(slash + 1); id = id.slice(0, slash); }
         if (ids.indexOf(id) < 0) id = 'home';
         pages.forEach(function (p) { p.hidden = p.id !== id; });
         links.forEach(function (a) {
@@ -507,11 +621,12 @@
           else a.removeAttribute('aria-current');
         });
         if (write !== false) {
-          try { history.replaceState(null, '', '#' + id); } catch (e) {}
+          try { history.replaceState(null, '', '#' + id + (sub ? '/' + sub : '')); } catch (e) {}
         }
         window.scrollTo(0, 0);
         var h = document.querySelector('.page:not([hidden]) h1');
         if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+        if (typeof libraryRoute === 'function') libraryRoute(id, sub);
       }
 
       // ===== MOBILE MENU =====
@@ -567,7 +682,7 @@
       });
 
       var start = decodeURIComponent(location.hash.slice(1));
-      show(ids.indexOf(start) >= 0 ? start : 'home', false);
+      show(start, false);
 
       // ===== DESERET MODE =====
       // Controls and already-Deseret material are left alone; everything else
@@ -588,22 +703,31 @@
       }
 
       var modeBtn = document.getElementById('deseretMode');
+      function applyDeseret() {
+        if (!deseretNodes) {
+          deseretNodes = collectText(document.body).map(function (n) {
+            return { node: n, en: n.nodeValue, de: null };
+          });
+        }
+        deseretNodes.forEach(function (r) {
+          if (r.de === null) {
+            try { r.de = toDeseret(r.en); }
+            catch (e) { r.de = r.en; }
+          }
+          r.node.nodeValue = r.de;
+        });
+      }
+      // Accent or schwa changed: drop the cached spellings and redo them.
+      function refreshDeseretMode() {
+        if (!deseretNodes) return;
+        deseretNodes.forEach(function (r) { r.de = null; });
+        if (deseretOn) applyDeseret();
+      }
       if (modeBtn && hasEngine) {
         modeBtn.addEventListener('click', function () {
           deseretOn = !deseretOn;
           if (deseretOn) {
-            if (!deseretNodes) {
-              deseretNodes = collectText(document.body).map(function (n) {
-                return { node: n, en: n.nodeValue, de: null };
-              });
-            }
-            deseretNodes.forEach(function (r) {
-              if (r.de === null) {
-                try { r.de = window.translateText(r.en, DIALECT, OPTS); }
-                catch (e) { r.de = r.en; }
-              }
-              r.node.nodeValue = r.de;
-            });
+            applyDeseret();
           } else {
             deseretNodes.forEach(function (r) { r.node.nodeValue = r.en; });
           }
@@ -695,104 +819,160 @@
         });
       });
 
-      // ===== LIBRARY SEARCH =====
-      var librarySearch = document.getElementById('librarySearch');
-      var libraryWorks = [].slice.call(document.querySelectorAll('.library-work'));
-      var libraryEmpty = document.getElementById('libraryEmpty');
-      function filterLibrary() {
+      // ===== LIBRARY =====
+      // Every work is plain English in a <script type="text/plain" class="work">
+      // block. Cards, categories, Deseret and the reverse.js check all come from it.
+      var WORKS = {}, workOrder = [], categories = [];
+      [].slice.call(document.querySelectorAll('script.work')).forEach(function (el) {
+        var id = el.getAttribute('data-id');
+        if (!id) return;
+        var paras = el.textContent.split(/\n\s*\n/).map(function (p) {
+          return p.replace(/\s+/g, ' ').trim();
+        }).filter(Boolean);
+        var w = {
+          title: el.getAttribute('data-title') || id,
+          meta: el.getAttribute('data-meta') || '',
+          desc: el.getAttribute('data-desc') || '',
+          tags: el.getAttribute('data-tags') || '',
+          category: el.getAttribute('data-category') || 'Other',
+          source: el.getAttribute('data-source') || '',
+          paras: paras
+        };
+        w.words = paras.join(' ').split(/\s+/).filter(Boolean).length;
+        WORKS[id] = w;
+        workOrder.push(id);
+        if (categories.indexOf(w.category) < 0) categories.push(w.category);
+      });
+
+      var libraryList = document.getElementById('libraryList'),
+          libraryCount = document.getElementById('libraryCount'),
+          libraryCats = document.getElementById('libraryCats'),
+          librarySort = document.getElementById('librarySort'),
+          librarySearch = document.getElementById('librarySearch'),
+          libraryEmpty = document.getElementById('libraryEmpty'),
+          cards = {}, activeCat = '';
+
+      workOrder.forEach(function (id) {
+        var w = WORKS[id];
+        var card = document.createElement('article');
+        card.className = 'library-work';
+        card.setAttribute('data-library-search',
+          (w.title + ' ' + w.meta + ' ' + w.tags + ' ' + w.category + ' ' + w.source).toLowerCase());
+        var box = document.createElement('div');
+        var h = document.createElement('h2'); h.textContent = w.title; box.appendChild(h);
+        var m = document.createElement('p'); m.className = 'work-meta'; m.textContent = w.meta; box.appendChild(m);
+        if (w.desc) { var d = document.createElement('p'); d.className = 'work-desc'; d.textContent = w.desc; box.appendChild(d); }
+        var f = document.createElement('p'); f.className = 'work-facts';
+        f.textContent = w.category + ' \u00b7 ' + w.words.toLocaleString() + ' words';
+        box.appendChild(f);
+        var btn = document.createElement('button');
+        btn.className = 'act'; btn.type = 'button'; btn.textContent = 'Read \u2192';
+        btn.setAttribute('data-work', id);
+        card.appendChild(box); card.appendChild(btn);
+        cards[id] = card;
+        libraryList.appendChild(card);
+      });
+
+      // Category chips, with counts.
+      function addChip(label, value, n) {
+        var c = document.createElement('button');
+        c.type = 'button'; c.className = 'chip';
+        c.setAttribute('data-cat', value);
+        c.setAttribute('aria-pressed', String(value === activeCat));
+        c.textContent = label + ' (' + n + ')';
+        c.addEventListener('click', function () { activeCat = value; applyLibraryView(); });
+        libraryCats.appendChild(c);
+      }
+      addChip('All', '', workOrder.length);
+      categories.forEach(function (c) {
+        addChip(c, c, workOrder.filter(function (id) { return WORKS[id].category === c; }).length);
+      });
+
+      function plainTitle(id) { return WORKS[id].title.replace(/^(the|a|an)\s+/i, ''); }
+
+      function applyLibraryView() {
         var term = (librarySearch.value || '').trim().toLowerCase();
+        var sort = librarySort.value;
+        var order = workOrder.slice();
+        if (sort === 'az') order.sort(function (x, y) { return plainTitle(x).localeCompare(plainTitle(y)); });
+        else if (sort === 'short') order.sort(function (x, y) { return WORKS[x].words - WORKS[y].words; });
         var shown = 0;
-        libraryWorks.forEach(function (work) {
-          var text = (work.getAttribute('data-library-search') || '').toLowerCase();
-          var visible = !term || text.indexOf(term) !== -1;
-          work.hidden = !visible;
+        order.forEach(function (id) {
+          var card = cards[id];
+          libraryList.appendChild(card);                     // re-order
+          var text = card.getAttribute('data-library-search');
+          var visible = (!activeCat || WORKS[id].category === activeCat) && (!term || text.indexOf(term) !== -1);
+          card.hidden = !visible;
           if (visible) shown++;
         });
-        if (libraryEmpty) libraryEmpty.hidden = shown !== 0;
+        [].slice.call(libraryCats.children).forEach(function (c) {
+          c.setAttribute('aria-pressed', String(c.getAttribute('data-cat') === activeCat));
+        });
+        libraryCount.textContent = shown === workOrder.length
+          ? workOrder.length + ' works'
+          : shown + ' of ' + workOrder.length + ' works';
+        libraryEmpty.hidden = shown !== 0;
       }
-      if (librarySearch) librarySearch.addEventListener('input', filterLibrary);
+      librarySearch.addEventListener('input', applyLibraryView);
+      librarySort.addEventListener('change', applyLibraryView);
+      applyLibraryView();
 
-      // ===== LIBRARY READER =====
-      // Works are stored once, in English. The page turns them into Deseret
-      // with the same engine the Translator uses, and reverse.js turns that
-      // Deseret back into English so the dictionary can be checked.
-      var WORKS = {
-        "lords-prayer": {
-          "title": "The Lord's Prayer",
-          "meta": "Scripture · Matthew 6:9–13",
-          "paras": [
-            "After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name.",
-            "Thy kingdom come. Thy will be done in earth, as it is in heaven.",
-            "Give us this day our daily bread.",
-            "And forgive us our debts, as we forgive our debtors.",
-            "And lead us not into temptation, but deliver us from evil: For thine is the kingdom, and the power, and the glory, for ever. Amen."
-          ]
-        },
-        "psalm-23": {
-          "title": "The Twenty-Third Psalm",
-          "meta": "Scripture · Psalm 23",
-          "paras": [
-            "The Lord is my shepherd; I shall not want.",
-            "He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
-            "He restoreth my soul: he leadeth me in the paths of righteousness for his name's sake.",
-            "Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.",
-            "Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over.",
-            "Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the Lord for ever."
-          ]
-        },
-        "genesis-1": {
-          "title": "In the Beginning",
-          "meta": "Scripture · Genesis 1:1–5",
-          "paras": [
-            "In the beginning God created the heaven and the earth.",
-            "And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.",
-            "And God said, Let there be light: and there was light.",
-            "And God saw the light, that it was good: and God divided the light from the darkness.",
-            "And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day."
-          ]
-        },
-        "first-nephi-1": {
-          "title": "The Words of Nephi",
-          "meta": "Scripture · 1 Nephi 1:1–2",
-          "paras": [
-            "I, Nephi, having been born of goodly parents, therefore I was taught somewhat in all the learning of my father; and having seen many afflictions in the course of my days, nevertheless, having been highly favored of the Lord in all my days; yea, having had a great knowledge of the goodness and the mysteries of God, therefore I make a record of my proceedings in my days.",
-            "Yea, I make a record in the language of my father, which consists of the learning of the Jews and the language of the Egyptians."
-          ]
-        },
-        "gettysburg": {
-          "title": "The Gettysburg Address",
-          "meta": "Speech · Abraham Lincoln · 1863",
-          "paras": [
-            "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.",
-            "Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.",
-            "But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here.",
-            "It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us, that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion, that we here highly resolve that these dead shall not have died in vain, that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth."
-          ]
-        },
-        "north-wind-sun": {
-          "title": "The North Wind and the Sun",
-          "meta": "Literature · Aesop",
-          "paras": [
-            "The North Wind and the Sun once argued about which of them was the stronger. Just then a traveller came along, wrapped in a warm cloak.",
-            "They agreed that whoever could make the traveller take off his cloak should be called the stronger.",
-            "The North Wind blew as hard as he could, but the harder he blew, the more tightly the traveller wrapped his cloak around him.",
-            "At last the North Wind gave up. Then the Sun shone out warmly, and soon the traveller grew hot and took off his cloak.",
-            "So the North Wind had to admit that the Sun was the stronger of the two."
-          ]
+      // The site-wide search was indexed before the cards existed; add them.
+      index.forEach(function (e) {
+        if (e.id === 'library') {
+          e.text += ' ' + workOrder.map(function (id) {
+            var w = WORKS[id];
+            return (w.title + ' ' + w.meta + ' ' + w.category + ' ' + w.source + ' ' + w.paras.join(' ')).toLowerCase();
+          }).join(' ');
         }
-      };
+      });
 
+      // ----- reader -----
       var libIndex = document.getElementById('libraryIndex'),
           libReader = document.getElementById('libraryReader'),
           readerTitle = document.getElementById('readerTitle'),
           readerMeta = document.getElementById('readerMeta'),
+          readerRecord = document.getElementById('readerRecord'),
           readerBody = document.getElementById('readerBody'),
           readerNote = document.getElementById('readerNote'),
+          readerRelated = document.getElementById('readerRelated'),
+          readerStatus = document.getElementById('readerStatus'),
           modeBtns = [].slice.call(document.querySelectorAll('.reader-modes [data-mode]')),
           currentWork = null, currentMode = 'de';
 
       function toDeseretText(t) {
-        try { return window.translateText(t, DIALECT, OPTS); } catch (e) { return t; }
+        try { return toDeseret(t); } catch (e) { return t; }
+      }
+      function words(t) { return t.split(/\s+/).filter(Boolean); }
+      function norm(w) { return w.toLowerCase().replace(/^[^a-z0-9']+|[^a-z0-9']+$/g, ''); }
+
+      // A small "bibliographic record", as on a Gutenberg book page.
+      function renderRecord(w) {
+        readerRecord.innerHTML = '';
+        var sel = document.getElementById('dialect');
+        var accent = sel && sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : 'General American';
+        [['Category', w.category], ['Source text', w.source], ['Length', w.words.toLocaleString() + ' words'],
+         ['Language', 'Deseret (' + accent + ')']].forEach(function (row) {
+          if (!row[1]) return;
+          var dt = document.createElement('dt'), dd = document.createElement('dd');
+          dt.textContent = row[0]; dd.textContent = row[1];
+          readerRecord.appendChild(dt); readerRecord.appendChild(dd);
+        });
+      }
+
+      // "More in Scripture", like Gutenberg's Subject links.
+      function renderRelated(w) {
+        var others = workOrder.filter(function (id) { return id !== currentWork && WORKS[id].category === w.category; }).slice(0, 5);
+        readerRelated.innerHTML = '';
+        if (!others.length) { readerRelated.hidden = true; return; }
+        readerRelated.appendChild(document.createTextNode('More in ' + w.category + ': '));
+        others.forEach(function (id, i) {
+          var a = document.createElement('a');
+          a.href = '#library/' + id; a.textContent = WORKS[id].title;
+          readerRelated.appendChild(a);
+          if (i < others.length - 1) readerRelated.appendChild(document.createTextNode(' \u00b7 '));
+        });
+        readerRelated.hidden = false;
       }
 
       function renderReader() {
@@ -800,6 +980,9 @@
         if (!w) return;
         readerTitle.textContent = w.title;
         readerMeta.textContent = w.meta;
+        renderRecord(w);
+        renderRelated(w);
+        readerStatus.textContent = '';
         readerBody.innerHTML = '';
         readerNote.hidden = true;
         modeBtns.forEach(function (b) {
@@ -812,58 +995,114 @@
           readerNote.hidden = false;
           mode = 'en';
         } else if (mode === 'rev' && !hasReverse) {
-          readerNote.textContent = 'reverse.js did not load, so the read-back is unavailable. Showing English.';
+          readerNote.textContent = 'reverse.js did not load, so the read-back check is unavailable. Showing English.';
           readerNote.hidden = false;
           mode = 'en';
-        } else if (mode === 'rev') {
-          readerNote.textContent = 'This is the Deseret text converted back to English by the dictionary. Homophones and unknown words may differ from the original.';
-          readerNote.hidden = false;
         }
 
+        var total = 0, differ = 0, skipped = 0;
         w.paras.forEach(function (para) {
           var p = document.createElement('p');
           if (mode === 'de') {
             p.className = 'de';
             p.textContent = toDeseretText(para);
           } else if (mode === 'rev') {
+            // English -> Deseret -> English, compared word by word with the original.
             p.className = 'en';
-            p.textContent = window.deseretReverseText(toDeseretText(para), DIALECT, OPTS).text;
+            var back = window.deseretReverseText(toDeseretText(para), DIALECT, OPTS).text;
+            var a = words(para), bw = words(back);
+            if (a.length === bw.length) {
+              a.forEach(function (orig, i) {
+                total++;
+                var node;
+                if (norm(orig) !== norm(bw[i])) {
+                  differ++;
+                  node = document.createElement('span');
+                  node.className = 'diff';
+                  node.title = 'Original: ' + orig;
+                  node.textContent = bw[i];
+                } else {
+                  node = document.createTextNode(bw[i]);
+                }
+                p.appendChild(node);
+                if (i < a.length - 1) p.appendChild(document.createTextNode(' '));
+              });
+            } else {
+              skipped++;
+              p.textContent = back;
+            }
           } else {
             p.className = 'en';
             p.textContent = para;
           }
           readerBody.appendChild(p);
         });
+
+        if (mode === 'rev') {
+          var msg = 'Automatic check: the English was turned into Deseret and back with reverse.js. '
+            + (total - differ) + ' of ' + total + ' words read back the same.';
+          if (differ) msg += ' Highlighted words differ (usually homophones, or words missing from the dictionary); hover one to see the original.';
+          if (skipped) msg += ' ' + skipped + ' paragraph' + (skipped === 1 ? '' : 's') + ' could not be compared word for word.';
+          readerNote.textContent = msg;
+          readerNote.hidden = false;
+        }
       }
 
-      function openWork(id) {
+      function setHash(h) { try { history.replaceState(null, '', h); } catch (e) {} }
+
+      function openWork(id, fromRoute) {
         if (!WORKS[id]) return;
         currentWork = id;
         libIndex.hidden = true;
         libReader.hidden = false;
         renderReader();
+        if (!fromRoute) setHash('#library/' + id);
         window.scrollTo(0, 0);
         readerTitle.setAttribute('tabindex', '-1');
         readerTitle.focus({ preventScroll: true });
       }
-      function closeWork() {
+      function closeWork(fromRoute) {
         libReader.hidden = true;
         libIndex.hidden = false;
         currentWork = null;
+        if (fromRoute !== true) setHash('#library');
         window.scrollTo(0, 0);
       }
 
-      [].slice.call(document.querySelectorAll('[data-work]')).forEach(function (b) {
-        b.addEventListener('click', function () { openWork(b.getAttribute('data-work')); });
+      // Called by show(): #library/<id> opens a work, #library shows the list.
+      function libraryRoute(page, sub) {
+        if (page !== 'library' || !WORKS || !libReader) return;
+        if (sub && WORKS[sub]) openWork(sub, true);
+        else if (!libReader.hidden) closeWork(true);
+      }
+
+      libraryList.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-work]');
+        if (b) openWork(b.getAttribute('data-work'));
       });
       modeBtns.forEach(function (b) {
         b.addEventListener('click', function () { currentMode = b.getAttribute('data-mode'); renderReader(); });
       });
-      document.getElementById('readerBack').addEventListener('click', closeWork);
+      document.getElementById('readerBack').addEventListener('click', function () { closeWork(); });
 
-      // Leaving the Library tab and returning should land on the list.
-      links.forEach(function (a) {
-        a.addEventListener('click', function () { if (a.getAttribute('data-go') === 'library') closeWork(); });
+      // Copy / download whatever view is on screen.
+      function readerText() {
+        return [].slice.call(readerBody.children).map(function (p) { return p.textContent; }).join('\n\n');
+      }
+      document.getElementById('readerCopy').addEventListener('click', function () {
+        navigator.clipboard.writeText(readerText()).then(function () {
+          readerStatus.textContent = 'Copied';
+          setTimeout(function () { readerStatus.textContent = ''; }, 1600);
+        }, function () { readerStatus.textContent = 'Could not copy - select the text instead.'; });
+      });
+      document.getElementById('readerDownload').addEventListener('click', function () {
+        var w = WORKS[currentWork]; if (!w) return;
+        var blob = new Blob([w.title + '\n' + w.meta + '\n\n' + readerText() + '\n'], { type: 'text/plain;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = currentWork + '-' + currentMode + '.txt';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
       });
 
       // Re-render when the accent or schwa choice changes in the Translator.
@@ -871,6 +1110,12 @@
       [dialectSelLib, schwaSelLib].forEach(function (el) {
         if (el) el.addEventListener('change', function () { if (currentWork) setTimeout(renderReader, 0); });
       });
+
+      // The page may have loaded straight onto #library/<id>.
+      (function () {
+        var parts = decodeURIComponent(location.hash.slice(1)).split('/');
+        if (parts[0] === 'library' && parts[1]) libraryRoute('library', parts[1]);
+      })();
 
       // ===== TRANSLATOR =====
       var src = document.getElementById('src'),
@@ -918,7 +1163,7 @@
                 alt.textContent = 'Other schwa convention: ' + v[1];
               }
             } else {
-              out.value = window.translateText(text, DIALECT, OPTS);
+              out.value = toDeseret(text);
             }
           } else if (hasReverse) {
             var r = window.deseretReverseText(text, DIALECT, OPTS);
@@ -942,11 +1187,11 @@
       src.addEventListener('input', render);
 
       if (dialectSel) dialectSel.addEventListener('change', function () {
-        DIALECT = dialectSel.value; render();
+        DIALECT = dialectSel.value; render(); refreshDeseretMode();
       });
       if (schwaSel) schwaSel.addEventListener('change', function () {
         OPTS = Object.assign({}, OPTS, { schwaAsFoot: schwaSel.value === 'foot' });
-        render();
+        render(); refreshDeseretMode();
       });
 
       swap.addEventListener('click', function () {
@@ -968,7 +1213,7 @@
           status.textContent = 'Copied';
           setTimeout(function () { status.textContent = ''; status.className = 'note'; }, 1600);
         }, function () {
-          status.textContent = 'Could not copy — select the text instead.';
+          status.textContent = 'Could not copy - select the text instead.';
         });
       });
     })();
