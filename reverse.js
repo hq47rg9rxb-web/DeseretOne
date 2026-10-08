@@ -4,6 +4,13 @@
  * about 92% of Deseret forms have exactly one English source, and the rest
  * are homophones (𐐻𐐭 is both "to" and "two"). Candidates are therefore
  * ranked rather than guessed at, and the alternatives kept for display.
+ *
+ * General American conventions (see the Learn page):
+ *   - the schwa is written with 𐐳 (foot), though 𐐲 (strut) is also accepted;
+ *   - the flapped t ("little") is written with 𐐻, though 𐐼 is also accepted.
+ * Text produced under those conventions can differ from the dictionary's own
+ * spelling by exactly these letters, so an exact miss is retried with them
+ * swapped (see findList) before the word is given up as unknown.
  */
 (function (root) {
   'use strict';
@@ -93,6 +100,52 @@
     return isUpper(cp) ? String.fromCodePoint(cp + 40) : ch;
   }).join('');
 
+  /* Letters that the General American conventions may swap for each other.
+     Both maps are symmetric: 𐐲 <-> 𐐳 (strut / foot) and 𐐻 <-> 𐐼 (t / d). */
+  const SCHWA = new Map([['\u{10432}', '\u{10433}'], ['\u{10433}', '\u{10432}']]);
+  const FLAP  = new Map([['\u{1043B}', '\u{1043C}'], ['\u{1043C}', '\u{1043B}']]);
+  const MAX_SWAP_POSITIONS = 10;   // keeps pathological tokens cheap
+
+  function positions(chars, map) {
+    const out = [];
+    chars.forEach((c, i) => { if (map.has(c)) out.push(i); });
+    return out.length > MAX_SWAP_POSITIONS ? [] : out;
+  }
+  function swapAt(chars, picks) {   // picks: [[index, map], ...]
+    const c = chars.slice();
+    picks.forEach(([i, map]) => { c[i] = map.get(c[i]); });
+    return c.join('');
+  }
+
+  /* Candidate respellings of an unmatched word, most conservative first:
+     one or two schwa swaps, then one or two flap swaps, then one of each. */
+  function* variants(word) {
+    const chars = Array.from(word);
+    const sp = positions(chars, SCHWA);
+    const fp = positions(chars, FLAP);
+    for (let a = 0; a < sp.length; a++) yield swapAt(chars, [[sp[a], SCHWA]]);
+    for (let a = 0; a < sp.length; a++)
+      for (let b = a + 1; b < sp.length; b++) yield swapAt(chars, [[sp[a], SCHWA], [sp[b], SCHWA]]);
+    for (let a = 0; a < fp.length; a++) yield swapAt(chars, [[fp[a], FLAP]]);
+    for (let a = 0; a < fp.length; a++)
+      for (let b = a + 1; b < fp.length; b++) yield swapAt(chars, [[fp[a], FLAP], [fp[b], FLAP]]);
+    for (let a = 0; a < sp.length; a++)
+      for (let b = 0; b < fp.length; b++) yield swapAt(chars, [[sp[a], SCHWA], [fp[b], FLAP]]);
+  }
+
+  /* An exact match always wins. Only when there is none is a word retried
+     with the schwa / flapped-t letters swapped, so a real homophone such as
+     𐐻𐐭 ("to") is never rewritten into 𐐼𐐭 ("do"). */
+  function findList(idx, word) {
+    const exact = idx.get(word);
+    if (exact && exact.length) return exact;
+    for (const v of variants(word)) {
+      const hit = idx.get(v);
+      if (hit && hit.length) return hit;
+    }
+    return null;
+  }
+
   function matchCase(sample, word) {
     const first = sample.codePointAt(0);
     if (!isUpper(first)) return word;
@@ -107,7 +160,7 @@
   /* One Deseret word -> { word, alternatives } */
   function reverseWord(token, dialect, opts) {
     const idx = build(dialect || 'general-us', opts);
-    const list = idx.get(lower(token));
+    const list = findList(idx, lower(token));
     if (!list || !list.length) return { word: token, alternatives: [], found: false };
     return {
       word: matchCase(token, list[0]),
