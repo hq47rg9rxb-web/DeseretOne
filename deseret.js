@@ -10946,6 +10946,9 @@ function daFinishSchwa(result, opts) {
 return (opts && opts.keepSchwaMark) ? result : daResolveSchwa(result, opts && opts.schwaAsFoot);
 }
 function translateWordWithDialect(word, dialect, generalUsSettings, isFragment) {
+if (word === null || word === undefined) return '';
+word = String(word);
+if (!word) return '';
 generalUsSettings = generalUsSettings || {};
 const SYLLABIC_EXPANDED = { "the": "𐑄𐐲", "thee": "𐑄𐐨" };
 // A letter standing for a whole word only makes sense when it IS a whole
