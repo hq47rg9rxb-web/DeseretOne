@@ -432,7 +432,7 @@
              a new data-id, title, meta, desc, tags, category and source, and paste the text inside
              (a blank line starts a new paragraph). Do not use long em-dashes in the
              text; use only short dashes, like - . The page builds the card,
-             converts the text to Deseret, and checks it with the reverse translator. -->
+             converts the text to Deseret, and checks it with reverse.js. -->
         <div id="libraryData" hidden>
 <script type="text/plain" class="work" data-id="lords-prayer" data-category="Scripture" data-source="King James Bible" data-title="The Lord's Prayer" data-meta="Scripture · Matthew 6:9-13" data-desc="The Lord's Prayer presented in Deseret." data-tags="lord's prayer matthew scripture bible">
 After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name.
@@ -571,9 +571,8 @@ So the North Wind had to admit that the Sun was the stronger of the two.
   </div>
 
   <!-- ========== ENGINE ========== -->
-  <!-- deseret.js is deseret-mappings.js + reverse.js combined into one file
-       (dictionary and translator first, then the reverse translator). -->
-  <script src="deseret.js"></script>
+  <script src="deseret-mappings.js"></script>
+  <script src="reverse.js"></script>
 
   <!-- ========== JAVASCRIPT ========== -->
   <script>
@@ -739,7 +738,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         });
       } else if (modeBtn) {
         modeBtn.disabled = true;
-        modeBtn.title = 'deseret.js did not load, so the page cannot be transliterated.';
+        modeBtn.title = 'deseret-mappings.js did not load, so the page cannot be transliterated.';
       }
 
       // ===== SEARCH =====
@@ -992,11 +991,11 @@ So the North Wind had to admit that the Sun was the stronger of the two.
 
         var mode = currentMode;
         if ((mode === 'de' || mode === 'rev') && !hasEngine) {
-          readerNote.textContent = 'The dictionary did not load (deseret.js), so this is shown in English.';
+          readerNote.textContent = 'The dictionary did not load (deseret-mappings.js), so this is shown in English.';
           readerNote.hidden = false;
           mode = 'en';
         } else if (mode === 'rev' && !hasReverse) {
-          readerNote.textContent = 'deseret.js did not load, so the read-back check is unavailable. Showing English.';
+          readerNote.textContent = 'reverse.js did not load, so the read-back check is unavailable. Showing English.';
           readerNote.hidden = false;
           mode = 'en';
         }
@@ -1040,7 +1039,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         });
 
         if (mode === 'rev') {
-          var msg = 'Automatic check: the English was turned into Deseret and back with the reverse translator. '
+          var msg = 'Automatic check: the English was turned into Deseret and back with reverse.js. '
             + (total - differ) + ' of ' + total + ' words read back the same.';
           if (differ) msg += ' Highlighted words differ (usually homophones, or words missing from the dictionary); hover one to see the original.';
           if (skipped) msg += ' ' + skipped + ' paragraph' + (skipped === 1 ? '' : 's') + ' could not be compared word for word.';
@@ -1134,7 +1133,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
       if (!src || !out) return;
 
       if (!hasEngine) {
-        note.textContent = 'The dictionary did not load. Check that deseret.js sits beside this page.';
+        note.textContent = 'The dictionary did not load. Check that deseret-mappings.js sits beside this page.';
         src.disabled = true;
         swap.disabled = true;
         return;
@@ -1177,7 +1176,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
             }
           } else {
             out.value = '';
-            status.textContent = 'deseret.js did not load, so Deseret to English is unavailable.';
+            status.textContent = 'reverse.js did not load, so Deseret to English is unavailable.';
           }
         } catch (e) {
           out.value = '';
