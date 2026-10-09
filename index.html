@@ -615,42 +615,37 @@ So the North Wind had to admit that the Sun was the stronger of the two.
 
       // ===== ROUTING =====
       function normaliseRoute(raw) {
-        var value = decodeURIComponent((raw || '').toString()).replace(/^#/, '').trim();
-        var clean = value.replace(/^\/+|\/+$/g, '');
+        var value = typeof raw === 'string' ? raw.trim() : '';
+        try { value = decodeURIComponent(value); } catch (e) {}
+        var clean = value.replace(/^#/, '').replace(/^\/+|\/+$/g, '');
         if (!clean || clean === 'index.html') return 'home';
         var parts = clean.split('/');
-        var page = parts[0];
-        return ids.indexOf(page) >= 0 ? page : 'home';
+        return ids.indexOf(parts[0]) >= 0 ? clean : 'home';
+      }
+      function routePath(id, sub) {
+        return '/' + [id].concat(sub ? [sub] : []).map(encodeURIComponent).join('/');
       }
       function routeFromLocation() {
-        var hashRoute = normaliseRoute(location.hash ? location.hash.slice(1) : '');
-        var pathRoute = normaliseRoute(location.pathname || '/');
-        return hashRoute !== 'home' || !location.hash ? pathRoute : hashRoute;
-      }
-      function urlFor(id, sub) {
-        var target = id === 'home' ? '/home' : '/' + id;
-        if (sub) target += '/' + sub;
-        return target;
+        var fallback = new URLSearchParams(location.search).get('route');
+        if (fallback) return normaliseRoute(fallback);
+        if (location.hash) return normaliseRoute(location.hash.slice(1));
+        return normaliseRoute(location.pathname);
       }
       function show(id, write) {
-        var source = typeof id === 'string' ? id : 'home';
-        var sub = '', slash = source.indexOf('/');
-        if (slash >= 0) { sub = source.slice(slash + 1); source = source.slice(0, slash); }
-        var page = normaliseRoute(source);
-        if (page !== source) source = page;
-        if (ids.indexOf(source) < 0) source = 'home';
-        pages.forEach(function (p) { p.hidden = p.id !== source; });
+        var route = normaliseRoute(id), parts = route.split('/'),
+            sub = parts.slice(1).join('/'), id = parts[0] || 'home';
+        pages.forEach(function (p) { p.hidden = p.id !== id; });
         links.forEach(function (a) {
-          if (a.getAttribute('data-go') === source) a.setAttribute('aria-current', 'true');
+          if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
           else a.removeAttribute('aria-current');
         });
         if (write !== false) {
-          try { history.replaceState(null, '', urlFor(source, sub)); } catch (e) {}
+          try { history.pushState(null, '', routePath(id, sub)); } catch (e) {}
         }
         window.scrollTo(0, 0);
         var h = document.querySelector('.page:not([hidden]) h1');
         if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
-        if (typeof libraryRoute === 'function') libraryRoute(source, sub);
+        if (typeof libraryRoute === 'function') libraryRoute(id, sub);
       }
 
       // ===== MOBILE MENU =====
@@ -702,14 +697,19 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         });
       });
       window.addEventListener('hashchange', function () {
-        show(routeFromLocation(), false);
+        var legacyRoute = normaliseRoute(location.hash.slice(1));
+        show(legacyRoute, false);
+        var legacyParts = legacyRoute.split('/');
+        try { history.replaceState(null, '', routePath(legacyParts[0], legacyParts.slice(1).join('/'))); } catch (e) {}
       });
-      window.addEventListener('popstate', function () {
-        show(routeFromLocation(), false);
-      });
+      window.addEventListener('popstate', function () { show(routeFromLocation(), false); });
 
-      var start = routeFromLocation();
+      var start = routeFromLocation(), startParts = start.split('/');
       show(start, false);
+      if (location.hash || new URLSearchParams(location.search).has('route') ||
+          (location.pathname !== '/' && location.pathname !== routePath(startParts[0], startParts.slice(1).join('/')))) {
+        try { history.replaceState(null, '', routePath(startParts[0], startParts.slice(1).join('/'))); } catch (e) {}
+      }
 
       // ===== DESERET MODE =====
       // Controls and already-Deseret material are left alone; everything else
@@ -806,7 +806,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         } else {
           hits.forEach(function (e) {
             var li = document.createElement('li'), a = document.createElement('a');
-            a.href = '#' + e.id;
+            a.href = routePath(e.id);
             if (e.num) {
               var n = document.createElement('span');
               n.className = 'r-num'; n.textContent = e.num; a.appendChild(n);
@@ -1079,7 +1079,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         }
       }
 
-      function setHash(h) { try { history.replaceState(null, '', h); } catch (e) {} }
+      function setRoute(path) { try { history.pushState(null, '', path); } catch (e) {} }
 
       function openWork(id, fromRoute) {
         if (!WORKS[id]) return;
@@ -1087,7 +1087,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         libIndex.hidden = true;
         libReader.hidden = false;
         renderReader();
-        if (!fromRoute) setHash('#library/' + id);
+        if (!fromRoute) setRoute('/library/' + encodeURIComponent(id));
         window.scrollTo(0, 0);
         readerTitle.setAttribute('tabindex', '-1');
         readerTitle.focus({ preventScroll: true });
@@ -1096,11 +1096,11 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         libReader.hidden = true;
         libIndex.hidden = false;
         currentWork = null;
-        if (fromRoute !== true) setHash('#library');
+        if (fromRoute !== true) setRoute('/library');
         window.scrollTo(0, 0);
       }
 
-      // Called by show(): #library/<id> opens a work, #library shows the list.
+      // Called by show(): /library/<id> opens a work, /library shows the list.
       function libraryRoute(page, sub) {
         if (page !== 'library' || !WORKS || !libReader) return;
         if (sub && WORKS[sub]) openWork(sub, true);
@@ -1142,9 +1142,9 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         if (el) el.addEventListener('change', function () { if (currentWork) setTimeout(renderReader, 0); });
       });
 
-      // The page may have loaded straight onto #library/<id>.
+      // Open direct and legacy library-work routes after the library data loads.
       (function () {
-        var parts = decodeURIComponent(location.hash.slice(1)).split('/');
+        var parts = routeFromLocation().split('/');
         if (parts[0] === 'library' && parts[1]) libraryRoute('library', parts[1]);
       })();
 
@@ -1159,7 +1159,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
           outLabel = document.getElementById('outLabel'),
           dialectSel = document.getElementById('dialect'),
           schwaSel = document.getElementById('schwa'),
-          toDeseret = true;
+          translatorToDeseret = true;
 
       if (!src || !out) return;
 
@@ -1183,7 +1183,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         status.className = 'note';
         if (!text) { out.value = ''; return; }
         try {
-          if (toDeseret) {
+          if (translatorToDeseret) {
             // Where the schwa rule fires, both spellings are real; show the
             // other one underneath rather than pretending there is one answer.
             if (typeof window.daSchwaTextVariants === 'function') {
@@ -1226,12 +1226,12 @@ So the North Wind had to admit that the Sun was the stronger of the two.
       });
 
       swap.addEventListener('click', function () {
-        toDeseret = !toDeseret;
-        srcLabel.textContent = toDeseret ? 'English' : 'Deseret';
-        outLabel.textContent = toDeseret ? 'Deseret' : 'English';
-        swap.textContent = toDeseret ? 'Deseret to English' : 'English to Deseret';
-        src.classList.toggle('de', !toDeseret);
-        out.classList.toggle('en', !toDeseret);
+        translatorToDeseret = !translatorToDeseret;
+        srcLabel.textContent = translatorToDeseret ? 'English' : 'Deseret';
+        outLabel.textContent = translatorToDeseret ? 'Deseret' : 'English';
+        swap.textContent = translatorToDeseret ? 'Deseret to English' : 'English to Deseret';
+        src.classList.toggle('de', !translatorToDeseret);
+        out.classList.toggle('en', !translatorToDeseret);
         src.value = out.value;
         render();
         src.focus();
