@@ -288,17 +288,17 @@
     <button id="navBtn" class="gh-burger" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-    <a class="gh-mark" href="#home" data-go="home" aria-label="Deseret One, home">
+    <a class="gh-mark" href="/home" data-go="home" aria-label="Deseret One, home">
       <img class="gh-logo" src="https://i.ibb.co/mVXDQrPq/image.png" alt="Deseret One">
     </a>
     <nav class="gh-nav" id="siteNav" aria-label="Sections">
-      <a href="#home" data-go="home">Home</a>
-      <a href="#case" data-go="case">Why Deseret?</a>
-      <a href="#learn" data-go="learn">Learn</a>
-      <a href="#translator" data-go="translator">Translator</a>
-      <a href="#library" data-go="library">Library</a>
-      <a href="#history" data-go="history">History</a>
-      <a href="#about" data-go="about">About the Site</a>
+      <a href="/home" data-go="home">Home</a>
+      <a href="/case" data-go="case">Why Deseret?</a>
+      <a href="/learn" data-go="learn">Learn</a>
+      <a href="/translator" data-go="translator">Translator</a>
+      <a href="/library" data-go="library">Library</a>
+      <a href="/history" data-go="history">History</a>
+      <a href="/about" data-go="about">About the Site</a>
     </nav>
     <span class="gh-spacer"></span>
 
@@ -614,22 +614,43 @@ So the North Wind had to admit that the Sun was the stronger of the two.
       var body = document.body;
 
       // ===== ROUTING =====
+      function normaliseRoute(raw) {
+        var value = decodeURIComponent((raw || '').toString()).replace(/^#/, '').trim();
+        var clean = value.replace(/^\/+|\/+$/g, '');
+        if (!clean || clean === 'index.html') return 'home';
+        var parts = clean.split('/');
+        var page = parts[0];
+        return ids.indexOf(page) >= 0 ? page : 'home';
+      }
+      function routeFromLocation() {
+        var hashRoute = normaliseRoute(location.hash ? location.hash.slice(1) : '');
+        var pathRoute = normaliseRoute(location.pathname || '/');
+        return hashRoute !== 'home' || !location.hash ? pathRoute : hashRoute;
+      }
+      function urlFor(id, sub) {
+        var target = id === 'home' ? '/home' : '/' + id;
+        if (sub) target += '/' + sub;
+        return target;
+      }
       function show(id, write) {
-        var sub = '', slash = id.indexOf('/');
-        if (slash >= 0) { sub = id.slice(slash + 1); id = id.slice(0, slash); }
-        if (ids.indexOf(id) < 0) id = 'home';
-        pages.forEach(function (p) { p.hidden = p.id !== id; });
+        var source = typeof id === 'string' ? id : 'home';
+        var sub = '', slash = source.indexOf('/');
+        if (slash >= 0) { sub = source.slice(slash + 1); source = source.slice(0, slash); }
+        var page = normaliseRoute(source);
+        if (page !== source) source = page;
+        if (ids.indexOf(source) < 0) source = 'home';
+        pages.forEach(function (p) { p.hidden = p.id !== source; });
         links.forEach(function (a) {
-          if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
+          if (a.getAttribute('data-go') === source) a.setAttribute('aria-current', 'true');
           else a.removeAttribute('aria-current');
         });
         if (write !== false) {
-          try { history.replaceState(null, '', '#' + id + (sub ? '/' + sub : '')); } catch (e) {}
+          try { history.replaceState(null, '', urlFor(source, sub)); } catch (e) {}
         }
         window.scrollTo(0, 0);
         var h = document.querySelector('.page:not([hidden]) h1');
         if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
-        if (typeof libraryRoute === 'function') libraryRoute(id, sub);
+        if (typeof libraryRoute === 'function') libraryRoute(source, sub);
       }
 
       // ===== MOBILE MENU =====
@@ -681,10 +702,13 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         });
       });
       window.addEventListener('hashchange', function () {
-        show(decodeURIComponent(location.hash.slice(1)), false);
+        show(routeFromLocation(), false);
+      });
+      window.addEventListener('popstate', function () {
+        show(routeFromLocation(), false);
       });
 
-      var start = decodeURIComponent(location.hash.slice(1));
+      var start = routeFromLocation();
       show(start, false);
 
       // ===== DESERET MODE =====
@@ -720,6 +744,10 @@ So the North Wind had to admit that the Sun was the stronger of the two.
           r.node.nodeValue = r.de;
         });
       }
+      function resetDeseret() {
+        if (!deseretNodes) return;
+        deseretNodes.forEach(function (r) { r.node.nodeValue = r.en; r.de = null; });
+      }
       // Accent or schwa changed: drop the cached spellings and redo them.
       function refreshDeseretMode() {
         if (!deseretNodes) return;
@@ -732,7 +760,7 @@ So the North Wind had to admit that the Sun was the stronger of the two.
           if (deseretOn) {
             applyDeseret();
           } else {
-            deseretNodes.forEach(function (r) { r.node.nodeValue = r.en; });
+            resetDeseret();
           }
           body.classList.toggle('de-mode', deseretOn);
           modeBtn.setAttribute('aria-pressed', String(deseretOn));
