@@ -150,6 +150,14 @@
     .passage>p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
     .passage .gloss{display:block}
     .divinology-copy{padding:.9rem;font-family:var(--serif);font-size:1rem;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}
+    .divinology-layout{min-width:0}
+    .divinology-aside{display:none}
+    @media(min-width:68rem){
+      .divinology-layout{display:grid;grid-template-columns:minmax(0,42rem) minmax(10rem,14rem);gap:1.5rem;align-items:start;width:min(60rem,calc(100vw - 4rem));position:relative;left:50%;transform:translateX(-50%)}
+      .divinology-content{min-width:0}
+      .divinology-aside{display:block;position:sticky;top:calc(var(--hdr) + 1.5rem);margin:0}
+      .divinology-aside img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px}
+    }
 
     /* ===== TRANSLATOR ===== */
     .tr{display:grid;gap:.4rem;margin-bottom:1rem}
@@ -565,12 +573,14 @@ So the North Wind had to admit that the Sun was the stronger of the two.
 
       <!-- ===== PAGE: DIVINOLOGY ===== -->
       <article class="page" id="divinology" hidden>
-        <h1>Divinology</h1>
-        <p class="lede">An explanation of the positions of the site author.</p>
-        <p>There are supernatural beings [La Salette, Jesus, Fatima, Medjugorje]</p>
-        <details class="passage">
-          <summary><span class="ptitle">The Secret of La Salette</span><span class="meta">First text</span></summary>
-          <div class="divinology-copy">Melanie, what I am about to tell you will not laways be a secret. You may make it public in 1858.
+        <div class="divinology-layout">
+          <div class="divinology-content">
+            <h1>Divinology</h1>
+            <p class="lede">An explanation of the positions of the site author.</p>
+            <p>There are supernatural beings [La Salette, Jesus, Fatima, Medjugorje, Garabandal, ]</p>
+            <details class="passage">
+              <summary><span class="ptitle">The Secret of La Salette</span><span class="meta">First text</span></summary>
+              <div class="divinology-copy">Melanie, what I am about to tell you will not laways be a secret. You may make it public in 1858.
 
 The Priests, the ministers of my Son, the priests by their wicked lives, by their irreverence and their impiety in the celebration of the holy mysteries, by their love of money, their love of honors and pleasures, the priests have become cesspools of impurity. Yes, the priests are asking for vengeance, and vengeance is hanging over their heads. Woe to the priests and those dedicated to God who by their infidelity and their wicked lives are crucifying My Son again! The sins of those consecrated to God cry out towards heaven and call for vengeance, and now vengeance is at their door, for there is no one left to beg mercy and forgiveness for the people. There are no generous souls, there is no one left worthy of offering a spotless sacrifice to the Eternal on behalf of the world."
 
@@ -629,7 +639,12 @@ The Priests, the ministers of my Son, the priests by their wicked lives, by thei
 "The Church will be in eclipse, the world will be in dismay. But now Enoch and Elijah will come, filled with the spirit of God. They will preach with the might of God, and men of goodwill will believe in God, and many souls will be comforted. They will make great strides forward through the virtue of the Holy Spirit, and will condemn the diabolic errors of the Antichrist. Woe to the inhabitants of the earth! There will be bloody wars and famines, plagues and infectious diseases. It will rain with a fearful hail of animals. There will be thunderstorms which will shake cities, earthquakes which will swallow up countries. Voices will be heard in the air. Men will beat their heads against walls, call for death, and on the other hand death will be their torment. Blood will flow on all sides. Who will be the victor if God does not shorten the duration of the test? At the blood, the tears and the prayers of the righteous, God will relent. Enoch and Elijah will be put to death. Pagan Rome will disappear. The fire of heaven will fall and consume three cities. All the universe will be struck with terror and many will let themselves be led astray because they have not worshiped the true Christ who lives among them. It is time; the sun is darkening; only faith will survive.
 
 "Now is the time, the abyss is opening. Here is the king of kings of darkness, here is the Beast with his subjects, calling himself the Savior of the world. He will rise proudly in the air to go to Heaven. He will be smothered by  the breath of the Archangel Saint Michael. He will fall, and the earth, which will have been in a continual series of evolutions for three days, will open up its fiery bowels; and he will be plunged for eternity with all his followers into the everlasting chasms of hell. And then water and fire will purge the earth and consume all the work's of men's pride and all will be renewed. God will be served and glorified."</div>
-        </details>
+            </details>
+          </div>
+          <figure class="divinology-aside">
+            <img src="https://www.opticianonline.net/media/jw4pw1r0/masoniceyeofprovidence.jpg?width=320&amp;height=213&amp;format=webp&amp;quality=80&amp;bgcolor=White&amp;v=1d903f435e146c0" alt="Masonic Eye of Providence">
+          </figure>
+        </div>
       </article>
 
       <!-- ===== PAGE: ABOUT ===== -->
