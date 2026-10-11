@@ -149,6 +149,13 @@
     .passage>p:first-of-type{padding-top:.9rem}
     .passage>p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
     .passage .gloss{display:block}
+    .tenet-fold{margin:0 0 1.05rem;border:0;border-radius:0;overflow:visible}
+    .tenet-fold summary{display:flex;align-items:center;padding:0;font:inherit;font-size:var(--fs-body);line-height:1.7}
+    .tenet-chevron{display:inline-block;flex:none;width:.42rem;height:.42rem;margin-left:.15rem;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);transition:transform .15s ease}
+    .tenet-fold[open] .tenet-chevron{transform:rotate(135deg)}
+    .tenet-fold summary:hover{background:transparent}
+    .tenet-fold[open] summary{border-bottom:0}
+    .tenet-fold .divinology-copy{padding:.4rem 0 0 1rem}
     .divinology-copy{padding:.9rem;font-family:var(--serif);font-size:1rem;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}
     .divinology-layout{min-width:0}
     .divinology-aside{display:none}
@@ -158,6 +165,8 @@
       .divinology-aside{display:block;margin:0}
       .divinology-aside img{display:block;width:100%;height:auto}
       .divinology-aside iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;margin-top:.75rem;border:0}
+      .divinology-aside blockquote{margin:1rem 0 0;font-family:var(--serif);font-size:.86rem;line-height:1.55}
+      .divinology-aside blockquote p{font-size:inherit;margin:0 0 .75rem}
     }
 
     /* ===== TRANSLATOR ===== */
@@ -580,9 +589,13 @@ So the North Wind had to admit that the Sun was the stronger of the two.
             <p class="lede">An explanation of the positions of the site author.</p>
             <p>○Tenet 1: There are supernatural beings [La Salette (1846), Jesus (c. 30 CE), Fatima (1917), Medjugorje (1981–present), Garabandal (1961–1965), Cokeville (1986)]</p>
             <p>○Tenet 2: We should determine their trustworthiness upon moral character and predictive accuracy.</p>
+            <details class="passage tenet-fold">
+              <summary aria-label="Show supporting quote for Tenet 2"><span class="tenet-chevron" aria-hidden="true"></span></summary>
+              <div class="divinology-copy">As regards to Garabandal a testament to the Lady's morality is the following statement from Lolli: "whenever there were sick people I think She would always lead us to bless them. She would cure them."</div>
+            </details>
             <p>○Tenet 3: Many miraculous events have been misrepresented by Catholics [In the Motherly apparitions, there is very little reference to the Papacy and only as much as a positive allusion, which is not the same as affirming Universal Jurisdiction or Infallibility.]</p>
-            <details class="passage">
-              <summary><span class="ptitle">One witness: Mari Loli of Garabandal</span><span class="meta">MARI LOLI 1978</span></summary>
+            <details class="passage tenet-fold">
+              <summary aria-label="Show supporting quote for Tenet 3"><span class="tenet-chevron" aria-hidden="true"></span></summary>
               <div class="divinology-copy">Upon being asked if the Lady referenced the Pope, Mari Loli stated: “The only thing I remember was Her remark about obedience to the Church and to the Pope.”
 
 <a href="https://www.garabandal.info/copy-of-jacinta-1983" target="_blank" rel="noopener noreferrer">MARI LOLI 1978 | Garabandal Warning</a></div>
@@ -683,6 +696,10 @@ Conchita Gonzales</div>
           <figure class="divinology-aside">
             <img src="https://www.opticianonline.net/media/jw4pw1r0/masoniceyeofprovidence.jpg?width=320&amp;height=213&amp;format=webp&amp;quality=80&amp;bgcolor=White&amp;v=1d903f435e146c0" alt="" role="presentation">
             <iframe src="https://www.youtube-nocookie.com/embed/P9lnLusZ6h0" title="YouTube video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <blockquote>
+              <p><strong>Fr. Benac:</strong> What did you feel you were holding?</p>
+              <p><strong>Mari Loli:</strong> We could not sense or feel His weight yet we couldn't move our hands beyond the space occupied by His body when we had him in our arms. He looked and smiled at us. He looked like a normal child only that as I was a little child it caused me surprise to see Him as a child and yet so big being God.</p>
+            </blockquote>
           </figure>
         </div>
       </article>
