@@ -153,10 +153,10 @@
     .divinology-layout{min-width:0}
     .divinology-aside{display:none}
     @media(min-width:68rem){
-      .divinology-layout{display:grid;grid-template-columns:minmax(0,42rem) minmax(10rem,14rem);gap:1.5rem;align-items:start;width:min(60rem,calc(100vw - 4rem));position:relative;left:50%;transform:translateX(-50%)}
+      .divinology-layout{display:grid;grid-template-columns:minmax(0,42rem) minmax(10rem,14rem);gap:1.5rem;align-items:start;justify-content:space-between;width:calc(100vw - 4rem);position:relative;left:50%;transform:translateX(-50%)}
       .divinology-content{min-width:0}
-      .divinology-aside{display:block;position:sticky;top:calc(var(--hdr) + 1.5rem);margin:0}
-      .divinology-aside img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px}
+      .divinology-aside{display:block;margin:0}
+      .divinology-aside img{display:block;width:100%;height:auto}
     }
 
     /* ===== TRANSLATOR ===== */
@@ -572,12 +572,12 @@ So the North Wind had to admit that the Sun was the stronger of the two.
       </article>
 
       <!-- ===== PAGE: DIVINOLOGY ===== -->
-      <article class="page" id=divinology" hidden>
+      <article class="page" id="divinology" hidden>
         <div class="divinology-layout">
           <div class="divinology-content">
             <h1>Divinology</h1>
             <p class="lede">An explanation of the positions of the site author.</p>
-            <p>There are supernatural beings [La Salette, Jesus, Fatima, Medjugorje, Garabandal, ]</p>
+            <p>There are supernatural beings [La Salette, Jesus, Fatima, Medjugorje, Garabandal, Cokeville]</p>
             <details class="passage">
               <summary><span class="ptitle">The Secret of La Salette</span><span class="meta">First text</span></summary>
               <div class="divinology-copy">Melanie, what I am about to tell you will not laways be a secret. You may make it public in 1858.
@@ -641,8 +641,8 @@ The Priests, the ministers of my Son, the priests by their wicked lives, by thei
 "Now is the time, the abyss is opening. Here is the king of kings of darkness, here is the Beast with his subjects, calling himself the Savior of the world. He will rise proudly in the air to go to Heaven. He will be smothered by  the breath of the Archangel Saint Michael. He will fall, and the earth, which will have been in a continual series of evolutions for three days, will open up its fiery bowels; and he will be plunged for eternity with all his followers into the everlasting chasms of hell. And then water and fire will purge the earth and consume all the work's of men's pride and all will be renewed. God will be served and glorified."</div>
             </details>
           </div>
-          <figure class="divinology-aside">
-            <img src="https://www.opticianonline.net/media/jw4pw1r0/masoniceyeofprovidence.jpg?width=320&amp;height=213&amp;format=webp&amp;quality=80&amp;bgcolor=White&amp;v=1d903f435e146c0" alt="Masonic Eye of Providence">
+          <figure class="divinology-aside" aria-hidden="true">
+            <img src="https://www.opticianonline.net/media/jw4pw1r0/masoniceyeofprovidence.jpg?width=320&amp;height=213&amp;format=webp&amp;quality=80&amp;bgcolor=White&amp;v=1d903f435e146c0" alt="" role="presentation">
           </figure>
         </div>
       </article>
