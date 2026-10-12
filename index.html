@@ -51,6 +51,16 @@
     .gh-nav a{font-family:var(--sans);font-size:var(--fs);font-weight:600;color:var(--ink);text-decoration:none;display:flex;align-items:center;height:48px;padding:0 16px;border-bottom:3px solid transparent}
     .gh-nav a:hover{background:none;text-decoration:none;border-bottom-color:var(--line)}
     .gh-nav a[aria-current="true"]{border-bottom-color:var(--brand);background:none}
+    .gh-nav-group{position:relative}
+    .gh-nav-group>button{font:inherit;font-weight:600;color:var(--ink);background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:.55rem;height:48px;padding:0 16px;border-bottom:3px solid transparent}
+    .gh-nav-group>button:hover{border-bottom-color:var(--line)}
+    .gh-nav-group>button[aria-current="true"]{border-bottom-color:var(--brand)}
+    .gh-nav-chevron{width:.45rem;height:.45rem;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-.12rem);transition:transform .15s ease}
+    .gh-nav-group.open .gh-nav-chevron{transform:rotate(225deg) translate(-.05rem,-.05rem)}
+    .gh-subnav{position:absolute;top:100%;left:0;z-index:45;display:none;min-width:12rem;margin:0;padding:.3rem 0;list-style:none;background:#fff;border:1px solid var(--line);border-radius:0 0 8px 8px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+    .gh-nav-group.open .gh-subnav{display:block}
+    .gh-subnav a{height:auto;min-height:44px;padding:.65rem 1rem;border:0}
+    .gh-subnav a[aria-current="true"]{background:#f0fbff}
     .gh-spacer{flex:1 1 auto;min-width:16px}
 
     /* ===== SEARCH ===== */
@@ -262,6 +272,14 @@
       .gh-nav.open{display:flex}
       .gh-nav a{height:auto;padding:16px;border-bottom:1px solid var(--line);border-left:3px solid transparent;min-height:48px;display:flex;align-items:center}
       .gh-nav a[aria-current="true"]{border-bottom-color:var(--line);border-left-color:var(--brand);background:none;font-weight:700}
+      .gh-nav-group{width:100%;border-bottom:1px solid var(--line)}
+      .gh-nav-group>button{width:100%;height:auto;min-height:48px;padding:16px;border:0;text-align:left}
+      .gh-nav-group>button:hover{border-color:transparent;background:#f0fbff}
+      .gh-nav-group>button[aria-current="true"]{border:0;font-weight:700}
+      .gh-nav-chevron{margin-left:auto}
+      .gh-subnav{position:static;min-width:0;padding:0 0 .4rem;border:0;border-radius:0;box-shadow:none}
+      .gh-subnav a{min-height:44px;padding:12px 16px 12px 32px;border:0;border-left:3px solid transparent}
+      .gh-subnav a[aria-current="true"]{border-left-color:var(--brand);background:none;font-weight:700}
       /* the search box is moved into the panel by script at this width */
       .gh > .gh-search{display:none}
       .gh-nav .gh-search{display:flex;order:-1;flex:1 1 auto;padding:.7rem 1.1rem;border-bottom:1px solid var(--line)}
@@ -309,13 +327,21 @@
     </a>
     <nav class="gh-nav" id="siteNav" aria-label="Sections">
       <a href="/home" data-go="home">Home</a>
-      <a href="/case" data-go="case">Why Deseret?</a>
-      <a href="/learn" data-go="learn">Learn</a>
-      <a href="/translator" data-go="translator">Translator</a>
-      <a href="/library" data-go="library">Library</a>
-      <a href="/history" data-go="history">History</a>
+      <div class="gh-nav-group" id="deseretNavGroup">
+        <button class="deseret-nav-toggle" id="deseretNavToggle" type="button" aria-expanded="false" aria-controls="deseretSubnav">
+          Deseret Alphabet <span class="gh-nav-chevron" aria-hidden="true"></span>
+        </button>
+        <ul class="gh-subnav" id="deseretSubnav">
+          <li><a href="/learn" data-go="learn">Learn</a></li>
+          <li><a href="/case" data-go="case">Why Deseret?</a></li>
+          <li><a href="/translator" data-go="translator">Translator</a></li>
+          <li><a href="/library" data-go="library">Library</a></li>
+          <li><a href="/history" data-go="history">History</a></li>
+        </ul>
+      </div>
       <a href="/divinology" data-go="divinology">Divinology</a>
       <a href="/creation-science" data-go="creation-science">Creation Science</a>
+      <a href="/conflict-law" data-go="conflict-law">Conflict Law</a>
       <a href="/about" data-go="about">About the Site</a>
     </nav>
     <span class="gh-spacer"></span>
@@ -619,6 +645,17 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         <h1>Creation Science</h1>
       </article>
 
+      <!-- ===== PAGE: CONFLICT LAW ===== -->
+      <article class="page" id="conflict-law" hidden>
+        <h1>Conflict Law</h1>
+        <section class="divinology-tenets">
+          <h2>Tenets</h2>
+          <p>○ <strong>Tenet 1</strong>: Conquest is moral.</p>
+          <p>○ <strong>Tenet 2</strong>: Taking land from an aggressor can be moral.</p>
+          <p>○ <strong>Tenet 3</strong>: Harming civilians without significant security reasons is immoral.</p>
+        </section>
+      </article>
+
       <!-- ===== PAGE: ABOUT ===== -->
       <article class="page" id="about" hidden>
         <h1>About</h1>
@@ -670,6 +707,8 @@ So the North Wind had to admit that the Sun was the stronger of the two.
       var links = [].slice.call(document.querySelectorAll('[data-go]'));
       var ids = pages.map(function (p) { return p.id; });
       var body = document.body;
+      var deseretNavGroup = document.getElementById('deseretNavGroup'),
+          deseretNavToggle = document.getElementById('deseretNavToggle');
 
       // ===== ROUTING =====
       function normaliseRoute(raw) {
@@ -697,6 +736,11 @@ So the North Wind had to admit that the Sun was the stronger of the two.
           if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
           else a.removeAttribute('aria-current');
         });
+        var inDeseretGroup = !!deseretNavGroup.querySelector('[data-go="' + id + '"]');
+        deseretNavGroup.classList.toggle('open', inDeseretGroup);
+        deseretNavToggle.setAttribute('aria-expanded', String(inDeseretGroup));
+        if (inDeseretGroup) deseretNavToggle.setAttribute('aria-current', 'true');
+        else deseretNavToggle.removeAttribute('aria-current');
         if (write !== false) {
           try { history.pushState(null, '', routePath(id, sub)); } catch (e) {}
         }
@@ -729,6 +773,12 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         navBtn.setAttribute('aria-expanded', String(open));
       }
       function closeNav() { setNav(false); }
+
+      deseretNavToggle.addEventListener('click', function () {
+        var open = deseretNavToggle.getAttribute('aria-expanded') !== 'true';
+        deseretNavGroup.classList.toggle('open', open);
+        deseretNavToggle.setAttribute('aria-expanded', String(open));
+      });
 
       placeSearch();
       if (mq.addEventListener) mq.addEventListener('change', function () { placeSearch(); closeNav(); });
