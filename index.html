@@ -149,25 +149,20 @@
     .passage>p:first-of-type{padding-top:.9rem}
     .passage>p:last-of-type{padding-bottom:.9rem;margin-bottom:0}
     .passage .gloss{display:block}
-    .tenet-fold{margin:0 0 1.05rem;border:0;border-radius:0;overflow:visible}
-    .tenet-fold summary{display:flex;align-items:center;margin-left:-.75rem;padding:0;border:0;outline:0;box-shadow:none;font:inherit;font-size:var(--fs-body);line-height:1.7}
-    .tenet-chevron{display:inline-block;flex:none;width:.42rem;height:.42rem;margin-left:.15rem;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);transition:transform .15s ease}
-    .tenet-fold[open] .tenet-chevron{transform:rotate(135deg)}
-    .tenet-fold summary:focus-visible .tenet-chevron{outline:2px solid var(--blue);outline-offset:3px}
-    .tenet-fold summary:hover{background:transparent}
-    .tenet-fold[open] summary{border-bottom:0}
-    .tenet-fold .divinology-copy{padding:.4rem 0 0;font-family:var(--sans);font-size:var(--fs-body);line-height:1.7}
     .divinology-copy{padding:.9rem;font-family:var(--serif);font-size:1rem;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}
     .divinology-layout{min-width:0}
-    .divinology-aside{display:none}
+    .divinology-columns{min-width:0}
+    .divinology-aside{display:none;margin:1.5rem 0 0}
+    .divinology-aside img{display:block;width:100%;height:auto}
+    .divinology-aside iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;margin-top:.75rem;border:0}
+    .divinology-aside blockquote{margin:1rem 0 0;font-family:var(--serif);font-size:.86rem;line-height:1.55}
+    .divinology-aside blockquote p{font-size:inherit;margin:0 0 .75rem}
     @media(min-width:68rem){
-      .divinology-layout{display:grid;grid-template-columns:minmax(0,48rem) minmax(10rem,14rem);gap:1.5rem;align-items:start;justify-content:space-between;width:calc(100vw - 4rem);position:relative;left:50%;transform:translateX(-50%)}
+      .divinology-layout{width:min(calc(100vw - 4rem),76rem);position:relative;left:50%;transform:translateX(-50%)}
       .divinology-content{min-width:0}
-      .divinology-aside{display:block;margin:0}
-      .divinology-aside img{display:block;width:100%;height:auto}
-      .divinology-aside iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;margin-top:.75rem;border:0}
-      .divinology-aside blockquote{margin:1rem 0 0;font-family:var(--serif);font-size:.86rem;line-height:1.55}
-      .divinology-aside blockquote p{font-size:inherit;margin:0 0 .75rem}
+      .divinology-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;align-items:start}
+      .divinology-columns h2{margin-top:1rem}
+      .divinology-aside{display:block;margin-top:1.5rem}
     }
 
     /* ===== TRANSLATOR ===== */
@@ -588,24 +583,34 @@ So the North Wind had to admit that the Sun was the stronger of the two.
           <div class="divinology-content">
             <h1>Divinology</h1>
             <p class="lede">An explanation of the positions of the site author.</p>
-            <p>○ Tenet 1: There are supernatural beings [La Salette (1846), Jesus (c. 30 CE), Fatima (1917), Medjugorje (1981–present), Garabandal (1961–1965), Cokeville (1986), Zeitoun (1968-1971), Warraq (2009-2010)]</p>
-            <details class="passage tenet-fold">
-              <summary aria-label="Show supporting note for Tenet 1"><span class="tenet-chevron" aria-hidden="true"></span></summary>
-              <div class="divinology-copy">We must ask those we know: How can group auditory and visual hallucinations be explained by natural means? As a note, there is a range in sense applied during apparitions. Warraq and Zeitoun were limited to visual hallucinations while Garabandal went as far as including touch.</div>
-            </details>
-            <p>○ Tenet 2: We should determine their trustworthiness upon moral character and predictive accuracy.</p>
-            <details class="passage tenet-fold">
-              <summary aria-label="Show supporting quote for Tenet 2"><span class="tenet-chevron" aria-hidden="true"></span></summary>
-              <div class="divinology-copy">As regards to Garabandal a testament to the Lady's morality is the following statement from Lolli: "whenever there were sick people I think She would always lead us to bless them. She would cure them."</div>
-            </details>
-            <p>○ Tenet 3: Many miraculous events have been misrepresented by Catholics [In the Motherly apparitions, there is very little reference to the Papacy and only as much as a positive allusion, which is not the same as affirming Universal Jurisdiction or Infallibility.]</p>
-            <details class="passage tenet-fold">
-              <summary aria-label="Show supporting quote for Tenet 3"><span class="tenet-chevron" aria-hidden="true"></span></summary>
-              <div class="divinology-copy">Upon being asked if the Lady referenced the Pope, Mari Loli stated: “The only thing I remember was Her remark about obedience to the Church and to the Pope.” Moreover, upon being asked whether the locutions (not to be confused with apparitions) contained messages referencing Pope, there were none.
+            <section class="divinology-tenets">
+              <h2>Tenets</h2>
+              <p><strong>○ Tenet 1: There are supernatural beings [La Salette (1846), Jesus (c. 30 CE), Fatima (1917), Medjugorje (1981–present), Garabandal (1961–1965), Cokeville (1986), Zeitoun (1968-1971), Warraq (2009-2010)]</strong></p>
+              <p><strong>○ Tenet 2: We should determine their trustworthiness upon moral character and predictive accuracy.</strong></p>
+              <p><strong>○ Tenet 3: Many miraculous events have been misrepresented by Catholics [In the Motherly apparitions, there is very little reference to the Papacy and only as much as a positive allusion, which is not the same as affirming Universal Jurisdiction or Infallibility.]</strong></p>
+            </section>
+
+            <div class="divinology-columns">
+              <section class="divinology-articles" aria-labelledby="divinologyArticles">
+                <h2 id="divinologyArticles">Articles</h2>
+                <details class="passage">
+                  <summary><span class="ptitle">Group apparitions and the senses</span></summary>
+                  <div class="divinology-copy">We must ask those we know: How can group auditory and visual hallucinations be explained by natural means? As a note, there is a range in sense applied during apparitions. Warraq and Zeitoun were limited to visual hallucinations while Garabandal went as far as including touch.</div>
+                </details>
+                <details class="passage">
+                  <summary><span class="ptitle">Evaluating the credibility of apparitions</span></summary>
+                  <div class="divinology-copy">As regards to Garabandal a testament to the Lady's morality is the following statement from Lolli: "whenever there were sick people I think She would always lead us to bless them. She would cure them."</div>
+                </details>
+                <details class="passage">
+                  <summary><span class="ptitle">Papacy references in the messages</span></summary>
+                  <div class="divinology-copy">Upon being asked if the Lady referenced the Pope, Mari Loli stated: “The only thing I remember was Her remark about obedience to the Church and to the Pope.” Moreover, upon being asked whether the locutions (not to be confused with apparitions) contained messages referencing Pope, there were none.
 
 <a href="https://www.garabandal.info/copy-of-jacinta-1983" target="_blank" rel="noopener noreferrer">MARI LOLI 1978 | Garabandal Warning</a></div>
-            </details>
-            <details class="passage">
+                </details>
+              </section>
+              <section class="divinology-references" aria-labelledby="divinologyReferences">
+                <h2 id="divinologyReferences">Texts for reference</h2>
+                <details class="passage">
               <summary><span class="ptitle">The Secret of La Salette</span><span class="meta">First text</span></summary>
               <div class="divinology-copy">Melanie, what I am about to tell you will not laways be a secret. You may make it public in 1858.
 
@@ -697,15 +702,353 @@ Final message — June 18, 1965
 
 Conchita Gonzales</div>
             </details>
-          </div>
+            <details class="passage">
+              <summary><span class="ptitle">Mari Loli Interview</span><span class="meta">Interview transcript</span></summary>
+              <div class="divinology-copy">Fr. Benac: Since Our Lady appeared wearing the scapular, would you tell us something about this? I understand that She introduced herself as Our Lady of Carmel?
+
+Mari Loli: I do not remember how She announced herself. When we saw Her wearing the scapular we thought that She was Our Lady of Mount Carmel, but I don't remember Her having said it.
+
+
+
+Fr. Benac: Since Our Lady always wears the Scapular hanging from Her right hand what would you conclude?
+
+Mari Loli: Naturally it would be like an invitation for all to wear it also. From my childhood I had been invested with the Scapular of Mount Carmel and I always wore it. One morning however, as I got up, I found my Scapular all burnt and I asked myself, "How is it possible that the Scapular should be burnt as it is on both sides?" Then I put on a new one but the same thing happened again the following morning and this made me feel that it was the devil who had done it. The Scapular had been burnt twice as if with a match and it was all black, and that caused me great fear. It is true that sometimes I had been neglectful in wearing it and at other times I wore the Scapular medal instead... as with the recitaion of the Rosary so did Our Lady come to my aid with the Scapular through my husband, Francis, who even before he had heard of Garabandal was already wearing the Scapular very faithfully. He was surprised to see me without it after having seen Our Lady so many times. As I said, at times I didn't wear it or wore the Scapular medal instead and he urged me to change it for a cloth Scapular. He would even offer me a few reasons why I should wear it and of course, since then I have always had it on!
+
+​
+
+Fr. Benac: Did Our Lady appear anytime wearing a brown dress?
+
+Mari Loli: I do have a faint idea that once She did appear dressed in brown.
+
+​
+
+Fr. Pelletier: If I remember well, Mari Cruz also made a reference to Our Lady dressed in brown.
+
+Fr. Benac: Briefly let me have your reaction to the various pictures of Our Lady of Garabandal which you have seen. In your opinion do you feel She is better represented when She is painted holding the Infant Jesus or when She is alone?
+
+
+
+Mari Loli: Well She appeared sometimes with the Infant Jesus and sometimes alone. I find those paintings of Our Lady lifeless. Moreover, Her Face was much more beautiful, still She understands the limitations of the artists.
+
+Fr. Benac: Regarding the Infant Jesus, was it frequently or rarely that She appeared carrying Him in Her arms?
+
+Mari Loli: I think it was quite a number of times that She did appear with the Infant Jesus.
+
+
+
+Fr. Benac: And was it on such occasions that some of you asked the Virgin to let you hold the Child in your arms?
+
+Mari Loli: Yes, She did let us have the Infant Jesus for a while. She would pass Him to us and sometimes we would pass Him from one to the other.
+
+
+
+Fr. Benac: What did you feel you were holding?
+
+Mari Loli: We could not sense or feel His weight yet we couldn't move our hands beyond the space occupied by His body when we had him in our arms. He looked and smiled at us. He looked like a normal child only that as I was a little child it caused me surprise to see Him as a child and yet so big being God.
+
+
+
+Fr. Benac: Did Our Lady let you hold Her Crown in your hands?
+
+Mari Loli: Yes. I recollect that we did all the movements to take the crown. I don't recall clearly how the crown was held, or anything else; yet, I remember what I had said, that the stars, I think, were loose, but at the same time they could not be separated from the crown and they were shining like gold.
+
+
+
+Fr. Benac: Coming to another point, what was it that Our Lady asked of you during the apparitions?
+
+Mari Loli: What She asked of us mostly was to do penance, to visit the Blessed Sacrament, to be obedient to our parents and to the Church.  So I remember when the Church authorities forbade us from entering the church while in ecstasy She told us that the most important thing was to obey the Church, and so, from then on She never again led us into the church while we were in ecstasy.
+
+​
+
+Fr. Benac: In photographs you are seen lifting each other.
+
+Mari Loli: Yes, to kiss Her when She appeared higher up.
+
+
+
+Fr. Benac: When you were helping and lifting each other were you aware of it; could you see each other?
+
+Mari Loli: Yes, when we were lifting each other I could see the others also in ecstasy, and talk to them. We had no problem. During the ecstasies we were very light, so we were told.
+
+
+
+Fr. Benac: While in ecstasy you were seen directing your arm towards different people to give them your crucifix to kiss. Were you seeing the people to whom you would give the crucifix to kiss?
+
+Mari Loli: Our Lady would tell us where to direct the cross as if She would be guiding us by the hand to the different people.
+
+
+
+Fr. Benac: I believe Our Lady would lead you to the homes where there was someone ailing.
+
+Mari Loli: Yes, whenever there were sick people I think She would always lead us to bless them. She would cure them.
+
+
+
+Fr. Pelletier: At the time of giving the Crucifix to Priests to "kiss" would you be actually on your knees?
+
+Mari Loli: I don't remember but each time we would be directed to Bless a Priest we always gave him our Crucifix to "Kiss".
+
+
+
+Fr. Benac: Regarding Fr. Luis Andreu were you all four in ecstasy when he had the vision of the great Miracle?
+
+Mari Loli: While we four were in ecstasy, I remember seeing him looking up at the Pines and saying, "Miracle! Miracle! Miracle!" I remember this well. I remember also that on the same day I had a "Finger" Rosary which Fr. Luis had given me to have "kissed" by Our Lady. I had pinned it to my clothes with a safety pin, but somehow that day it got lost. After the ecstasy, I noticed that I had lost it and said to Fr. Luis, "Father, don't be anxious because at the next apparition I will ask Our Lady to let me know where it is." As Father Luis had to leave he said to me, "If you find it, please give it to my brother because I shall not come back"  At that moment I didn't reflect over this remark, 'till the following day while I was cleaning the church, with Jacinta, and the news of Father's death reached us. It was then that I recalled Father's words that he would not come back; we didn't know he was going to die. Then I thought that perhaps Our Lady had told him this when he had the Vision at the Pines.
+
+​
+
+Fr. Benac: But what happened to the "Lost" Rosary in the meantime?
+
+Mari Loli: That same night during the apparition, I asked Our Lady to let me know where the Rosary could be and She told where it was. So I went in search of it; She told me it was in the calleja near a large rock. Then I asked Jacinta to come along with me because Our Lady had told me where I could find the Rosary; so we went together and I lifted the stone and there it was!
+
+
+
+Fr. Benac: And so Jacinta saw you picking up the Rosary from under the rock?
+
+Mari Loli: Oh yes, Father.
+
+
+
+Fr. Benac: When you conveyed to Our Lady "Any Messages" from the people, did She give you an answer?
+
+Mari Loli: Yes, several times. I remember when Mercedes Salisachs requested that I ask Our Lady where her son, who had died in a car accident in Paris, was I don't remember if She (Our Lady) told me where he was the first time I asked Her,
+
+but when She told me She said that I should not tell her until Saturday. I believe it was Holy Saturday. In the meantime, she was in great pain and anxiety until on Holy Saturday as we were going round the village reciting the Rosario de la Aurora — the Rosary at Dawn — early morning I suddenly remembered that I had to break the news to the lady. So I went over and told her that Our Lady had assured me that her son was in Heaven and told me the name of the boy, "Miguel". She was very happy at the news and was weeping, full of emotion.
+
+​
+
+Fr. Benac: After Our Lady stopped appearing to you didn't you also have some locutions?
+
+Mari Loli: Yes, I did. I don't remember how many, but the last one occurred when I was in the school at Zaragoza. I don't remember the date but I do remember that Our Lady gave me a Message for the Mother Superior. It was then that I asked Our Lady if my father could believe in the apparitions (at the time he was Mayor of the Village). My father though at the beginning did believe, later doubted and used to say that the whole affair seemed rather strange, that Our Lady should appear like that. So when asking Our Lady this grace She told me that soon he would believe. She assured me that he would believe and so my father did receive proof before he died.
+
+​
+
+Fr. Benac: And how did this happen?
+
+Mari Loli: One day a number of people of the village gathered in front of our house carrying a Statue of Our Lady of Fatima I think. They were all praying for his recovery from "cancer". My father was not a fervent Christian though he would go to Mass every Sunday, but during his illness he changed totally; he began to receive Communion every day and when he was suffering intensely he would call the Priest to make his confession; and he would ask Our Lady to help him. When he learned that people down in the street were praying for him, he became very emotional and though very ill he wanted to go to the window. I don't know what he was actually praying for but suddenly a person from the group picked a "rose" from those which were around Our Lady's Statue carried by the people, and came up.... My mother received the "rose" and placed it near the Crucifix by my father's bed. Then suddenly he exclaimed joyfully: "Well, thanks be to God for I have received the PROOF!" My father had a most beautiful death.
+
+
+
+Fr. Benac: How could you discern that these interior callings were "Supernatural Locutions"?
+
+Mari Loli: Because I would feel very clearly within me as if God were speaking to me, and I felt it as something unusual. I remember that this happened to me many times especially after receiving Holy Communion.
+
+
+
+Fr. Benac: What gave you more joy the "Apparitions" or "Locutions"?
+
+Mari Loli: The "Apparitions" are something beautiful, but I felt that the "Locutions" were more penetrating.
+
+
+
+Fr. Benac: During these "Locutions" did Our Lady speak to you about the Holy Father or Priests?
+
+Mari Loli: Many of these "Locutions" were in answer to petitions which I was making for myself or for others, and often also for spiritual graces which I would ask of Her for myself or for the grace to do what She wanted me to do. Most of these "Locutons" were with Our Lord but also a number of times with Our Lady. The ones with Our Lady were not after Communion but in the house and often when I was praying perhaps before going to bed. Sometimes She would give me answers to questions which I had asked Her some days earlier.
+
+
+
+Fr. Benac: We know from books and your own statements that Our Lady taught all four of you how to recite the Rosary slowly and meditatively. Do you have something to tell us about yourself in this regard?
+
+Mari Loli: Yes. Our Lady told me one day in a "Locution" that She wanted me to recite the fifteen mysteries of the Rosary every day. I did this for some time but I must confess that after awhile I turned sluggish and faltered. Reflecting now over this, it seems to me that Our Lady must have said to Herself: "This child cannot manage it alone so I better send someone to her who will help her fulfill my wish." And so it happened that when I came to know my husband, Francis, I learned from him that he was already, for some time reciting the Fifteen Mysteries of the Rosary every day! So, from the time of our marriage we both have been saying the Fifteen Decades of the Rosary "Daily" without fail. Our Lady must be pleased.
+
+
+
+Fr. Pelletier: Besides the two "Main Messages," haven't you referred to others?
+
+Mari Loli: Yes, there are "Two Messages" in addition to the "Main Ones." Both were published in Maria Saraco's newspaper The Vigil and I will read them (both signed by Mari Loli and Jacinta).
+
+"The Virgin has told us that the world continues the same way. It has not changed at all; there are so few who have amended their lives. This hurts the Virgin very much. The Virgin has told us that the Chastisement is coming seeing that the world has not changed; The cup is filling up.  How sad the Virgin was though She did not let us see Her interior sorrow because She loves us so much and She suffers alone — She is so good! Be good, everyone, so that the Virgin Mary maybe be content.  She told us that we who are good should pray for those who are bad.  Let us pray to God for the world; for those who do not know Him. Be good everyone, be good.
+
+​
+
+The other message was reported by Jacinta in a letter to Fr. Jose [Ramon Garcia] de la Riva, in Asturias, dated Tuesday, June 19,1962: "Loli and I were in the calleja, the place of the first apparition, and the Virgin gave us a message for world and it is this: "The Virgin has told that we are now awaiting the chastisement because we are disregarding Her first message by our way of living. Yes, it will come, because the world has not changed in spite of Her Two Messages to the world. The world is worse and it has not changed at all, so prepare yourself for the Chastisement, it will come soon. This message was given to me." - signed, Jacinta
+
+​
+
+
+
+Fr. Benac: Did Our Lady make reference at any time to the Holy Father?
+
+Mari Loli: The only thing I remember was Her remark about obedience to the Church and to the Pope.  Moreover, She asked for pray for priests. One of the things which Our Lady asked of me most frequently was to pray for priests and make sacrifices for them.
+
+​
+
+Fr. Benac: Do you remember the "Night of the Screams"? How did that happen? Did Our Lady give you special instructions that night?
+
+Mari Loli: I think you are referring to the day when all four of us were at the cuadro and we stayed awake the whole night. I think it was on the Eve of Corpus Christi. I remember early that morning we had gone to the church to decorate the altar for the feast. That night Our Lady spoke to us at length about the punishment and gave us the message for the whole world of prayer and penance.
+
+
+
+Fr. Pelletier: Our Lady said that Priests would have to go into hiding. Will that happen before the Chastisement?
+
+Mari Loli: Yes, because things will turn worse and everything will be bad.
+
+
+
+Fr. Benac: Will this sort of "persecution" be as a consequence of Communism?
+
+Mari Loli: Well, this is not clear in my mind but judging from what I was seeing I felt that communism was going to be a part of the chastisement. However, if people pray much, this can be stopped from spreading all over the world. I see it this way as if Communism would be in the "Chastisement", the human scourge as part of it.
+
+​
+
+Fr. Benac: For this reason Fr. Pelletier is asking you whether, if the world changes, the Chastisement will be prevented. You were describing to us the "Night of Screams"; did Our Lady let you see a "Vision" of the Punishment?
+
+Mari Loli: Yes, She did. Our Lady spoke several times about Communism. I don't remember how often, but She said that a time would come when it would seem as if Communism was to "Master or Engulf the Whole World".
+
+
+
+Fr. Benac: And how did you react while seeing all this?
+
+Mari Loli: Well, as we were seeing the children we too were crying out asking that no harm should be done to them as we were feeling great pity for them. I don't remember more.
+
+​
+
+Fr. Pelletier: Where did the "fire" come from?
+
+Mari Loli: I could not see where it was coming from, but it was everywhere. Villages looked deserted and people in the streets were shouting and acting violently against each other all suffering in desperation.
+
+
+
+Fr. Benac: But did you see the end of the whole thing? Was it then that Our Lady said that this would be something like the "end of the world"?
+
+Mari Loli: She only said this was the chastisement and not 'the end of the world'
+
+​
+
+Fr. Pelletier: Did you see anything like war, people and cities burning or destroyed?
+
+Mari Loli: Everything was on "fire" and people were fighting but I did not see any weapons.
+
+
+
+Fr. Benac: So all this took place on the "Night of the Screams" when you were all screaming?
+
+Mari Loli: As I said before, this occurred twice, the second time was when all four of us were together at the Pines. We were alone and the people were asked to stay far away. Only "two little girls," Jacinta's sister and my own both six and seven years of age, were near us.
+
+​
+
+Fr. Benac: Could this conditional Chastisement be the reason why Our Lady said in Her Second Message, "You are now receiving the last warning"? Otherwise what meaning would you give to these words?
+
+Mari Loli: I took it to mean that we were coming closer to the end and that She would not be coming many times more — as She had already warned us twice — and we did not listen to Her.
+
+​
+
+Fr. Benac: While the Blessed Virgin was showing you the Vision of the Chastisement what was the expression on Her Face?
+
+Mari Loli: She looked sad but not so much. She had a sort of resigned expression.
+
+
+
+Fr. Benac: Did She speak to you at anytime about "Hell" and the "Loss of Souls"?
+
+Mari Loli: I only recall the reference She made in the message to bishops and priests who were on the path to perdition and taking many souls with them.
+
+​
+
+Fr. Benac: Did the Blessed Virgin speak of Communism?
+
+Mari Loli: Our Lady spoke several times about Communism. I don't remember how many times, but She said that a time would come when it would seem as if Communism was to "Master or Engulf the Whole World". I think it was then that She told us that Priests would have difficulty in saying Mass and talking about God and Divine Things.
+
+​
+
+Fr. Pelletier: Did Our Lady ever speak of people being put to death?
+
+Mari Loli: What Our Lady said was that Priests would go into "hiding" but I did not see whether they were being killed or not. She didn't exactly say they would be killed, but I am sure that they will be "Martyred".
+
+
+
+Fr. Pelletier: Your mother told me that one night you were upstairs with your father and that you cried and cried for one hour. And that afterwards your father told her, "I have seen the most touching sight. Loli was crying all the time and she was saying, 'Oh, its going to be like that? People are going to suffer like that? Oh, make me suffer!' Do you remember what you said at that moment?
+
+Mari Loli: All this was related to Communism and what is going to happen in the Church and to the people because all these things are to have repercussions amongst the people because when the Church suffers confusion, the people are going to suffer too. Some priests who are communists will create such confusion that people will not know what is right or wrong.
+
+​
+
+Fr. Benac: Since you are the one who knows the most about the Warning will you tell us: is this event to take place before the Miracle promised through Conchita Gonzalez?
+
+Mari Loli: The Warning is meant to help us see what we are doing, how much evil we are doing, how much pain we are causing God. Everyone will experience it wherever they may be regardless of their condition or their knowledge of God. It will take place all over the world. Yes, it will be an interior personal experience. It will look as if the world had come to a standstill, however, no one will not be aware of it as they all will be totally absorbed in their own experience.
+
+​
+
+Fr. Benac: Do you know the Year of the Warning?
+
+Mari Loli: Yes, the "Year" but not the day.
+
+​
+
+Fr. Benac: Do the others also know about it?
+
+Mari Loli: I don't know if the others know the "Year", but I presume so since we were so often together, and they had spoken about it on different occasions.
+
+
+
+Fr. Benac: But did you have any instructions from Our Lady not to pass this information to others?
+
+Mari Loli: No, She never told me not to do that, but I feel I shouldn't say it for the present.
+
+
+
+Fr. Benac: So, if such is the case, what would you advise people in view of that uncertainty about the "date" and "year"?
+
+Mari Loli: To do much penance, to pray more and to be better.
+
+​
+
+Fr. Benac: What Fr. Pelletier and I would like you to explain more clearly is the nature of the Warning. How do you sense it?
+
+Mari Loli: Yes, it will be an interior personal experience. It will look as if the world had come to a standstill, however, no one will not be aware of it as they all will be totally absorbed in their own experience. It is going to be something like an interior feeling of sorrow and pain for having offended God. God will help us to see clearly the harm we are causing Him and all the evil things that we do. God will help us to sense that interior pain because often when we do something wrong we just ask with our "lips" for the Lord to forgive us, but now He will help us to physically feel that deep sorrow.
+
+
+
+Fr. Benac: Would you say that this Warning will be a help towards ones purification? And is there any correlation between the "Warning" and the "Miracle"?
+
+Mari Loli: Yes, the "Two" will take place within 12 months. The Warning will be a purification and preparation to return to God.
+
+
+
+Fr. Benac: As Conchita seems to have explained, will it be for the correction of our conscience in preparation to accept the Miracle as a Sign from God?
+
+Mari Loli: I would say that the Miracle will be a Gift from God and all will feel happy realizing how good God is by giving us such a gift as an "Expression" of His love.
+
+
+
+Fr. Benac: Is it correct what Conchita had said that after the Miracle there will remain a visible "Sign" at the Pines?
+
+Mari Loli: I don't know very much about the Miracle.
+
+
+
+Fr. Benac: Was the "Last" Message delivered to all four of you or only to Conchita?
+
+Mari Loli: Only to Conchita. She didn't tell us, but we saw her writing it down and we heard it. It is to act as a deterrent to prevent the worst from taking place the Punishment.
+
+
+
+Fr. Benac: Did Our Lady say that if people prayed enough and did "Penance" the Chastisement could be averted?
+
+Mari Loli: She said the cup was willing up, that we had to make many sacrifices and perform much penance.  She also said that we must turn the anger of God away from ourselves by our own efforts.
+
+​
+
+Fr. Pelletier: Did She say this to you many times?
+
+Mari Loli: For me this was the "primary" reason why She appeared, to give the world Her "Message" so that people would repent, change their lives and stop committing sins.
+
+
+
+Fr. Benac: In the little space left on the tape, would you say a few words by way of a "Message of Encouragement" and Love for Our Bishops, Brother Priests, and the hundreds of our people of India who have accepted with so much love and faith Our Lady's Message.
+
+Mari Loli: Dear Brothers and Sisters of India, I am sure that the Blessed Mother is very pleased with all the work you are doing to promote Her Message. Surely, She will reward you. May I ask you to pray for me also.</div>
+</details>
           <figure class="divinology-aside">
-            <img src="https://www.opticianonline.net/media/jw4pw1r0/masoniceyeofprovidence.jpg?width=320&amp;height=213&amp;format=webp&amp;quality=80&amp;bgcolor=White&amp;v=1d903f435e146c0" alt="" role="presentation">
-            <iframe src="https://www.youtube-nocookie.com/embed/P9lnLusZ6h0" title="YouTube video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<img src="https://www.opticianonline.net/media/jw4pw1r0/masoniceyeofprovidence.jpg?width=320&amp;height=213&amp;format=webp&amp;quality=80&amp;bgcolor=White&amp;v=1d903f435e146c0" alt="" role="presentation">
+<iframe src="https://www.youtube-nocookie.com/embed/P9lnLusZ6h0" title="YouTube video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <blockquote>
               <p><strong>Fr. Benac:</strong> What did you feel you were holding?</p>
               <p><strong>Mari Loli:</strong> We could not sense or feel His weight yet we couldn't move our hands beyond the space occupied by His body when we had him in our arms. He looked and smiled at us. He looked like a normal child only that as I was a little child it caused me surprise to see Him as a child and yet so big being God.</p>
             </blockquote>
           </figure>
+              </section>
+            </div>
+          </div>
         </div>
       </article>
 
