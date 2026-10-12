@@ -77,18 +77,19 @@
     .gh svg{display:block}
 
 
-    /* ===== HOME ===== */
-    .home-intro{text-align:center;margin-bottom:2.2rem}
-    .home-intro h1{display:block;font-size:1.35rem;margin-bottom:0}
-    .home-quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem;align-items:start;margin:2rem 0}
-    .home-quote-card{text-align:center}
-    .home-quote-card blockquote{margin:0;padding-left:1rem;border-left:3px solid var(--brand);font-family:var(--serif);font-size:1rem;line-height:1.7;text-align:left}
-    .quote-attribution{font-family:var(--sans);font-size:.95rem;text-align:left;margin:.75rem 0 1rem 1rem}
-    .home-quote-card>a{display:block}
-    .home-quote-card img{display:block;width:auto;max-width:260px;height:auto;max-height:260px;object-fit:contain;margin:0 auto}
+    /* ===== HOME AND CASE QUOTES ===== */
+    .home-motto{margin:3rem 0;text-align:center;font-family:var(--serif);font-size:1.4rem;line-height:1.5}
+    .case-intro{text-align:center;margin:2.2rem 0 0}
+    .case-intro h2{font-size:1.35rem;margin-bottom:0}
+    .case-quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem;align-items:start;margin:1.2rem 0 2rem}
+    .case-quote-card{text-align:center}
+    .case-quote-card blockquote{margin:0;padding-left:1rem;border-left:3px solid var(--brand);font-family:var(--serif);font-size:1rem;line-height:1.7;text-align:left}
+    .case-quote-card .quote-attribution{font-family:var(--sans);font-size:.95rem;text-align:left;margin:.75rem 0 1rem 1rem}
+    .case-quote-card>a{display:block}
+    .case-quote-card img{display:block;width:auto;max-width:260px;height:auto;max-height:260px;object-fit:contain;margin:0 auto}
     @media(max-width:40rem){
-      .home-quotes{grid-template-columns:1fr;gap:2.5rem}
-      .home-quote-card img{max-width:200px;max-height:200px}
+      .case-quotes{grid-template-columns:1fr;gap:2.5rem}
+      .case-quote-card img{max-width:200px;max-height:200px}
     }
 
     /* ===== MAIN CONTENT ===== */
@@ -343,31 +344,7 @@
 
       <!-- ===== PAGE: HOME ===== -->
       <article class="page" id="home" hidden>
-        <div class="home-intro">
-          <h1>The Deseret Alphabet Portal</h1>
-        </div>
-
-        <div class="home-quotes">
-          <section class="home-quote-card">
-            <blockquote>
-              “It will be the means of introducing uniformity in our orthography, and the years that are now required to learn to read and spell can be devoted to other studies.”
-            </blockquote>
-            <p class="quote-attribution">- Brigham Young</p>
-            <a href="https://www.heritage-print.com/brigham-young-american-mormon-leader-c1880-14946339.html" target="_blank" rel="noopener noreferrer">
-              <img src="https://i.ibb.co/QFQDskqj/images-1.jpg" alt="Brigham Young, American Mormon leader, c1880">
-            </a>
-          </section>
-
-          <section class="home-quote-card">
-            <blockquote>
-              “No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory. I would advise our brethren, aside from the ordinary schools, to get up evening reading classes in all our settlements for the instruction of those who cannot attend at other times.”
-            </blockquote>
-            <p class="quote-attribution">- George A. Smith</p>
-            <a href="https://www.google.com/search?q=George+A.+Smith+LDS+%22No+greater+or+more+blessed+mission%22" target="_blank" rel="noopener noreferrer">
-              <img src="https://i.ibb.co/xq620h1w/images-2.jpg" alt="George A. Smith">
-            </a>
-          </section>
-        </div>
+        <blockquote class="home-motto">For a moral and prosperous society</blockquote>
       </article>
 
       <!-- ===== PAGE: LEARN ===== -->
@@ -566,6 +543,30 @@ So the North Wind had to admit that the Sun was the stronger of the two.
             </ul>
           </li>
         </ol>
+        <div class="case-intro">
+          <h2>The Deseret Alphabet Portal</h2>
+        </div>
+        <div class="case-quotes">
+          <section class="case-quote-card">
+            <blockquote>
+              “It will be the means of introducing uniformity in our orthography, and the years that are now required to learn to read and spell can be devoted to other studies.”
+            </blockquote>
+            <p class="quote-attribution">- Brigham Young</p>
+            <a href="https://www.heritage-print.com/brigham-young-american-mormon-leader-c1880-14946339.html" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.ibb.co/QFQDskqj/images-1.jpg" alt="Brigham Young, American Mormon leader, c1880">
+            </a>
+          </section>
+
+          <section class="case-quote-card">
+            <blockquote>
+              “No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory. I would advise our brethren, aside from the ordinary schools, to get up evening reading classes in all our settlements for the instruction of those who cannot attend at other times.”
+            </blockquote>
+            <p class="quote-attribution">- George A. Smith</p>
+            <a href="https://www.google.com/search?q=George+A.+Smith+LDS+%22No+greater+or+more+blessed+mission%22" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.ibb.co/xq620h1w/images-2.jpg" alt="George A. Smith">
+            </a>
+          </section>
+        </div>
       </article>
 
       <!-- ===== PAGE: HISTORY ===== -->
