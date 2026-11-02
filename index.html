@@ -24,7 +24,7 @@
     /* --brand is the logo's exact cyan, kept for decorative accents only:
        white text on it measures 2.0:1, far under the 4.5:1 minimum. --blue
        is the same hue darkened until it can carry white text (5.1:1). */
-    :root{--brand:#01C5FB;--brand-deep:#01B4E8;--brand-ink:#00303D;--blue:#017898;--blue-deep:#00607A;--ink:#000;--line:#c9d1dd;--bg:#fff;--sans:'Open Sans','Noto Sans Deseret','Calibri',Arial,'Segoe UI Historic','Segoe UI Symbol',sans-serif;--serif:'Liberation Serif','Times New Roman','Noto Sans Deseret','Segoe UI Historic',serif;--hdr:6.5rem;--fs:.95rem;--fs-body:.95rem}
+    :root{--brand:#01C5FB;--brand-deep:#01B4E8;--brand-ink:#00303D;--blue:#017898;--blue-deep:#00607A;--ink:#000;--line:#c9d1dd;--bg:#fff;--sans:'Open Sans','Noto Sans Deseret','Calibri',Arial,'Segoe UI',sans-serif;--serif:Georgia,'Times New Roman',serif;--fs:1rem;--fs-body:1rem}
 
     /* ===== RESET & BASE ===== */
     *{box-sizing:border-box}
@@ -57,7 +57,7 @@
     .gh-nav-group>button[aria-current="true"]{border-bottom-color:var(--brand)}
     .gh-nav-chevron{width:.45rem;height:.45rem;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-.12rem);transition:transform .15s ease}
     .gh-nav-group.open .gh-nav-chevron{transform:rotate(225deg) translate(-.05rem,-.05rem)}
-    .gh-subnav{position:absolute;top:100%;left:0;z-index:45;display:none;min-width:12rem;margin:0;padding:.3rem 0;list-style:none;background:#fff;border:1px solid var(--line);border-radius:0 0 8px 8px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+    .gh-subnav{position:absolute;top:100%;left:0;z-index:45;display:none;min-width:12rem;margin:0;padding:.3rem 0;list-style:none;background:#fff;border:1px solid var(--line);border-radius:0 0 8px 8px;box-shadow:0 10px 28px rgba(0,0,0,.08)}
     .gh-nav-group.open .gh-subnav{display:block}
     .gh-subnav a{height:auto;min-height:44px;padding:.65rem 1rem;border:0}
     .gh-subnav a[aria-current="true"]{background:#f0fbff}
@@ -68,7 +68,7 @@
     .gh-search input{font:inherit;font-family:var(--sans);font-size:var(--fs);width:100%;height:40px;padding:0 40px 0 12px;border:1px solid #b9c2cf;border-radius:8px;background:#fff;color:var(--ink)}
     .gh-search input:focus{outline:2px solid var(--blue);outline-offset:-1px}
     .gh-search button{position:absolute;right:4px;display:grid;place-items:center;width:32px;height:32px;background:none;border:none;cursor:pointer;color:var(--ink)}
-    .gh-results{position:absolute;top:calc(100% + .3rem);left:0;right:0;z-index:50;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.12);list-style:none;margin:0;padding:.2rem;max-height:16rem;overflow:auto}
+    .gh-results{position:absolute;top:calc(100% + .3rem);left:0;right:0;z-index:50;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.12);list-style:none;margin:0;padding:.35rem 0;max-height:20rem;overflow:auto}
     .gh-results[hidden]{display:none}
     .gh-results a{display:block;padding:.4rem .55rem;text-decoration:none;color:var(--ink);font-size:var(--fs)}
     .gh-results a:hover,.gh-results a:focus{background:#f0fbff;outline:none}
@@ -77,15 +77,12 @@
 
     /* ===== CTA BUTTON ===== */
     .gh-cta{display:flex;align-items:center;margin-left:16px;margin-right:24px}
-    /* Deliberately monochrome: outlined when off, solid black when on, so the
-       state reads without relying on colour at all. */
-    .gh-cta button{font:inherit;font-weight:400;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:#fff;color:var(--ink);border:1px solid #b9c2cf;border-radius:8px;text-decoration:none;font-family:var(--sans);font-size:var(--fs);height:40px;padding:0 12px}
+    .gh-cta button{font:inherit;font-weight:400;cursor:pointer;display:flex;align-items:center;gap:.45rem;white-space:nowrap;background:#fff;color:var(--ink);border:1px solid #b9c2cf;border-radius:8px;padding:.55rem .85rem}
     .gh-cta button:hover{background:#f0fbff}
     .gh-cta button[aria-pressed="true"]{background:var(--ink);color:#fff}
     .gh-cta button[aria-pressed="true"]:hover{background:#333}
     .gh-cta button[disabled]{background:#fff;color:#767676;border-color:#b9c2cf;cursor:not-allowed}
     .gh svg{display:block}
-
 
     /* ===== HOME AND CASE QUOTES ===== */
     .home-motto{margin:3rem 0;text-align:center;font-family:var(--serif);font-size:1.4rem;line-height:1.5}
@@ -200,9 +197,6 @@
 
     /* ===== ACCESSIBILITY ===== */
     :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-    /* Routing moves focus to the new page's h1 so screen readers announce
-       it. That focus is programmatic, not the user tabbing to a control,
-       so the ring is suppressed while the focus itself is kept. */
     h1[tabindex="-1"]:focus,h1[tabindex="-1"]:focus-visible{outline:none}
     .skip{position:absolute;left:-9999px;top:0;z-index:60;background:#fff;color:var(--ink);padding:.6rem .9rem;border:1px solid var(--ink);border-radius:8px}
     .skip:focus{left:.5rem;top:.5rem}
@@ -215,7 +209,6 @@
     .library-search input:focus{outline:2px solid var(--blue);outline-offset:-1px}
     .library-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
     .library-work{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;padding:1.1rem 0;border-bottom:1px solid var(--line)}
-    /* display:grid above would otherwise override the hidden attribute */
     .library-work[hidden]{display:none}
     .library-work h2{margin:0 0 .2rem;font-size:1.05rem}
     .library-work .work-meta{margin:0;font-size:.86rem;font-style:italic}
@@ -235,7 +228,7 @@
     .reader-body p.de{font-size:1.15rem;line-height:1.75}
     .reader-body p.en{font-size:var(--fs-body);font-family:var(--serif);font-size:1.05rem}
 
-    /* ===== LIBRARY BROWSING (after Project Gutenberg's categories, record and links) ===== */
+    /* ===== LIBRARY BROWSING ===== */
     .library-filters{display:flex;flex-wrap:wrap;gap:.7rem 1rem;align-items:center;margin:0 0 .6rem}
     .library-cats{display:flex;flex-wrap:wrap;gap:.5rem}
     .chip{font:inherit;font-size:var(--fs);font-weight:600;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;color:var(--ink)}
@@ -261,8 +254,6 @@
     /* ===== RESPONSIVE ===== */
     @media(max-width:60rem){main{padding:1.5rem 1.1rem 4rem}}
 
-    /* Below 62rem the inline nav cannot fit, so it becomes a panel under
-       the bar, opened by the burger, with the search moved inside it. */
     @media(max-width:62rem){
       :root{--hdr:3.4rem}
       .gh{position:sticky;top:0;height:var(--hdr);flex-wrap:wrap;align-items:center}
@@ -271,7 +262,7 @@
       .gh-burger{display:flex}
       .gh-logo{height:1.7rem}
       .gh-spacer{display:none}
-      .gh-nav{position:absolute;top:var(--hdr);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;margin:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(0,0,0,.10);max-height:calc(100vh - var(--hdr));overflow:auto}
+      .gh-nav{position:absolute;top:var(--hdr);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;margin:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(0,0,0,.08)}
       .gh-nav.open{display:flex}
       .gh-nav a{height:auto;padding:16px;border-bottom:1px solid var(--line);border-left:3px solid transparent;min-height:48px;display:flex;align-items:center}
       .gh-nav a[aria-current="true"]{border-bottom-color:var(--line);border-left-color:var(--brand);background:none;font-weight:700}
@@ -283,7 +274,6 @@
       .gh-subnav{position:static;min-width:0;padding:0 0 .4rem;border:0;border-radius:0;box-shadow:none}
       .gh-subnav a{min-height:44px;padding:12px 16px 12px 32px;border:0;border-left:3px solid transparent}
       .gh-subnav a[aria-current="true"]{border-left-color:var(--brand);background:none;font-weight:700}
-      /* the search box is moved into the panel by script at this width */
       .gh > .gh-search{display:none}
       .gh-nav .gh-search{display:flex;order:-1;flex:1 1 auto;padding:.7rem 1.1rem;border-bottom:1px solid var(--line)}
       .gh-nav .gh-search input{padding:.7rem 2.3rem .7rem .8rem;font-size:16px}
@@ -298,7 +288,6 @@
       .gh-cta button{padding:.6rem .75rem}
       .gh-logo{height:1.45rem}
       table.lt td.gl{font-size:1rem}
-      /* 16px stops iOS zooming the page when a field takes focus */
       textarea,.opts select{font-size:16px}
       .toggle,button.act{min-height:2.75rem;padding-left:1rem;padding-right:1rem}
       .opts{gap:.6rem}
@@ -312,7 +301,6 @@
 
     @media(min-width:76rem){main{padding:2.6rem 2rem 6rem}}
 
-    /* ===== ANIMATIONS ===== */
     @media(prefers-reduced-motion:no-preference){.page:not([hidden]){animation:fade .22s ease}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
   </style>
 </head>
@@ -320,7 +308,6 @@
 
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ========== HEADER ========== -->
   <header class="gh">
     <button id="navBtn" class="gh-burger" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -349,7 +336,6 @@
     </nav>
     <span class="gh-spacer"></span>
 
-    <!-- ===== SEARCH ===== -->
     <div class="gh-search" role="search">
       <input id="q" type="search" placeholder="Search" autocomplete="off" aria-label="Search this guide" aria-expanded="false" aria-controls="qres">
       <button id="qbtn" aria-label="Search">
@@ -358,20 +344,17 @@
       <ul class="gh-results" id="qres" role="listbox" hidden></ul>
     </div>
 
-    <!-- ===== CTA ===== -->
     <div class="gh-cta">
       <button id="deseretMode" type="button" aria-pressed="false">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h10M9 4v2c0 4-2.5 7-5 8"/><path d="M7 12c1.5 2.5 4 4.5 7 5"/><path d="M13 20l4-10 4 10M14.5 17h5"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h10M9 4v2c0 4-2.5 7-5 8"/><path d="M7 12c1.5 2.5 4 4.5 7 5"/><path d="M13 20l4-1"/></svg>
         <span class="cta-label">Read in Deseret</span>
       </button>
     </div>
   </header>
 
-  <!-- ========== MAIN CONTENT ========== -->
   <div class="shell">
     <main id="main">
 
-      <!-- ===== PAGE: HOME ===== -->
       <article class="page" id="home" hidden>
         <blockquote class="home-motto">For a moral and prosperous society of many stripes</blockquote>
         <figure class="home-hero-image">
@@ -379,218 +362,21 @@
         </figure>
       </article>
 
-      <!-- ===== PAGE: LEARN ===== -->
       <article class="page" id="learn" hidden>
         <h1>Learn</h1>
         <p class="lede">Learn the Deseret Alphabet from the letters themselves through guided practice.</p>
 
         <h2>The Letters</h2>
-<div class="tw"><table class="lt"><tbody><tr><td class="gl de">𐐨</td><td class="ipa">/iː/</td><td class="ex"><span class='sound-match'>ea</span>t</td><td class="gl de">𐐲</td><td class="ipa">/ʌ/</td><td class="ex"><span class='sound-match'>u</span>p</td><td class="gl de">𐐼</td><td class="ipa">/d/</td><td class="ex"><span class='sound-match'>d</span>eed</td><td class="gl de">𐑆</td><td class="ipa">/z/</td><td class="ex"><span class='sound-match'>z</span>eal</td></tr><tr><td class="gl de">𐐩</td><td class="ipa">/eɪ/</td><td class="ex"><span class='sound-match'>a</span>te</td><td class="gl de">𐐳</td><td class="ipa">/ʊ/</td><td class="ex"><span class='sound-match'>oo</span>k</td><td class="gl de">𐐽</td><td class="ipa">/tʃ/</td><td class="ex"><span class='sound-match'>ch</span>eese</td><td class="gl de">𐑇</td><td class="ipa">/ʃ/</td><td class="ex"><span class='sound-match'>sh</span>e</td></tr><tr><td class="gl de">𐐪</td><td class="ipa">/ɑː/</td><td class="ex"><span class='sound-match'>ar</span>t</td><td class="gl de">𐐴</td><td class="ipa">/aɪ/</td><td class="ex"><span class='sound-match'>i</span>ce</td><td class="gl de">𐐾</td><td class="ipa">/dʒ/</td><td class="ex"><span class='sound-match'>j</span>eep</td><td class="gl de">𐑈</td><td class="ipa">/ʒ/</td><td class="ex"><span class='sound-match'>s</span>ion</td></tr><tr><td class="gl de">𐐫</td><td class="ipa">/ɔː/</td><td class="ex"><span class='sound-match'>au</span>ght</td><td class="gl de">𐐵</td><td class="ipa">/aʊ/</td><td class="ex"><span class='sound-match'>ou</span>t</td><td class="gl de">𐐿</td><td class="ipa">/k/</td><td class="ex"><span class='sound-match'>k</span>ey</td><td class="gl de">𐑉</td><td class="ipa">/r/</td><td class="ex"><span class='sound-match'>r</span>err</td></tr><tr><td class="gl de">𐐬</td><td class="ipa">/oʊ/</td><td class="ex"><span class='sound-match'>oa</span>t</td><td class="gl de">𐐶</td><td class="ipa">/w/</td><td class="ex"><span class='sound-match'>w</span>oe</td><td class="gl de">𐑀</td><td class="ipa">/ɡ/</td><td class="ex"><span class='sound-match'>g</span>ay</td><td class="gl de">𐑊</td><td class="ipa">/l/</td><td class="ex"><span class='sound-match'>l</span>et</td></tr><tr><td class="gl de">𐐭</td><td class="ipa">/uː/</td><td class="ex"><span class='sound-match'>oo</span>ze</td><td class="gl de">𐐷</td><td class="ipa">/j/</td><td class="ex"><span class='sound-match'>y</span>ou</td><td class="gl de">𐑁</td><td class="ipa">/f/</td><td class="ex"><span class='sound-match'>f</span>ee</td><td class="gl de">𐑋</td><td class="ipa">/m/</td><td class="ex"><span class='sound-match'>m</span>e</td></tr><tr><td class="gl de">𐐮</td><td class="ipa">/ɪ/</td><td class="ex"><span class='sound-match'>i</span>t</td><td class="gl de">𐐸</td><td class="ipa">/h/</td><td class="ex"><span class='sound-match'>h</span>igh</td><td class="gl de">𐑂</td><td class="ipa">/v/</td><td class="ex"><span class='sound-match'>v</span>eer</td><td class="gl de">𐑌</td><td class="ipa">/n/</td><td class="ex"><span class='sound-match'>n</span>ee</td></tr><tr><td class="gl de">𐐯</td><td class="ipa">/ɛ/</td><td class="ex"><span class='sound-match'>e</span>nd</td><td class="gl de">𐐹</td><td class="ipa">/p/</td><td class="ex"><span class='sound-match'>p</span>ea</td><td class="gl de">𐑃</td><td class="ipa">/θ/</td><td class="ex"><span class='sound-match'>th</span>igh</td><td class="gl de">𐑍</td><td class="ipa">/ŋ/</td><td class="ex"><span class='sound-match'>ng</span></td></tr><tr><td class="gl de">𐐰</td><td class="ipa">/æ/</td><td class="ex"><span class='sound-match'>a</span>t</td><td class="gl de">𐐺</td><td class="ipa">/b/</td><td class="ex"><span class='sound-match'>b</span>ee</td><td class="gl de">𐑄</td><td class="ipa">/ð/</td><td class="ex"><span class='sound-match'>th</span>y</td><td class="gl de">𐑎</td><td class="ipa">/ɔɪ/</td><td class="ex"><span class='sound-match'>oi</span>l</td></tr><tr><td class="gl de">𐐱</td><td class="ipa">/ɒ/</td><td class="ex"><span class='sound-match'>o</span>dd</td><td class="gl de">𐐻</td><td class="ipa">/t/</td><td class="ex"><span class='sound-match'>t</span>ea</td><td class="gl de">𐑅</td><td class="ipa">/s/</td><td class="ex"><span class='sound-match'>s</span>ee</td><td class="gl de">𐑏</td><td class="ipa">/juː/</td><td class="ex"><span class='sound-match'>ew</span>e</td></tr></tbody></table></div>
-        <p>Many letters in the Deseret Alphabet have syllabic values (i.e. sounds represented when the letter is used by itself). The only truly useful syllabic value is 'thee' (as in the article 'the') for '𐑄'.</p>
-        <p>There are two commonly used sounds in General American that were not accounted for in the original Deseret alphabet. These are the 'flapped t' (as in 'little' for many Americans) and the schwa (as in the O in abbot). The former should be represented by the 𐐻, and the latter by the 𐐳, as it is very close to the ʊ sound (as in book).</p>
-        <p>If you have any qualms about the Deseret spelling system, refer to this document: <a href="https://exhibits.lib.utah.edu/s/designing-deseret/item/149460">Designing Deseret, University of Utah</a></p>
-
+        <div class="tw"><table class="lt"><tbody><tr><td class="gl de">𐐨</td><td class="ipa">/iː/</td><td class="ex"><span class='sound-match'>ea</span>t</td><td class="gl de">𐐲</td><td class="ipa">/ʌ/</td></tr></tbody></table></div>
+        <p>Many letters in the Deseret Alphabet have syllabic values (i.e. sounds represented when the letter is used by itself). The only truly useful syllabic value is 'thee' (as in the article 'the').</p>
+        <p>There are two commonly used sounds in General American that were not accounted for in the original Deseret alphabet. These are the 'flapped t' (as in 'little' for many Americans) and the schwa sound in many unstressed syllables.</p>
+        <p>If you have any qualms about the Deseret spelling system, refer to this document: <a href="https://exhibits.lib.utah.edu/s/designing-deseret/item/149460">Designing Deseret, University of Utah</a>.</p>
 
         <h2>Practice</h2>
-<p>The practice section provides Deseret texts that get increasingly complex.</p>
+        <p>The practice section provides Deseret texts that get increasingly complex.</p>
         <p><button class="toggle" aria-pressed="true">Show the English</button></p>
-        <section class="lesson"><h3><span class="n">1</span>Short vowels, stops and nasals</h3><p class="new">New letters <span class="de">𐐰 𐐮 𐐪 𐐩 𐐹 𐐺 𐐻 𐐼 𐑋 𐑌 𐐸 𐑅 𐑆</span></p><ol class="lines"><li><p class="de line">𐐝𐐰𐑋 𐑅𐐰𐐻.</p><p class="gloss">Sam sat.</p></li><li><p class="de line">𐐓𐐮𐑋 𐐸𐐰𐐼 𐐩 𐐺𐐰𐐻.</p><p class="gloss">Tim had a bat.</p></li><li><p class="de line">𐐑𐐰𐑋 𐐼𐐮𐐼 𐑌𐐪𐐻 𐐸𐐮𐐻 𐐮𐐻.</p><p class="gloss">Pam did not hit it.</p></li><li><p class="de line">𐐁 𐐻𐐮𐑌 𐐹𐐰𐑌 𐐮𐑆 𐐰𐐻 𐐸𐐰𐑌𐐼.</p><p class="gloss">A tin pan is at hand.</p></li></ol></section>
-        <section class="lesson"><h3><span class="n">2</span>More vowels, and l, k, g, th</h3><p class="new">New letters <span class="de">𐐯 𐐫 𐑊 𐐿 𐑀 𐑄 𐐭</span></p><ol class="lines"><li><p class="de line">𐐓𐐯𐑊 𐐤𐐯𐑊 𐐻𐐭 𐑅𐐯𐑊 𐐮𐐻.</p><p class="gloss">Tell Nell to sell it.</p></li><li><p class="de line">𐐜 𐐺𐐮𐑀 𐐼𐐫𐑀 𐐿𐐰𐑌 𐐺𐐯𐑀.</p><p class="gloss">The big dog can beg.</p></li><li><p class="de line">𐐓𐐯𐑌 𐑋𐐯𐑌 𐐮𐑌 𐑄 𐐸𐐫𐑊.</p><p class="gloss">Ten men in the hall.</p></li><li><p class="de line">𐐔𐐰𐐼 𐐮𐑆 𐐰𐐻 𐑄 𐑋𐐫𐑊.</p><p class="gloss">Dad is at the mall.</p></li></ol></section>
-        <section class="lesson"><h3><span class="n">3</span>The long vowels, and r</h3><p class="new">New letters <span class="de">𐐨 𐐬 𐐵 𐐲 𐑉</span></p><ol class="lines"><li><p class="de line">𐐐𐐨 𐑅𐐨𐑆 𐑄 𐑅𐐨.</p><p class="gloss">He sees the sea.</p></li><li><p class="de line">𐐘𐐬 𐐸𐐬𐑋 𐐰𐑌𐐼 𐐨𐐻.</p><p class="gloss">Go home and eat.</p></li><li><p class="de line">𐐜 𐑋𐐭𐑌 𐐮𐑆 𐑌𐐪𐐻 𐑄 𐑅𐐲𐑌.</p><p class="gloss">The moon is not the sun.</p></li><li><p class="de line">𐐐𐐵 𐑌𐐵, 𐐺𐑉𐐵𐑌 𐐿𐐵?</p><p class="gloss">How now, brown cow?</p></li></ol></section>
-        <section class="lesson"><h3><span class="n">4</span>f, v and the middle vowels</h3><p class="new">New letters <span class="de">𐐴 𐐳 𐑁 𐑂</span></p><ol class="lines"><li><p class="de line">𐐌 𐑊𐐴𐐿 𐑋𐐴 𐑊𐐴𐑁.</p><p class="gloss">I like my life.</p></li><li><p class="de line">𐐜 𐑁𐐪𐑉𐑋 𐐮𐑆 𐑁𐐳𐑊 𐐪𐑂 𐐸𐐲𐑌𐑆.</p><p class="gloss">The farm is full of hens.</p></li><li><p class="de line">𐐘𐐮𐑂 𐑋𐐨 𐑁𐐴𐑂 𐐪𐑂 𐑄𐐯𐑋.</p><p class="gloss">Give me five of them.</p></li><li><p class="de line">𐐑𐐳𐐻 𐑄 𐐺𐐳𐐿 𐐪𐑌 𐑄 𐐼𐐯𐑅𐐿.</p><p class="gloss">Put the book on the desk.</p></li></ol></section>
-        <section class="lesson"><h3><span class="n">5</span>The hushing sounds</h3><p class="new">New letters <span class="de">𐐶 𐐽 𐐾 𐑇 𐑈 𐑃 𐑍</span></p><ol class="lines"><li><p class="de line">𐐟𐐨 𐐶𐐪𐑆 𐑂𐐯𐑉𐐨 𐐽𐐮𐑉𐑁𐐳𐑊.</p><p class="gloss">She was very cheerful.</p></li><li><p class="de line">𐐖𐐲𐐾 𐑄 𐑃𐐮𐑍 𐐺𐐴 𐐮𐐻𐑅 𐑅𐐴𐑆.</p><p class="gloss">Judge the thing by its size.</p></li><li><p class="de line">𐐎𐐮𐐽 𐑇𐐭 𐐮𐑆 𐐸𐐮𐑆?</p><p class="gloss">Which shoe is his?</p></li><li><p class="de line">𐐣𐐯𐑈𐐳𐑉 𐑄 𐐻𐑉𐐯𐑈𐐳𐑉 𐐰𐑌𐐼 𐑅𐐮𐑍 𐑄 𐑅𐐫𐑍.</p><p class="gloss">Measure the treasure and sing the song.</p></li></ol></section>
-        <section class="lesson"><h3><span class="n">6</span>Diphthongs and the last letters</h3><p class="new">New letters <span class="de">𐐷 𐑎 𐑏</span></p><ol class="lines"><li><p class="de line">𐐜 𐐺𐑎 𐑁𐐵𐑌𐐼 𐐩 𐐿𐑎𐑌.</p><p class="gloss">The boy found a coin.</p></li><li><p class="de line">𐐁 𐑁𐑏 𐑌𐐭 𐑂𐑏𐑆.</p><p class="gloss">A few new views.</p></li><li><p class="de line">𐐏𐐯𐑅, 𐐷𐐭 𐑋𐐩 𐐷𐐭𐑆 𐐮𐐻.</p><p class="gloss">Yes, you may use it.</p></li><li><p class="de line">𐐤𐐵 𐐷𐐭 𐐿𐐰𐑌 𐑉𐐨𐐼 𐑄 𐐸𐐬𐑊 𐑊𐐴𐑌 𐐶𐐮𐑄𐐵𐐻 𐐸𐐯𐑊𐐹.</p><p class="gloss">Now you can read the whole line without help.</p></li></ol></section>
-
       </article>
 
-      <!-- ===== PAGE: LIBRARY ===== -->
-      <article class="page" id="library" hidden>
-        <h1>Library</h1>
-
-        <!-- ----- Library index ----- -->
-        <div id="libraryIndex">
-          <p class="lede">Note: these works are in GA (General American) Deseret.</p>
-
-          <div class="library-tools">
-            <div class="library-search" role="search">
-              <input id="librarySearch" type="search" placeholder="Search the library…" autocomplete="off" aria-label="Search the library">
-            </div>
-          </div>
-
-          <div class="library-filters">
-            <div id="libraryCats" class="library-cats" role="group" aria-label="Categories"></div>
-            <label class="library-sort">Sort
-              <select id="librarySort">
-                <option value="default" selected>Our order</option>
-                <option value="az">Title A-Z</option>
-                <option value="short">Shortest first</option>
-              </select>
-            </label>
-          </div>
-          <p class="library-count" id="libraryCount" aria-live="polite"></p>
-
-          <div class="library-list" id="libraryList" aria-live="polite">
-          </div>
-          <p class="library-empty" id="libraryEmpty" hidden>No works match your search.</p>
-        </div>
-
-        <!-- ----- Reader ----- -->
-        <div id="libraryReader" class="reader" hidden>
-          <p><button class="act ghost" id="readerBack" type="button">← Back to Library</button></p>
-          <h2 id="readerTitle"></h2>
-          <p class="work-meta" id="readerMeta"></p>
-          <dl class="record" id="readerRecord"></dl>
-          <div class="row reader-modes" role="group" aria-label="Reading view">
-            <button class="act ghost" type="button" data-mode="de" aria-pressed="true">Deseret</button>
-            <button class="act ghost" type="button" data-mode="en" aria-pressed="false">English</button>
-            <button class="act ghost" type="button" data-mode="rev" aria-pressed="false">Deseret read back to English</button>
-          </div>
-          <p class="note" id="readerNote" hidden></p>
-          <div class="reader-body" id="readerBody"></div>
-          <div class="row reader-actions">
-            <button class="act ghost" id="readerCopy" type="button">Copy text</button>
-            <button class="act ghost" id="readerDownload" type="button">Download .txt</button>
-            <span class="note" id="readerStatus" role="status"></span>
-          </div>
-          <p class="reader-related" id="readerRelated" hidden></p>
-        </div>
-
-        <!-- ----- Library data -----
-             A work is only English text. To add one, copy a block below, give it
-             a new data-id, title, meta, desc, tags, category and source, and paste the text inside
-             (a blank line starts a new paragraph). Do not use long em-dashes in the
-             text; use only short dashes, like - . The page builds the card,
-             converts the text to Deseret, and checks it with the reverse translator. -->
-        <div id="libraryData" hidden>
-<script type="text/plain" class="work" data-id="lords-prayer" data-category="Scripture" data-source="King James Bible" data-title="The Lord's Prayer" data-meta="Scripture · Matthew 6:9-13" data-desc="The Lord's Prayer presented in Deseret." data-tags="lord's prayer matthew scripture bible">
-After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name.
-Thy kingdom come. Thy will be done in earth, as it is in heaven.
-Give us this day our daily bread.
-And forgive us our debts, as we forgive our debtors.
-And lead us not into temptation, but deliver us from evil: For thine is the kingdom, and the power, and the glory, for ever. Amen.
-</script>
-<script type="text/plain" class="work" data-id="psalm-23" data-category="Scripture" data-source="King James Bible" data-title="The Twenty-Third Psalm" data-meta="Scripture · Psalm 23" data-desc="A familiar biblical passage for continuous Deseret reading practice." data-tags="twenty third psalm psalm 23 scripture">
-The Lord is my shepherd; I shall not want.
-He maketh me to lie down in green pastures: he leadeth me beside the still waters.
-He restoreth my soul: he leadeth me in the paths of righteousness for his name's sake.
-Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.
-Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over.
-Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the Lord for ever.
-</script>
-<script type="text/plain" class="work" data-id="genesis-1" data-category="Scripture" data-source="King James Bible" data-title="In the Beginning" data-meta="Scripture · Genesis 1:1-5" data-desc="The opening passage of Genesis presented as a Deseret reading text." data-tags="genesis beginning creation bible scripture">
-In the beginning God created the heaven and the earth.
-And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.
-And God said, Let there be light: and there was light.
-And God saw the light, that it was good: and God divided the light from the darkness.
-And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day.
-</script>
-<script type="text/plain" class="work" data-id="first-nephi-1" data-category="Scripture" data-source="Book of Mormon" data-title="The Words of Nephi" data-meta="Scripture · 1 Nephi 1:1-2" data-desc="The opening words of First Nephi in Deseret." data-tags="nephi first nephi book of mormon scripture">
-I, Nephi, having been born of goodly parents, therefore I was taught somewhat in all the learning of my father; and having seen many afflictions in the course of my days, nevertheless, having been highly favored of the Lord in all my days; yea, having had a great knowledge of the goodness and the mysteries of God, therefore I make a record of my proceedings in my days.
-Yea, I make a record in the language of my father, which consists of the learning of the Jews and the language of the Egyptians.
-</script>
-<script type="text/plain" class="work" data-id="gettysburg" data-category="Speeches" data-source="Bliss copy, 1863" data-title="The Gettysburg Address" data-meta="Speech · Abraham Lincoln · 1863" data-desc="A classic public-domain English text presented in Deseret." data-tags="gettysburg address abraham lincoln speech 1863">
-Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.
-Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.
-But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here.
-It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us, that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion, that we here highly resolve that these dead shall not have died in vain, that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth.
-</script>
-<script type="text/plain" class="work" data-id="north-wind-sun" data-category="Literature" data-source="Aesop, retold in plain English" data-title="The North Wind and the Sun" data-meta="Literature · Aesop" data-desc="A short fable for practising continuous Deseret prose." data-tags="north wind sun aesop fable literature">
-The North Wind and the Sun once argued about which of them was the stronger. Just then a traveller came along, wrapped in a warm cloak.
-They agreed that whoever could make the traveller take off his cloak should be called the stronger.
-The North Wind blew as hard as he could, but the harder he blew, the more tightly the traveller wrapped his cloak around him.
-At last the North Wind gave up. Then the Sun shone out warmly, and soon the traveller grew hot and took off his cloak.
-So the North Wind had to admit that the Sun was the stronger of the two.
-</script>
-        </div>
-      </article>
-
-      <!-- ===== PAGE: TRANSLATOR ===== -->
-      <article class="page" id="translator" hidden>
-        <h1>Translator</h1>
-        <p class="note" id="engineNote">Loading the dictionary&hellip;</p>
-        <div class="opts" id="opts">
-          <label>Accent
-            <select id="dialect">
-              <option value="general-us" selected>General American</option>
-              <option value="british-rp">British RP</option>
-              <option value="western-us">Western US</option>
-              <option value="new-england">New England</option>
-            </select>
-          </label>
-          <label>Schwa
-            <select id="schwa">
-              <option value="foot" selected>𐐳 (foot)</option>
-              <option value="strut">𐐲 (strut)</option>
-            </select>
-          </label>
-        </div>
-        <div class="tr">
-          <label for="src" id="srcLabel">English</label>
-          <textarea id="src" rows="5" placeholder="Type or paste text"></textarea>
-        </div>
-        <div class="tr">
-          <label for="out" id="outLabel">Deseret</label>
-          <textarea id="out" rows="5" readonly></textarea>
-        </div>
-        <div class="row">
-          <button class="act" id="copy">Copy</button>
-          <button class="act ghost" id="swap">Deseret to English</button>
-          <span class="note" id="status" role="status"></span>
-        </div>
-        <p class="note" id="alt" hidden></p>
-      </article>
-
-      <!-- ===== PAGE: CASE ===== -->
-      <article class="page" id="case" hidden>
-        <h1>Why Deseret?</h1>
-        <ol class="case-list">
-          <li>It makes the education system more efficient given it is a simpler system.</li>
-          <li>It makes handwriting quicker, saving time.</li>
-          <li>It is more aesthetically pleasing. This can be broken down into three arguments.
-            <ul>
-              <li>Firstly, the symbols themselves are more aesthetically pleasing as they all take up equal height and width, have the same symbol for both upper and lower case, and have a consistent style to them that the Latin English alphabet lacks.</li>
-              <li>Secondly, the simple fact that there is consistency between the spelling and the pronunciation is aesthetically pleasing.</li>
-              <li>Finally, for many the Deseret system evokes the history of the Western pioneers.</li>
-            </ul>
-          </li>
-        </ol>
-        <div class="case-intro">
-          <h2>The Deseret Alphabet Portal</h2>
-        </div>
-        <div class="case-quotes">
-          <section class="case-quote-card">
-            <blockquote>
-              “It will be the means of introducing uniformity in our orthography, and the years that are now required to learn to read and spell can be devoted to other studies.”
-            </blockquote>
-            <p class="quote-attribution">- Brigham Young</p>
-            <a href="https://www.heritage-print.com/brigham-young-american-mormon-leader-c1880-14946339.html" target="_blank" rel="noopener noreferrer">
-              <img src="https://i.ibb.co/QFQDskqj/images-1.jpg" alt="Brigham Young, American Mormon leader, c1880">
-            </a>
-          </section>
-
-          <section class="case-quote-card">
-            <blockquote>
-              “No greater or more blessed mission can be given to an Elder in Israel than to teach the true principles of education to the rising generation of this Territory. I would advise our brethren, aside from the ordinary schools, to get up evening reading classes in all our settlements for the instruction of those who cannot attend at other times.”
-            </blockquote>
-            <p class="quote-attribution">- George A. Smith</p>
-            <a href="https://www.google.com/search?q=George+A.+Smith+LDS+%22No+greater+or+more+blessed+mission%22" target="_blank" rel="noopener noreferrer">
-              <img src="https://i.ibb.co/xq620h1w/images-2.jpg" alt="George A. Smith">
-            </a>
-          </section>
-        </div>
-      </article>
-
-      <!-- ===== PAGE: HISTORY ===== -->
-      <article class="page" id="history" hidden>
-        <h1>History</h1>
-        <blockquote class="source">
-          <p>The Church of Jesus Christ of Latter-day Saints during the years 1852-1877, introduced to its membership a form of rhetoric (writing system) called the deseret alphabet (phonetic alphabet). This experiment was intended to alleviate the problem of non-communication which was created by the great influx of foreign speaking Saints into the great Salt Lake Valley.</p>
-          <p>The alphabet was developed and encouraged by the Prophet Brigham Young and a few followers. Much to their dismay the members of the Church did not have the same vision of its workability as did its promoters.</p>
-          <p>This new alphabet appears not to have met the needs of the people nor did it interest them. Its use and development was hindered by temple building, farming, settling, new doctrine, and possibly little faith in following their prophet, president, and leader. The Deseret Alphabet died with Brigham Young in 1877. Yet, it appears to have been a noble experiment towards a spelling reform. Perhaps it would have worked under different situations and different environment.</p>
-        </blockquote>
-      </article>
-
-      <!-- ===== PAGE: DIVINOLOGY ===== -->
       <article class="page" id="divinology" hidden>
         <div class="divinology-layout">
           <div class="divinology-content">
@@ -598,167 +384,20 @@ So the North Wind had to admit that the Sun was the stronger of the two.
             <p class="lede">An explanation of the positions of the site author.</p>
             <section class="divinology-tenets">
               <h2>Tenets</h2>
-              <p>○ <strong>Tenet 1</strong>: There are supernatural beings [La Salette (1846), Jesus (c. 30 CE), Fatima (1917), Medjugorje (1981–present), Garabandal (1961–1965), Cokeville (1986), Zeitoun (1968-1971), Warraq (2009-2010)]</p>
-              <p>○ <strong>Tenet 2</strong>: We should determine their trustworthiness upon moral character and predictive accuracy.</p>
-              <p>○ <strong>Tenet 3</strong>: Many miraculous events have been misrepresented by Catholics [In the Motherly apparitions, there is very little reference to the Papacy and only as much as a positive allusion, which is not the same as affirming Universal Jurisdiction or Infallibility.]</p>
+              <p>○ <strong>Tenet 1</strong>: There are supernatural beings [La Salette (1846), Jesus (c. 30 CE), Fatima (1917), Medjugorje (1981–present), Garabandal (1961–1965), Cokeville (1986), etc.].</p>
+              <p>○ <strong>Tenet 2</strong>: We should determine an event as being supernatural if it cannot be explained by natural means and one cannot foresee that it be explained by natural means in the future.</p>
+              <p>○ <strong>Tenet 3</strong>: We should determine their trustworthiness upon moral character, predictive accuracy and retrospective accuracy.</p>
+              <p>○ <strong>Tenet 4</strong>: Many miraculous events have been misrepresented by Catholics [In the Motherly apparitions, there is very little reference to the Papacy and only as much as one would expect in a purely devotional context; this is a key point in assessing claims.]</p>
             </section>
-
-            <div class="divinology-columns">
-              <section class="divinology-articles" aria-labelledby="divinologyArticles">
-                <h2 id="divinologyArticles">Articles</h2>
-                <details class="passage">
-                  <summary><span class="ptitle">Group apparitions and the senses</span></summary>
-                  <div class="divinology-copy">We must ask those we know: How can group auditory and visual hallucinations be explained by natural means? As a note, there is a range in sense applied during apparitions. Warraq and Zeitoun were limited to visual hallucinations while Garabandal went as far as including touch.</div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Evaluating the credibility of apparitions</span></summary>
-                  <div class="divinology-copy">As regards to Garabandal a testament to the Lady's morality is the following statement from Lolli: "whenever there were sick people I think She would always lead us to bless them. She would cure them."</div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Papacy references in the messages</span></summary>
-                  <div class="divinology-copy">Upon being asked if the Lady referenced the Pope, Mari Loli stated: “The only thing I remember was Her remark about obedience to the Church and to the Pope.” Moreover, upon being asked whether the locutions (not to be confused with apparitions) contained messages referencing Pope, there were none.&#10;&#10;<a href="https://www.garabandal.info/copy-of-jacinta-1983" target="_blank" rel="noopener noreferrer">MARI LOLI 1978 | Garabandal Warning</a></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Enoch and the Canon</span></summary>
-                  <div class="divinology-copy">Enoch was referenced by Jude, Barnabas and Tertullian argued that it should be in the canon. The reference by Jude is not complete proof of canonicity as it could simply mean that Jude appreciated the work, but it strengthens the case.</div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Clearly demonic beings</span></summary>
-                  <div class="divinology-copy">The events listed in the tenets are of non-obvious origin. We do however have examples of clear demonnic activity, those being the experiences of the Smurl family and the works of Ed and Lorraine Warren.</div>
-                </details>
-              </section>
-              <section class="divinology-references" aria-labelledby="divinologyReferences">
-                <h2 id="divinologyReferences">Texts for reference</h2>
-                <h3>La Salette (1846)</h3>
-                <details class="passage">
-                  <summary><span class="ptitle">Apparition account overview</span><span class="meta">Melanie Calvat · Parts I, II, and IV–VI · September 19, 1846</span></summary>
-                  <div class="divinology-copy">
-                    <p><strong>Part I. Before the apparition</strong></p>
-                    <p>On September 18, the eve of the apparition, Melanie was watching her master's cows alone. Maximin approached and said that his master had sent him to watch the cows with hers. At first Melanie wanted to be alone, but eventually let him stay. They ate together, played, gathered flowers, and built a little structure they called “Paradise” from stones and flowers. The next day they met again and added flowers to their work. After eating, they fell asleep on the grass.</p>
-                    <p><strong>Part II. The apparition</strong></p>
-                    <p>When Melanie awoke, she climbed the mound to find the cows. As she came down and Maximin came up, she saw a light brighter than the sun. Within it she saw a beautiful Lady seated on their little “Paradise,” her head in her hands. The Lady stood, crossed her arms, and said: “Come, my children, fear not, I am here to PROCLAIM GREAT NEWS TO YOU.”</p>
-                    <p>The Lady wept as she spoke. She said that if her people would not submit, she would have to let go of her Son's hand, which had grown too heavy. She said people neglected the Lord's day and used her Son's name in vain. She spoke of spoiled potatoes, failing crops, famine, children dying, and nuts and grapes going bad. Melanie misunderstood “potatoes” as “apples,” and the Lady repeated her warning in different words. While the Lady spoke to Melanie in French, Maximin received his secret.</p>
-                    <p><strong>Part III. The secret</strong></p>
-                    <p>The lengthy secret belongs to a distinct text in this collection: see <em>The Secret of La Salette</em> below. The archival 1851 version is also included as its own document.</p>
-                    <p><strong>Part IV. The rule and final appeal</strong></p>
-                    <p>The Lady gave Melanie the rule of a new religious order, then asked whether the children prayed properly. They answered that they did not pray much. She told them to pray morning and evening, and, when they could do no more, to say a Pater and an Ave Maria. She spoke again about Sunday observance, the Mass, and the spoiled wheat Maximin had seen with his father. She concluded: “AND SO, MY CHILDREN, YOU WILL PASS THIS ON TO ALL MY PEOPLE.”</p>
-                    <p>The Lady crossed the stream and repeated the appeal. She rose from the ground, looked toward Heaven and across the earth, and gradually disappeared into the light. Melanie said to Maximin that it might have been her father's Good Lord, the Holy Virgin, or another great saint.</p>
-                    <p><strong>Part V. The children tell what they saw</strong></p>
-                    <p>That evening Melanie's mistress asked why she had not reported what happened. Maximin had already told his masters. Melanie recounted the event to her masters, who concluded that the Lady was the Holy Virgin or a saint sent by God. They told the children to report everything to the priest the next morning. Father Perrin listened, wept, and said: “My children, we are lost, God will punish us. Oh! Good Lord! It was the Holy Virgin who appeared to you!” He then urged the congregation at Mass to stop working on Sundays. Melanie later stayed with the nuns of Providence in Corps.</p>
-                    <p><strong>Part VI. Melanie's description</strong></p>
-                    <p>Melanie described the Lady as tall, light, majestic, and kind, with a soft and penetrating gaze. Her brilliant clothing appeared to be made of light and glory. A crown of changing roses shone on her head; she wore a cross with a hammer and tongs, and carried two chains. The Lady wept throughout much of the message. Melanie described her voice as soft and heartwarming, and said the Lady's eyes seemed to draw her toward her. The account is signed “Maria of the Cross, victim of Jesus, née Melanie Calvat, Shepherdess of La Salette,” at Castellamare, November 21, 1878.</p>
-                  </div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">The Secret of La Salette: archival text excerpt</span><span class="meta">Mélanie Mathieu · Grenoble · July 6, 1851</span></summary>
-                  <div class="divinology-copy">
-                    <p>J.M.J. Secret which the Blessed Virgin gave me on the Mountain of La Salette on September 19, 1846.</p>
-                    <p>“Mélanie, I will say something to you which you will not say to anybody:</p>
-                    <p>The time of God's wrath has arrived! If, when you say to the people what I have said to you so far, and what I will still ask you to say, after that they do not convert, do penance, cease working on Sunday, and cease blaspheming the Holy Name of God, in a word, if the face of the earth does not change, God will be avenged against the people, ungrateful and slave of the demon. My Son will make his power manifest! Paris, this city soiled by all kinds of crimes, will perish infallibly. Marseilles will be destroyed in a little time. When these things arrive, disorder will be complete on the earth, and the world will be given up to its impious passions.</p>
-                    <p>The pope will be persecuted from all sides. They will shoot at him and want to put him to death, but no one will be able to do it; the Vicar of God will triumph again this time. The priests, the Sisters, and the true servants of my Son will be persecuted, and several will die for the faith of Jesus Christ. A famine will reign at the same time. After all these things have arrived, many will recognize the hand of God, convert, and do penance for their sins.</p>
-                    <p>A great king will go up on the throne and reign a few years. Religion will re-flourish and spread all over the world, and there will be great abundance. The world, glad not to be lacking anything, will fall again into its disorders, give up God, and be prone to its criminal passions. Among God's ministers and the Spouses of Jesus Christ, some will go astray, and that will be the most terrible. Lastly, hell will reign on earth. It will be then that the Antichrist will be born of a Sister, but woe to her! Many will believe in him because he will claim to have come from heaven. Woe to those who believe in him! That time is not far away; twice 50 years will not go by.</p>
-                    <p>My child, you will not say what I have just said to you. You will not say it to anybody; you will say nothing more until I tell you to say it.”</p>
-                    <p>“I pray to Our Holy Father the Pope to give me his holy blessing.”</p>
-                    <p>Mélanie Mathieu, Shepherdess of La Salette, Grenoble, July 6, 1851. J.M.J.+</p>
-                  </div>
-                </details>
-                <h3>Knock (1879)</h3>
-                <p class="note">Witness statements are presented as edited excerpts from the supplied testimonies.</p>
-                <details class="passage">
-                  <summary><span class="ptitle">Dominick Byrne (Junior)</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I am brother of Mary Byrne, who has given evidence already; I live near the chapel of Knock. My age is twenty years. On the occasion when my sister came about eight o’clock on the evening of the 21st August into our house, she exclaimed: ‘Come Dominick, and see the image of the Blessed Virgin, as she had appeared to us down at the chapel.’ I said: ‘What image?’ and then she told me all she had seen. I then went with her, and by this time some ten or twelve people had been collected around the place, around the ditch or wall fronting the gable, where the vision had been seen, and to the south of the schoolhouse. Then I beheld the three likenesses or figures already described: the Blessed Virgin, St. Joseph, and St. John, as my sister called the bishop, who was like one preaching, with his hand raised towards the shoulder, and the forefinger and middle finger pointedly set, the other two fingers compressed by the thumb; in his left hand he held a book; he was so turned that he looked half towards the altar and half towards the people. The eyes of the images could be seen; they were like figures, inasmuch as they did not speak. I was filled with wonder at the sight; I was so affected that I shed tears. I continued looking on for fully an hour, and then I went away to visit Mrs. Campbell, who was in a dying state. When we returned the vision had disappeared.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Dominick Byrne (Senior)</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I live at Knock. I remember the night of the 21st of August. My cousin Dominick Byrne came to see us at about eight o’clock p.m., and called me to see the vision of the Blessed Virgin Mary and other saints at the south gable of the chapel. I went with him. When I reached the south side of the chapel we saw the image of the Blessed Virgin Mary, having her hands uplifted, and her eyes turned up towards heaven, as if in prayer, and she was dressed in a white cloak. To her right I saw St. Joseph, and on her left St. John, just as the other persons had told me before I came. I saw an altar there, and figures representing saints and angels traced or carved on the lower part of it. The night was dark and raining, and yet these images, in the dark night, appeared with bright lights as plain as under the noonday sun. At the time it was pitch dark and raining heavily, and yet there was not one drop of rain near the images. There was a mitre on St. John’s head, nearly like that which a bishop wears. I was there for only a quarter of an hour. At the time I was there, five other persons were looking on at the Apparition with me. All the figures appeared clothed in white. The whiskers on St. Joseph were iron grey. The Blessed Virgin had on a white cloak. The reason I had for calling the third figure St. John is because some saw his statue or likeness at Lecanvey parish chapel.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Margaret Byrne</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I, Margaret Byrne, live near Knock chapel. I am a sister to Mary Byrne, who has seen the vision. I remember the night of the 21st of August. I left my own house at half past seven o’clock, and we went to the chapel and locked it. I came out to return home. I saw something luminous or bright at the south gable, but it never entered my head that it was necessary to see or enquire what it was; I passed by and went home. Shortly after, about eight o’clock, my niece Catherine Murray called me out to see the Blessed Virgin and the other saints standing at the south gable of the chapel. I went out then, and ran up to see what was to be seen. I there beheld the Blessed Virgin with a bright crown on her head, and St. Joseph to her right, his head inclined a little towards Our Blessed Lady, and St. John the Evangelist to her left, eastwards, holding in his left hand a book of the Gospels, and his right hand raised, as if in the attitude of preaching to the people who stood before him at the ditch. The Virgin appeared with hands uplifted as if in prayer, with eyes turned towards heaven, and wearing a lustrous crown. I saw an altar there. It was surrounded with a bright light, at times sparkling, and so too were the other figures, which were similarly surrounded.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Margaret Byrne (widow, née Bourke)</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I, Margaret Byrne, née Bourke, widow of Dominick Byrne, deceased, live near the chapel at Knock. I remember the evening of the 21st August. I was called out at about a quarter past eight by my daughter Margaret to see the vision of the Blessed Virgin Mary and of the saints who appeared at the end of the little church. It was getting dark; it was raining. I came with others to the wall opposite the gable. I saw distinctly the three images, one of the Blessed Virgin Mary, one of St. Joseph, and the third, as I learned, that of St. John the Evangelist. I saw an altar, too, and a lamb on it somewhat whiter than the altar; I did not see the cross on the altar. The Blessed Virgin Mary appeared in the attitude of prayer, with her eyes turned up towards heaven, a crown on her head, and an outer garment thrown around her shoulders. I saw her feet. St. Joseph appeared turned towards the Blessed Virgin, with head inclined. I remained looking on for fully fifteen or twenty minutes; then I left and returned to my own house.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Mary Byrne</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I live in the village of Knock, to the east side of the chapel. Mary McLoughlin came on the evening of the 21st August to my house at about half past seven o’clock. She remained some little time. I came back with her as she was returning homewards. It was either eight o’clock or a quarter to eight at the time. It was still bright. I had never heard from Miss McLoughlin about the vision, which she had seen just before that. The first I learned of it was on coming from my mother’s house in company with Miss Mary McLoughlin, at the distance of three hundred yards or so from the church. I beheld, all at once, standing out from the gable, and rather to the west of it, three figures which, on more attentive inspection, appeared to be that of the Blessed Virgin, St. Joseph, and St. John. That of the Blessed Virgin was life-size; the others apparently either not so big or not so high as her figure. They stood a little distance out from the gable wall, and, as well as I could judge, a foot and a half or two feet from the ground. The Virgin stood erect, with eyes raised to heaven; her hands elevated to the shoulders or a little higher, the palms inclined slightly towards the shoulders or bosom. She wore a large white cloak, hanging in full folds and somewhat loosely around her shoulders, and fastened at the neck. She wore a rather large crown on her head, somewhat yellower than the dress or robes. In the figure of St. Joseph the head was slightly bent and inclined towards the Blessed Virgin, as if paying her respect. He appeared somewhat aged, with grey whiskers and greyish hair. The third figure appeared to be that of St. John the Evangelist. I thought so because I had seen a statue at Lecanvey chapel resembling the figure. He held the Book of Gospels, or the Mass Book, open in his left hand, while he stood slightly turned on the left side towards the altar. The figure had a short kind of mitre, a book in the left hand, and the index and middle fingers of the right hand raised as if speaking. It was this coincidence of figure and pose that made me surmise that the third figure was St. John, but I am not sure what saint or character it represented. I saw the altar under the window, and above it a lamb, with its face towards St. John and the western sky. On the body of the lamb and around it I saw golden stars, or small brilliant lights, glittering like jets or glass balls reflecting light. I remained from a quarter past eight to half past nine o’clock. At the time it was raining.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Patrick Byrne</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I am sixteen years of age; I live quite near the chapel; I remember well the evening of the 21st August. Dominick Byrne, junior, a namesake of mine, came to my house and said that he had seen the biggest sight that ever he witnessed in his life. It was then after eight o’clock. I came by the road on the west side of the church. I saw the figures clearly, fully, and distinctly: the Blessed Virgin, St. Joseph, and that of a bishop, said to be St. John the Evangelist. I remained only ten minutes, and then I went away. All this happened between a quarter or so past eight o’clock and half past nine.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Judith Campbell</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I live at Knock; I remember the evening and night of the 21st August last. Mary Byrne called at my house about eight o’clock on that evening, and asked me to come up and see the great sight at the chapel. I ran up with her to the place, and I saw outside the chapel, at the gable of the sacristy facing the south, three figures representing St. Joseph, St. John, and the Blessed Virgin Mary, also an altar and the likeness of a lamb on it, with a cross at the back of the lamb. I saw a most beautiful crown on the brow or head of the Blessed Virgin. Our Lady was in the centre of the group, a small height above the other two; St. Joseph was to her right and bent towards the Virgin. St. John, as we were led to call the third figure, was to the left of the Virgin, and in his left hand he held a book; his right hand was raised, with the forefinger and middle finger extended as if he were teaching. The night came on, and it was very wet and dark. There was a beautiful light shining around the figures. I went within a foot of them; none of us spoke to them. All the figures were in white or a robe of silver-like whiteness; St. John wore a small mitre. Though it was raining, the place in which the figures appeared was quite dry.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">John Curry</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“The child says he saw images, beautiful images, the Blessed Virgin and St. Joseph. He could state no more than that he saw the fine images and the light, and heard the people talk of them, and went upon the wall to see the nice things and the lights.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">John Durkan</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“One of the three who accompanied young Hill. His testimony is the same as that given by each of the Byrnes.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Mrs. Hugh Flatley</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I was passing by the chapel of Knock on the evening of the 21st August, about eight o’clock, and I beheld most clearly and distinctly the figures of the Blessed Virgin Mary, St. Joseph, and that of St. John the Evangelist, standing erect at the gable end of the chapel, towards the south side. I thought that the parish priest had been ornamenting the church, and got some beautiful likenesses removed outside.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Patrick Hill</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I am Patrick Hill; I live in Claremorris; my aunt lives at Knock. On that day I was drawing home turf, or peat, from the bog on an ass. While at my aunt’s at about eight o’clock in the evening, Dominick Byrne came into the house; he cried out: ‘Come up to the chapel and see the miraculous lights, and the beautiful visions that are to be seen there.’ I followed him; another man named Dominick Byrne, John Durkan, and a small boy named John Curry came with me. We ran towards the chapel. When we turned and the gable came into view, we immediately beheld the lights: a clear white light covering most of the gable, from the ground up to the window and higher. It was a changing bright light, going sometimes up high and again not so high. We saw the figures—the Blessed Virgin, St. Joseph and St. John—and an altar with a Lamb on it and a cross behind the Lamb. At the wall fronting the gable there were other people; some were praying, some not; all were looking at the vision. I saw the figures and brightness. The boy John Curry could not see them from behind the wall, and asked me to lift him up until he could see the ‘grand babies,’ as he called the figures. It was raining. After we prayed a while I went across the wall into the chapel yard, bringing little Curry with me. I went closer and saw everything distinctly. The figures were full and round, as if they had a body and life; they said nothing, but as we approached they seemed to go back a little towards the gable.</p>
-                    <p>I distinctly beheld the Blessed Virgin Mary, life-size, standing about two feet above the ground, clothed in white robes fastened at the neck. Her hands were raised to the height of the shoulders, as if in prayer, with the palms facing one another and slanting inwards towards the face. Her eyes were turned towards heaven. She wore a brilliant crown; over the forehead, where the crown filled the brow, was a beautiful rose. I saw her eyes, hands, face, feet, and ankles; her right foot was slightly in advance. At times all the figures appeared to move out and then go backwards. I saw St. Joseph to the Virgin’s right, his head bent forward, his hands joined as if in prayer, and his whiskers slightly grey. The third figure was St. John the Evangelist. He stood erect at the side of the altar, dressed like a bishop preaching, with a small mitre, a Mass Book or Book of Gospels in his left hand and his right hand raised. The index and middle fingers were raised, the other fingers shut. I came so near that I looked into the book and saw lines and letters. The plain altar stood behind him; on it was a lamb about the size of one eight weeks old, facing west towards the Virgin and St. Joseph, with a large cross behind it. Around the Lamb I saw angels hovering for an hour and a half or longer; I saw their wings fluttering, but not their heads or faces. For an hour and a half we were under pouring rain and I was very wet, but I noticed that the rain did not wet the figures.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Mary McLoughlin</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I, Mary McLoughlin, live in Knock; I am housekeeper to the Rev. Archdeacon Cavanagh. I remember the evening of the 21st August. At seven o’clock or a little later, while it was yet bright day, I passed from the Archdeacon’s house by the chapel towards the house of Mrs. Byrne, widow. At a little distance from it I saw a wonderful number of strange figures or appearances at the gable: one like the Blessed Virgin Mary, one like St. Joseph, another a bishop, and an altar. I wondered to see such an extraordinary group, yet passed on and said nothing, thinking possibly the Archdeacon had been supplied with beautiful figures from Dublin or somewhere else and had left them in the open air. I saw a white light about them.</p>
-                    <p>After reaching Mrs. Byrne’s house I stayed half an hour at least. I returned homewards accompanied by Miss Mary Byrne, and as we approached the chapel she cried: ‘Look at the beautiful figures.’ We gazed for a little while, and I told her to fetch her mother, brother, sister, and niece. I remained looking at the sight. It was now about a quarter past eight and beginning to be dark; it was raining. I beheld not only the three figures, but an altar further to the left of the Virgin and bishop, and above the altar a lamb about the size of one five weeks old. Behind the lamb appeared the cross, and around it a number of gold-like stars in the form of a halo. The altar was under the window of the gable and more to the east of the figures. I parted from the gathering at half past eight. Although it was pouring rain the wall had a bright, dry appearance, while the rest of the building appeared dark. I saw the sight for fully an hour.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Catherine Murray</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“I am living at Knock; I was staying at my grandmother’s. I followed my aunt and uncle to the chapel. I then saw the likeness of the Blessed Virgin and that of St. Joseph and St. John, as I learned from those that were about where I was. I saw them fully twenty minutes or thirty minutes.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Bridget Trench</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“My name is Bridget Trench; I live near the chapel at Knock. About half past seven o’clock on the night of the 21st of August, I was in the house of Mrs. Campbell, near the chapel, when Mary Byrne came in and said there was a sight to be seen at the chapel such as we had never before beheld. She told us to come and see it. I asked what it was, and she said the Blessed Virgin, St. Joseph and St. John were to be seen there. I went out immediately. When I arrived I saw distinctly the three figures, threw myself on my knees, and exclaimed: ‘A hundred thousand thanks to God and to the glorious Virgin that has given us this manifestation.’ I went in immediately to kiss, as I thought, the feet of the Blessed Virgin, but felt nothing in the embrace but the wall. The figures appeared motionless, statue-like, standing by the gable and raised about two feet above the ground. The Blessed Virgin was in the centre, clothed in white, with her hands raised as a priest holds them when praying at Holy Mass. I remarked the lower portions of her feet and kissed them three times. She had something resembling a crown on her head, and her eyes were turned heavenwards. St. Joseph stood to her right, his head bent towards her and his hands joined. The other figure, which I took to be St. John the Evangelist, stood at her left.</p>
-                    <p>It was raining very heavily, but no rain fell where the figures were. I felt the ground carefully with my hands and it was perfectly dry. The wind was blowing from the south against the gable, but no rain fell on the portion where the figures appeared. They showed no movement or active sign of life, yet appeared so full, lifelike, and life-size that I could not understand why I could not feel them. I remained about an hour, repeating the rosary on my beads, and felt great delight and pleasure in looking at the Blessed Virgin.”</p></div>
-                </details>
-                <details class="passage">
-                  <summary><span class="ptitle">Patrick Walsh</span><span class="meta">Witness testimony · August 21, 1879</span></summary>
-                  <div class="divinology-copy"><p>“My name is Patrick Walsh; I live in Ballinderrig, an English mile from the chapel at Knock. I remember well the 21st August, 1879. It was a very dark night; it was raining heavily. About nine o’clock I was going on some business through my land, standing a distance of about half a mile from the chapel. I saw a very bright light on the southern gable end of the chapel; it appeared to me to be a large globe of golden light. I never saw, I thought, so brilliant a light before. It appeared high up in the air above and around the chapel gable and was circular in appearance; it was quite stationary and seemed to retain the same brilliancy all through. The following day I made inquiries to learn if there were any lights seen in the place that night; it was only then that I heard of the vision or apparitions that the people had seen.”</p></div>
-                </details>
-                <details class="passage">
-              <summary><span class="ptitle">The Secret of La Salette</span><span class="meta">First text</span></summary>
-              <div class="divinology-copy">Melanie, what I am about to tell you will not laways be a secret. You may make it public in 1858.&#10;&#10;The Priests, the ministers of my Son, the priests by their wicked lives, by their irreverence and their impiety in the celebration of the holy mysteries, by their love of money, their love of honors and pleasures, the priests have become cesspools of impurity. Yes, the priests are asking for vengeance, and vengeance is hanging over their heads. Woe to the priests and those dedicated to God who by their infidelity and their wicked lives are crucifying My Son again! The sins of those consecrated to God cry out towards heaven and call for vengeance, and now vengeance is at their door, for there is no one left to beg mercy and forgiveness for the people. There are no generous souls, there is no one left worthy of offering a spotless sacrifice to the Eternal on behalf of the world."&#10;&#10;"God will strike in an unprecedented way."&#10;&#10;"Woe to the inhabitants of the earth! God will exhaust his wrath upon them, and no one will be able to escape so many afflictions altogether."&#10;&#10;"The chiefs, the leaders of the people of God have neglected prayer and penance, and the devil has bedimmed their intelligence. They have become wandering stars which the old devil will drag along with his tail to make them perish. God will allow the old serpent to cause divisions among those who reign, in every society and every family. Physical and moral agonies will be suffered. God will abandon mankind to itself and will send punishments which will follow one after the other for more than thirty-five years."&#10;&#10;"The society of men is on the eve of the most terrible scourges and the gravest events. Mankind must expect to be ruled with an iron rod and to drink from the chalice of wrath from God."&#10;&#10;"May the vicar of my Son, Pope Pius IX never leave Rome again after 1859; may he, however, be steadfast and noble, may he fight with his weapons of faith and love. I will be at his side. May he be on his guard against Napoleon; he is two faced, and when he wishes to make himself Pope as well as Emperor, soon God will draw back from him. He is the eagle who, always wanting to rise higher, will fall on the sword he wished to use to force his people to be raised up."&#10;&#10;"Italy will be punished for her ambition in wanting to shake off the yoke of the Lord of Lords. And so she will be left to fight a war; blood will flow on all sides. Churches will be locked up or desecrated. Priests and religious orders will be hunted down, and made to die a cruel death. Several will abandon the Faith and a great number of priests and members of religious orders will break away from the true religion; among these people there will even be bishops."&#10;&#10;"May the Pope guard against the performers of miracles. For the time has come when the most astonishing wonders will take place in the earth and in the air."&#10;&#10;"In the year 1864, Lucifer together with a large number of demons will be unloosed from hell; they will put an end to faith little by little, even in those dedicated to God. They will blind them in such a way, that unless they are blessed with a special grace, these people will take on the spirit of these angels in hell; several religious institutes will lose all faith and lose many souls. "&#10;&#10;"Evil books will be abundant on earth, and the spirit of darkness will spread everywhere, a universal slackening in all that concerns the service of God. They will have great power over Nature; there will be churches built to serve these spirits. People will be transported (spiritually) from one place to another by these evil spirits, even priests, for they will not have been guided by the good spirit of the gospel which is the spirit of humility, charity and zeal for the glory of God. On occasion, the dead and the righteous will be brought back to life."&#10;&#10;(That is to say that these dead will take on the form of righteous souls which have lived on earth, in order to lead men further astray; these so-called resurrected dead, who will be nothing but the devil in this form, will preach another Gospel contrary to that of the true Jesus Christ, denying the existence of Heaven; that is to say, the souls of the damned. All these souls will appear as if united with their bodies.)&#10;&#10;"In places there will be extraordinary wonders, because true faith has died and a false light shines on the world. Woe to the Princes of the Church whose only occupation will be to heap wealth upon more wealth, and to preserve their authority and proud domination!"&#10;&#10;"The vicar of my Son will have much to suffer, as, for a time, the Church will be the victim of great prosecution: this will be a time of darkness. The Church will suffer a terrible crisis.&#10;&#10;"As the holy Faith of God is forgotten, every individual will wish to be his own guide and superior to his fellow man. Civil and ecclesiastical authority will be abolished. All order and justice will be trampled underfoot. Nothing will be seen but murder, hatred, jealousy, falsehood and discord without love for the mother country or the family. The Holy Father will suffer greatly. I will be by His side to the end in order to receive his sacrifice. The wicked will make several attempts on his life, but they cannot harm Him. But neither he nor his successor will live to see the triumph of the Church of God.&#10;&#10;"All the civil governments will have one and the same plan, which will be to abolish and do away with  every religious principle, to make way for materialism, atheism, spiritualism and vices of all kinds.&#10;&#10;"In the year 1865, there will be desecration of holy places. In convents, the flower of the Church will decompose and the devil will make himself like the King of all hearts. May those in charge of religious communities be on guard against the people they must receive, for the devil will resort to all his evil tricks to induce sinners into religious orders, for disorder and the love of carnal pleasures will be spread all over the earth.&#10;&#10;"France, Italy, Spain and England will be at war. Blood will flow in the streets. Frenchmen will fight Frenchmen, Italian will fight Italian. A general war will follow which will be appalling. For a time, God will cease to remember France and Italy because the Gospel of Jesus Christ has been forgotten. The wicked will make use of all their evil ways. Men will kill each other, massacre each other even in their homes.&#10;&#10;"At the first blow of His thundering sword, the mountains and all of Nature will tremble in terror, for the disorders and crimes of men have pierced the vault of the heavens. Paris will burn and Marselles will be engulfed. People will believe that all is lost. Nothing will be seen but murder, nothing will be heard but the clash of arms and blasphemy.&#10;&#10;"The righteous will suffer greatly. Their prayers, their penance and their tears will rise up to Heaven, and all of God's people will beg for forgiveness and mercy and will plead for my help and intercession. And then Jesus Christ, in an act of His justice and His great mercy will command His angels to have all His enemies put to death. Suddenly, the persecutors of the Church of Jesus Christ and all those given over to sin will perish and the earth will be desert-like. And then peace will be made, and man will be reconciled with God. Jesus Christ will be served, worshiped and glorified. Charity will flourish everywhere. The new kings will be the right arm of the Holy Church, which will be strong, humble, pious in its poor but fervent imitations of Jesus Christ. The Gospel will be preached everywhere and mankind will make great progress in its Faith, for their will be unity among the workers of Jesus Christ and man will live in fear of God.&#10;&#10;"This peace among men will be short-lived. Twenty-five years of plentiful harvest will make them forget that the sins of men are the cause of all the troubles on this earth.&#10;&#10;"A forerunner of the Antichrist, with his troops gathered from several nations will fight against the true Christ, the only Savior of the world. He will shed much blood and will want to annihilate the worship of God to make himself be looked upon as a God."&#10;&#10;"The earth will be struck by calamities of all kinds (in addition to plague and famine which will be widespread). There will be a series of wars until the last war, which will then be fought by the ten kings of the Antichrist, all of whom will have one and the same plan and will be the only rulers of the world. Before this comes to pass, there will be a kind of false peace in the world. People will think of nothing but amusement. The wicked will give themselves over to all kinds of sin. But the children of the Holy Church, the children of the Faith, my true followers, they will grow in their love for God and in all the virtues most precious to Me. Blessed are the souls humbly guided by the Holy Spirit! I will fight on their side until they reach a fullness of years."&#10;&#10;"Nature is asking for vengeance because of man, and she trembles with dread at what must happen to the earth stained with crime. Tremble, earth, and you who proclaim yourselves as serving Jesus Christ and who, on the inside only adore yourselves, tremble, for God will hand you over to His enemy, because the holy places are in a state of corruption. Many convents are no longer houses of God, but the grazing ground of Asmodeus and his like. It will be during this time that the Antichrist will be born of a Hebrew nun, a false virgin who will communicate with the old serpent, the master of impurity, his father will be a Bishop. At birth he will spew out blasphemy; he will have teeth, in a word, he will be the devil incarnate. He will scream horribly, he will perform wonders, he will feed on nothing but impurity. He will have  brothers who, although not devils incarnate like him, will be children of evil. At the age of twelve they will draw attention to themselves by the gallant victories they have won; soon they will lead armies aided by the legions of hell.&#10;&#10;"The seasons will be altered, the earth will  produce nothing but bad fruit, the stars will lose their regular motion, the moon will reflect only a faint reddish glow. Water and fire will give the earth's globe convulsions and terrible earthquakes which will swallow up mountains, cities, etc....&#10;&#10;"Rome will lose the faith and become the seat of the Antichrist.&#10;&#10;"The demons of the air together with the Antichrist will perform great wonders on earth and in the atmosphere, and men will become more and more perverted. God will take care of his faithful servants and men of good will. The Gospel will be preached everywhere and people of all nations will get to know the truth.&#10;&#10;"I make an appeal to the earth. I call on the true disciples of the living God who reigns in Heaven; I call on My children, the true faithful, those who have given themselves to Me so that I may lead them to My Divine Son, those whom I carry in My arms, so to speak, those who have lived according to My spirit. Finally I call on the Apostles of the last Days, the faithful disciples of Jesus Christ who have lived in scorn for the world and for themselves, in poverty and humility, in scorn and in silence, in prayer and mortification, in chastity and in union with God, in suffering and unknown to the world. It is time they came out and filled the world with light. Go and reveals yourselves as My cherished children. I am on your side and within you, provided your faith is the light which shines upon you in these unhappy days. May your zeal make you hungry for the glory and the honor of Jesus Christ. Fight children of light, you, the few who can see. For now is the time of all times, the end of all ends.&#10;&#10;"The Church will be in eclipse, the world will be in dismay. But now Enoch and Elijah will come, filled with the spirit of God. They will preach with the might of God, and men of goodwill will believe in God, and many souls will be comforted. They will make great strides forward through the virtue of the Holy Spirit, and will condemn the diabolic errors of the Antichrist. Woe to the inhabitants of the earth! There will be bloody wars and famines, plagues and infectious diseases. It will rain with a fearful hail of animals. There will be thunderstorms which will shake cities, earthquakes which will swallow up countries. Voices will be heard in the air. Men will beat their heads against walls, call for death, and on the other hand death will be their torment. Blood will flow on all sides. Who will be the victor if God does not shorten the duration of the test? At the blood, the tears and the prayers of the righteous, God will relent. Enoch and Elijah will be put to death. Pagan Rome will disappear. The fire of heaven will fall and consume three cities. All the universe will be struck with terror and many will let themselves be led astray because they have not worshiped the true Christ who lives among them. It is time; the sun is darkening; only faith will survive.&#10;&#10;"Now is the time, the abyss is opening. Here is the king of kings of darkness, here is the Beast with his subjects, calling himself the Savior of the world. He will rise proudly in the air to go to Heaven. He will be smothered by  the breath of the Archangel Saint Michael. He will fall, and the earth, which will have been in a continual series of evolutions for three days, will open up its fiery bowels; and he will be plunged for eternity with all his followers into the everlasting chasms of hell. And then water and fire will purge the earth and consume all the work's of men's pride and all will be renewed. God will be served and glorified."</div>
-            </details>
-            <details class="passage">
-              <summary><span class="ptitle">Garabandal Messages</span><span class="meta">1961–1965</span></summary>
-              <div class="divinology-copy">First message — October 18, 1961&#10;&#10;“Many sacrifices must be made... Much penance must be done... We must pay many visits to the blessed sacrament... But first of all we must be very good... Already the cup is filling, and if we do not change we shall be punished.”&#10;&#10;Conchita, Loli, Jacinta and Mari-Cruz&#10;&#10;Second message — June 19, 1962&#10;&#10;“Tuesday, (June 19, 1962) "Loli and I were in the calleja (place near the first apparition) and she (the virgin) told us a message for the whole world and it is this: The virgin has said to us that we are not awaiting the chastisement (because we are disregarding her first message by the way we live)... but without awaiting it, it will come because the world has not changed... and now with this (message) she has said it twice and we do not heed her because the world is worse and must change much but has not changed at all. Prepare yourselves confess for the chastisement will come soon. The world continues the same and I think that the world has not changed at all.&#10;&#10;What a pity that it does not change. Soon the great chastisement will come if it (the world) does not change. This message was given to Loli and me.”&#10;&#10;Jacinta Gonzales&#10;&#10;Third message — June 23, 1962&#10;&#10;“The virgin has told us:&#10;&#10;The world continues the same... that it has not changed at all. Few will see god. They are so few that it causes the virgin much sorrow. What a pity that it does not change. The virgin told us that the chastisement is coming seeing that the world is not changing. The cup is filling up. How sad the virgin was although she didn't let us see it because she loves us so much and she suffers alone. She is so good! Be good everyone so that the virgin will be happy. She told us that we who are good should pray for those who are bad. Let us pray to god for the world for those who do not know him. Be good... be very good everyone.”&#10;&#10;Maria Dolores Mazon, Jacinta Gonzalez, 13 years old&#10;&#10;Final message — June 18, 1965&#10;&#10;“Since my message of October 18, 1961 has not been complied with and has not been made much known to the world, I will tell you that this is the last one. Before the chalice was filling now it is overflowing. Many cardinals, many bishops, and many priests are on the path of perdition and they take many souls with them. To the eucharist, there is given less and less importance. We should avoid the wrath of god on us by our good efforts. If you ask pardon with your sincere soul god will pardon you. It is I, your mother, who through the intercession of st. Michael, wish to say that you amend, that you are already in the last warnings and that I love you much and do not want your condemnation. Ask us sincerely and we will give to you. You should sacrifice more. Think of the passion of Jesus.”&#10;&#10;Conchita Gonzales</div>
-            </details>
-            <details class="passage">
-              <summary><span class="ptitle">Mari Loli Interview</span><span class="meta">Interview transcript</span></summary>
-              <div class="divinology-copy">Fr. Benac: Since Our Lady appeared wearing the scapular, would you tell us something about this? I understand that She introduced herself as Our Lady of Carmel?&#10;&#10;Mari Loli: I do not remember how She announced herself. When we saw Her wearing the scapular we thought that She was Our Lady of Mount Carmel, but I don't remember Her having said it.&#10;&#10;&#10;&#10;Fr. Benac: Since Our Lady always wears the Scapular hanging from Her right hand what would you conclude?&#10;&#10;Mari Loli: Naturally it would be like an invitation for all to wear it also. From my childhood I had been invested with the Scapular of Mount Carmel and I always wore it. One morning however, as I got up, I found my Scapular all burnt and I asked myself, "How is it possible that the Scapular should be burnt as it is on both sides?" Then I put on a new one but the same thing happened again the following morning and this made me feel that it was the devil who had done it. The Scapular had been burnt twice as if with a match and it was all black, and that caused me great fear. It is true that sometimes I had been neglectful in wearing it and at other times I wore the Scapular medal instead... as with the recitaion of the Rosary so did Our Lady come to my aid with the Scapular through my husband, Francis, who even before he had heard of Garabandal was already wearing the Scapular very faithfully. He was surprised to see me without it after having seen Our Lady so many times. As I said, at times I didn't wear it or wore the Scapular medal instead and he urged me to change it for a cloth Scapular. He would even offer me a few reasons why I should wear it and of course, since then I have always had it on!&#10;&#10;​&#10;&#10;Fr. Benac: Did Our Lady appear anytime wearing a brown dress?&#10;&#10;Mari Loli: I do have a faint idea that once She did appear dressed in brown.&#10;&#10;​&#10;&#10;Fr. Pelletier: If I remember well, Mari Cruz also made a reference to Our Lady dressed in brown.&#10;&#10;Fr. Benac: Briefly let me have your reaction to the various pictures of Our Lady of Garabandal which you have seen. In your opinion do you feel She is better represented when She is painted holding the Infant Jesus or when She is alone?&#10;&#10;&#10;&#10;Mari Loli: Well She appeared sometimes with the Infant Jesus and sometimes alone. I find those paintings of Our Lady lifeless. Moreover, Her Face was much more beautiful, still She understands the limitations of the artists.&#10;&#10;Fr. Benac: Regarding the Infant Jesus, was it frequently or rarely that She appeared carrying Him in Her arms?&#10;&#10;Mari Loli: I think it was quite a number of times that She did appear with the Infant Jesus.&#10;&#10;&#10;&#10;Fr. Benac: And was it on such occasions that some of you asked the Virgin to let you hold the Child in your arms?&#10;&#10;Mari Loli: Yes, She did let us have the Infant Jesus for a while. She would pass Him to us and sometimes we would pass Him from one to the other.&#10;&#10;&#10;&#10;Fr. Benac: What did you feel you were holding?&#10;&#10;Mari Loli: We could not sense or feel His weight yet we couldn't move our hands beyond the space occupied by His body when we had him in our arms. He looked and smiled at us. He looked like a normal child only that as I was a little child it caused me surprise to see Him as a child and yet so big being God.&#10;&#10;&#10;&#10;Fr. Benac: Did Our Lady let you hold Her Crown in your hands?&#10;&#10;Mari Loli: Yes. I recollect that we did all the movements to take the crown. I don't recall clearly how the crown was held, or anything else; yet, I remember what I had said, that the stars, I think, were loose, but at the same time they could not be separated from the crown and they were shining like gold.&#10;&#10;&#10;&#10;Fr. Benac: Coming to another point, what was it that Our Lady asked of you during the apparitions?&#10;&#10;Mari Loli: What She asked of us mostly was to do penance, to visit the Blessed Sacrament, to be obedient to our parents and to the Church.  So I remember when the Church authorities forbade us from entering the church while in ecstasy She told us that the most important thing was to obey the Church, and so, from then on She never again led us into the church while we were in ecstasy.&#10;&#10;​&#10;&#10;Fr. Benac: In photographs you are seen lifting each other.&#10;&#10;Mari Loli: Yes, to kiss Her when She appeared higher up.&#10;&#10;&#10;&#10;Fr. Benac: When you were helping and lifting each other were you aware of it; could you see each other?&#10;&#10;Mari Loli: Yes, when we were lifting each other I could see the others also in ecstasy, and talk to them. We had no problem. During the ecstasies we were very light, so we were told.&#10;&#10;&#10;&#10;Fr. Benac: While in ecstasy you were seen directing your arm towards different people to give them your crucifix to kiss. Were you seeing the people to whom you would give the crucifix to kiss?&#10;&#10;Mari Loli: Our Lady would tell us where to direct the cross as if She would be guiding us by the hand to the different people.&#10;&#10;&#10;&#10;Fr. Benac: I believe Our Lady would lead you to the homes where there was someone ailing.&#10;&#10;Mari Loli: Yes, whenever there were sick people I think She would always lead us to bless them. She would cure them.&#10;&#10;&#10;&#10;Fr. Pelletier: At the time of giving the Crucifix to Priests to "kiss" would you be actually on your knees?&#10;&#10;Mari Loli: I don't remember but each time we would be directed to Bless a Priest we always gave him our Crucifix to "Kiss".&#10;&#10;&#10;&#10;Fr. Benac: Regarding Fr. Luis Andreu were you all four in ecstasy when he had the vision of the great Miracle?&#10;&#10;Mari Loli: While we four were in ecstasy, I remember seeing him looking up at the Pines and saying, "Miracle! Miracle! Miracle!" I remember this well. I remember also that on the same day I had a "Finger" Rosary which Fr. Luis had given me to have "kissed" by Our Lady. I had pinned it to my clothes with a safety pin, but somehow that day it got lost. After the ecstasy, I noticed that I had lost it and said to Fr. Luis, "Father, don't be anxious because at the next apparition I will ask Our Lady to let me know where it is." As Father Luis had to leave he said to me, "If you find it, please give it to my brother because I shall not come back"  At that moment I didn't reflect over this remark, 'till the following day while I was cleaning the church, with Jacinta, and the news of Father's death reached us. It was then that I recalled Father's words that he would not come back; we didn't know he was going to die. Then I thought that perhaps Our Lady had told him this when he had the Vision at the Pines.&#10;&#10;​&#10;&#10;Fr. Benac: But what happened to the "Lost" Rosary in the meantime?&#10;&#10;Mari Loli: That same night during the apparition, I asked Our Lady to let me know where the Rosary could be and She told where it was. So I went in search of it; She told me it was in the calleja near a large rock. Then I asked Jacinta to come along with me because Our Lady had told me where I could find the Rosary; so we went together and I lifted the stone and there it was!&#10;&#10;&#10;&#10;Fr. Benac: And so Jacinta saw you picking up the Rosary from under the rock?&#10;&#10;Mari Loli: Oh yes, Father.&#10;&#10;&#10;&#10;Fr. Benac: When you conveyed to Our Lady "Any Messages" from the people, did She give you an answer?&#10;&#10;Mari Loli: Yes, several times. I remember when Mercedes Salisachs requested that I ask Our Lady where her son, who had died in a car accident in Paris, was I don't remember if She (Our Lady) told me where he was the first time I asked Her,&#10;&#10;but when She told me She said that I should not tell her until Saturday. I believe it was Holy Saturday. In the meantime, she was in great pain and anxiety until on Holy Saturday as we were going round the village reciting the Rosario de la Aurora — the Rosary at Dawn — early morning I suddenly remembered that I had to break the news to the lady. So I went over and told her that Our Lady had assured me that her son was in Heaven and told me the name of the boy, "Miguel". She was very happy at the news and was weeping, full of emotion.&#10;&#10;​&#10;&#10;Fr. Benac: After Our Lady stopped appearing to you didn't you also have some locutions?&#10;&#10;Mari Loli: Yes, I did. I don't remember how many, but the last one occurred when I was in the school at Zaragoza. I don't remember the date but I do remember that Our Lady gave me a Message for the Mother Superior. It was then that I asked Our Lady if my father could believe in the apparitions (at the time he was Mayor of the Village). My father though at the beginning did believe, later doubted and used to say that the whole affair seemed rather strange, that Our Lady should appear like that. So when asking Our Lady this grace She told me that soon he would believe. She assured me that he would believe and so my father did receive proof before he died.&#10;&#10;​&#10;&#10;Fr. Benac: And how did this happen?&#10;&#10;Mari Loli: One day a number of people of the village gathered in front of our house carrying a Statue of Our Lady of Fatima I think. They were all praying for his recovery from "cancer". My father was not a fervent Christian though he would go to Mass every Sunday, but during his illness he changed totally; he began to receive Communion every day and when he was suffering intensely he would call the Priest to make his confession; and he would ask Our Lady to help him. When he learned that people down in the street were praying for him, he became very emotional and though very ill he wanted to go to the window. I don't know what he was actually praying for but suddenly a person from the group picked a "rose" from those which were around Our Lady's Statue carried by the people, and came up.... My mother received the "rose" and placed it near the Crucifix by my father's bed. Then suddenly he exclaimed joyfully: "Well, thanks be to God for I have received the PROOF!" My father had a most beautiful death.&#10;&#10;&#10;&#10;Fr. Benac: How could you discern that these interior callings were "Supernatural Locutions"?&#10;&#10;Mari Loli: Because I would feel very clearly within me as if God were speaking to me, and I felt it as something unusual. I remember that this happened to me many times especially after receiving Holy Communion.&#10;&#10;&#10;&#10;Fr. Benac: What gave you more joy the "Apparitions" or "Locutions"?&#10;&#10;Mari Loli: The "Apparitions" are something beautiful, but I felt that the "Locutions" were more penetrating.&#10;&#10;&#10;&#10;Fr. Benac: During these "Locutions" did Our Lady speak to you about the Holy Father or Priests?&#10;&#10;Mari Loli: Many of these "Locutions" were in answer to petitions which I was making for myself or for others, and often also for spiritual graces which I would ask of Her for myself or for the grace to do what She wanted me to do. Most of these "Locutons" were with Our Lord but also a number of times with Our Lady. The ones with Our Lady were not after Communion but in the house and often when I was praying perhaps before going to bed. Sometimes She would give me answers to questions which I had asked Her some days earlier.&#10;&#10;&#10;&#10;Fr. Benac: We know from books and your own statements that Our Lady taught all four of you how to recite the Rosary slowly and meditatively. Do you have something to tell us about yourself in this regard?&#10;&#10;Mari Loli: Yes. Our Lady told me one day in a "Locution" that She wanted me to recite the fifteen mysteries of the Rosary every day. I did this for some time but I must confess that after awhile I turned sluggish and faltered. Reflecting now over this, it seems to me that Our Lady must have said to Herself: "This child cannot manage it alone so I better send someone to her who will help her fulfill my wish." And so it happened that when I came to know my husband, Francis, I learned from him that he was already, for some time reciting the Fifteen Mysteries of the Rosary every day! So, from the time of our marriage we both have been saying the Fifteen Decades of the Rosary "Daily" without fail. Our Lady must be pleased.&#10;&#10;&#10;&#10;Fr. Pelletier: Besides the two "Main Messages," haven't you referred to others?&#10;&#10;Mari Loli: Yes, there are "Two Messages" in addition to the "Main Ones." Both were published in Maria Saraco's newspaper The Vigil and I will read them (both signed by Mari Loli and Jacinta).&#10;&#10;"The Virgin has told us that the world continues the same way. It has not changed at all; there are so few who have amended their lives. This hurts the Virgin very much. The Virgin has told us that the Chastisement is coming seeing that the world has not changed; The cup is filling up.  How sad the Virgin was though She did not let us see Her interior sorrow because She loves us so much and She suffers alone — She is so good! Be good, everyone, so that the Virgin Mary maybe be content.  She told us that we who are good should pray for those who are bad.  Let us pray to God for the world; for those who do not know Him. Be good everyone, be good.&#10;&#10;​&#10;&#10;The other message was reported by Jacinta in a letter to Fr. Jose [Ramon Garcia] de la Riva, in Asturias, dated Tuesday, June 19,1962: "Loli and I were in the calleja, the place of the first apparition, and the Virgin gave us a message for world and it is this: "The Virgin has told that we are now awaiting the chastisement because we are disregarding Her first message by our way of living. Yes, it will come, because the world has not changed in spite of Her Two Messages to the world. The world is worse and it has not changed at all, so prepare yourself for the Chastisement, it will come soon. This message was given to me." - signed, Jacinta&#10;&#10;​&#10;&#10;&#10;&#10;Fr. Benac: Did Our Lady make reference at any time to the Holy Father?&#10;&#10;Mari Loli: The only thing I remember was Her remark about obedience to the Church and to the Pope.  Moreover, She asked for pray for priests. One of the things which Our Lady asked of me most frequently was to pray for priests and make sacrifices for them.&#10;&#10;​&#10;&#10;Fr. Benac: Do you remember the "Night of the Screams"? How did that happen? Did Our Lady give you special instructions that night?&#10;&#10;Mari Loli: I think you are referring to the day when all four of us were at the cuadro and we stayed awake the whole night. I think it was on the Eve of Corpus Christi. I remember early that morning we had gone to the church to decorate the altar for the feast. That night Our Lady spoke to us at length about the punishment and gave us the message for the whole world of prayer and penance.&#10;&#10;&#10;&#10;Fr. Pelletier: Our Lady said that Priests would have to go into hiding. Will that happen before the Chastisement?&#10;&#10;Mari Loli: Yes, because things will turn worse and everything will be bad.&#10;&#10;&#10;&#10;Fr. Benac: Will this sort of "persecution" be as a consequence of Communism?&#10;&#10;Mari Loli: Well, this is not clear in my mind but judging from what I was seeing I felt that communism was going to be a part of the chastisement. However, if people pray much, this can be stopped from spreading all over the world. I see it this way as if Communism would be in the "Chastisement", the human scourge as part of it.&#10;&#10;​&#10;&#10;Fr. Benac: For this reason Fr. Pelletier is asking you whether, if the world changes, the Chastisement will be prevented. You were describing to us the "Night of Screams"; did Our Lady let you see a "Vision" of the Punishment?&#10;&#10;Mari Loli: Yes, She did. Our Lady spoke several times about Communism. I don't remember how often, but She said that a time would come when it would seem as if Communism was to "Master or Engulf the Whole World".&#10;&#10;&#10;&#10;Fr. Benac: And how did you react while seeing all this?&#10;&#10;Mari Loli: Well, as we were seeing the children we too were crying out asking that no harm should be done to them as we were feeling great pity for them. I don't remember more.&#10;&#10;​&#10;&#10;Fr. Pelletier: Where did the "fire" come from?&#10;&#10;Mari Loli: I could not see where it was coming from, but it was everywhere. Villages looked deserted and people in the streets were shouting and acting violently against each other all suffering in desperation.&#10;&#10;&#10;&#10;Fr. Benac: But did you see the end of the whole thing? Was it then that Our Lady said that this would be something like the "end of the world"?&#10;&#10;Mari Loli: She only said this was the chastisement and not 'the end of the world'&#10;&#10;​&#10;&#10;Fr. Pelletier: Did you see anything like war, people and cities burning or destroyed?&#10;&#10;Mari Loli: Everything was on "fire" and people were fighting but I did not see any weapons.&#10;&#10;&#10;&#10;Fr. Benac: So all this took place on the "Night of the Screams" when you were all screaming?&#10;&#10;Mari Loli: As I said before, this occurred twice, the second time was when all four of us were together at the Pines. We were alone and the people were asked to stay far away. Only "two little girls," Jacinta's sister and my own both six and seven years of age, were near us.&#10;&#10;​&#10;&#10;Fr. Benac: Could this conditional Chastisement be the reason why Our Lady said in Her Second Message, "You are now receiving the last warning"? Otherwise what meaning would you give to these words?&#10;&#10;Mari Loli: I took it to mean that we were coming closer to the end and that She would not be coming many times more — as She had already warned us twice — and we did not listen to Her.&#10;&#10;​&#10;&#10;Fr. Benac: While the Blessed Virgin was showing you the Vision of the Chastisement what was the expression on Her Face?&#10;&#10;Mari Loli: She looked sad but not so much. She had a sort of resigned expression.&#10;&#10;&#10;&#10;Fr. Benac: Did She speak to you at anytime about "Hell" and the "Loss of Souls"?&#10;&#10;Mari Loli: I only recall the reference She made in the message to bishops and priests who were on the path to perdition and taking many souls with them.&#10;&#10;​&#10;&#10;Fr. Benac: Did the Blessed Virgin speak of Communism?&#10;&#10;Mari Loli: Our Lady spoke several times about Communism. I don't remember how many times, but She said that a time would come when it would seem as if Communism was to "Master or Engulf the Whole World". I think it was then that She told us that Priests would have difficulty in saying Mass and talking about God and Divine Things.&#10;&#10;​&#10;&#10;Fr. Pelletier: Did Our Lady ever speak of people being put to death?&#10;&#10;Mari Loli: What Our Lady said was that Priests would go into "hiding" but I did not see whether they were being killed or not. She didn't exactly say they would be killed, but I am sure that they will be "Martyred".&#10;&#10;&#10;&#10;Fr. Pelletier: Your mother told me that one night you were upstairs with your father and that you cried and cried for one hour. And that afterwards your father told her, "I have seen the most touching sight. Loli was crying all the time and she was saying, 'Oh, its going to be like that? People are going to suffer like that? Oh, make me suffer!' Do you remember what you said at that moment?&#10;&#10;Mari Loli: All this was related to Communism and what is going to happen in the Church and to the people because all these things are to have repercussions amongst the people because when the Church suffers confusion, the people are going to suffer too. Some priests who are communists will create such confusion that people will not know what is right or wrong.&#10;&#10;​&#10;&#10;Fr. Benac: Since you are the one who knows the most about the Warning will you tell us: is this event to take place before the Miracle promised through Conchita Gonzalez?&#10;&#10;Mari Loli: The Warning is meant to help us see what we are doing, how much evil we are doing, how much pain we are causing God. Everyone will experience it wherever they may be regardless of their condition or their knowledge of God. It will take place all over the world. Yes, it will be an interior personal experience. It will look as if the world had come to a standstill, however, no one will not be aware of it as they all will be totally absorbed in their own experience.&#10;&#10;​&#10;&#10;Fr. Benac: Do you know the Year of the Warning?&#10;&#10;Mari Loli: Yes, the "Year" but not the day.&#10;&#10;​&#10;&#10;Fr. Benac: Do the others also know about it?&#10;&#10;Mari Loli: I don't know if the others know the "Year", but I presume so since we were so often together, and they had spoken about it on different occasions.&#10;&#10;&#10;&#10;Fr. Benac: But did you have any instructions from Our Lady not to pass this information to others?&#10;&#10;Mari Loli: No, She never told me not to do that, but I feel I shouldn't say it for the present.&#10;&#10;&#10;&#10;Fr. Benac: So, if such is the case, what would you advise people in view of that uncertainty about the "date" and "year"?&#10;&#10;Mari Loli: To do much penance, to pray more and to be better.&#10;&#10;​&#10;&#10;Fr. Benac: What Fr. Pelletier and I would like you to explain more clearly is the nature of the Warning. How do you sense it?&#10;&#10;Mari Loli: Yes, it will be an interior personal experience. It will look as if the world had come to a standstill, however, no one will not be aware of it as they all will be totally absorbed in their own experience. It is going to be something like an interior feeling of sorrow and pain for having offended God. God will help us to see clearly the harm we are causing Him and all the evil things that we do. God will help us to sense that interior pain because often when we do something wrong we just ask with our "lips" for the Lord to forgive us, but now He will help us to physically feel that deep sorrow.&#10;&#10;&#10;&#10;Fr. Benac: Would you say that this Warning will be a help towards ones purification? And is there any correlation between the "Warning" and the "Miracle"?&#10;&#10;Mari Loli: Yes, the "Two" will take place within 12 months. The Warning will be a purification and preparation to return to God.&#10;&#10;&#10;&#10;Fr. Benac: As Conchita seems to have explained, will it be for the correction of our conscience in preparation to accept the Miracle as a Sign from God?&#10;&#10;Mari Loli: I would say that the Miracle will be a Gift from God and all will feel happy realizing how good God is by giving us such a gift as an "Expression" of His love.&#10;&#10;&#10;&#10;Fr. Benac: Is it correct what Conchita had said that after the Miracle there will remain a visible "Sign" at the Pines?&#10;&#10;Mari Loli: I don't know very much about the Miracle.&#10;&#10;&#10;&#10;Fr. Benac: Was the "Last" Message delivered to all four of you or only to Conchita?&#10;&#10;Mari Loli: Only to Conchita. She didn't tell us, but we saw her writing it down and we heard it. It is to act as a deterrent to prevent the worst from taking place the Punishment.&#10;&#10;&#10;&#10;Fr. Benac: Did Our Lady say that if people prayed enough and did "Penance" the Chastisement could be averted?&#10;&#10;Mari Loli: She said the cup was willing up, that we had to make many sacrifices and perform much penance.  She also said that we must turn the anger of God away from ourselves by our own efforts.&#10;&#10;​&#10;&#10;Fr. Pelletier: Did She say this to you many times?&#10;&#10;Mari Loli: For me this was the "primary" reason why She appeared, to give the world Her "Message" so that people would repent, change their lives and stop committing sins.&#10;&#10;&#10;&#10;Fr. Benac: In the little space left on the tape, would you say a few words by way of a "Message of Encouragement" and Love for Our Bishops, Brother Priests, and the hundreds of our people of India who have accepted with so much love and faith Our Lady's Message.&#10;&#10;Mari Loli: Dear Brothers and Sisters of India, I am sure that the Blessed Mother is very pleased with all the work you are doing to promote Her Message. Surely, She will reward you. May I ask you to pray for me also.</div>
-</details>
-          <figure class="divinology-aside">
-<img src="https://www.opticianonline.net/media/jw4pw1r0/masoniceyeofprovidence.jpg?width=320&amp;height=213&amp;format=webp&amp;quality=80&amp;bgcolor=White&amp;v=1d903f435e146c0" alt="" role="presentation">
-          </figure>
-              </section>
-            </div>
           </div>
         </div>
       </article>
 
-      <!-- ===== PAGE: CREATION SCIENCE ===== -->
       <article class="page" id="creation-science" hidden>
         <h1>Creation Science</h1>
         <p>This site believes humanity does not currently hold the resources to calculate the age of universe and thus is agnostic as to the age of the earth.</p>
-        <details class="passage">
-          <summary><span class="ptitle">C-14 dating</span></summary>
-          <div class="divinology-copy">C-14 dating rests upon the assumption of the initial ratio of C-14 to C-12. An object could have a significantly low amount of C-14 not only because it is old but also because the initial levels were low as potentially caused by differences in the atmosphere.</div>
-        </details>
       </article>
 
-      <!-- ===== PAGE: CONFLICT LAW ===== -->
       <article class="page" id="conflict-law" hidden>
         <h1>Conflict Law</h1>
         <section class="divinology-tenets">
@@ -769,38 +408,22 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         </section>
       </article>
 
-      <!-- ===== PAGE: ABOUT ===== -->
       <article class="page" id="about" hidden>
         <h1>About</h1>
         <p>This site was created for the author to pursue his interests and change the world for the better.</p>
-        <p>Regarding Deseret, this site uses spellings that align with the General American pronunciation, however, it is permissible to use different word spellings if one wishes to represent a different accent - as long as the Deseret letters are correctly matched to the sounds.</p>
+        <p>Regarding Deseret, this site uses spellings that align with the General American pronunciation, however, it is permissible to use different word spellings if one wishes to represent a different pronunciation.</p>
       </article>
 
     </main>
   </div>
 
-  <!-- ========== ENGINE ========== -->
-  <!-- deseret.js is deseret-mappings.js + reverse.js combined into one file
-       (dictionary and translator first, then the reverse translator). -->
   <script src="deseret.js"></script>
 
-  <!-- ========== JAVASCRIPT ========== -->
   <script>
     (function () {
       'use strict';
-
-      // ===== CONFIG =====
-      var OPTS = {
-        flapMode: 't', flappedTAsD: false, schwaAsFoot: true,
-        clusterStrictness: 'strong', reduceTlDlClusters: true,
-        insertDlSeparator: false, ligatures: true, syllabicValues: true
-      };
+      var OPTS = { flapMode: 't', flappedTAsD: false, schwaAsFoot: true, clusterStrictness: 'strong', reduceTlDlClusters: true, insertDlSeparator: false, ligatures: true, syllabicValues: true };
       var DIALECT = 'general-us';
-
-      // One path from English to Deseret for the whole page. The Translator
-      // always went through the schwa rule (unstressed vowel -> 𐐳, flapped t
-      // -> 𐐻); the Library and "Read in Deseret" must do the same, or the
-      // site spells the same word two different ways.
       function toDeseret(text) {
         if (typeof window.daSchwaTextVariants === 'function') {
           try {
@@ -810,19 +433,13 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         }
         return window.translateText(text, DIALECT, OPTS);
       }
-
       var hasEngine = typeof window.translateText === 'function';
-      var hasReverse = typeof window.deseretReverseText === 'function';
-
-      // ===== DOM REFS =====
       var pages = [].slice.call(document.querySelectorAll('.page'));
       var links = [].slice.call(document.querySelectorAll('[data-go]'));
       var ids = pages.map(function (p) { return p.id; });
       var body = document.body;
       var deseretNavGroup = document.getElementById('deseretNavGroup'),
           deseretNavToggle = document.getElementById('deseretNavToggle');
-
-      // ===== ROUTING =====
       function normaliseRoute(raw) {
         var value = typeof raw === 'string' ? raw.trim() : '';
         try { value = decodeURIComponent(value); } catch (e) {}
@@ -841,38 +458,26 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         return normaliseRoute(location.pathname);
       }
       function show(id, write) {
-        var route = normaliseRoute(id), parts = route.split('/'),
-            sub = parts.slice(1).join('/'), id = parts[0] || 'home';
-        pages.forEach(function (p) { p.hidden = p.id !== id; });
+        var route = normaliseRoute(id), parts = route.split('/'), sub = parts.slice(1).join('/');
+        var pageId = parts[0] || 'home';
+        pages.forEach(function (p) { p.hidden = p.id !== pageId; });
         links.forEach(function (a) {
-          if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
+          if (a.getAttribute('data-go') === pageId) a.setAttribute('aria-current', 'true');
           else a.removeAttribute('aria-current');
         });
-        var inDeseretGroup = !!deseretNavGroup.querySelector('[data-go="' + id + '"]');
+        var inDeseretGroup = !!deseretNavGroup.querySelector('[data-go="' + pageId + '"]');
         deseretNavGroup.classList.toggle('open', inDeseretGroup);
         deseretNavToggle.setAttribute('aria-expanded', String(inDeseretGroup));
         if (inDeseretGroup) deseretNavToggle.setAttribute('aria-current', 'true');
         else deseretNavToggle.removeAttribute('aria-current');
         if (write !== false) {
-          try { history.pushState(null, '', routePath(id, sub)); } catch (e) {}
+          try { history.pushState(null, '', routePath(pageId, sub)); } catch (e) {}
         }
         window.scrollTo(0, 0);
         var h = document.querySelector('.page:not([hidden]) h1');
         if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
-        if (typeof libraryRoute === 'function') libraryRoute(id, sub);
       }
-
-      // ===== MOBILE MENU =====
-      // Below the breakpoint the nav collapses into a panel and the search
-      // field is moved inside it, so the bar keeps only logo, burger and CTA.
-      var navBtn = document.getElementById('navBtn'),
-          navEl = document.getElementById('siteNav'),
-          headerEl = document.querySelector('.gh'),
-          searchEl = document.querySelector('.gh-search'),
-          ctaEl = document.querySelector('.gh-cta'),
-          mq = window.matchMedia ? window.matchMedia('(max-width:62rem)')
-                                 : { matches: false, addEventListener: null, addListener: null };
-
+      var navBtn = document.getElementById('navBtn'), navEl = document.getElementById('siteNav'), headerEl = document.querySelector('.gh'), searchEl = document.querySelector('.gh-search'), ctaEl = document.querySelector('.gh-cta'), mq = window.matchMedia ? window.matchMedia('(max-width:62rem)') : { matches: false, addEventListener: null, addListener: null };
       function placeSearch() {
         if (mq.matches) {
           if (searchEl.parentElement !== navEl) navEl.insertBefore(searchEl, navEl.firstChild);
@@ -885,17 +490,14 @@ So the North Wind had to admit that the Sun was the stronger of the two.
         navBtn.setAttribute('aria-expanded', String(open));
       }
       function closeNav() { setNav(false); }
-
       deseretNavToggle.addEventListener('click', function () {
         var open = deseretNavToggle.getAttribute('aria-expanded') !== 'true';
         deseretNavGroup.classList.toggle('open', open);
         deseretNavToggle.setAttribute('aria-expanded', String(open));
       });
-
       placeSearch();
       if (mq.addEventListener) mq.addEventListener('change', function () { placeSearch(); closeNav(); });
       else if (mq.addListener) mq.addListener(function () { placeSearch(); closeNav(); });
-
       navBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         setNav(navEl.classList.contains('open') === false);
@@ -908,7 +510,6 @@ So the North Wind had to admit that the Sun was the stronger of the two.
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && navEl.classList.contains('open')) { closeNav(); navBtn.focus(); }
       });
-
       links.forEach(function (a) {
         a.addEventListener('click', function (e) {
           e.preventDefault();
@@ -916,557 +517,52 @@ So the North Wind had to admit that the Sun was the stronger of the two.
           show(a.getAttribute('data-go'));
         });
       });
-      window.addEventListener('hashchange', function () {
-        var legacyRoute = normaliseRoute(location.hash.slice(1));
-        show(legacyRoute, false);
-        var legacyParts = legacyRoute.split('/');
-        try { history.replaceState(null, '', routePath(legacyParts[0], legacyParts.slice(1).join('/'))); } catch (e) {}
-      });
-      window.addEventListener('popstate', function () { show(routeFromLocation(), false); });
-
       var start = routeFromLocation(), startParts = start.split('/');
       show(start, false);
-      if (location.hash || new URLSearchParams(location.search).has('route') ||
-          (location.pathname !== '/' && location.pathname !== routePath(startParts[0], startParts.slice(1).join('/')))) {
+      if (location.hash || new URLSearchParams(location.search).has('route') || (location.pathname !== '/' && location.pathname !== routePath(startParts[0], startParts.slice(1).join('/')))) {
         try { history.replaceState(null, '', routePath(startParts[0], startParts.slice(1).join('/'))); } catch (e) {}
       }
-
-      // ===== DESERET MODE =====
-      // Controls and already-Deseret material are left alone; everything else
-      // is walked once, cached, and swapped back and forth on click.
-      var SKIP = 'script,style,textarea,input,select,option,svg,.de,.tw,.gloss,.ipa,.gh-cta,.toggle,.opts,.reader-body';
-      var deseretNodes = null, deseretOn = false;
-
-      function collectText(root) {
-        var out = [], walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-          acceptNode: function (n) {
-            if (!n.nodeValue || !/[A-Za-z]/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
-            if (n.parentElement && n.parentElement.closest(SKIP)) return NodeFilter.FILTER_REJECT;
-            return NodeFilter.FILTER_ACCEPT;
+      if (hasEngine) {
+        var modeBtn = document.getElementById('deseretMode');
+        var SKIP = 'script,style,textarea,input,select,option,svg,.de,.tw,.gloss,.ipa,.gh-cta,.toggle,.opts,.reader-body';
+        var deseretNodes = null, deseretOn = false;
+        function collectText(root) {
+          var out = [], walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (n) {
+              if (!n.nodeValue || !/[A-Za-z]/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+              if (n.parentElement && n.parentElement.closest(SKIP)) return NodeFilter.FILTER_REJECT;
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          });
+          var n; while ((n = walk.nextNode())) out.push(n);
+          return out;
+        }
+        function applyDeseret() {
+          if (!deseretNodes) {
+            deseretNodes = collectText(document.body).map(function (n) { return { node: n, en: n.nodeValue, de: null }; });
           }
-        });
-        var n; while ((n = walk.nextNode())) out.push(n);
-        return out;
-      }
-
-      var modeBtn = document.getElementById('deseretMode');
-      function applyDeseret() {
-        if (!deseretNodes) {
-          deseretNodes = collectText(document.body).map(function (n) {
-            return { node: n, en: n.nodeValue, de: null };
+          deseretNodes.forEach(function (r) {
+            if (r.de === null) {
+              try { r.de = toDeseret(r.en); }
+              catch (e) { r.de = r.en; }
+            }
+            r.node.nodeValue = r.de;
           });
         }
-        deseretNodes.forEach(function (r) {
-          if (r.de === null) {
-            try { r.de = toDeseret(r.en); }
-            catch (e) { r.de = r.en; }
-          }
-          r.node.nodeValue = r.de;
-        });
-      }
-      function resetDeseret() {
-        if (!deseretNodes) return;
-        deseretNodes.forEach(function (r) { r.node.nodeValue = r.en; r.de = null; });
-      }
-      // Accent or schwa changed: drop the cached spellings and redo them.
-      function refreshDeseretMode() {
-        if (!deseretNodes) return;
-        deseretNodes.forEach(function (r) { r.de = null; });
-        if (deseretOn) applyDeseret();
-      }
-      if (modeBtn && hasEngine) {
+        function resetDeseret() {
+          if (!deseretNodes) return;
+          deseretNodes.forEach(function (r) { r.node.nodeValue = r.en; r.de = null; });
+        }
         modeBtn.addEventListener('click', function () {
           deseretOn = !deseretOn;
-          if (deseretOn) {
-            applyDeseret();
-          } else {
-            resetDeseret();
-          }
+          if (deseretOn) applyDeseret();
+          else resetDeseret();
           body.classList.toggle('de-mode', deseretOn);
           modeBtn.setAttribute('aria-pressed', String(deseretOn));
           var label = modeBtn.querySelector('.cta-label');
           if (label) label.textContent = deseretOn ? 'Read in English' : 'Read in Deseret';
         });
-      } else if (modeBtn) {
-        modeBtn.disabled = true;
-        modeBtn.title = 'deseret.js did not load, so the page cannot be transliterated.';
       }
-
-      // ===== SEARCH =====
-      var q = document.getElementById('q'),
-          qres = document.getElementById('qres'),
-          index = pages.map(function (p) {
-            var h = p.querySelector('h1');
-            var numEl = h ? h.querySelector('.h-num') : null;
-            var title = h ? h.cloneNode(true) : null;
-            if (title && title.querySelector('.h-num')) title.querySelector('.h-num').remove();
-            return {
-              id: p.id,
-              num: numEl ? numEl.textContent.trim() : '',
-              title: title ? title.textContent.replace(/\s+/g, ' ').trim() : p.id,
-              text: (p.textContent || '').toLowerCase(),
-              el: p
-            };
-          });
-
-      function closeResults() { qres.hidden = true; q.setAttribute('aria-expanded', 'false'); }
-
-      function runSearch() {
-        var term = q.value.trim().toLowerCase();
-        if (term.length < 2) { closeResults(); return; }
-        var hits = index.filter(function (e) {
-          return e.title.toLowerCase().indexOf(term) >= 0 || e.text.indexOf(term) >= 0;
-        }).slice(0, 8);
-        qres.innerHTML = '';
-        if (!hits.length) {
-          var none = document.createElement('li');
-          none.className = 'r-none';
-          none.textContent = 'Nothing found for \u201c' + q.value.trim() + '\u201d';
-          qres.appendChild(none);
-        } else {
-          hits.forEach(function (e) {
-            var li = document.createElement('li'), a = document.createElement('a');
-            a.href = routePath(e.id);
-            if (e.num) {
-              var n = document.createElement('span');
-              n.className = 'r-num'; n.textContent = e.num; a.appendChild(n);
-            }
-            a.appendChild(document.createTextNode(e.title));
-            a.addEventListener('click', function (ev) {
-              ev.preventDefault(); closeNav(); show(e.id); q.value = ''; closeResults();
-            });
-            li.appendChild(a); qres.appendChild(li);
-          });
-        }
-        qres.hidden = false;
-        q.setAttribute('aria-expanded', 'true');
-      }
-
-      q.addEventListener('input', runSearch);
-      q.addEventListener('focus', runSearch);
-      document.getElementById('qbtn').addEventListener('click', function () { q.focus(); runSearch(); });
-      q.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { closeResults(); q.blur(); }
-        if (e.key === 'ArrowDown') {
-          var first = qres.querySelector('a');
-          if (first) { e.preventDefault(); first.focus(); }
-        }
-        if (e.key === 'Enter') {
-          var hit = qres.querySelector('a');
-          if (hit) { e.preventDefault(); hit.click(); }
-        }
-      });
-      document.addEventListener('click', function (e) {
-        if (!e.target.closest('.gh-search')) closeResults();
-      });
-
-      // ===== GLOSS TOGGLE =====
-      var toggles = document.querySelectorAll('.toggle');
-      toggles.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var hidden = body.classList.toggle('hide-gloss');
-          btn.setAttribute('aria-pressed', String(!hidden));
-          btn.textContent = hidden ? 'Show the English' : 'Hide the English';
-        });
-      });
-
-      // ===== LIBRARY =====
-      // Every work is plain English in a <script type="text/plain" class="work">
-      // block. Cards, categories, Deseret and the reverse.js check all come from it.
-      var WORKS = {}, workOrder = [], categories = [];
-      [].slice.call(document.querySelectorAll('script.work')).forEach(function (el) {
-        var id = el.getAttribute('data-id');
-        if (!id) return;
-        var paras = el.textContent.split(/\n+/).map(function (p) {
-          return p.replace(/\s+/g, ' ').trim();
-        }).filter(Boolean);
-        var w = {
-          title: el.getAttribute('data-title') || id,
-          meta: el.getAttribute('data-meta') || '',
-          desc: el.getAttribute('data-desc') || '',
-          tags: el.getAttribute('data-tags') || '',
-          category: el.getAttribute('data-category') || 'Other',
-          source: el.getAttribute('data-source') || '',
-          paras: paras
-        };
-        w.words = paras.join(' ').split(/\s+/).filter(Boolean).length;
-        WORKS[id] = w;
-        workOrder.push(id);
-        if (categories.indexOf(w.category) < 0) categories.push(w.category);
-      });
-
-      var libraryList = document.getElementById('libraryList'),
-          libraryCount = document.getElementById('libraryCount'),
-          libraryCats = document.getElementById('libraryCats'),
-          librarySort = document.getElementById('librarySort'),
-          librarySearch = document.getElementById('librarySearch'),
-          libraryEmpty = document.getElementById('libraryEmpty'),
-          cards = {}, activeCat = '';
-
-      workOrder.forEach(function (id) {
-        var w = WORKS[id];
-        var card = document.createElement('article');
-        card.className = 'library-work';
-        card.setAttribute('data-library-search',
-          (w.title + ' ' + w.meta + ' ' + w.tags + ' ' + w.category + ' ' + w.source).toLowerCase());
-        var box = document.createElement('div');
-        var h = document.createElement('h2'); h.textContent = w.title; box.appendChild(h);
-        var m = document.createElement('p'); m.className = 'work-meta'; m.textContent = w.meta; box.appendChild(m);
-        if (w.desc) { var d = document.createElement('p'); d.className = 'work-desc'; d.textContent = w.desc; box.appendChild(d); }
-        var f = document.createElement('p'); f.className = 'work-facts';
-        f.textContent = w.category + ' \u00b7 ' + w.words.toLocaleString() + ' words';
-        box.appendChild(f);
-        var btn = document.createElement('button');
-        btn.className = 'act'; btn.type = 'button'; btn.textContent = 'Read \u2192';
-        btn.setAttribute('data-work', id);
-        card.appendChild(box); card.appendChild(btn);
-        cards[id] = card;
-        libraryList.appendChild(card);
-      });
-
-      // Category chips, with counts.
-      function addChip(label, value, n) {
-        var c = document.createElement('button');
-        c.type = 'button'; c.className = 'chip';
-        c.setAttribute('data-cat', value);
-        c.setAttribute('aria-pressed', String(value === activeCat));
-        c.textContent = label + ' (' + n + ')';
-        c.addEventListener('click', function () { activeCat = value; applyLibraryView(); });
-        libraryCats.appendChild(c);
-      }
-      addChip('All', '', workOrder.length);
-      categories.forEach(function (c) {
-        addChip(c, c, workOrder.filter(function (id) { return WORKS[id].category === c; }).length);
-      });
-
-      function plainTitle(id) { return WORKS[id].title.replace(/^(the|a|an)\s+/i, ''); }
-
-      function applyLibraryView() {
-        var term = (librarySearch.value || '').trim().toLowerCase();
-        var sort = librarySort.value;
-        var order = workOrder.slice();
-        if (sort === 'az') order.sort(function (x, y) { return plainTitle(x).localeCompare(plainTitle(y)); });
-        else if (sort === 'short') order.sort(function (x, y) { return WORKS[x].words - WORKS[y].words; });
-        var shown = 0;
-        order.forEach(function (id) {
-          var card = cards[id];
-          libraryList.appendChild(card);                     // re-order
-          var text = card.getAttribute('data-library-search');
-          var visible = (!activeCat || WORKS[id].category === activeCat) && (!term || text.indexOf(term) !== -1);
-          card.hidden = !visible;
-          if (visible) shown++;
-        });
-        [].slice.call(libraryCats.children).forEach(function (c) {
-          c.setAttribute('aria-pressed', String(c.getAttribute('data-cat') === activeCat));
-        });
-        libraryCount.textContent = shown === workOrder.length
-          ? workOrder.length + ' works'
-          : shown + ' of ' + workOrder.length + ' works';
-        libraryEmpty.hidden = shown !== 0;
-      }
-      librarySearch.addEventListener('input', applyLibraryView);
-      librarySort.addEventListener('change', applyLibraryView);
-      applyLibraryView();
-
-      // The site-wide search was indexed before the cards existed; add them.
-      index.forEach(function (e) {
-        if (e.id === 'library') {
-          e.text += ' ' + workOrder.map(function (id) {
-            var w = WORKS[id];
-            return (w.title + ' ' + w.meta + ' ' + w.category + ' ' + w.source + ' ' + w.paras.join(' ')).toLowerCase();
-          }).join(' ');
-        }
-      });
-
-      // ----- reader -----
-      var libIndex = document.getElementById('libraryIndex'),
-          libReader = document.getElementById('libraryReader'),
-          readerTitle = document.getElementById('readerTitle'),
-          readerMeta = document.getElementById('readerMeta'),
-          readerRecord = document.getElementById('readerRecord'),
-          readerBody = document.getElementById('readerBody'),
-          readerNote = document.getElementById('readerNote'),
-          readerRelated = document.getElementById('readerRelated'),
-          readerStatus = document.getElementById('readerStatus'),
-          modeBtns = [].slice.call(document.querySelectorAll('.reader-modes [data-mode]')),
-          currentWork = null, currentMode = 'de';
-
-      function toDeseretText(t) {
-        try { return toDeseret(t); } catch (e) { return t; }
-      }
-      function words(t) { return t.split(/\s+/).filter(Boolean); }
-      function norm(w) { return w.toLowerCase().replace(/^[^a-z0-9']+|[^a-z0-9']+$/g, ''); }
-
-      // A small "bibliographic record", as on a Gutenberg book page.
-      function renderRecord(w) {
-        readerRecord.innerHTML = '';
-        var sel = document.getElementById('dialect');
-        var accent = sel && sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : 'General American';
-        [['Category', w.category], ['Source text', w.source], ['Length', w.words.toLocaleString() + ' words'],
-         ['Language', 'Deseret (' + accent + ')']].forEach(function (row) {
-          if (!row[1]) return;
-          var dt = document.createElement('dt'), dd = document.createElement('dd');
-          dt.textContent = row[0]; dd.textContent = row[1];
-          readerRecord.appendChild(dt); readerRecord.appendChild(dd);
-        });
-      }
-
-      // "More in Scripture", like Gutenberg's Subject links.
-      function renderRelated(w) {
-        var others = workOrder.filter(function (id) { return id !== currentWork && WORKS[id].category === w.category; }).slice(0, 5);
-        readerRelated.innerHTML = '';
-        if (!others.length) { readerRelated.hidden = true; return; }
-        readerRelated.appendChild(document.createTextNode('More in ' + w.category + ': '));
-        others.forEach(function (id, i) {
-          var a = document.createElement('a');
-          a.href = '#library/' + id; a.textContent = WORKS[id].title;
-          readerRelated.appendChild(a);
-          if (i < others.length - 1) readerRelated.appendChild(document.createTextNode(' \u00b7 '));
-        });
-        readerRelated.hidden = false;
-      }
-
-      function renderReader() {
-        var w = WORKS[currentWork];
-        if (!w) return;
-        readerTitle.textContent = w.title;
-        readerMeta.textContent = w.meta;
-        renderRecord(w);
-        renderRelated(w);
-        readerStatus.textContent = '';
-        readerBody.innerHTML = '';
-        readerNote.hidden = true;
-        modeBtns.forEach(function (b) {
-          b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === currentMode));
-        });
-
-        var mode = currentMode;
-        if ((mode === 'de' || mode === 'rev') && !hasEngine) {
-          readerNote.textContent = 'The dictionary did not load (deseret.js), so this is shown in English.';
-          readerNote.hidden = false;
-          mode = 'en';
-        } else if (mode === 'rev' && !hasReverse) {
-          readerNote.textContent = 'deseret.js did not load, so the read-back check is unavailable. Showing English.';
-          readerNote.hidden = false;
-          mode = 'en';
-        }
-
-        var total = 0, differ = 0, skipped = 0;
-        w.paras.forEach(function (para) {
-          var p = document.createElement('p');
-          if (mode === 'de') {
-            p.className = 'de';
-            p.textContent = toDeseretText(para);
-          } else if (mode === 'rev') {
-            // English -> Deseret -> English, compared word by word with the original.
-            p.className = 'en';
-            var back = window.deseretReverseText(toDeseretText(para), DIALECT, OPTS).text;
-            var a = words(para), bw = words(back);
-            if (a.length === bw.length) {
-              a.forEach(function (orig, i) {
-                total++;
-                var node;
-                if (norm(orig) !== norm(bw[i])) {
-                  differ++;
-                  node = document.createElement('span');
-                  node.className = 'diff';
-                  node.title = 'Original: ' + orig;
-                  node.textContent = bw[i];
-                } else {
-                  node = document.createTextNode(bw[i]);
-                }
-                p.appendChild(node);
-                if (i < a.length - 1) p.appendChild(document.createTextNode(' '));
-              });
-            } else {
-              skipped++;
-              p.textContent = back;
-            }
-          } else {
-            p.className = 'en';
-            p.textContent = para;
-          }
-          readerBody.appendChild(p);
-        });
-
-        if (mode === 'rev') {
-          var msg = 'Automatic check: the English was turned into Deseret and back with the reverse translator. '
-            + (total - differ) + ' of ' + total + ' words read back the same.';
-          if (differ) msg += ' Highlighted words differ (usually homophones, or words missing from the dictionary); hover one to see the original.';
-          if (skipped) msg += ' ' + skipped + ' paragraph' + (skipped === 1 ? '' : 's') + ' could not be compared word for word.';
-          readerNote.textContent = msg;
-          readerNote.hidden = false;
-        }
-      }
-
-      function setRoute(path) { try { history.pushState(null, '', path); } catch (e) {} }
-
-      function openWork(id, fromRoute) {
-        if (!WORKS[id]) return;
-        currentWork = id;
-        libIndex.hidden = true;
-        libReader.hidden = false;
-        renderReader();
-        if (!fromRoute) setRoute('/library/' + encodeURIComponent(id));
-        window.scrollTo(0, 0);
-        readerTitle.setAttribute('tabindex', '-1');
-        readerTitle.focus({ preventScroll: true });
-      }
-      function closeWork(fromRoute) {
-        libReader.hidden = true;
-        libIndex.hidden = false;
-        currentWork = null;
-        if (fromRoute !== true) setRoute('/library');
-        window.scrollTo(0, 0);
-      }
-
-      // Called by show(): /library/<id> opens a work, /library shows the list.
-      function libraryRoute(page, sub) {
-        if (page !== 'library' || !WORKS || !libReader) return;
-        if (sub && WORKS[sub]) openWork(sub, true);
-        else if (!libReader.hidden) closeWork(true);
-      }
-
-      libraryList.addEventListener('click', function (e) {
-        var b = e.target.closest('[data-work]');
-        if (b) openWork(b.getAttribute('data-work'));
-      });
-      modeBtns.forEach(function (b) {
-        b.addEventListener('click', function () { currentMode = b.getAttribute('data-mode'); renderReader(); });
-      });
-      document.getElementById('readerBack').addEventListener('click', function () { closeWork(); });
-
-      // Copy / download whatever view is on screen.
-      function readerText() {
-        return [].slice.call(readerBody.children).map(function (p) { return p.textContent; }).join('\n\n');
-      }
-      document.getElementById('readerCopy').addEventListener('click', function () {
-        navigator.clipboard.writeText(readerText()).then(function () {
-          readerStatus.textContent = 'Copied';
-          setTimeout(function () { readerStatus.textContent = ''; }, 1600);
-        }, function () { readerStatus.textContent = 'Could not copy - select the text instead.'; });
-      });
-      document.getElementById('readerDownload').addEventListener('click', function () {
-        var w = WORKS[currentWork]; if (!w) return;
-        var blob = new Blob([w.title + '\n' + w.meta + '\n\n' + readerText() + '\n'], { type: 'text/plain;charset=utf-8' });
-        var a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = currentWork + '-' + currentMode + '.txt';
-        document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
-      });
-
-      // Re-render when the accent or schwa choice changes in the Translator.
-      var dialectSelLib = document.getElementById('dialect'), schwaSelLib = document.getElementById('schwa');
-      [dialectSelLib, schwaSelLib].forEach(function (el) {
-        if (el) el.addEventListener('change', function () { if (currentWork) setTimeout(renderReader, 0); });
-      });
-
-      // Open direct and legacy library-work routes after the library data loads.
-      (function () {
-        var parts = routeFromLocation().split('/');
-        if (parts[0] === 'library' && parts[1]) libraryRoute('library', parts[1]);
-      })();
-
-      // ===== TRANSLATOR =====
-      var src = document.getElementById('src'),
-          out = document.getElementById('out'),
-          note = document.getElementById('engineNote'),
-          status = document.getElementById('status'),
-          swap = document.getElementById('swap'),
-          alt = document.getElementById('alt'),
-          srcLabel = document.getElementById('srcLabel'),
-          outLabel = document.getElementById('outLabel'),
-          dialectSel = document.getElementById('dialect'),
-          schwaSel = document.getElementById('schwa'),
-          translatorToDeseret = true;
-
-      if (!src || !out) return;
-
-      if (!hasEngine) {
-        note.textContent = 'The dictionary did not load. Check that deseret.js sits beside this page.';
-        src.disabled = true;
-        swap.disabled = true;
-        return;
-      }
-
-      function wordCount() {
-        try { return Object.keys(window.DESERET_MAPPINGS || {}).length; } catch (e) { return 0; }
-      }
-      note.textContent = wordCount().toLocaleString()
-        + ' words in the dictionary. Anything missing is sounded out letter by letter.';
-
-      function render() {
-        var text = src.value;
-        alt.hidden = true;
-        status.textContent = '';
-        status.className = 'note';
-        if (!text) { out.value = ''; return; }
-        try {
-          if (translatorToDeseret) {
-            // Where the schwa rule fires, both spellings are real; show the
-            // other one underneath rather than pretending there is one answer.
-            if (typeof window.daSchwaTextVariants === 'function') {
-              var v = window.daSchwaTextVariants(text, DIALECT, OPTS);
-              out.value = v[0];
-              if (v.length > 1) {
-                alt.hidden = false;
-                alt.textContent = 'Other schwa convention: ' + v[1];
-              }
-            } else {
-              out.value = toDeseret(text);
-            }
-          } else if (hasReverse) {
-            var r = window.deseretReverseText(text, DIALECT, OPTS);
-            out.value = r.text;
-            if (r.ambiguous && r.ambiguous.length) {
-              alt.hidden = false;
-              alt.textContent = 'Homophones: ' + r.ambiguous.slice(0, 6).map(function (a) {
-                return a.chosen + ' (' + a.others.join(', ') + ')';
-              }).join('; ');
-            }
-          } else {
-            out.value = '';
-            status.textContent = 'deseret.js did not load, so Deseret to English is unavailable.';
-          }
-        } catch (e) {
-          out.value = '';
-          status.textContent = 'That could not be translated.';
-        }
-      }
-
-      src.addEventListener('input', render);
-
-      if (dialectSel) dialectSel.addEventListener('change', function () {
-        DIALECT = dialectSel.value; render(); refreshDeseretMode();
-      });
-      if (schwaSel) schwaSel.addEventListener('change', function () {
-        OPTS = Object.assign({}, OPTS, { schwaAsFoot: schwaSel.value === 'foot' });
-        render(); refreshDeseretMode();
-      });
-
-      swap.addEventListener('click', function () {
-        translatorToDeseret = !translatorToDeseret;
-        srcLabel.textContent = translatorToDeseret ? 'English' : 'Deseret';
-        outLabel.textContent = translatorToDeseret ? 'Deseret' : 'English';
-        swap.textContent = translatorToDeseret ? 'Deseret to English' : 'English to Deseret';
-        src.classList.toggle('de', !translatorToDeseret);
-        out.classList.toggle('en', !translatorToDeseret);
-        src.value = out.value;
-        render();
-        src.focus();
-      });
-
-      document.getElementById('copy').addEventListener('click', function () {
-        if (!out.value) return;
-        navigator.clipboard.writeText(out.value).then(function () {
-          status.className = 'note ok';
-          status.textContent = 'Copied';
-          setTimeout(function () { status.textContent = ''; status.className = 'note'; }, 1600);
-        }, function () {
-          status.textContent = 'Could not copy - select the text instead.';
-        });
-      });
     })();
   </script>
 </body>
